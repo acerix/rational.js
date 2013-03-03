@@ -1,38 +1,21 @@
 /*
-<<<<<<< HEAD
  * rational.js - Javascript tools and libraries based around rational numbers.
  * Copyright (C) 2013 Dylan Ferris
  * 
  * This file is part of rational.js.
  * 
  * rational.js is free software: you may redistribute it and/or modify
-=======
- * rat.js - Javascript tools and libraries based around rat numbers.
- * Copyright (C) 2013 Dylan Ferris
- * 
- * This file is part of rat.js.
- * 
- * rat.js is free software: you may redistribute it and/or modify
->>>>>>> 9d671b02a6efac105b8224900a5c8fa730f7e2af
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  * 
-<<<<<<< HEAD
  * rational.js is distributed in the hope that it will be useful,
-=======
- * rat.js is distributed in the hope that it will be useful,
->>>>>>> 9d671b02a6efac105b8224900a5c8fa730f7e2af
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  * 
  * You should have received a copy of the GNU General Public License
-<<<<<<< HEAD
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
-=======
- * along with rat.js.  If not, see <http://www.gnu.org/licenses/>.
->>>>>>> 9d671b02a6efac105b8224900a5c8fa730f7e2af
  */
 
 ratTest = TestCase("ratTest");
@@ -58,3 +41,4 @@ ratTest.prototype.testToEgyptian = function() {
 ratTest.prototype.testToBabylonian = function() {
   assertEquals("5 * 60^2 + 2 * 60^1 + 3 * 60^0 + 42 * 60^-1", rat.toBabylonian(rat.fromValues(181237, 10)));
 };
+
