@@ -19,11 +19,14 @@
  */
 
 if(!RAT_ARRAY_TYPE) {
-    var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
+	//var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
+	var RAT_ARRAY_TYPE = Array;
 }
 
-var RAT_ZERO = new RAT_ARRAY_TYPE([0, 1]);
-var RAT_ONE = new RAT_ARRAY_TYPE([1, 1]);
+//var RAT_ZERO = new RAT_ARRAY_TYPE([0, 1]);
+//var RAT_ONE = new RAT_ARRAY_TYPE([1, 1]);
+var RAT_ZERO = [0, 1];
+var RAT_ONE = [1, 1];
 
 /**
  * @class Rational Number
@@ -489,7 +492,7 @@ rat.fromInteger = function (a) {
 rat.fromDecimal = function (a) {
 	if (a % 1 === 0) return rat.fromInteger(a);
     var out = new RAT_ARRAY_TYPE(2);
-	out[1] = Math.pow(10, a.toString().split('.')[1].length);
+	out[1] = Math.pow(10, Math.min(a.toString().split('.')[1].length, 8));
 	out[0] = parseInt(a * out[1]);
     return rat.normalize(out, out);
 };
