@@ -22,8 +22,8 @@ if(!RAT_ARRAY_TYPE) {
     var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
 }
 
-const RAT_ZERO = new RAT_ARRAY_TYPE([0, 1]);
-const RAT_ONE = new RAT_ARRAY_TYPE([1, 1]);
+var RAT_ZERO = new RAT_ARRAY_TYPE([0, 1]);
+var RAT_ONE = new RAT_ARRAY_TYPE([1, 1]);
 
 /**
  * @class Rational Number
