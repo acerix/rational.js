@@ -443,7 +443,7 @@ rat.dec = rat.toDecimal;
  * Returns the closest integer approximation
  *
  * @param {rat} a number to round to the nearest integer
- * @returns {Float} integer approximation of the number
+ * @returns {Integer} integer approximation of the number
  */
 rat.round = function (a) {
     return Math.round(rat.toDecimal(a));
@@ -453,10 +453,20 @@ rat.round = function (a) {
  * Returns the closest integer approximation between the rat and zero
  *
  * @param {rat} a number to round down to the nearest integer
- * @returns {Float} integer approximation of the number
+ * @returns {Integer} integer approximation of the number
  */
 rat.floor = function (a) {
-    return rat.isNegative(a) ? Math.floor(rat.toDecimal(a)) : 0 - Math.floor(Math.abs(rat.toDecimal(a)));
+    return Math.floor(rat.toDecimal(a));
+};
+
+/**
+ * Returns the closest integer approximation between the rat and infinity
+ *
+ * @param {rat} a number to round up to the nearest integer
+ * @returns {Integer} integer approximation of the number
+ */
+rat.ceil = function (a) {
+    return Math.ceil(rat.toDecimal(a));
 };
 
 /**
