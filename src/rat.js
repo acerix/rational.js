@@ -456,10 +456,7 @@ rat.round = function (a) {
  * @returns {Float} integer approximation of the number
  */
 rat.floor = function (a) {
-    return
-		rat.isNegative(a)
-		? Math.floor(rat.toDecimal(a))
-		: 0 - Math.floor(Math.abs(rat.toDecimal(a)));
+    return rat.isNegative(a) ? Math.floor(rat.toDecimal(a)) : 0 - Math.floor(Math.abs(rat.toDecimal(a)));
 };
 
 /**
@@ -633,7 +630,21 @@ rat.dump = function(r) {
 };
 
 /**
- * Commonly used rational numbers
+ * Zero, the multiplicative identity
+ * 
+ * @property RAT_ZERO
+ * @type RAT_ARRAY_TYPE
+ * @static
+ * @final
  */
 var RAT_ZERO = rat.fromInteger(0);
+
+/**
+ * One, the additive identity
+ * 
+ * @property RAT_ONE
+ * @type RAT_ARRAY_TYPE
+ * @static
+ * @final
+ */
 var RAT_ONE = rat.fromInteger(1);
