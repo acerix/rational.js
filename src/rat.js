@@ -19,14 +19,8 @@
  */
 
 if(!RAT_ARRAY_TYPE) {
-	//var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
-	var RAT_ARRAY_TYPE = Array;
+	var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
 }
-
-//var RAT_ZERO = new RAT_ARRAY_TYPE([0, 1]);
-//var RAT_ONE = new RAT_ARRAY_TYPE([1, 1]);
-var RAT_ZERO = [0, 1];
-var RAT_ONE = [1, 1];
 
 /**
  * @class Rational Number
@@ -619,6 +613,12 @@ rat.toBabylonian = function (a) {
 	return s ? s : '0';
 };
 
+/**
+ * Returns a string containing the fraction in various formats
+ *
+ * @param {rat} a number to dump
+ * @returns {String} string various conversions
+ */
 rat.dump = function(r) {
 	var t = rat.create();
 	return rat.str(r)
@@ -631,3 +631,9 @@ rat.dump = function(r) {
 	+ '\ntan\t = '+rat.tan(t, r)
 	+ '\n';
 };
+
+/**
+ * Commonly used rational numbers
+ */
+var RAT_ZERO = rat.fromInteger(0);
+var RAT_ONE = rat.fromInteger(1);
