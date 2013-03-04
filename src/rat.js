@@ -68,9 +68,9 @@ rat.fromValues = function(n, d) {
 };
 
 /**
- * Creates a new rat initialized with the given values
+ * Creates a new rat from two random integers
  *
- * @returns {rat} a new rational number
+ * @returns {rat} a random rational number
  */
 rat.fromRandom = function() {
     var out = new RAT_ARRAY_TYPE(2);
@@ -640,7 +640,7 @@ rat.dump = function(r) {
 };
 
 /**
- * Zero, the multiplicative identity
+ * Zero, the additive identity
  * 
  * @property RAT_ZERO
  * @type RAT_ARRAY_TYPE
@@ -650,7 +650,7 @@ rat.dump = function(r) {
 var RAT_ZERO = rat.fromInteger(0);
 
 /**
- * One, the additive identity
+ * One, the multiplicative identity
  * 
  * @property RAT_ONE
  * @type RAT_ARRAY_TYPE
