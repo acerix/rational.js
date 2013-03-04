@@ -300,7 +300,7 @@ rat.max = function(out, a, b) {
 rat.scalar_multiply = function(out, a, b) {
     out[0] = a[0] * b;
     out[1] = a[1];
-    return out;
+    return rat.normalize(out, out);
 };
 
 
@@ -315,7 +315,7 @@ rat.scalar_multiply = function(out, a, b) {
 rat.scalar_divide = function(out, a, b) {
     out[0] = a[0];
     out[1] = a[1] * b;
-    return out;
+    return rat.normalize(out, out);
 };
 
 /**
