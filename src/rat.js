@@ -1,19 +1,19 @@
 /*
  * rational.js - Javascript tools and libraries based around rational numbers.
  * Copyright (C) 2013 Dylan Ferris
- * 
+ *
  * This file is part of rational.js.
- * 
+ *
  * rational.js is free software: you may redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * rational.js is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -34,10 +34,10 @@ var rat = {};
  * @returns {rat} a new rational number
  */
 rat.create = function() {
-    var out = new RAT_ARRAY_TYPE(2);
-    out[0] = 0;
-    out[1] = 1;
-    return out;
+	var out = new RAT_ARRAY_TYPE(2);
+	out[0] = 0;
+	out[1] = 1;
+	return out;
 };
 
 /**
@@ -47,10 +47,10 @@ rat.create = function() {
  * @returns {rat} a new rational number
  */
 rat.clone = function(a) {
-    var out = new RAT_ARRAY_TYPE(2);
-    out[0] = a[0];
-    out[1] = a[1];
-    return out;
+	var out = new RAT_ARRAY_TYPE(2);
+	out[0] = a[0];
+	out[1] = a[1];
+	return out;
 };
 
 /**
@@ -61,22 +61,10 @@ rat.clone = function(a) {
  * @returns {rat} a new rational number
  */
 rat.fromValues = function(n, d) {
-    var out = new RAT_ARRAY_TYPE(2);
-    out[0] = n;
-    out[1] = d;
-    return rat.normalize(out, out);
-};
-
-/**
- * Creates a new rat from two random integers
- *
- * @returns {rat} a random rational number
- */
-rat.fromRandom = function() {
-    var out = new RAT_ARRAY_TYPE(2);
-    out[0] = Math.floor( Math.random() * Math.pow( 2, 32 ) + 1 );
-    out[1] = Math.floor( Math.random() * Math.pow( 2, 31 ) + 1 );
-    return rat.normalize(out, out);
+	var out = new RAT_ARRAY_TYPE(2);
+	out[0] = n;
+	out[1] = d;
+	return rat.normalize(out, out);
 };
 
 /**
@@ -87,9 +75,9 @@ rat.fromRandom = function() {
  * @returns {rat} out
  */
 rat.copy = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    return out;
+	out[0] = a[0];
+	out[1] = a[1];
+	return out;
 };
 
 /**
@@ -101,9 +89,9 @@ rat.copy = function(out, a) {
  * @returns {rat} out
  */
 rat.set = function(out, n, d) {
-    out[0] = n;
-    out[1] = d;
-    return rat.normalize(out, out);
+	out[0] = n;
+	out[1] = d;
+	return rat.normalize(out, out);
 };
 
 /**
@@ -114,9 +102,9 @@ rat.set = function(out, n, d) {
  * @returns {rat} out
  */
 rat.abs = function(out, a) {
-    out[0] = Math.abs(a[0]);
-    out[1] = a[1];
-    return out;
+	out[0] = Math.abs(a[0]);
+	out[1] = a[1];
+	return out;
 };
 
 /**
@@ -127,13 +115,13 @@ rat.abs = function(out, a) {
  * @returns {rat} out
  */
 rat.invert = function(out, a) {
-    out[0] = a[1];
-    out[1] = a[0];
-    return out;
+	out[0] = a[1];
+	out[1] = a[0];
+	return out;
 };
 
 /**
- * Adds two rat's
+ * Adds two rats
  *
  * @param {rat} out the receiving number
  * @param {rat} a the first operand
@@ -141,13 +129,13 @@ rat.invert = function(out, a) {
  * @returns {rat} out
  */
 rat.add = function(out, a, b) {
-    out[0] = a[0] * b[1] + b[0] * a[1];
-    out[1] = a[1] * b[1];
-    return rat.normalize(out, out);
+	out[0] = a[0] * b[1] + b[0] * a[1];
+	out[1] = a[1] * b[1];
+	return rat.normalize(out, out);
 };
 
 /**
- * Subtracts two rat's
+ * Subtracts two rats
  *
  * @param {rat} out the receiving number
  * @param {rat} a the first operand
@@ -155,9 +143,9 @@ rat.add = function(out, a, b) {
  * @returns {rat} out
  */
 rat.subtract = function(out, a, b) {
-    out[0] = a[0] * b[1] - b[0] * a[1];
-    out[1] = a[1] * b[1];
-    return rat.normalize(out, out);
+	out[0] = a[0] * b[1] - b[0] * a[1];
+	out[1] = a[1] * b[1];
+	return rat.normalize(out, out);
 };
 
 /**
@@ -167,7 +155,7 @@ rat.subtract = function(out, a, b) {
 rat.sub = rat.subtract;
 
 /**
- * Multiplies two rat's
+ * Multiplies two rats
  *
  * @param {rat} out the receiving number
  * @param {rat} a the first operand
@@ -175,9 +163,9 @@ rat.sub = rat.subtract;
  * @returns {rat} out
  */
 rat.multiply = function(out, a, b) {
-    out[0] = a[0] * b[0];
-    out[1] = a[1] * b[1];
-    return rat.normalize(out, out);
+	out[0] = a[0] * b[0];
+	out[1] = a[1] * b[1];
+	return rat.normalize(out, out);
 };
 
 /**
@@ -187,7 +175,7 @@ rat.multiply = function(out, a, b) {
 rat.mul = rat.multiply;
 
 /**
- * Divides two rat's
+ * Divides two rats
  *
  * @param {rat} out the receiving number
  * @param {rat} a the first operand
@@ -195,9 +183,9 @@ rat.mul = rat.multiply;
  * @returns {rat} out
  */
 rat.divide = function(out, a, b) {
-    out[0] = a[0] * b[1];
-    out[1] = a[1] * b[0];
-    return rat.normalize(out, out);
+	out[0] = a[0] * b[1];
+	out[1] = a[1] * b[0];
+	return rat.normalize(out, out);
 };
 
 /**
@@ -225,7 +213,7 @@ rat.equals = function(a, b) {
  * @returns {Bool} true when the first operand is larger
  */
 rat.isGreaterThan = function(a, b) {
-    return a[0] * b[1] > b[0] * a[1];
+	return a[0] * b[1] > b[0] * a[1];
 };
 
 /**
@@ -236,21 +224,21 @@ rat.isGreaterThan = function(a, b) {
  * @returns {Bool} true when the first operand is smaller
  */
 rat.isLessThan = function(a, b) {
-    return a[0] * b[1] < b[0] * a[1];
+	return a[0] * b[1] < b[0] * a[1];
 };
 
 /**
  * Returns true when the rat is negative
  *
- * @param {rat} a the number to check 
+ * @param {rat} a the number to check
  * @returns {Bool} true when the number is less than zero
  */
 rat.isNegative = function(a) {
-    return a[0] < 0;
+	return a[0] < 0;
 };
 
 /**
- * Returns the minimum of two rat's
+ * Returns the minimum of two rats
  *
  * @param {rat} out the receiving number
  * @param {rat} a the first operand
@@ -266,11 +254,11 @@ rat.min = function(out, a, b) {
 		out[0] = b[0];
 		out[1] = b[1];
 	}
-    return out;
+	return out;
 };
 
 /**
- * Returns the maximum of two rat's
+ * Returns the maximum of two rats
  *
  * @param {rat} out the receiving number
  * @param {rat} a the first operand
@@ -286,11 +274,11 @@ rat.max = function(out, a, b) {
 		out[0] = b[0];
 		out[1] = b[1];
 	}
-    return out;
+	return out;
 };
 
 /**
- * Scales a rat by an integer
+ * Multiplies a rat's numerator by an integer
  *
  * @param {rat} out the receiving number
  * @param {rat} a the number to multiply
@@ -298,53 +286,24 @@ rat.max = function(out, a, b) {
  * @returns {rat} out
  */
 rat.scalar_multiply = function(out, a, b) {
-    out[0] = a[0] * b;
-    out[1] = a[1];
-    return rat.normalize(out, out);
+	out[0] = a[0] * b;
+	out[1] = a[1];
+	return rat.normalize(out, out);
 };
 
 
 /**
- * Scales a rat by an integer
+ * Multiplies a rat's denominator by an integer
  *
  * @param {rat} out the receiving number
- * @param {rat} a the number to multiply
- * @param {Integer} b amount to multiply the number by
+ * @param {rat} a the number to divide
+ * @param {Integer} b amount to divide by
  * @returns {rat} out
  */
 rat.scalar_divide = function(out, a, b) {
-    out[0] = a[0];
-    out[1] = a[1] * b;
-    return rat.normalize(out, out);
-};
-
-/**
- * Normalize a rat
- *
- * @param {rat} out the receiving number
- * @param {rat} a number to normalize
- * @returns {rat} out
- */
-rat.normalize = function(out, a) {
-    out[0] = a[0];
-    out[1] = a[1];
-    
-    // denominator is zero
-	if (out[1] === 0) return out;
-	
-    // denominator is negative
-	if (out[1] < 0) {
-		out[0] *= -1;
-		out[1] *= -1;
-	}
-	
-	var gcd = greatest_common_divisor(Math.abs(out[0]), out[1]);
-	if (gcd > 1) {
-		out[0] /= gcd;
-		out[1] /= gcd;
-	}
-	
-    return out;
+	out[0] = a[0];
+	out[1] = a[1] * b;
+	return rat.normalize(out, out);
 };
 
 /**
@@ -366,6 +325,29 @@ function greatest_common_divisor(a, b) {
 }
 
 /**
+ * Normalize a rat
+ *
+ * @param {rat} out the receiving number
+ * @param {rat} a number to normalize
+ * @returns {rat} out
+ */
+rat.normalize = function(out, a) {
+	out[0] = a[0];
+	out[1] = a[1];
+	if (out[1] === 0) return out;
+	if (out[1] < 0) {
+		out[0] = -out[0];
+		out[1] = -out[1];
+	}
+	var gcd = greatest_common_divisor(Math.abs(out[0]), out[1]);
+	if (gcd > 1) {
+		out[0] /= gcd;
+		out[1] /= gcd;
+	}
+	return out;
+};
+
+/**
  * Negates a rat
  *
  * @param {rat} out the receiving number
@@ -373,10 +355,16 @@ function greatest_common_divisor(a, b) {
  * @returns {rat} out
  */
 rat.opposite = function(out, a) {
-    out[0] = -a[0];
-    out[1] = a[1];
-    return out;
+	out[0] = -a[0];
+	out[1] = a[1];
+	return out;
 };
+
+/**
+ * Alias for {@link rat.opposite}
+ * @function
+ */
+rat.neg = rat.negative = rat.opposite;
 
 /**
  * Raises a rat to an integer exponent
@@ -387,9 +375,9 @@ rat.opposite = function(out, a) {
  * @returns {rat} out
  */
 rat.power = function(out, a, b) {
-    out[0] = Math.pow(a[0], b);
-    out[1] = Math.pow(a[1], b);
-    return out;
+	out[0] = Math.pow(a[0], b);
+	out[1] = Math.pow(a[1], b);
+	return out;
 };
 
 /**
@@ -399,14 +387,14 @@ rat.power = function(out, a, b) {
 rat.pow = rat.power;
 
 /**
- * Calculates the dot product of two rat's
+ * Calculates the dot product of two rats
  *
  * @param {rat} a the first operand
  * @param {rat} b the second operand
  * @returns {Number} dot product of a and b
  */
 rat.dot = function (a, b) {
-    return a[0] * b[0] + a[1] * b[1];
+	return a[0] * b[0] + a[1] * b[1];
 };
 
 /**
@@ -416,12 +404,14 @@ rat.dot = function (a, b) {
  * @returns {String} string representation of the number
  */
 rat.str = function (a) {
-    return 'rat(' + a[0] + '/' + a[1] + ')';
+	return a[1] === 1 ? a[0] : a[0] + '/' + a[1];
 };
 
-RAT_ARRAY_TYPE.prototype.toString = function() {
-	return this[0] + '/' + this[1];
+/*
+RAT_ARRAY_TYPE.prototype.toString = function () {
+	return rat.str(this);
 }
+*/
 
 /**
  * Returns a decimal approximation
@@ -430,7 +420,7 @@ RAT_ARRAY_TYPE.prototype.toString = function() {
  * @returns {Float} decimal approximation of the number
  */
 rat.toDecimal = function (a) {
-    return a[0] / a[1];
+	return a[0] / a[1];
 };
 
 /**
@@ -445,28 +435,40 @@ rat.dec = rat.toDecimal;
  * @param {rat} a number to round to the nearest integer
  * @returns {Integer} integer approximation of the number
  */
-rat.round = function (a) {
-    return Math.round(rat.toDecimal(a));
+rat.toInteger = function (a) {
+	return Math.round(rat.toDecimal(a));
 };
 
 /**
- * Returns the closest integer approximation between the rat and zero
+ * Alias for {@link rat.toInteger}
+ * @function
+ */
+rat.round = rat.toInteger;
+
+/**
+ * Alias for {@link rat.toInteger}
+ * @function
+ */
+rat.int = rat.toInteger;
+
+/**
+ * Returns the closest integer approximation by rounding down
  *
  * @param {rat} a number to round down to the nearest integer
  * @returns {Integer} integer approximation of the number
  */
 rat.floor = function (a) {
-    return Math.floor(rat.toDecimal(a));
+	return Math.floor(rat.toDecimal(a));
 };
 
 /**
- * Returns the closest integer approximation between the rat and infinity
+ * Returns the closest integer approximation by rounding up
  *
  * @param {rat} a number to round up to the nearest integer
  * @returns {Integer} integer approximation of the number
  */
 rat.ceil = function (a) {
-    return Math.ceil(rat.toDecimal(a));
+	return Math.ceil(rat.toDecimal(a));
 };
 
 /**
@@ -477,14 +479,14 @@ rat.ceil = function (a) {
  * @returns {rat} out
  */
 rat.fromInteger = function (a) {
-    var out = new RAT_ARRAY_TYPE(2);
+	var out = new RAT_ARRAY_TYPE(2);
 	out[0] = parseInt(a);
 	out[1] = 1;
-    return rat.normalize(out, out);
+	return rat.normalize(out, out);
 };
 
 /**
- * Returns a rat from a decimal
+ * Returns a rat from a decimal (float)
  *
  * @param {rat} out the receiving number
  * @param {Number} signed decimal number
@@ -492,12 +494,23 @@ rat.fromInteger = function (a) {
  */
 rat.fromDecimal = function (a) {
 	if (a % 1 === 0) return rat.fromInteger(a);
-    var out = new RAT_ARRAY_TYPE(2);
+	var out = new RAT_ARRAY_TYPE(2);
 	out[1] = Math.pow(10, Math.min(a.toString().split('.')[1].length, 8));
 	out[0] = parseInt(a * out[1]);
-    return rat.normalize(out, out);
+	return rat.normalize(out, out);
 };
 
+/**
+ * Creates a new rat from two random integers
+ *
+ * @returns {rat} a random rational number
+ */
+rat.fromRandom = function() {
+	var out = new RAT_ARRAY_TYPE(2);
+	out[0] = Math.pow( 2, 31 ) - Math.floor( Math.random() * Math.pow( 2, 32 ) + 1 );
+	out[1] = Math.floor( Math.random() * Math.pow( 2, 31 ) + 1 );
+	return rat.normalize(out, out);
+};
 
 /**
  * Parametric sine, given by: 2 * a / (a * a + 1)
@@ -507,12 +520,12 @@ rat.fromDecimal = function (a) {
  * @returns {rat} out
  */
 rat.sin = function(out, a) {
-    rat.scalar_multiply(out, a, 2);
-    var d = rat.create();
-    rat.pow(d, a, 2);
-    rat.add(d, d, RAT_ONE);
-    rat.divide(out, out, d);
-    return out;
+	rat.scalar_multiply(out, a, 2);
+	var d = rat.create();
+	rat.pow(d, a, 2);
+	rat.add(d, d, RAT_ONE);
+	rat.divide(out, out, d);
+	return out;
 };
 
 /**
@@ -523,13 +536,13 @@ rat.sin = function(out, a) {
  * @returns {rat} out
  */
 rat.cos = function(out, a) {
-    var a2 = rat.create();
-    rat.pow(a2, a, 2);
-    rat.sub(out, RAT_ONE, a2);
-    var d = rat.create();
-    rat.add(d, RAT_ONE, a2);
-    rat.divide(out, out, d);
-    return out;
+	var a2 = rat.create();
+	rat.pow(a2, a, 2);
+	rat.sub(out, RAT_ONE, a2);
+	var d = rat.create();
+	rat.add(d, RAT_ONE, a2);
+	rat.divide(out, out, d);
+	return out;
 };
 
 /**
@@ -540,22 +553,16 @@ rat.cos = function(out, a) {
  * @returns {rat} out
  */
 rat.tan = function(out, a) {
-	
-    rat.scalar_multiply(out, a, 2); // out = a * 2
-    
-    var t = rat.create();
-    rat.pow(t, a, 2); // t = a * a
-    rat.scalar_multiply(t, t, 2); // t *= 2
-    
-    rat.add(out, out, t); // out += t
-	
-    rat.pow(t, a, 4); // t = a * a * a * a
-    rat.sub(t, RAT_ONE, t); // t = 1 - t
-	
-    rat.divide(out, out, t);
-    return out;
+	rat.scalar_multiply(out, a, 2); // out = a * 2
+	var t = rat.create();
+	rat.pow(t, a, 2); // t = a * a
+	rat.scalar_multiply(t, t, 2); // t *= 2
+	rat.add(out, out, t); // out += t
+	rat.pow(t, a, 4); // t = a * a * a * a
+	rat.sub(t, RAT_ONE, t); // t = 1 - t
+	rat.divide(out, out, t);
+	return out;
 };
-
 
 /**
  * Returns an Egyptian representation
@@ -577,7 +584,7 @@ rat.toEgyptian = function (a) {
 		f = rat.fromValues(1, d);
 		if (rat.isGreaterThan(t, f)) {
 			if (b) b += ' + ';
-			b += f.toString();
+			b += rat.str(f);
 			rat.sub(t, t, f);
 		}
 	}
@@ -585,7 +592,7 @@ rat.toEgyptian = function (a) {
 		if (!b) return '0';
 		return b;
 	}
-	return b ? b + ' + ' + t : t.toString();
+	return b ? b + ' + ' + rat.str(t) : rat.str(t);
 };
 
 /**
@@ -621,7 +628,7 @@ rat.toBabylonian = function (a) {
 };
 
 /**
- * Returns a string containing the fraction in various formats
+ * Returns a string with the fraction in various formats
  *
  * @param {rat} a number to dump
  * @returns {String} string various conversions
@@ -629,19 +636,18 @@ rat.toBabylonian = function (a) {
 rat.dump = function(r) {
 	var t = rat.create();
 	return rat.str(r)
-	//+ '\ntoEgyptian\t = '+rat.toEgyptian(r)
 	+ '\ntoBabylonian\t ~ '+rat.toBabylonian(r)
-	+ '\ndec\t ~ '+rat.dec(r)
-	+ '\nround\t ~ '+rat.round(r)
-	+ '\nsin\t = '+rat.sin(t, r)
-	+ '\ncos\t = '+rat.cos(t, r)
-	+ '\ntan\t = '+rat.tan(t, r)
+	//+ '\ntoEgyptian\t = '+rat.toEgyptian(r)  // can be very slow
+	+ '\ndecimal:\t ~ '+rat.toDecimal(r)
+	+ '\nsin:\t = '+rat.sin(t, r)
+	+ '\ncos:\t = '+rat.cos(t, r)
+	+ '\ntan:\t = '+rat.tan(t, r)
 	+ '\n';
 };
 
 /**
  * Zero, the additive identity
- * 
+ *
  * @property RAT_ZERO
  * @type RAT_ARRAY_TYPE
  * @static
@@ -651,10 +657,30 @@ var RAT_ZERO = rat.fromInteger(0);
 
 /**
  * One, the multiplicative identity
- * 
+ *
  * @property RAT_ONE
  * @type RAT_ARRAY_TYPE
  * @static
  * @final
  */
 var RAT_ONE = rat.fromInteger(1);
+
+/**
+ * Infinity, represents a non-Zero number divided by Zero
+ *
+ * @property RAT_INFINITY
+ * @type RAT_ARRAY_TYPE
+ * @static
+ * @final
+ */
+var RAT_INFINITY = rat.fromValues(1, 0);
+
+/**
+ * Infinull, represents Zero divided by Zero
+ *
+ * @property RAT_INFINULL
+ * @type RAT_ARRAY_TYPE
+ * @static
+ * @final
+ */
+var RAT_INFINULL = rat.fromValues(0, 0);

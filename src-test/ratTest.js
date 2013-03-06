@@ -20,25 +20,264 @@
 
 ratTest = TestCase("ratTest");
 
-ratTest.prototype.testToString = function() {
-  var t = 51923;
-  assertEquals("-1/6", rat.fromValues(0 - t, 6 * t).toString());
+ratTest.prototype.testStr = function() {
+	
+	assertEquals(
+		"0",
+		rat.str(RAT_ZERO)
+	);
+	
+	assertEquals(
+		"1",
+		rat.str(RAT_ONE)
+	);
+	
+	assertEquals(
+		"1/0",
+		rat.str(RAT_INFINITY)
+	);
+	
+	assertEquals(
+		"0/0",
+		rat.str(RAT_INFINULL)
+	);
+	
+	assertEquals(
+		"-1/6",
+		rat.str(rat.fromValues(-1, 6))
+	);
+	
+	var t = 2734593;
+	assertEquals(
+		"-1/72",
+		rat.str(rat.fromValues(-t, 72 * t))
+	);
 };
 
 ratTest.prototype.testToDecimal = function() {
-  assertEquals(-0.1, rat.toDecimal(rat.fromValues(1, -10)));
+	
+	assertEquals(
+		0,
+		rat.toDecimal(RAT_ZERO)
+	);
+	
+	assertEquals(
+		1,
+		rat.toDecimal(RAT_ONE)
+	);
+	
+	assertSame(
+		Infinity,
+		rat.toDecimal(RAT_INFINITY)
+	);
+	
+	assertNotNaN(
+		rat.toDecimal(RAT_INFINITY)
+	);
+	
+	assertNaN(
+		rat.toDecimal(RAT_INFINULL)
+	);
+	
+	assertNotNull(
+		rat.toDecimal(RAT_INFINULL)
+	);
+	
+	assertEquals(
+		-1/10,
+		rat.toDecimal(rat.fromValues(1, -10))
+	);
+};
+
+ratTest.prototype.testFromDecimal = function() {
+	var t1 = 69/256;
+	assertEquals(
+		t1,
+		rat.toDecimal(rat.fromDecimal(t1))
+	);
+	
+	/*
+	// this is expected to fail until this is more accurate
+	t1 = 169/1256;
+	assertEquals(
+		t1,
+		rat.toDecimal(rat.fromDecimal(t1))
+	);
+	*/
 };
 
 ratTest.prototype.testRound = function() {
-  var t = 12633;
-  assertEquals(10, rat.round(rat.fromValues(10 * t, t)));
+	var t1 = 92812;
+	var t2 = 591562;
+	assertEquals(
+		Math.round(t1 / t2)
+		,rat.round(rat.fromValues(t1, t2))
+	);
+};
+
+ratTest.prototype.testFromRandom = function() {
+	var t1 = rat.fromRandom();
+	var t2 = rat.fromRandom();
+	var t3 = rat.create();
+	rat.div(t3, t1, t2);
+	assertEquals(
+		Math.round(rat.toDecimal(t1) / rat.toDecimal(t2)),
+		rat.round(t3)
+	);
+};
+
+ratTest.prototype.testSin = function() {
+	var t = rat.create();
+	
+	rat.sin(t, RAT_ZERO);
+	assertEquals(
+		RAT_ZERO,
+		t
+	);
+	
+	rat.sin(t, rat.fromValues(1, 2));
+	assertEquals(
+		'4/5',
+		rat.str(t)
+	);
+	
+	rat.sin(t, RAT_ONE);
+	assertEquals(
+		RAT_ONE,
+		t
+	);
+	
+	rat.sin(t, rat.fromInteger(2));
+	assertEquals(
+		'4/5',
+		rat.str(t)
+	);
+	
+	rat.sin(t, rat.fromInteger(3));
+	assertEquals(
+		'3/5',
+		rat.str(t)
+	);
+	
+	rat.sin(t, rat.fromInteger(-1));
+	assertEquals(
+		'-1',
+		rat.str(t)
+	);
+	
+	rat.sin(t, RAT_INFINITY);
+	assertEquals(
+		RAT_INFINULL,
+		t
+	);
+	
+};
+
+ratTest.prototype.testCos = function() {
+	var t = rat.create();
+	
+	rat.cos(t, RAT_ZERO);
+	assertEquals(
+		RAT_ONE,
+		t
+	);
+	
+	rat.cos(t, rat.fromValues(1, 2));
+	assertEquals(
+		'3/5',
+		rat.str(t)
+	);
+	
+	rat.cos(t, RAT_ONE);
+	assertEquals(
+		RAT_ZERO,
+		t
+	);
+	
+	rat.cos(t, rat.fromInteger(2));
+	assertEquals(
+		'-3/5',
+		rat.str(t)
+	);
+	
+	rat.cos(t, rat.fromInteger(3));
+	assertEquals(
+		'-4/5',
+		rat.str(t)
+	);
+	
+	rat.cos(t, rat.fromInteger(-1));
+	assertEquals(
+		RAT_ZERO,
+		t
+	);
+	
+	rat.cos(t, RAT_INFINITY);
+	assertEquals(
+		RAT_INFINULL,
+		t
+	);
+	
+};
+
+ratTest.prototype.testTan = function() {
+	var t = rat.create();
+	
+	rat.tan(t, RAT_ZERO);
+	assertEquals(
+		RAT_ZERO,
+		t
+	);
+	
+	rat.tan(t, rat.fromValues(1, 2));
+	assertEquals(
+		'8/5',
+		rat.str(t)
+	);
+	
+	rat.tan(t, RAT_ONE);
+	assertEquals(
+		'4/0',
+		rat.str(t)
+	);
+	
+	rat.tan(t, rat.fromInteger(2));
+	assertEquals(
+		'-4/5',
+		rat.str(t)
+	);
+	
+	rat.tan(t, rat.fromInteger(3));
+	assertEquals(
+		'-3/10',
+		rat.str(t)
+	);
+	
+	rat.tan(t, rat.fromInteger(-1));
+	assertEquals(
+		RAT_INFINULL,
+		t
+	);
+	
+	rat.tan(t, RAT_INFINITY);
+	assertEquals(
+		RAT_INFINULL,
+		t
+	);
+	
 };
 
 ratTest.prototype.testToEgyptian = function() {
-  assertEquals("1/22 + 1/566 + 1/1120680", rat.toEgyptian(rat.fromValues(17, 360)));
+	assertEquals(
+		"1/22 + 1/566 + 1/1120680",
+		rat.toEgyptian(rat.fromValues(17, 360))
+	);
 };
 
 ratTest.prototype.testToBabylonian = function() {
-  assertEquals("5 * 60^2 + 2 * 60^1 + 3 * 60^0 + 42 * 60^-1", rat.toBabylonian(rat.fromValues(181237, 10)));
+	assertEquals(
+		"5 * 60^2 + 2 * 60^1 + 3 * 60^0 + 42 * 60^-1",
+		rat.toBabylonian(rat.fromValues(181237, 10))
+	);
 };
 
