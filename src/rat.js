@@ -446,12 +446,6 @@ rat.toInteger = function (a) {
 rat.round = rat.toInteger;
 
 /**
- * Alias for {@link rat.toInteger}
- * @function
- */
-rat.int = rat.toInteger;
-
-/**
  * Returns the closest integer approximation by rounding down
  *
  * @param {rat} a number to round down to the nearest integer
