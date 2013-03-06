@@ -507,13 +507,14 @@ rat.fromRandom = function() {
 };
 
 /**
- * Parametric sine, given by: 2 * a / (a * a + 1)
+ * Parametric sine, given by: 2 * a / (1 + a * a)
  *
  * @param {rat} out the receiving number
  * @param {rat} a number for which to calculate the parametric sine
  * @returns {rat} out
  */
 rat.sin = function(out, a) {
+	if (a[1] === 0) return rat.copy(out, RAT_ZERO);
 	rat.scalar_multiply(out, a, 2);
 	var d = rat.create();
 	rat.pow(d, a, 2);
@@ -523,13 +524,14 @@ rat.sin = function(out, a) {
 };
 
 /**
- * Parametric cosine, given by: (a * a - 1) / (a * a + 1)
+ * Parametric cosine, given by: (1 - a * a) / (1 + a * a)
  *
  * @param {rat} out the receiving number
  * @param {rat} a number for which to calculate the parametric cosine
  * @returns {rat} out
  */
 rat.cos = function(out, a) {
+	if (a[1] === 0) return rat.neg(out, RAT_ONE);
 	var a2 = rat.create();
 	rat.pow(a2, a, 2);
 	rat.sub(out, RAT_ONE, a2);
