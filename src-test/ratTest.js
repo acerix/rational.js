@@ -92,23 +92,25 @@ ratTest.prototype.testFromDecimal = function() {
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
-};
-
-ratTest.prototype.testFromDecimalPrecise = function() {
-	var t1 = 169/256;
+	t1 = 169/256;
 	assertEquals(
 		t1,
-		rat.toDecimal(rat.fromDecimalPrecise(t1))
+		rat.toDecimal(rat.fromDecimal(t1))
+	);
+	t1 = -420/666;
+	assertEquals(
+		t1,
+		rat.toDecimal(rat.fromDecimal(t1))
 	);
 	t1 = Math.PI;
 	assertEquals(
 		t1,
-		rat.toDecimal(rat.fromDecimalPrecise(t1))
+		rat.toDecimal(rat.fromDecimal(t1))
 	);
 	t1 = Math.E;
 	assertEquals(
 		t1,
-		rat.toDecimal(rat.fromDecimalPrecise(t1))
+		rat.toDecimal(rat.fromDecimal(t1))
 	);
 };
 
