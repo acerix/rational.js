@@ -1,1 +1,5 @@
-closure --js `find src -name "*.js" | sort | xargs` > dist/rational.js
+closure --js \
+src/integer.js \
+src/rat.js \
+> dist/rational.js
+
