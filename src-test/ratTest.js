@@ -82,12 +82,12 @@ ratTest.prototype.testToDecimal = function() {
 };
 
 ratTest.prototype.testFromDecimal = function() {
-	var t1 = 69/256;
+	var t1 = 1/2;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
-	t1 = Math.E;
+	t1 = 69/256;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
