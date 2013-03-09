@@ -23,8 +23,13 @@ polyratTest = TestCase("polyratTest");
 polyratTest.prototype.testStr = function() {
 	
 	assertEquals(
-		"[0]",
-		polyrat.str(polyrat_ZERO)
+		"0",
+		polyrat.str(POLYRAT_ZERO)
+	);
+	
+	assertEquals(
+		"1",
+		polyrat.str(POLYRAT_IDENTITY)
 	);
 	
 };
