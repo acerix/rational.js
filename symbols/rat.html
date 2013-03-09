@@ -314,7 +314,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.cos">cos</a></b>(out, a)
 								</div>
-								<div class="description">Parametric cosine, given by: (1 - a * a) / (1 + a * a)</div>
+								<div class="description">Parametric cosine: (1 - a²) / (1 + a²)</div>
 							</td>
 						</tr>
 					
@@ -396,6 +396,16 @@ ul.inheritsList
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromDecimal">fromDecimal</a></b>(out, signed)
 								</div>
 								<div class="description">Returns a rat from a decimal (float)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromDecimalPrecise">fromDecimalPrecise</a></b>(out, signed)
+								</div>
+								<div class="description">Returns a rat from a decimal (float)
+This is a more precise version of fromDecimal()</div>
 							</td>
 						</tr>
 					
@@ -584,7 +594,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.sin">sin</a></b>(out, a)
 								</div>
-								<div class="description">Parametric sine, given by: 2 * a / (1 + a * a)</div>
+								<div class="description">Parametric sine: 2a / (1 + a²)</div>
 							</td>
 						</tr>
 					
@@ -620,7 +630,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.tan">tan</a></b>(out, a)
 								</div>
-								<div class="description">Parametric tangent, given by: sin / cos</div>
+								<div class="description">Parametric tangent: sin(a) / cos(a)</div>
 							</td>
 						</tr>
 					
@@ -629,7 +639,8 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.toBabylonian">toBabylonian</a></b>(a)
 								</div>
-								<div class="description">Returns a Babylonian representation (base 60)</div>
+								<div class="description">Returns a Babylonian representation (base 60)
+The returned string can be evaluated in "calc - arbitrary precision calculator"</div>
 							</td>
 						</tr>
 					
@@ -647,7 +658,8 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.toEgyptian">toEgyptian</a></b>(a)
 								</div>
-								<div class="description">Returns an Egyptian representation</div>
+								<div class="description">Returns an Egyptian representation
+The returned string can be evaluated in "calc - arbitrary precision calculator"</div>
 							</td>
 						</tr>
 					
@@ -962,7 +974,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Parametric cosine, given by: (1 - a * a) / (1 + a * a)
+						Parametric cosine: (1 - a²) / (1 + a²)
 						
 						
 					</div>
@@ -1368,6 +1380,63 @@ ul.inheritsList
 							
 							</dl>
 						
+						
+						
+
+					<hr />
+				
+					<a name=".fromDecimalPrecise"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>fromDecimalPrecise</b>(out, signed)
+					
+					</div>
+					<div class="description">
+						Returns a rat from a decimal (float)
+This is a more precise version of fromDecimal()
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>signed</b>
+									
+								</dt>
+								<dd>decimal number</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Requires:</dt>
+							
+								<dd>mat2_multiply</dd>
+							
+							</dl>
 						
 						
 
@@ -2284,7 +2353,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Parametric sine, given by: 2 * a / (1 + a * a)
+						Parametric sine: 2a / (1 + a²)
 						
 						
 					</div>
@@ -2456,7 +2525,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Parametric tangent, given by: sin / cos
+						Parametric tangent: sin(a) / cos(a)
 						
 						
 					</div>
@@ -2506,6 +2575,7 @@ ul.inheritsList
 					</div>
 					<div class="description">
 						Returns a Babylonian representation (base 60)
+The returned string can be evaluated in "calc - arbitrary precision calculator"
 						
 						
 					</div>
@@ -2531,7 +2601,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> string containing the decimal representations of the base 60 digits and their powers</dd>
+								<dd><span class="light fixedFont">{String}</span> string containing the decimal representations of the base 60 digits and their powers, in "calc" format</dd>
 							
 							</dl>
 						
@@ -2592,6 +2662,7 @@ ul.inheritsList
 					</div>
 					<div class="description">
 						Returns an Egyptian representation
+The returned string can be evaluated in "calc - arbitrary precision calculator"
 						
 						
 					</div>
@@ -2617,7 +2688,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> string representing the most simple sum of fractions having a numerator of one</dd>
+								<dd><span class="light fixedFont">{String}</span> string representing the most simple sum of fractions having a numerator of one, in "calc" format</dd>
 							
 							</dl>
 						
@@ -2681,7 +2752,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Mar 09 2013 11:08:28 GMT-0500 (EST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Mar 09 2013 14:53:08 GMT-0500 (EST)
 		</div>
 	</body>
 </html>

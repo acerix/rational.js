@@ -242,7 +242,7 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/_global_.html#.bigint_ONE">bigint_ONE</a></b>
+								<b><a href="../symbols/_global_.html#.BIGINT_ONE">BIGINT_ONE</a></b>
 								</div>
 								<div class="description">One, the multiplicative identity</div>
 							</td>
@@ -252,9 +252,29 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								<b><a href="../symbols/_global_.html#.bigint_ZERO">bigint_ZERO</a></b>
+								<b><a href="../symbols/_global_.html#.BIGINT_ZERO">BIGINT_ZERO</a></b>
 								</div>
 								<div class="description">Zero, the additive identity</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/_global_.html#.MATRIX_LEFT">MATRIX_LEFT</a></b>
+								</div>
+								<div class="description">A matrix which transforms to the next smaller one down the stern brocot tree.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								<b><a href="../symbols/_global_.html#.MATRIX_RIGHT">MATRIX_RIGHT</a></b>
+								</div>
+								<div class="description">A matrix which transforms to the next larger one down the stern brocot tree.</div>
 							</td>
 						</tr>
 					
@@ -327,6 +347,33 @@ ul.inheritsList
 
 <!-- ============================== methods summary ======================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class _global_.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/_global_.html#mat2_multiply">mat2_multiply</a></b>(out, a, b)
+								</div>
+								<div class="description">Multiplies two mat2's</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 <!-- ============================== events summary ======================== -->
 			
 
@@ -339,11 +386,11 @@ ul.inheritsList
 					Field Detail
 				</div>
 				
-					<a name=".bigint_ONE"> </a>
+					<a name=".BIGINT_ONE"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{bigint_ARRAY_TYPE}</span>
-					<b>bigint_ONE</b>
+					<b>BIGINT_ONE</b>
 					
 					</div>
 					<div class="description">
@@ -364,11 +411,11 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".bigint_ZERO"> </a>
+					<a name=".BIGINT_ZERO"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{bigint_ARRAY_TYPE}</span>
-					<b>bigint_ZERO</b>
+					<b>BIGINT_ZERO</b>
 					
 					</div>
 					<div class="description">
@@ -376,6 +423,56 @@ ul.inheritsList
 						
 							<br />
 							<i>Defined in: </i> <a href="../symbols/src/src_bigint.js.html">bigint.js</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".MATRIX_LEFT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Uint8Array}</span>
+					<b>MATRIX_LEFT</b>
+					
+					</div>
+					<div class="description">
+						A matrix which transforms to the next smaller one down the stern brocot tree.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/src_rat.js.html">rat.js</a>.
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".MATRIX_RIGHT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Uint8Array}</span>
+					<b>MATRIX_RIGHT</b>
+					
+					</div>
+					<div class="description">
+						A matrix which transforms to the next larger one down the stern brocot tree.
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/src_rat.js.html">rat.js</a>.
 						
 						
 					</div>
@@ -543,6 +640,69 @@ ul.inheritsList
 
 <!-- ============================== method details ========================= -->		
 			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="mat2_multiply"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{mat2}</span>
+					<b>mat2_multiply</b>(out, a, b)
+					
+					</div>
+					<div class="description">
+						Multiplies two mat2's
+						
+							<br />
+							<i>Defined in: </i> <a href="../symbols/src/src_rat.js.html">rat.js</a>.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{mat2}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving matrix</dd>
+							
+								<dt>
+									<span class="light fixedFont">{mat2}</span> <b>a</b>
+									
+								</dt>
+								<dd>the first operand</dd>
+							
+								<dt>
+									<span class="light fixedFont">{mat2}</span> <b>b</b>
+									
+								</dt>
+								<dd>the second operand</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{mat2}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
 			
 <!-- ============================== event details ========================= -->		
 			
@@ -554,7 +714,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Mar 09 2013 11:08:26 GMT-0500 (EST)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat Mar 09 2013 14:53:06 GMT-0500 (EST)
 		</div>
 	</body>
 </html>
