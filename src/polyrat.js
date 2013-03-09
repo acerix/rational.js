@@ -45,7 +45,7 @@ polyrat.fromValues = function(a) {
 	for (var i in a) {
 		out[i] = [];
 		for (var j in a[i]) {
-			out[i][j] = a[i][j];
+			out[i][j] = rat.fromInteger(a[i][j]);
 		}
 	}
 	return out;
@@ -58,7 +58,7 @@ polyrat.fromValues = function(a) {
  * @returns {String} string representation of the number
  */
 polyrat.str = function (a) {
-	return a.toString();
+	return a[0][0][0].toString();
 };
 
 /**
