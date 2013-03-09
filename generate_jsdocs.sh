@@ -1,0 +1,1 @@
+jsdoc src/ -d=docs

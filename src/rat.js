@@ -25,6 +25,7 @@ if(!RAT_ARRAY_TYPE) {
 /**
  * @class Rational Number
  * @name rat
+ * @requires integer
  */
 var rat = {};
 
@@ -339,7 +340,7 @@ rat.normalize = function(out, a) {
 		out[0] = -out[0];
 		out[1] = -out[1];
 	}
-	var gcd = greatest_common_divisor(Math.abs(out[0]), out[1]);
+	var gcd = integer.greatest_common_divisor(Math.abs(out[0]), out[1]);
 	if (gcd > 1) {
 		out[0] /= gcd;
 		out[1] /= gcd;
@@ -406,12 +407,6 @@ rat.dot = function (a, b) {
 rat.str = function (a) {
 	return a[1] === 1 ? a[0] : a[0] + '/' + a[1];
 };
-
-/*
-RAT_ARRAY_TYPE.prototype.toString = function () {
-	return rat.str(this);
-}
-*/
 
 /**
  * Returns a decimal approximation
@@ -680,3 +675,38 @@ var RAT_INFINITY = rat.fromValues(1, 0);
  * @final
  */
 var RAT_INFINULL = rat.fromValues(0, 0);
+
+
+/* temporary fix.. this is moving to integer.js */
+
+
+/**
+ * @class Integer
+ * @name integer
+ */
+var integer = {};
+
+/**
+ * Find the greatest common divisor of two integers
+ *
+ * @param {Integer} a the first operand
+ * @param {Integer} b the second operand
+ * @returns {Integer} greatest common divisor, or zero on failure
+ */
+integer.greatest_common_divisor = function(a, b) {
+	if (b===1 || a===1) return 1;
+	var t;
+	while (b !== 0) {
+		t = b;
+		b = a % b;
+		a = t;
+	}
+	return a;
+}
+
+/**
+ * Alias for {@link integer.greatest_common_divisor}
+ * @function
+ */
+integer.gcd = integer.greatest_common_divisor;
+
