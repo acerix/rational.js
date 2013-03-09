@@ -111,7 +111,7 @@ bigint.fromInteger = function (a) {
  * @static
  * @final
  */
-var BIGINT_ZERO = bigint.fromInteger(0);
+//var BIGINT_ZERO = bigint.fromInteger(0);
 
 /**
  * One, the multiplicative identity
@@ -121,4 +121,4 @@ var BIGINT_ZERO = bigint.fromInteger(0);
  * @static
  * @final
  */
-var BIGINT_ONE = bigint.fromInteger(1);
+//var BIGINT_ONE = bigint.fromInteger(1);
