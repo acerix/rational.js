@@ -307,6 +307,16 @@ rat.scalar_divide = function(out, a, b) {
 	return rat.normalize(out, out);
 };
 
+
+/* temporary fix.. this is moving to integer.js */
+
+
+/**
+ * @class Integer
+ * @name integer
+ */
+var integer = {};
+
 /**
  * Find the greatest common divisor of two integers
  *
@@ -314,16 +324,22 @@ rat.scalar_divide = function(out, a, b) {
  * @param {Integer} b the second operand
  * @returns {Integer} greatest common divisor, or zero on failure
  */
-function greatest_common_divisor(a, b) {
+integer.greatest_common_divisor = function(a, b) {
+	if (b===1 || a===1) return 1;
 	var t;
 	while (b !== 0) {
 		t = b;
 		b = a % b;
-		if (!isFinite(b)) return 0;
 		a = t;
 	}
 	return a;
 }
+
+/**
+ * Alias for {@link integer.greatest_common_divisor}
+ * @function
+ */
+integer.gcd = integer.greatest_common_divisor;
 
 /**
  * Normalize a rat
@@ -675,38 +691,3 @@ var RAT_INFINITY = rat.fromValues(1, 0);
  * @final
  */
 var RAT_INFINULL = rat.fromValues(0, 0);
-
-
-/* temporary fix.. this is moving to integer.js */
-
-
-/**
- * @class Integer
- * @name integer
- */
-var integer = {};
-
-/**
- * Find the greatest common divisor of two integers
- *
- * @param {Integer} a the first operand
- * @param {Integer} b the second operand
- * @returns {Integer} greatest common divisor, or zero on failure
- */
-integer.greatest_common_divisor = function(a, b) {
-	if (b===1 || a===1) return 1;
-	var t;
-	while (b !== 0) {
-		t = b;
-		b = a % b;
-		a = t;
-	}
-	return a;
-}
-
-/**
- * Alias for {@link integer.greatest_common_divisor}
- * @function
- */
-integer.gcd = integer.greatest_common_divisor;
-
