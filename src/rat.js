@@ -307,40 +307,6 @@ rat.scalar_divide = function(out, a, b) {
 	return rat.normalize(out, out);
 };
 
-
-/* temporary fix.. this is moving to integer.js */
-
-
-/**
- * @class Integer
- * @name integer
- */
-var integer = {};
-
-/**
- * Find the greatest common divisor of two integers
- *
- * @param {Integer} a the first operand
- * @param {Integer} b the second operand
- * @returns {Integer} greatest common divisor, or zero on failure
- */
-integer.greatest_common_divisor = function(a, b) {
-	if (b===1 || a===1) return 1;
-	var t;
-	while (b !== 0) {
-		t = b;
-		b = a % b;
-		a = t;
-	}
-	return a;
-}
-
-/**
- * Alias for {@link integer.greatest_common_divisor}
- * @function
- */
-integer.gcd = integer.greatest_common_divisor;
-
 /**
  * Normalize a rat
  *
@@ -518,7 +484,7 @@ rat.fromRandom = function() {
 };
 
 /**
- * Parametric sine, given by: 2 * a / (1 + a * a)
+ * Parametric sine: 2a / (1 + a²)
  *
  * @param {rat} out the receiving number
  * @param {rat} a number for which to calculate the parametric sine
@@ -535,7 +501,7 @@ rat.sin = function(out, a) {
 };
 
 /**
- * Parametric cosine, given by: (1 - a * a) / (1 + a * a)
+ * Parametric cosine: (1 - a²) / (1 + a²)
  *
  * @param {rat} out the receiving number
  * @param {rat} a number for which to calculate the parametric cosine
@@ -553,7 +519,7 @@ rat.cos = function(out, a) {
 };
 
 /**
- * Parametric tangent, given by: sin / cos
+ * Parametric tangent: sin(a) / cos(a)
  *
  * @param {rat} out the receiving number
  * @param {rat} a number for which to calculate the parametric tangent
@@ -573,9 +539,10 @@ rat.tan = function(out, a) {
 
 /**
  * Returns an Egyptian representation
+ * The returned string can be evaluated in "calc - arbitrary precision calculator"
  *
  * @param {rat} a number to represent as an Egyptian fraction
- * @returns {String} string representing the most simple sum of fractions having a numerator of one
+ * @returns {String} string representing the most simple sum of fractions having a numerator of one, in "calc" format
  */
 rat.toEgyptian = function (a) {
 	var t = rat.clone(a);
@@ -604,9 +571,10 @@ rat.toEgyptian = function (a) {
 
 /**
  * Returns a Babylonian representation (base 60)
+ * The returned string can be evaluated in "calc - arbitrary precision calculator"
  *
  * @param {rat} a number to represent as a Babylonian fraction
- * @returns {String} string containing the decimal representations of the base 60 digits and their powers
+ * @returns {String} string containing the decimal representations of the base 60 digits and their powers, in "calc" format
  */
 rat.toBabylonian = function (a) {
 	var s = '';
