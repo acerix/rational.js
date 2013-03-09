@@ -659,3 +659,69 @@ var RAT_INFINITY = rat.fromValues(1, 0);
  * @final
  */
 var RAT_INFINULL = rat.fromValues(0, 0);
+
+
+
+
+
+/* experimental... */
+
+
+/**
+ * Multiplies two mat2's
+ *
+ * @param {mat2} out the receiving matrix
+ * @param {mat2} a the first operand
+ * @param {mat2} b the second operand
+ * @returns {mat2} out
+ */
+function mat2_multiply(out, a, b) {
+    var a0 = a[0], a1 = a[1], a2 = a[2], a3 = a[3];
+    var b0 = b[0], b1 = b[1], b2 = b[2], b3 = b[3];
+    out[0] = a0 * b0 + a1 * b2;
+    out[1] = a0 * b1 + a1 * b3;
+    out[2] = a2 * b0 + a3 * b2;
+    out[3] = a2 * b1 + a3 * b3;
+};
+
+/**
+ * A matrix which transforms to the next smaller one down the stern brocot tree.
+ *
+ * @property MATRIX_LEFT
+ * @type Uint8Array
+ * @static
+ * @final
+ */
+var MATRIX_LEFT = new Uint8Array([1, 0, 1, 1]);
+
+/**
+ * A matrix which transforms to the next larger one down the stern brocot tree.
+ *
+ * @property MATRIX_RIGHT
+ * @type Uint8Array
+ * @static
+ * @final
+ */
+var MATRIX_RIGHT = new Uint8Array([1, 1, 0, 1]);
+
+/**
+ * Returns a rat from a decimal (float)
+ * This is a more precise version of fromDecimal()
+ *
+ * @param {rat} out the receiving number
+ * @param {Number} signed decimal number
+ * @returns {rat} out
+ * @requires mat2_multiply
+ */
+rat.fromDecimalPrecise = function (a) {
+	a = parseFloat(a);
+	if (a===0) return rat.clone(RAT_ZERO);
+	if (a===1) return rat.clone(RAT_ONE);
+	var test = 1;
+	var m = [1, 0, 0, 1];
+	while (test !== a) {
+		mat2_multiply(m, m, (test > a ? MATRIX_LEFT : MATRIX_RIGHT) );
+		test = (m[0] + m[1]) / (m[2] + m[3]);
+	}
+	return rat.fromValues( m[0] + m[1] , m[2] + m[3] );
+};

@@ -71,15 +71,7 @@ ratTest.prototype.testToDecimal = function() {
 		rat.toDecimal(RAT_INFINITY)
 	);
 	
-	assertNotNaN(
-		rat.toDecimal(RAT_INFINITY)
-	);
-	
 	assertNaN(
-		rat.toDecimal(RAT_INFINULL)
-	);
-	
-	assertNotNull(
 		rat.toDecimal(RAT_INFINULL)
 	);
 	
@@ -95,15 +87,29 @@ ratTest.prototype.testFromDecimal = function() {
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
-	
-	/*
-	// this is expected to fail until this is more accurate
-	t1 = 169/1256;
+	t1 = Math.E;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
-	*/
+};
+
+ratTest.prototype.testFromDecimalPrecise = function() {
+	var t1 = 169/256;
+	assertEquals(
+		t1,
+		rat.toDecimal(rat.fromDecimalPrecise(t1))
+	);
+	t1 = Math.PI;
+	assertEquals(
+		t1,
+		rat.toDecimal(rat.fromDecimalPrecise(t1))
+	);
+	t1 = Math.E;
+	assertEquals(
+		t1,
+		rat.toDecimal(rat.fromDecimalPrecise(t1))
+	);
 };
 
 ratTest.prototype.testRound = function() {
