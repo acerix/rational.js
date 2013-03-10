@@ -29,7 +29,7 @@ var integer = {};
  *
  * @param {Integer} a the first operand
  * @param {Integer} b the second operand
- * @returns {Integer} greatest common divisor, or zero on failure
+ * @returns {Integer} greatest common divisor
  */
 integer.greatest_common_divisor = function(a, b) {
 	if (b===1 || a===1) return 1;
