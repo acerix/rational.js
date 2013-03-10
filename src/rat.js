@@ -467,6 +467,7 @@ rat.fromDecimal = function (a) {
 	if (a===1) return rat.clone(RAT_ONE);
 	if (a===Infinity) return rat.clone(RAT_INFINITY);
 	if (isNaN(a)) return rat.clone(RAT_INFINULL);
+	if (a%1===0) return rat.fromInteger(a);
 	var neg = a < 0;
 	if (neg) a = Math.abs(a);
 	var test = 1;
