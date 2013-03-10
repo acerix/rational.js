@@ -445,7 +445,6 @@ rat.ceil = function (a) {
 /**
  * Returns a rat from an integer
  *
- * @param {rat} out the receiving number
  * @param {Integer} signed integer
  * @returns {rat} out
  */
@@ -459,8 +458,7 @@ rat.fromInteger = function (a) {
 /**
  * Returns a rat from a decimal number
  *
- * @param {rat} out the receiving number
- * @param {Number} signed decimal number
+ * @param {Number} a decimal number
  * @returns {rat} out
  */
 rat.fromDecimal = function (a) {
