@@ -19,7 +19,8 @@
  */
 
 if(!RAT_ARRAY_TYPE) {
-	var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
+	//var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
+	var RAT_ARRAY_TYPE = Array; // allows up to 2^63
 }
 
 /**
