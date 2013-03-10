@@ -463,19 +463,28 @@ rat.fromInteger = function (a) {
  * @returns {rat} out
  */
 rat.fromDecimal = function (a) {
+	
 	a = parseFloat(a);
 	if (a===0) return rat.clone(RAT_ZERO);
 	if (a===1) return rat.clone(RAT_ONE);
 	if (a===Infinity) return rat.clone(RAT_INFINITY);
 	if (isNaN(a)) return rat.clone(RAT_INFINULL);
 	if (a%1===0) return rat.fromInteger(a);
+	
+	var out = new RAT_ARRAY_TYPE(2);
+	out[0] = 1;
+	out[1] = 1;
+	
 	var neg = a < 0;
 	if (neg) a = Math.abs(a);
-	var test = 1;
+	
 	var m = [1, 0, 0, 1];
+	var test = a;
+	
 	// traverse the Stern-Brocot tree until a match is found
-	while (test !== a) {
-		if (test > a) {
+	// this is comparing the numerator to the denominator multiplied by the target decimal
+	while ( out[0] !== test ) {
+		if (out[0] > test) {
 			m[0] += m[1];
 			m[2] += m[3];
 		}
@@ -483,9 +492,11 @@ rat.fromDecimal = function (a) {
 			m[1] += m[0];
 			m[3] += m[2];
 		}
-		test = (m[0] + m[1]) / (m[2] + m[3]);
+		out[0] = m[0] + m[1];
+		out[1] = m[2] + m[3];
+		test = a * out[1];
 	}
-	var out = rat.fromValues( m[0] + m[1] , m[2] + m[3] );
+	
 	if (neg) rat.neg(out, out);
 	return out;
 };
