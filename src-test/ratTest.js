@@ -123,8 +123,37 @@ ratTest.prototype.testRound = function() {
 	);
 };
 
+ratTest.prototype.testSqrt = function() {
+	var t1 = rat.fromInteger(4);
+	var t2 = rat.create();
+	rat.sqrt(t2, t1);
+	assertEquals(
+		'2',
+		rat.str(t2)
+	);
+	t1 = rat.fromInteger(25);
+	rat.sqrt(t2, t1);
+	assertEquals(
+		'5',
+		rat.str(t2)
+	);
+	t1 = rat.fromValues(1, 100);
+	rat.sqrt(t2, t1);
+	assertEquals(
+		'1/10',
+		rat.str(t2)
+	);
+	return;
+	t1 = rat.fromInteger(2);
+	rat.sqrt(t2, t1);
+	assertEquals(
+		Math.SQRT2.toString(),
+		rat.str(t2)
+	);
+};
+
 ratTest.prototype.testFromRandom = function() {
-	var t1 = rat.fromRandom();
+	var t1 = rat.fromRandom(rat.create());
 	assertEquals(
 		rat.toDecimal(t1).toString(),
 		rat.toDecimal(t1).toString()

@@ -45,7 +45,7 @@ polyrat.fromValues = function(a) {
 	for (var i in a) {
 		out[i] = [];
 		for (var j in a[i]) {
-			out[i][j] = rat.fromInteger(a[i][j]);
+			//out[i][j] = rat.fromInteger(a[i][j]);
 		}
 	}
 	return out;

@@ -383,6 +383,56 @@ rat.power = function(out, a, b) {
 rat.pow = rat.power;
 
 /**
+ * Find a rat approximation which equals the input rat when raised to the given integer exponent
+ *
+ * @param {rat} out the receiving number
+ * @param {rat} a the number to find the root of
+ * @param {Integer} n
+ * @returns {rat} out
+ */
+rat.nthRoot = function (out, a, n) {
+	
+	if (a===RAT_ZERO) return rat.copy(out, RAT_ZERO);
+	if (a===RAT_ONE) return rat.copy(out, RAT_ONE);
+	if (a===RAT_INFINITY) return rat.copy(out, RAT_INFINITY);
+	if (a===RAT_INFINULL) return rat.copy(out, RAT_INFINULL);
+	
+	var neg = rat.isNegative(a);
+	if (neg) a[0] = Math.abs(a[0]);
+	
+	out = rat.copy(out, RAT_ONE);
+	var m = [1, 0, 0, 1];
+	var test = rat.clone(RAT_ONE);
+	
+	while ( !rat.equals(a, test) ) {
+		if (rat.isLessThan(a, test)) {
+			m[0] += m[1];
+			m[2] += m[3];
+		}
+		else {
+			m[1] += m[0];
+			m[3] += m[2];
+		}
+		out[0] = m[0] + m[1];
+		out[1] = m[2] + m[3];
+		rat.pow(test, out, n);
+	}
+	
+	if (neg && n%2===1) rat.neg(out, out);
+	return out;
+};
+
+/**
+ * Find a rat approximation of the squart root of a rat
+ *
+ * @param {rat} out the receiving number
+ * @param {rat} a the number to find the root of
+ * @returns {rat} out
+ */
+rat.sqrt = function (out, a) {
+	return rat.nthRoot(out, a, 2);
+};
+/**
  * Calculates the dot product of two rats
  *
  * @param {rat} a the first operand
@@ -465,7 +515,20 @@ rat.fromInteger = function (a) {
 	var out = new RAT_ARRAY_TYPE(2);
 	out[0] = parseInt(a);
 	out[1] = 1;
-	return rat.normalize(out, out);
+	return out;
+};
+
+/**
+ * Returns a rat from an integer
+ *
+ * @param {rat} out the receiving number
+ * @param {Integer} signed integer
+ * @returns {rat} out
+ */
+rat.fromInteger_copy = function (out, a) {
+	out[0] = parseInt(a);
+	out[1] = 1;
+	return out;
 };
 
 /**
@@ -475,15 +538,52 @@ rat.fromInteger = function (a) {
  * @returns {rat} out
  */
 rat.fromDecimal = function (a) {
-	
 	a = parseFloat(a);
 	if (a===0) return rat.clone(RAT_ZERO);
 	if (a===1) return rat.clone(RAT_ONE);
 	if (a===Infinity) return rat.clone(RAT_INFINITY);
 	if (isNaN(a)) return rat.clone(RAT_INFINULL);
 	if (a%1===0) return rat.fromInteger(a);
-	
 	var out = new RAT_ARRAY_TYPE(2);
+	out[0] = 1;
+	out[1] = 1;
+	var neg = a < 0;
+	if (neg) a = Math.abs(a);
+	var m = [1, 0, 0, 1];
+	var test = a;
+	while ( out[0] !== test ) {
+		if (out[0] > test) {
+			m[0] += m[1];
+			m[2] += m[3];
+		}
+		else {
+			m[1] += m[0];
+			m[3] += m[2];
+		}
+		out[0] = m[0] + m[1];
+		out[1] = m[2] + m[3];
+		test = a * out[1];
+	}
+	if (neg) rat.neg(out, out);
+	return out;
+};
+
+/**
+ * Returns a rat from a decimal number
+ *
+ * @param {rat} out the receiving number
+ * @param {Number} a decimal number
+ * @returns {rat} out
+ */
+rat.fromDecimal_copy = function (out, a) {
+	
+	a = parseFloat(a);
+	if (a===0) return rat.copy(out, RAT_ZERO);
+	if (a===1) return rat.copy(out, RAT_ONE);
+	if (a===Infinity) return rat.copy(out, RAT_INFINITY);
+	if (isNaN(a)) return rat.copy(out, RAT_INFINULL);
+	if (a%1===0) return rat.fromInteger_alpha(out, a);
+	
 	out[0] = 1;
 	out[1] = 1;
 	
@@ -516,12 +616,12 @@ rat.fromDecimal = function (a) {
 /**
  * Creates a new rat from two random integers
  *
+ * @param {rat} out the receiving number
  * @returns {rat} a random rational number
  */
-rat.fromRandom = function() {
-	var out = new RAT_ARRAY_TYPE(2);
-	out[0] = Math.pow( 2, 31 ) - Math.floor( Math.random() * Math.pow( 2, 32 ) + 1 );
-	out[1] = Math.floor( Math.random() * Math.pow( 2, 31 ) + 1 );
+rat.fromRandom = function(out) {
+	out[0] = 2147483648 - Math.floor( Math.random() * 4294967296 + 1 );
+	out[1] = Math.floor( Math.random() * 4294967296 + 1 );
 	return rat.normalize(out, out);
 };
 

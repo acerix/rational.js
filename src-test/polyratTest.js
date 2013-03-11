@@ -18,6 +18,7 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
 polyratTest = TestCase("polyratTest");
 
 polyratTest.prototype.testStr = function() {
@@ -33,3 +34,4 @@ polyratTest.prototype.testStr = function() {
 	);
 	
 };
+*/
