@@ -402,6 +402,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromDecimal_copy">fromDecimal_copy</a></b>(out, a)
+								</div>
+								<div class="description">Returns a rat from a decimal number</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromInteger">fromInteger</a></b>(signed)
 								</div>
 								<div class="description">Returns a rat from an integer</div>
@@ -411,7 +420,16 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromRandom">fromRandom</a></b>()
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromInteger_copy">fromInteger_copy</a></b>(out, signed)
+								</div>
+								<div class="description">Returns a rat from an integer</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromRandom">fromRandom</a></b>(out)
 								</div>
 								<div class="description">Creates a new rat from two random integers</div>
 							</td>
@@ -519,6 +537,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.nthRoot">nthRoot</a></b>(out, a, n)
+								</div>
+								<div class="description">Find a rat approximation which equals the input rat when raised to the given integer exponent</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.opposite">opposite</a></b>(out, a)
 								</div>
 								<div class="description">Negates a rat</div>
@@ -585,6 +612,15 @@ ul.inheritsList
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.sin">sin</a></b>(out, a)
 								</div>
 								<div class="description">Parametric sine: 2a / (1 + a²)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.sqrt">sqrt</a></b>(out, a)
+								</div>
+								<div class="description">Find a rat approximation of the squart root of a rat</div>
 							</td>
 						</tr>
 					
@@ -1369,6 +1405,55 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 
 					<hr />
 				
+					<a name=".fromDecimal_copy"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>fromDecimal_copy</b>(out, a)
+					
+					</div>
+					<div class="description">
+						Returns a rat from a decimal number
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>a</b>
+									
+								</dt>
+								<dd>decimal number</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".fromInteger"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -1412,11 +1497,60 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 
 					<hr />
 				
+					<a name=".fromInteger_copy"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>fromInteger_copy</b>(out, signed)
+					
+					</div>
+					<div class="description">
+						Returns a rat from an integer
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>signed</b>
+									
+								</dt>
+								<dd>integer</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".fromRandom"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
-					<span class="light">rat.</span><b>fromRandom</b>()
+					<span class="light">rat.</span><b>fromRandom</b>(out)
 					
 					</div>
 					<div class="description">
@@ -1427,6 +1561,17 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+							</dl>
 						
 						
 						
@@ -1947,6 +2092,61 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 
 					<hr />
 				
+					<a name=".nthRoot"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>nthRoot</b>(out, a, n)
+					
+					</div>
+					<div class="description">
+						Find a rat approximation which equals the input rat when raised to the given integer exponent
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>the number to find the root of</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>n</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".opposite"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -2296,6 +2496,55 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 									
 								</dt>
 								<dd>number for which to calculate the parametric sine</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".sqrt"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>sqrt</b>(out, a)
+					
+					</div>
+					<div class="description">
+						Find a rat approximation of the squart root of a rat
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>the number to find the root of</dd>
 							
 							</dl>
 						
@@ -2673,7 +2922,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Mar 10 2013 14:57:21 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Mar 11 2013 09:18:09 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
