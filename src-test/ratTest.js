@@ -82,36 +82,43 @@ ratTest.prototype.testToDecimal = function() {
 };
 
 ratTest.prototype.testFromDecimal = function() {
+	
 	var t1 = 1/2;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
+	
 	t1 = 69/256;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
+	
 	t1 = 169/256;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
+	
 	t1 = -420/666;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
+	
 	t1 = Math.PI;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
+	
 	t1 = Math.E;
 	assertEquals(
 		t1,
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
+	
 };
 
 ratTest.prototype.testRound = function() {
@@ -126,30 +133,51 @@ ratTest.prototype.testRound = function() {
 ratTest.prototype.testSqrt = function() {
 	var t1 = rat.fromInteger(4);
 	var t2 = rat.create();
+	
 	rat.sqrt(t2, t1);
 	assertEquals(
 		'2',
 		rat.str(t2)
 	);
+	
 	t1 = rat.fromInteger(25);
 	rat.sqrt(t2, t1);
 	assertEquals(
 		'5',
 		rat.str(t2)
 	);
+	
 	t1 = rat.fromValues(1, 100);
 	rat.sqrt(t2, t1);
 	assertEquals(
 		'1/10',
 		rat.str(t2)
 	);
-	return;
+	
 	t1 = rat.fromInteger(2);
 	rat.sqrt(t2, t1);
+	assertTrue(
+		rat.approximates(t2, rat.fromDecimal(Math.SQRT2))
+	);
+	assertFalse(
+		rat.approximates(t2, rat.fromDecimal(Math.SQRT1_2))
+	);
+	
+	t1 = rat.fromInteger(3);
+	rat.sqrt(t2, t1);
+	rat.pow(t2, t2, 2);
 	assertEquals(
-		Math.SQRT2.toString(),
+		rat.toDecimal(t1),
+		rat.toDecimal(t2)
+	);
+	
+	t1 = rat.fromValues(12167, 729);
+	rat.nthRoot(t2, t1, 3);
+	assertEquals(
+		'23/9',
 		rat.str(t2)
 	);
+	
 };
 
 ratTest.prototype.testFromRandom = function() {

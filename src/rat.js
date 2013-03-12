@@ -18,9 +18,29 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * The type of array to store the numerator and denominator in
+ *
+ * @property RAT_ARRAY_TYPE
+ * @type ArrayObject
+ * @static
+ * @final
+ */
 if(!RAT_ARRAY_TYPE) {
 	//var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
-	var RAT_ARRAY_TYPE = Array; // allows up to 2^63
+	var RAT_ARRAY_TYPE = Array;
+}
+
+/**
+ * The inverse of the smallest rat which is too small to be seen
+ *
+ * @property RAT_INFINITESIMAL_PRECISION
+ * @type Integer
+ * @static
+ * @final
+ */
+if(!RAT_INFINITESIMAL_PRECISION) {
+	var RAT_INFINITESIMAL_PRECISION = Math.pow(2, 56);
 }
 
 /**
@@ -220,6 +240,21 @@ rat.equals = function(a, b) {
 };
 
 /**
+ * Returns true when the first rat is approximately equal to the second
+ *
+ * @param {rat} a the first operand
+ * @param {rat} b the second operand
+ * @returns {Bool} true when the difference between the two rats is less than RAT_INFINITESIMAL
+ */
+rat.approximates = function(a, b) {
+	if (rat.equals(a, b)) return true;
+    var d = rat.create();
+    rat.sub(d, a, b);
+    rat.abs(d, d);
+    return rat.isLessThan(d, RAT_INFINITESIMAL);
+};
+
+/**
  * Returns true when the first rat is larger than the second
  *
  * @param {rat} a the first operand
@@ -404,7 +439,7 @@ rat.nthRoot = function (out, a, n) {
 	var m = [1, 0, 0, 1];
 	var test = rat.clone(RAT_ONE);
 	
-	while ( !rat.equals(a, test) ) {
+	while ( !rat.approximates(a, test) ) {
 		if (rat.isLessThan(a, test)) {
 			m[0] += m[1];
 			m[2] += m[3];
@@ -432,6 +467,7 @@ rat.nthRoot = function (out, a, n) {
 rat.sqrt = function (out, a) {
 	return rat.nthRoot(out, a, 2);
 };
+
 /**
  * Calculates the dot product of two rats
  *
@@ -801,3 +837,13 @@ var RAT_INFINITY = rat.fromValues(1, 0);
  * @final
  */
 var RAT_INFINULL = rat.fromValues(0, 0);
+
+/**
+ * Infinitesimal, the limit for approximations
+ *
+ * @property RAT_INFINITESIMAL
+ * @type RAT_ARRAY_TYPE
+ * @static
+ * @final
+ */
+var RAT_INFINITESIMAL = rat.clone([1, RAT_INFINITESIMAL_PRECISION]);
