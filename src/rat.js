@@ -402,12 +402,22 @@ rat.neg = rat.negative = rat.opposite;
  *
  * @param {rat} out the receiving number
  * @param {rat} a the number to exponentiate
- * @param {Integer} b power to raise the number by
+ * @param {Integer} p power to raise the number by
  * @returns {rat} out
  */
-rat.power = function(out, a, b) {
-	out[0] = Math.pow(a[0], b);
-	out[1] = Math.pow(a[1], b);
+rat.power = function(out, a, p) {
+	if (p>0) {
+		out[0] = Math.pow(a[0], p);
+		out[1] = Math.pow(a[1], p);
+	}
+	else if (p<0) {
+		p = Math.abs(p);
+		out[0] = Math.pow(a[1], p);
+		out[1] = Math.pow(a[0], p);
+	}
+	else {
+		rat.copy(out, RAT_ONE);
+	}
 	return out;
 };
 
