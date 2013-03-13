@@ -19,13 +19,6 @@
  */
 
 /**
- * @class Deprecated Shit
- * @name shit
- * @requires rat
- */
-var shit = {};
- 
-/**
  * Where old code comes to die...
  */
  

@@ -46,7 +46,7 @@ physics.A = physics.FINESTRUCTURE;
 /**
  * Planck's constant (h) in Joule seconds
  *
- * @property PLANKS
+ * @property PLANK
  * @type rat
  * @static
  * @final
