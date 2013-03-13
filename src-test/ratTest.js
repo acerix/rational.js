@@ -24,22 +24,27 @@ ratTest.prototype.testStr = function() {
 	
 	assertEquals(
 		"0",
-		rat.str(RAT_ZERO)
+		rat.str(rat.ZERO)
 	);
 	
 	assertEquals(
 		"1",
-		rat.str(RAT_ONE)
+		rat.str(rat.ONE)
+	);
+	
+	assertEquals(
+		"-1",
+		rat.str(rat.NEGONE)
 	);
 	
 	assertEquals(
 		"1/0",
-		rat.str(RAT_INFINITY)
+		rat.str(rat.INFINITY)
 	);
 	
 	assertEquals(
 		"0/0",
-		rat.str(RAT_INFINULL)
+		rat.str(rat.INFINULL)
 	);
 	
 	assertEquals(
@@ -58,21 +63,21 @@ ratTest.prototype.testToDecimal = function() {
 	
 	assertEquals(
 		0,
-		rat.toDecimal(RAT_ZERO)
+		rat.toDecimal(rat.ZERO)
 	);
 	
 	assertEquals(
 		1,
-		rat.toDecimal(RAT_ONE)
+		rat.toDecimal(rat.ONE)
 	);
 	
 	assertSame(
 		Infinity,
-		rat.toDecimal(RAT_INFINITY)
+		rat.toDecimal(rat.INFINITY)
 	);
 	
 	assertNaN(
-		rat.toDecimal(RAT_INFINULL)
+		rat.toDecimal(rat.INFINULL)
 	);
 	
 	assertEquals(
@@ -199,9 +204,9 @@ ratTest.prototype.testFromRandom = function() {
 ratTest.prototype.testSin = function() {
 	var t = rat.create();
 	
-	rat.sin(t, RAT_ZERO);
+	rat.sin(t, rat.ZERO);
 	assertEquals(
-		RAT_ZERO,
+		rat.ZERO,
 		t
 	);
 	
@@ -211,9 +216,9 @@ ratTest.prototype.testSin = function() {
 		rat.str(t)
 	);
 	
-	rat.sin(t, RAT_ONE);
+	rat.sin(t, rat.ONE);
 	assertEquals(
-		RAT_ONE,
+		rat.ONE,
 		t
 	);
 	
@@ -235,9 +240,9 @@ ratTest.prototype.testSin = function() {
 		rat.str(t)
 	);
 	
-	rat.sin(t, RAT_INFINITY);
+	rat.sin(t, rat.INFINITY);
 	assertEquals(
-		RAT_ZERO,
+		rat.ZERO,
 		t
 	);
 	
@@ -246,9 +251,9 @@ ratTest.prototype.testSin = function() {
 ratTest.prototype.testCos = function() {
 	var t = rat.create();
 	
-	rat.cos(t, RAT_ZERO);
+	rat.cos(t, rat.ZERO);
 	assertEquals(
-		RAT_ONE,
+		rat.ONE,
 		t
 	);
 	
@@ -258,9 +263,9 @@ ratTest.prototype.testCos = function() {
 		rat.str(t)
 	);
 	
-	rat.cos(t, RAT_ONE);
+	rat.cos(t, rat.ONE);
 	assertEquals(
-		RAT_ZERO,
+		rat.ZERO,
 		t
 	);
 	
@@ -278,11 +283,11 @@ ratTest.prototype.testCos = function() {
 	
 	rat.cos(t, rat.fromInteger(-1));
 	assertEquals(
-		RAT_ZERO,
+		rat.ZERO,
 		t
 	);
 	
-	rat.cos(t, RAT_INFINITY);
+	rat.cos(t, rat.INFINITY);
 	assertEquals(
 		'-1',
 		rat.str(t)
@@ -293,9 +298,9 @@ ratTest.prototype.testCos = function() {
 ratTest.prototype.testTan = function() {
 	var t = rat.create();
 	
-	rat.tan(t, RAT_ZERO);
+	rat.tan(t, rat.ZERO);
 	assertEquals(
-		RAT_ZERO,
+		rat.ZERO,
 		t
 	);
 	
@@ -305,7 +310,7 @@ ratTest.prototype.testTan = function() {
 		rat.str(t)
 	);
 	
-	rat.tan(t, RAT_ONE);
+	rat.tan(t, rat.ONE);
 	assertEquals(
 		'4/0',
 		rat.str(t)
@@ -325,13 +330,13 @@ ratTest.prototype.testTan = function() {
 	
 	rat.tan(t, rat.fromInteger(-1));
 	assertEquals(
-		RAT_INFINULL,
+		rat.INFINULL,
 		t
 	);
 	
-	rat.tan(t, RAT_INFINITY);
+	rat.tan(t, rat.INFINITY);
 	assertEquals(
-		RAT_INFINULL,
+		rat.INFINULL,
 		t
 	);
 	

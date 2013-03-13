@@ -32,7 +32,7 @@ if(!RAT_ARRAY_TYPE) {
 }
 
 /**
- * The inverse of the smallest rat which is too small to be seen
+ * The inverse of the allowable difference in approximations
  *
  * @property RAT_INFINITESIMAL_PRECISION
  * @type Integer
@@ -41,6 +41,18 @@ if(!RAT_ARRAY_TYPE) {
  */
 if(!RAT_INFINITESIMAL_PRECISION) {
 	var RAT_INFINITESIMAL_PRECISION = Math.pow(2, 56);
+}
+
+/**
+ * Exit (possibly infinite) loops after this many iterations
+ *
+ * @property RAT_MAX_LOOPS
+ * @type Integer
+ * @static
+ * @final
+ */
+if(!RAT_MAX_LOOPS) {
+	var RAT_MAX_LOOPS = 512;
 }
 
 /**
@@ -141,6 +153,12 @@ rat.invert = function(out, a) {
 	out[1] = a[0];
 	return out;
 };
+
+/**
+ * Alias for {@link rat.opposite}
+ * @function
+ */
+rat.neg = rat.negative = rat.opposite;
 
 /**
  * Adds two rats
@@ -244,14 +262,14 @@ rat.equals = function(a, b) {
  *
  * @param {rat} a the first operand
  * @param {rat} b the second operand
- * @returns {Bool} true when the difference between the two rats is less than RAT_INFINITESIMAL
+ * @returns {Bool} true when the difference between the two rats is less than rat.INFINITESIMAL
  */
 rat.approximates = function(a, b) {
 	if (rat.equals(a, b)) return true;
     var d = rat.create();
     rat.sub(d, a, b);
     rat.abs(d, d);
-    return rat.isLessThan(d, RAT_INFINITESIMAL);
+    return rat.isLessThan(d, rat.INFINITESIMAL);
 };
 
 /**
@@ -395,7 +413,7 @@ rat.opposite = function(out, a) {
  * Alias for {@link rat.opposite}
  * @function
  */
-rat.neg = rat.negative = rat.opposite;
+rat.reciprocal = rat.opposite;
 
 /**
  * Raises a rat to an integer exponent
@@ -416,7 +434,7 @@ rat.power = function(out, a, p) {
 		out[1] = Math.pow(a[0], p);
 	}
 	else {
-		rat.copy(out, RAT_ONE);
+		rat.copy(out, rat.ONE);
 	}
 	return out;
 };
@@ -437,19 +455,20 @@ rat.pow = rat.power;
  */
 rat.nthRoot = function (out, a, n) {
 	
-	if (a===RAT_ZERO) return rat.copy(out, RAT_ZERO);
-	if (a===RAT_ONE) return rat.copy(out, RAT_ONE);
-	if (a===RAT_INFINITY) return rat.copy(out, RAT_INFINITY);
-	if (a===RAT_INFINULL) return rat.copy(out, RAT_INFINULL);
+	if (a===rat.ZERO) return rat.copy(out, rat.ZERO);
+	if (a===rat.ONE) return rat.copy(out, rat.ONE);
+	if (a===rat.INFINITY) return rat.copy(out, rat.INFINITY);
+	if (a===rat.INFINULL) return rat.copy(out, rat.INFINULL);
 	
 	var neg = rat.isNegative(a);
-	if (neg) a[0] = Math.abs(a[0]);
+	if (neg) a[0] = -a[0];
 	
-	out = rat.copy(out, RAT_ONE);
+	out = rat.copy(out, rat.ONE);
 	var m = [1, 0, 0, 1];
-	var test = rat.clone(RAT_ONE);
+	var test = rat.clone(rat.ONE);
 	
-	while ( !rat.approximates(a, test) ) {
+	var c = RAT_MAX_LOOPS;
+	while ( !rat.approximates(a, test) && c-- ) {
 		if (rat.isLessThan(a, test)) {
 			m[0] += m[1];
 			m[2] += m[3];
@@ -463,7 +482,11 @@ rat.nthRoot = function (out, a, n) {
 		rat.pow(test, out, n);
 	}
 	
-	if (neg && n%2===1) rat.neg(out, out);
+	if (neg) { 
+		a[0] = -a[0];
+		if (n%2===1) rat.neg(out, out);
+	}
+		
 	return out;
 };
 
@@ -552,20 +575,17 @@ rat.ceil = function (a) {
 };
 
 /**
- * Returns a rat from an integer
+ * Returns a rat from an integer, creating a new rat
  *
  * @param {Integer} signed integer
  * @returns {rat} out
  */
 rat.fromInteger = function (a) {
-	var out = new RAT_ARRAY_TYPE(2);
-	out[0] = parseInt(a);
-	out[1] = 1;
-	return out;
+	return rat.fromInteger_copy(rat.create(), a);
 };
 
 /**
- * Returns a rat from an integer
+ * Returns a rat from an integer, copying to an existing rat
  *
  * @param {rat} out the receiving number
  * @param {Integer} signed integer
@@ -578,44 +598,40 @@ rat.fromInteger_copy = function (out, a) {
 };
 
 /**
- * Returns a rat from a decimal number
+ * Returns a rat from the inverse of an integer, creating a new rat
  *
- * @param {Number} a decimal number
+ * @param {Integer} signed integer
  * @returns {rat} out
  */
-rat.fromDecimal = function (a) {
-	a = parseFloat(a);
-	if (a===0) return rat.clone(RAT_ZERO);
-	if (a===1) return rat.clone(RAT_ONE);
-	if (a===Infinity) return rat.clone(RAT_INFINITY);
-	if (isNaN(a)) return rat.clone(RAT_INFINULL);
-	if (a%1===0) return rat.fromInteger(a);
-	var out = new RAT_ARRAY_TYPE(2);
+rat.fromIntegerInverse = function (a) {
+	return rat.fromInteger_copy(rat.create(), a);
+};
+
+/**
+ * Returns a rat from the inverse of an integer, copying to an existing rat
+ *
+ * @param {rat} out the receiving number
+ * @param {Integer} signed integer
+ * @returns {rat} out
+ */
+rat.fromIntegerInverse_copy = function (out, a) {
 	out[0] = 1;
-	out[1] = 1;
-	var neg = a < 0;
-	if (neg) a = Math.abs(a);
-	var m = [1, 0, 0, 1];
-	var test = a;
-	while ( out[0] !== test ) {
-		if (out[0] > test) {
-			m[0] += m[1];
-			m[2] += m[3];
-		}
-		else {
-			m[1] += m[0];
-			m[3] += m[2];
-		}
-		out[0] = m[0] + m[1];
-		out[1] = m[2] + m[3];
-		test = a * out[1];
-	}
-	if (neg) rat.neg(out, out);
+	out[1] = parseInt(a);
 	return out;
 };
 
 /**
- * Returns a rat from a decimal number
+ * Returns a rat from a decimal number, creating a new rat
+ * 
+ * @param {Number} a decimal number
+ * @returns {rat} out
+ */
+rat.fromDecimal = function (a) {
+	return rat.fromDecimal_copy(rat.create(), a);
+};
+
+/**
+ * Returns a rat from a decimal number, copying to an existing rat
  *
  * @param {rat} out the receiving number
  * @param {Number} a decimal number
@@ -624,11 +640,12 @@ rat.fromDecimal = function (a) {
 rat.fromDecimal_copy = function (out, a) {
 	
 	a = parseFloat(a);
-	if (a===0) return rat.copy(out, RAT_ZERO);
-	if (a===1) return rat.copy(out, RAT_ONE);
-	if (a===Infinity) return rat.copy(out, RAT_INFINITY);
-	if (isNaN(a)) return rat.copy(out, RAT_INFINULL);
-	if (a%1===0) return rat.fromInteger_alpha(out, a);
+	if (a===0) return rat.copy(out, rat.ZERO);
+	if (a===1) return rat.copy(out, rat.ONE);
+	if (a===Infinity) return rat.copy(out, rat.INFINITY);
+	if (isNaN(a)) return rat.copy(out, rat.INFINULL);
+	if (a%1===0) return rat.fromInteger_copy(out, a);
+	if ((1/a)%1===0) return rat.fromIntegerInverse_copy(out, parseInt(1/a));
 	
 	out[0] = 1;
 	out[1] = 1;
@@ -641,7 +658,8 @@ rat.fromDecimal_copy = function (out, a) {
 	
 	// traverse the Stern-Brocot tree until a match is found
 	// this is comparing the numerator to the denominator multiplied by the target decimal
-	while ( out[0] !== test ) {
+	var c = RAT_MAX_LOOPS;
+	while ( out[0] !== test && c-- ) {
 		if (out[0] > test) {
 			m[0] += m[1];
 			m[2] += m[3];
@@ -679,11 +697,11 @@ rat.fromRandom = function(out) {
  * @returns {rat} out
  */
 rat.sin = function(out, a) {
-	if (a[1] === 0) return rat.copy(out, RAT_ZERO);
+	if (a[1] === 0) return rat.copy(out, rat.ZERO);
 	rat.scalar_multiply(out, a, 2);
 	var d = rat.create();
 	rat.pow(d, a, 2);
-	rat.add(d, d, RAT_ONE);
+	rat.add(d, d, rat.ONE);
 	rat.divide(out, out, d);
 	return out;
 };
@@ -696,12 +714,12 @@ rat.sin = function(out, a) {
  * @returns {rat} out
  */
 rat.cos = function(out, a) {
-	if (a[1] === 0) return rat.neg(out, RAT_ONE);
+	if (a[1] === 0) return rat.neg(out, rat.ONE);
 	var a2 = rat.create();
 	rat.pow(a2, a, 2);
-	rat.sub(out, RAT_ONE, a2);
+	rat.sub(out, rat.ONE, a2);
 	var d = rat.create();
-	rat.add(d, RAT_ONE, a2);
+	rat.add(d, rat.ONE, a2);
 	rat.divide(out, out, d);
 	return out;
 };
@@ -720,7 +738,7 @@ rat.tan = function(out, a) {
 	rat.scalar_multiply(t, t, 2); // t *= 2
 	rat.add(out, out, t); // out += t
 	rat.pow(t, a, 4); // t = a * a * a * a
-	rat.sub(t, RAT_ONE, t); // t = 1 - t
+	rat.sub(t, rat.ONE, t); // t = 1 - t
 	rat.divide(out, out, t);
 	return out;
 };
@@ -791,6 +809,85 @@ rat.toBabylonian = function (a) {
 };
 
 /**
+ * Returns a string of L's and R's representing the Stern Brocot path
+ *
+ * @param {rat} a number to trace in the Stern Brocot tree
+ * @returns {String} Stern Brocot path
+ */
+rat.traceSternBrocot = function (a) {
+	var path = '';
+	if (a===rat.ZERO||a===rat.ONE||a===rat.INFINITY||a===rat.INFINULL) return path;
+
+	var neg = rat.isNegative(a);
+	if (neg) a[0] = -a[0];
+	
+	var r = rat.clone(rat.ONE);
+	var m = [1, 0, 0, 1];
+	
+	var c = RAT_MAX_LOOPS;
+	while ( !rat.equals(a, r) && c-- ) {
+		if (rat.isLessThan(a, r)) {
+			path += 'L';
+			m[0] += m[1];
+			m[2] += m[3];
+		}
+		else {
+			path += 'R';
+			m[1] += m[0];
+			m[3] += m[2];
+		}
+		r[0] = m[0] + m[1];
+		r[1] = m[2] + m[3];
+	}
+	
+	if (c<0) path += '...';
+	
+	if (neg) a[0] = -a[0];
+	
+	return path;
+};
+
+/**
+ * Returns a string of L's and R's representing the Stern Brocot path
+ *
+ * @param {rat} a number to trace in the Stern Brocot tree
+ * @returns {String} Stern Brocot path
+ */
+rat.dumpSternBrocot = function (a) {
+	var path = '';
+	if (a===rat.ZERO||a===rat.ONE||a===rat.INFINITY||a===rat.INFINULL) return path;
+
+	var neg = rat.isNegative(a);
+	if (neg) a[0] = -a[0];
+	
+	var r = rat.clone(rat.ONE);
+	var m = [1, 0, 0, 1];
+	
+	var c = RAT_MAX_LOOPS;
+	while ( !rat.approximates(a, r) && c-- ) {
+		if (rat.isLessThan(a, r)) {
+			path += 'L';
+			m[0] += m[1];
+			m[2] += m[3];
+		}
+		else {
+			path += 'R';
+			m[1] += m[0];
+			m[3] += m[2];
+		}
+		r[0] = m[0] + m[1];
+		r[1] = m[2] + m[3];
+		path += ' => ' + rat.str(r) + '\n';
+	}
+	
+	if (!rat.equals(a, r)) path += '...';
+	
+	if (neg) a[0] = -a[0];
+	
+	return path;
+};
+
+/**
  * Returns a string with the fraction in various formats
  *
  * @param {rat} a number to dump
@@ -799,61 +896,74 @@ rat.toBabylonian = function (a) {
 rat.dump = function(r) {
 	var t = rat.create();
 	return rat.str(r)
-	+ '\ntoBabylonian\t ~ '+rat.toBabylonian(r)
+	+ '\n~\t'+rat.toDecimal(r)
+	+ '\nSB:\t'+rat.traceSternBrocot(r)
+	//+ '\n'
+	//+ '\ntoBabylonian\t ~ '+rat.toBabylonian(r)
 	//+ '\ntoEgyptian\t = '+rat.toEgyptian(r)  // can be very slow
-	+ '\ndecimal:\t ~ '+rat.toDecimal(r)
-	+ '\nsin:\t = '+rat.sin(t, r)
-	+ '\ncos:\t = '+rat.cos(t, r)
-	+ '\ntan:\t = '+rat.tan(t, r)
+	//+ '\nsin:\t ~ '+rat.toDecimal(rat.sin(t, r))
+	//+ '\ncos:\t ~ '+rat.toDecimal(rat.cos(t, r))
+	//+ '\ntan:\t ~ '+rat.toDecimal(rat.tan(t, r))
+	//+ '\n\n'+rat.dumpSternBrocot(r)
 	+ '\n';
 };
 
 /**
  * Zero, the additive identity
  *
- * @property RAT_ZERO
- * @type RAT_ARRAY_TYPE
+ * @property ZERO
+ * @type rat
  * @static
  * @final
  */
-var RAT_ZERO = rat.fromInteger(0);
+rat.ZERO = rat.fromInteger(0);
 
 /**
  * One, the multiplicative identity
  *
- * @property RAT_ONE
- * @type RAT_ARRAY_TYPE
+ * @property ONE
+ * @type rat
  * @static
  * @final
  */
-var RAT_ONE = rat.fromInteger(1);
+rat.ONE = rat.fromInteger(1);
 
 /**
- * Infinity, represents a non-Zero number divided by Zero
+ * Negative One, Zero minus One
  *
- * @property RAT_INFINITY
- * @type RAT_ARRAY_TYPE
+ * @property NEGONE
+ * @type rat
  * @static
  * @final
  */
-var RAT_INFINITY = rat.fromValues(1, 0);
+rat.NEGONE = rat.fromInteger(-1);
 
 /**
- * Infinull, represents Zero divided by Zero
+ * Infinity, a non-Zero number divided by Zero
  *
- * @property RAT_INFINULL
- * @type RAT_ARRAY_TYPE
+ * @property INFINITY
+ * @type rat
  * @static
  * @final
  */
-var RAT_INFINULL = rat.fromValues(0, 0);
+rat.INFINITY = rat.fromValues(1, 0);
+
+/**
+ * Infinull, Zero divided by Zero
+ *
+ * @property INFINULL
+ * @type rat
+ * @static
+ * @final
+ */
+rat.INFINULL = rat.fromValues(0, 0);
 
 /**
  * Infinitesimal, the limit for approximations
  *
- * @property RAT_INFINITESIMAL
- * @type RAT_ARRAY_TYPE
+ * @property INFINITESIMAL
+ * @type rat
  * @static
  * @final
  */
-var RAT_INFINITESIMAL = rat.clone([1, RAT_INFINITESIMAL_PRECISION]);
+rat.INFINITESIMAL = rat.clone([1, rat.INFINITESIMAL_PRECISION]);

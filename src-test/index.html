@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-ca">
+<head>
+<meta charset="utf-8">
+<title>rational.js tester</title>
+<script src="../src/integer.js"></script>
+<script src="../src/rat.js"></script>
+<script src="../src/physics.js"></script>
+<script>
+
+var input, output;
+
+window.onload = function() {
+	input = document.getElementById('input');
+	input.focus();
+	output = document.getElementById('output');
+	go();
+}
+
+function go() {
+	eval('{'+input.value+'}');
+}
+
+function clr() {
+	output.innerHTML = '';
+}
+
+function print(s) {
+	output.innerHTML += s.toString() + '\n';
+}
+
+function display(s) {
+	output.innerHTML = s.toString();
+}
+
+var alt_down = false, shift_down = false, ctrl_down = false;
+
+window.onkeydown = function(e) {
+	var k = (e?e:event).which;
+    switch (k) {
+		case 13: // enter                   
+			if (alt_down) clr();
+			if (alt_down||ctrl_down) go();
+			break;
+		case 16: // shift
+			shift_down = true;
+			break;
+		case 17: // ctrl
+			ctrl_down = true;
+			break;
+		case 18: // alt
+			alt_down = true;
+			break;
+//		default: print('key down: '+k);
+	}
+}
+
+window.onkeyup = function(e) {
+	clr();go();
+	var k = (e?e:event).which;
+    switch (k) {
+		case 16: // shift
+			shift_down = false;
+			break;
+		case 17: // ctrl
+			ctrl_down = false;
+			break;
+		case 18: // alt
+			alt_down = false;
+			break;
+	}
+}
+
+</script>
+</head>
+<body>
+
+<textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
+
+print(rat.dump(rat.fromDecimal(Math.SQRT2)));
+
+print(rat.dump(rat.fromDecimal(Math.SQRT1_2)));
+
+print(rat.dump(rat.fromDecimal( ( 1 + Math.sqrt(5) )/2 )));
+
+print(rat.dump(rat.fromDecimal(Math.PI)));
+
+print(rat.dump(rat.fromDecimal(Math.E)));
+
+print(rat.dump(rat.fromDecimal(Math.LN2)));
+
+print(rat.dump(rat.fromDecimal(Math.LOG2E)));
+
+print(rat.dump(rat.fromDecimal(Math.LN10)));
+
+print(rat.dump(rat.fromDecimal(Math.LOG10E)));
+
+print(rat.dump(rat.invert(rat.create(), physics.A)));
+
+</textarea>
+
+<br />
+
+<input type="button" value="go" onclick="clr();go();" style="width:98%;margin:10px;float:right;">
+
+<pre id="output" style="width:99%;border:1px black outset;clear:both;padding:10px;"></pre>
+
+</body>
+</html>
