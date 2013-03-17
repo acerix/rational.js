@@ -47,3 +47,13 @@ integer.greatest_common_divisor = function(a, b) {
  * @function
  */
 integer.gcd = integer.greatest_common_divisor;
+
+/**
+ * Creates a new random unsigned integer with a maximum size specified in bytes
+ *
+ * @param {Integer} maximum number of bits
+ * @returns {Integer} a random integer from Zero to 2^bytes (inclusive)
+ */
+integer.fromRandom = function(bits) {
+	return Math.random() * (1 << bits) >>> 0;
+};

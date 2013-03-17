@@ -48,3 +48,47 @@ integerTest.prototype.testGcd = function() {
 	);
 	
 };
+
+integerTest.prototype.testFromRandom = function() {
+	
+	assertTrue(
+		integer.fromRandom(1)
+	<
+		1 << 1
+	);
+	
+	assertTrue(
+		integer.fromRandom(8)
+	<
+		1 << 8
+	);
+	
+	var bins = [];
+	
+	var bits = 8;
+	
+	var possibilities = 1 << bits;
+	
+	var loops = possibilities << 8;
+	
+	for (var i=0; i<possibilities; i++)
+		bins[i] = 0;
+	
+	for (var i=0; i<loops; i++)
+		bins[integer.fromRandom(bits)]++;
+	
+	for (var i=0; i<possibilities; i++)
+		assertEquals(
+			0,
+			Math.round( (loops - bins[i] * possibilities) / loops * 2 )
+		);
+	
+	for (var i in bins)
+		loops -= bins[i];
+	
+	assertEquals(
+		0,
+		loops
+	);
+	
+};

@@ -35,9 +35,29 @@ function display(s) {
 
 var alt_down = false, shift_down = false, ctrl_down = false;
 
+function insertTextAtCursor(text) {
+	var sel, range, html;
+	if (window.getSelection) {
+		sel = window.getSelection();
+		if (sel.getRangeAt && sel.rangeCount) {
+			range = sel.getRangeAt(0);
+			range.deleteContents();
+			range.insertNode( document.createTextNode(text) );
+		}
+	}
+	else if (document.selection && document.selection.createRange) {
+		document.selection.createRange().text = text;
+	}
+}
+
 window.onkeydown = function(e) {
-	var k = (e?e:event).which;
+	if (!e) e=event;
+	var k = e.which;
     switch (k) {
+		case 9: // tab
+			e.preventDefault();
+			insertTextAtCursor('\t');
+			break;
 		case 13: // enter                   
 			if (alt_down) clr();
 			if (alt_down||ctrl_down) go();
@@ -51,12 +71,12 @@ window.onkeydown = function(e) {
 		case 18: // alt
 			alt_down = true;
 			break;
-//		default: print('key down: '+k);
+		default: print('key down: '+k);
 	}
 }
 
 window.onkeyup = function(e) {
-	clr();go();
+	//clr(); go();
 	var k = (e?e:event).which;
     switch (k) {
 		case 16: // shift
@@ -77,11 +97,21 @@ window.onkeyup = function(e) {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
-print(rat.dump(rat.fromDecimal(Math.SQRT2)));
+var PHI = ( 1 + Math.sqrt(5) ) / 2;
 
-print(rat.dump(rat.fromDecimal(Math.SQRT1_2)));
+print(rat.dump(rat.fromDecimal(PHI - 1)));
 
-print(rat.dump(rat.fromDecimal( ( 1 + Math.sqrt(5) )/2 )));
+print(rat.dump(rat.fromDecimal(PHI)));
+
+var r2 = rat.fromInteger(2);
+var root = rat.fromInteger(2);
+
+print(rat.dump(rat.fromDecimal(Math.PI)));
+
+for (var n=1; n<100; n++) {
+  print('sqrt('+n+')');
+  print(rat.dump(rat.fromDecimal(Math.sqrt(n))));
+}
 
 print(rat.dump(rat.fromDecimal(Math.PI)));
 

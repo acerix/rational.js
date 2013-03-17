@@ -52,7 +52,7 @@ if(!RAT_INFINITESIMAL_PRECISION) {
  * @final
  */
 if(!RAT_MAX_LOOPS) {
-	var RAT_MAX_LOOPS = 512;
+	var RAT_MAX_LOOPS = 1024;
 }
 
 /**
@@ -381,12 +381,15 @@ rat.scalar_divide = function(out, a, b) {
  * @returns {rat} out
  */
 rat.normalize = function(out, a) {
-	out[0] = a[0];
-	out[1] = a[1];
-	if (out[1] === 0) return out;
-	if (out[1] < 0) {
-		out[0] = -out[0];
-		out[1] = -out[1];
+	if (isNaN(a[0])||isNaN(a[1])) return out = rat.clone(rat.INFINULL);
+	if (a[1] >= 0) {
+		out[0] = a[0];
+		out[1] = a[1];
+		if (a[1] === 0) return out = a;
+	}
+	else {
+		out[0] = -a[0];
+		out[1] = -a[1];
 	}
 	var gcd = integer.greatest_common_divisor(Math.abs(out[0]), out[1]);
 	if (gcd > 1) {
@@ -446,6 +449,17 @@ rat.power = function(out, a, p) {
 rat.pow = rat.power;
 
 /**
+ * Find a rational number which approximates the input number when multiplied by itself
+ *
+ * @param {rat} out the receiving number
+ * @param {rat} a the number to find the root of
+ * @returns {rat} out
+ */
+rat.sqrt = function (out, a) {
+	return rat.nthRoot(out, a, 2);
+};
+
+/**
  * Find a rat approximation which equals the input rat when raised to the given integer exponent
  *
  * @param {rat} out the receiving number
@@ -488,17 +502,6 @@ rat.nthRoot = function (out, a, n) {
 	}
 		
 	return out;
-};
-
-/**
- * Find a rat approximation of the squart root of a rat
- *
- * @param {rat} out the receiving number
- * @param {rat} a the number to find the root of
- * @returns {rat} out
- */
-rat.sqrt = function (out, a) {
-	return rat.nthRoot(out, a, 2);
 };
 
 /**
@@ -895,7 +898,7 @@ rat.dumpSternBrocot = function (a) {
  */
 rat.dump = function(r) {
 	var t = rat.create();
-	return rat.str(r)
+	return 'rat\t'+rat.str(r)
 	+ '\n~\t'+rat.toDecimal(r)
 	+ '\nSB:\t'+rat.traceSternBrocot(r)
 	//+ '\n'
