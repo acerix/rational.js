@@ -23,7 +23,7 @@
  */
  
 var RAT_ZERO = rat.ZERO;
-var RAT_ZERO = rat.ONE;
+var RAT_ONE = rat.ONE;
 var RAT_INFINITY = rat.INFINITY;
 var RAT_INFINULL = rat.INFINULL;
 var RAT_INFINITESIMAL = rat.INFINITESIMAL;
