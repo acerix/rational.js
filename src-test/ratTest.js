@@ -161,26 +161,30 @@ ratTest.prototype.testSqrt = function() {
 	
 	t1 = rat.fromInteger(2);
 	rat.sqrt(t2, t1);
-	assertTrue(
-		rat.approximates(t2, rat.fromDecimal(Math.SQRT2))
+	
+	assertEquals(
+		Math.SQRT2,
+		rat.toDecimal(t2)
 	);
-	assertFalse(
-		rat.approximates(t2, rat.fromDecimal(Math.SQRT1_2))
+	
+	rat.invert(t1, t2);
+	assertEquals(
+		Math.SQRT1_2 - 0.0000000000000001,
+		rat.toDecimal(t1) 
 	);
 	
 	t1 = rat.fromInteger(2);
 	rat.pow(t2, t1, -2);
-	rat.nthRoot(t1, t2, 4);
+	rat.nthRoot(t1, t2, 2);
+	rat.nthRoot(t2, t1, 2);
+	
 	assertEquals(
 		Math.SQRT1_2 - 0.0000000000000001,
-		rat.toDecimal(t1)
+		rat.toDecimal(t2)
 	);
 	
-	t1 = rat.fromInteger(3);
-	rat.sqrt(t2, t1);
-	rat.pow(t2, t2, 2);
-	assertEquals(
-		rat.toDecimal(t1),
+	assertNotEquals(
+		Math.SQRT1_2,
 		rat.toDecimal(t2)
 	);
 	

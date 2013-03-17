@@ -155,10 +155,10 @@ rat.invert = function(out, a) {
 };
 
 /**
- * Alias for {@link rat.opposite}
+ * Alias for {@link rat.invert}
  * @function
  */
-rat.neg = rat.negative = rat.opposite;
+rat.reciprocal = rat.invert;
 
 /**
  * Adds two rats
@@ -416,7 +416,7 @@ rat.opposite = function(out, a) {
  * Alias for {@link rat.opposite}
  * @function
  */
-rat.reciprocal = rat.opposite;
+rat.neg = rat.negative = rat.opposite;
 
 /**
  * Raises a rat to an integer exponent

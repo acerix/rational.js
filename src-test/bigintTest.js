@@ -18,6 +18,7 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
 bigintTest = TestCase("bigintTest");
 
 bigintTest.prototype.testStr = function() {
@@ -33,3 +34,4 @@ bigintTest.prototype.testStr = function() {
 	);
 	
 };
+*/
