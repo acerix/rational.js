@@ -54,4 +54,14 @@
 <span class='line'> 47</span>  * @function
 <span class='line'> 48</span>  */</span><span class="WHIT">
 <span class='line'> 49</span> </span><span class="NAME">integer.gcd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">integer.greatest_common_divisor</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 50</span> </span></pre></body></html>
+<span class='line'> 50</span> 
+<span class='line'> 51</span> </span><span class="COMM">/**
+<span class='line'> 52</span>  * Creates a new random unsigned integer with a maximum size specified in bytes
+<span class='line'> 53</span>  *
+<span class='line'> 54</span>  * @param {Integer} maximum number of bits
+<span class='line'> 55</span>  * @returns {Integer} a random integer from Zero to 2^bytes (inclusive)
+<span class='line'> 56</span>  */</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="NAME">integer.fromRandom</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">bits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.random</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&lt;&lt;</span><span class="WHIT"> </span><span class="NAME">bits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">>>></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span></pre></body></html>

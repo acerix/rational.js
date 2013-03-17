@@ -195,9 +195,13 @@ ul.inheritsList
 	
 	<li><a href="../symbols/integer.html">integer</a></li>
 	
+	<li><a href="../symbols/physics.html">physics</a></li>
+	
 	<li><a href="../symbols/polyrat.html">polyrat</a></li>
 	
 	<li><a href="../symbols/rat.html">rat</a></li>
+	
+	<li><a href="../symbols/rational.html">rational</a></li>
 	
 </ul>
 <hr />
@@ -248,6 +252,84 @@ ul.inheritsList
 			
 
 <!-- ============================== properties summary ===================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class rat.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								rat.<b><a href="../symbols/rat.html#.INFINITESIMAL">INFINITESIMAL</a></b>
+								</div>
+								<div class="description">Infinitesimal, the limit for approximations</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								rat.<b><a href="../symbols/rat.html#.INFINITY">INFINITY</a></b>
+								</div>
+								<div class="description">Infinity, a non-Zero number divided by Zero</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								rat.<b><a href="../symbols/rat.html#.INFINULL">INFINULL</a></b>
+								</div>
+								<div class="description">Infinull, Zero divided by Zero</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								rat.<b><a href="../symbols/rat.html#.NEGONE">NEGONE</a></b>
+								</div>
+								<div class="description">Negative One, Zero minus One</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								rat.<b><a href="../symbols/rat.html#.ONE">ONE</a></b>
+								</div>
+								<div class="description">One, the multiplicative identity</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								rat.<b><a href="../symbols/rat.html#.ZERO">ZERO</a></b>
+								</div>
+								<div class="description">Zero, the additive identity</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
 			
 
 <!-- ============================== methods summary ======================== -->
@@ -384,6 +466,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.dumpSternBrocot">dumpSternBrocot</a></b>(a)
+								</div>
+								<div class="description">Returns a string of L's and R's representing the Stern Brocot path</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.equals">equals</a></b>(a, b)
 								</div>
 								<div class="description">Returns true when the first rat is equal to the second</div>
@@ -404,7 +495,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromDecimal">fromDecimal</a></b>(a)
 								</div>
-								<div class="description">Returns a rat from a decimal number</div>
+								<div class="description">Returns a rat from a decimal number, creating a new rat</div>
 							</td>
 						</tr>
 					
@@ -413,7 +504,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromDecimal_copy">fromDecimal_copy</a></b>(out, a)
 								</div>
-								<div class="description">Returns a rat from a decimal number</div>
+								<div class="description">Returns a rat from a decimal number, copying to an existing rat</div>
 							</td>
 						</tr>
 					
@@ -422,7 +513,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromInteger">fromInteger</a></b>(signed)
 								</div>
-								<div class="description">Returns a rat from an integer</div>
+								<div class="description">Returns a rat from an integer, creating a new rat</div>
 							</td>
 						</tr>
 					
@@ -431,7 +522,25 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromInteger_copy">fromInteger_copy</a></b>(out, signed)
 								</div>
-								<div class="description">Returns a rat from an integer</div>
+								<div class="description">Returns a rat from an integer, copying to an existing rat</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromIntegerInverse">fromIntegerInverse</a></b>(signed)
+								</div>
+								<div class="description">Returns a rat from the inverse of an integer, creating a new rat</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.fromIntegerInverse_copy">fromIntegerInverse_copy</a></b>(out, signed)
+								</div>
+								<div class="description">Returns a rat from the inverse of an integer, copying to an existing rat</div>
 							</td>
 						</tr>
 					
@@ -582,6 +691,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.reciprocal">reciprocal</a></b>()
+								</div>
+								<div class="description">Alias for <a href="../symbols/rat.html#.invert">rat.invert</a></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.round">round</a></b>()
 								</div>
 								<div class="description">Alias for <a href="../symbols/rat.html#.toInteger">rat.toInteger</a></div>
@@ -629,7 +747,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.sqrt">sqrt</a></b>(out, a)
 								</div>
-								<div class="description">Find a rat approximation of the squart root of a rat</div>
+								<div class="description">Find a rational number which approximates the input number when multiplied by itself</div>
 							</td>
 						</tr>
 					
@@ -707,6 +825,15 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 							</td>
 						</tr>
 					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.traceSternBrocot">traceSternBrocot</a></b>(a)
+								</div>
+								<div class="description">Returns a string of L's and R's representing the Stern Brocot path</div>
+							</td>
+						</tr>
+					
 					</tbody>
 				</table>
 				
@@ -754,6 +881,143 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 			
 
 <!-- ============================== field details ========================== -->		
+			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name=".INFINITESIMAL"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>INFINITESIMAL</b>
+					
+					</div>
+					<div class="description">
+						Infinitesimal, the limit for approximations
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".INFINITY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>INFINITY</b>
+					
+					</div>
+					<div class="description">
+						Infinity, a non-Zero number divided by Zero
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".INFINULL"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>INFINULL</b>
+					
+					</div>
+					<div class="description">
+						Infinull, Zero divided by Zero
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".NEGONE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>NEGONE</b>
+					
+					</div>
+					<div class="description">
+						Negative One, Zero minus One
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".ONE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>ONE</b>
+					
+					</div>
+					<div class="description">
+						One, the multiplicative identity
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".ZERO"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>ZERO</b>
+					
+					</div>
+					<div class="description">
+						Zero, the additive identity
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
 			
 
 <!-- ============================== method details ========================= -->		
@@ -906,7 +1170,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Bool}</span> true when the difference between the two rats is less than RAT_INFINITESIMAL</dd>
+								<dd><span class="light fixedFont">{Bool}</span> true when the difference between the two rats is less than rat.INFINITESIMAL</dd>
 							
 							</dl>
 						
@@ -1328,6 +1592,49 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 
 					<hr />
 				
+					<a name=".dumpSternBrocot"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">rat.</span><b>dumpSternBrocot</b>(a)
+					
+					</div>
+					<div class="description">
+						Returns a string of L's and R's representing the Stern Brocot path
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>number to trace in the Stern Brocot tree</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> Stern Brocot path</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".equals"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -1428,7 +1735,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					
 					</div>
 					<div class="description">
-						Returns a rat from a decimal number
+						Returns a rat from a decimal number, creating a new rat
 						
 						
 					</div>
@@ -1471,7 +1778,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					
 					</div>
 					<div class="description">
-						Returns a rat from a decimal number
+						Returns a rat from a decimal number, copying to an existing rat
 						
 						
 					</div>
@@ -1520,7 +1827,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					
 					</div>
 					<div class="description">
-						Returns a rat from an integer
+						Returns a rat from an integer, creating a new rat
 						
 						
 					</div>
@@ -1563,7 +1870,99 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					
 					</div>
 					<div class="description">
-						Returns a rat from an integer
+						Returns a rat from an integer, copying to an existing rat
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>signed</b>
+									
+								</dt>
+								<dd>integer</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromIntegerInverse"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>fromIntegerInverse</b>(signed)
+					
+					</div>
+					<div class="description">
+						Returns a rat from the inverse of an integer, creating a new rat
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>signed</b>
+									
+								</dt>
+								<dd>integer</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromIntegerInverse_copy"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>fromIntegerInverse_copy</b>(out, signed)
+					
+					</div>
+					<div class="description">
+						Returns a rat from the inverse of an integer, copying to an existing rat
 						
 						
 					</div>
@@ -2334,6 +2733,31 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 
 					<hr />
 				
+					<a name=".reciprocal"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">rat.</span><b>reciprocal</b>()
+					
+					</div>
+					<div class="description">
+						Alias for <a href="../symbols/rat.html#.invert">rat.invert</a>
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name=".round"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -2581,7 +3005,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					
 					</div>
 					<div class="description">
-						Find a rat approximation of the squart root of a rat
+						Find a rational number which approximates the input number when multiplied by itself
 						
 						
 					</div>
@@ -2966,6 +3390,49 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"
 						
 						
 
+					<hr />
+				
+					<a name=".traceSternBrocot"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">rat.</span><b>traceSternBrocot</b>(a)
+					
+					</div>
+					<div class="description">
+						Returns a string of L's and R's representing the Stern Brocot path
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>number to trace in the Stern Brocot tree</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> Stern Brocot path</dd>
+							
+							</dl>
+						
+						
+						
+
 					
 				
 			
@@ -2980,7 +3447,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Mar 11 2013 21:59:40 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Mar 17 2013 14:24:58 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
