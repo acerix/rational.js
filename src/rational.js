@@ -26,9 +26,8 @@
  * @requires integer rat
  */
 var rational = function(numerator, denominator) {
-	var self = this;
 	//if (numerator.constructor.name==='rational'||numerator.denominator.name==='rational') return rational.divide(numerator, denominator);
-	self.a = rat.fromValues(parseInt(numerator), parseInt(denominator));
+	this.a = rat.fromValues(parseInt(numerator), parseInt(denominator));
 }
 
 /**
@@ -36,8 +35,8 @@ var rational = function(numerator, denominator) {
  *
  * @returns {String} numerator/denominator
  */
-rational.toString = function() {
-	return rat.str(self.a);
+rational.prototype.toString = function() {
+	return rat.str(this.a);
 };
 
 /**
@@ -45,15 +44,15 @@ rational.toString = function() {
  *
  * @returns {rational} out
  */
-rational.invert = function() {
-	return rat.invert(self.a);
+rational.prototype.invert = function() {
+	return rat.invert(this.a);
 };
 
 /**
  * Alias for {@link rational.invert}
  * @function
  */
-rational.reciprocal = rational.invert;
+rational.prototype.reciprocal = rational.invert;
 
 /**
  * Add
@@ -61,15 +60,17 @@ rational.reciprocal = rational.invert;
  * @param {rational} b the second operand
  * @returns {rational} out
  */
-rational.add = function(b) {
-	return rat.add(rat.create(), self.a, b);
+rational.prototype.add = function(b) {
+	var out = rat.create();
+	out = rat.add(out, this.a, b.a);
+	return new rational(out[0], out[1]);
 };
 
 /**
  * Alias for {@link rational.add}
  * @function
  */
-rational.plus = rational.add;
+rational.prototype.plus = rational.add;
 
 /**
  * Subtract
@@ -77,21 +78,23 @@ rational.plus = rational.add;
  * @param {rat} b the second operand
  * @returns {rat} out
  */
-rational.subtract = function(b) {
-	return rat.subtract(rat.create(), self.a, b);
+rational.prototype.subtract = function(b) {
+	var out = rat.create();
+	out = rat.sub(out, this.a, b.a);
+	return new rational(out[0], out[1]);
 };
 
 /**
  * Alias for {@link rational.subtract}
  * @function
  */
-rational.sub = rational.subtract;
+rational.prototype.sub = rational.subtract;
 
 /**
- * Alias for {@link rational.sub}
+ * Alias for {@link rational.subtract}
  * @function
  */
-rational.minus = rational.sub;
+rational.prototype.minus = rational.subtract;
 
 /**
  * Multiplies two rationals
@@ -99,21 +102,23 @@ rational.minus = rational.sub;
  * @param {rational} b the second operand
  * @returns {rat} out
  */
-rational.multiply = function(b) {
-	return rat.multiply(rat.create(), self.a, b);
+rational.prototype.multiply = function(b) {
+	var out = rat.create();
+	out = rat.mul(out, this.a, b.a);
+	return new rational(out[0], out[1]);
 };
 
 /**
- * Alias for {@link rational.multiply}
+ * Alias for {@link rational.prototype.multiply}
  * @function
  */
-rational.mul = rational.multiply;
+rational.prototype.mul = rational.prototype.multiply;
 
 /**
- * Alias for {@link rational.multiply}
+ * Alias for {@link rational.prototype.multiply}
  * @function
  */
-rational.times = rational.multiply;
+rational.prototype.times = rational.prototype.multiply;
 
 /**
  * Mediant of two rationals
@@ -121,8 +126,10 @@ rational.times = rational.multiply;
  * @param {rat} b the second operand
  * @returns {rat} out the sum of the numerators divided by the sum of the denominators
  */
-rational.mediant = function(b) {
-	return rat.mediant(rat.create(), self.a, b);
+rational.prototype.mediant = function(b) {
+	var out = rat.create();
+	out = rat.mediant(out, this.a, b.a);
+	return new rational(out[0], out[1]);
 };
 
 /**
@@ -131,18 +138,20 @@ rational.mediant = function(b) {
  * @param {rational} b the second operand
  * @returns {rational} out
  */
-rational.divide = function(b) {
-	return rat.divide(rat.create(), self.a, b);
+rational.prototype.divide = function(b) {
+	var out = rat.create();
+	out = rat.div(out, this.a, b.a);
+	return new rational(out[0], out[1]);
 };
 
 /**
  * Alias for {@link rational.divide}
  * @function
  */
-rational.div = rational.divide;
+rational.prototype.div = rational.divide;
 
 /**
  * Alias for {@link rational.divide}
  * @function
  */
-rational.divided_by = rational.divide;
+rational.prototype.divided_by = rational.divide;
