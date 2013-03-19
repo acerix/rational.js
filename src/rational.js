@@ -27,11 +27,18 @@
  */
 var rational = function(numerator, denominator) {
 	var self = this;
-	if (numerator.constructor.name==='rational'||numerator.denominator.name==='rational')
-		return rational.divide(numerator, denominator);
+	//if (numerator.constructor.name==='rational'||numerator.denominator.name==='rational') return rational.divide(numerator, denominator);
 	self.a = rat.fromValues(parseInt(numerator), parseInt(denominator));
-	return self.a;
 }
+
+/**
+ * Expresses the rational in a string as "numerator/denominator"
+ *
+ * @returns {String} numerator/denominator
+ */
+rational.toString = function() {
+	return rat.str(self.a);
+};
 
 /**
  * Inverts a rational
