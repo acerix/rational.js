@@ -466,15 +466,6 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.dumpSternBrocot">dumpSternBrocot</a></b>(a)
-								</div>
-								<div class="description">Returns a string of L's and R's representing the Stern Brocot path</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.equals">equals</a></b>(a, b)
 								</div>
 								<div class="description">Returns true when the first rat is equal to the second</div>
@@ -610,6 +601,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.mediant">mediant</a></b>(out, a, b)
+								</div>
+								<div class="description">Mediant of two rats</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.min">min</a></b>(out, a, b)
 								</div>
 								<div class="description">Returns the minimum of two rats</div>
@@ -657,7 +657,9 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">rat.<b><a href="../symbols/rat.html#.nthRoot">nthRoot</a></b>(out, a, n)
 								</div>
-								<div class="description">Find a rat approximation which equals the input rat when raised to the given integer exponent</div>
+								<div class="description">Find a rat approximation which equals the input rat when raised to the given integer exponent
+
+Newton's method converges alot faster.</div>
 							</td>
 						</tr>
 					
@@ -1503,7 +1505,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					<a name=".dot"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{Integer}</span>
 					<span class="light">rat.</span><b>dot</b>(a, b)
 					
 					</div>
@@ -1540,7 +1542,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> dot product of a and b</dd>
+								<dd><span class="light fixedFont">{Integer}</span> dot product of a and b</dd>
 							
 							</dl>
 						
@@ -1584,49 +1586,6 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{String}</span> string various conversions</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".dumpSternBrocot"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{String}</span>
-					<span class="light">rat.</span><b>dumpSternBrocot</b>(a)
-					
-					</div>
-					<div class="description">
-						Returns a string of L's and R's representing the Stern Brocot path
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
-									
-								</dt>
-								<dd>number to trace in the Stern Brocot tree</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{String}</span> Stern Brocot path</dd>
 							
 							</dl>
 						
@@ -2340,6 +2299,61 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 
 					<hr />
 				
+					<a name=".mediant"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">rat.</span><b>mediant</b>(out, a, b)
+					
+					</div>
+					<div class="description">
+						Mediant of two rats
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>the first operand</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>b</b>
+									
+								</dt>
+								<dd>the second operand</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out the sum of the numerators divided by the sum of the denominators</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".min"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -2558,6 +2572,8 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 					</div>
 					<div class="description">
 						Find a rat approximation which equals the input rat when raised to the given integer exponent
+
+Newton's method converges alot faster... could that be used to find the pattern in the SB tree?
 						
 						
 					</div>
@@ -3447,7 +3463,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Mar 17 2013 14:24:58 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Mar 19 2013 18:13:47 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
