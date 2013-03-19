@@ -1,0 +1,80 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">/*
+<span class='line'>  2</span>  * rational.js - Javascript tools and libraries based around rational numbers.
+<span class='line'>  3</span>  * Copyright (C) 2013 Dylan Ferris
+<span class='line'>  4</span>  *
+<span class='line'>  5</span>  * This file is part of rational.js.
+<span class='line'>  6</span>  *
+<span class='line'>  7</span>  * rational.js is free software: you may redistribute it and/or modify
+<span class='line'>  8</span>  * it under the terms of the GNU General Public License as published by
+<span class='line'>  9</span>  * the Free Software Foundation, either version 3 of the License, or
+<span class='line'> 10</span>  * (at your option) any later version.
+<span class='line'> 11</span>  *
+<span class='line'> 12</span>  * rational.js is distributed in the hope that it will be useful,
+<span class='line'> 13</span>  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+<span class='line'> 14</span>  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+<span class='line'> 15</span>  * GNU General Public License for more details.
+<span class='line'> 16</span>  *
+<span class='line'> 17</span>  * You should have received a copy of the GNU General Public License
+<span class='line'> 18</span>  * along with rational.js.  If not, see &lt;http://www.gnu.org/licenses/>.
+<span class='line'> 19</span>  */</span><span class="WHIT">
+<span class='line'> 20</span> 
+<span class='line'> 21</span> </span><span class="COMM">/**
+<span class='line'> 22</span>  * @class Physics
+<span class='line'> 23</span>  * @name physics
+<span class='line'> 24</span>  * @requires rat
+<span class='line'> 25</span>  */</span><span class="WHIT">
+<span class='line'> 26</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">physics</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 27</span> 
+<span class='line'> 28</span> </span><span class="COMM">/**
+<span class='line'> 29</span>  * Fine-structure constant (α)
+<span class='line'> 30</span>  *
+<span class='line'> 31</span>  * @property FINESTRUCTURE
+<span class='line'> 32</span>  * @type rat
+<span class='line'> 33</span>  * @static
+<span class='line'> 34</span>  * @final
+<span class='line'> 35</span>  */</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="NAME">physics.FINESTRUCTURE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rat.fromValues</span><span class="PUNC">(</span><span class="NUMB">145947</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">20000000</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> 
+<span class='line'> 38</span> </span><span class="COMM">/**
+<span class='line'> 39</span>  * Alias for {@link physics.FINESTRUCTURE}
+<span class='line'> 40</span>  * @type rat
+<span class='line'> 41</span>  * @static
+<span class='line'> 42</span>  * @final
+<span class='line'> 43</span>  */</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="NAME">physics.A</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.FINESTRUCTURE</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="COMM">/**
+<span class='line'> 47</span>  * Planck's constant (h) in Joule seconds
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * @property PLANK
+<span class='line'> 50</span>  * @type rat
+<span class='line'> 51</span>  * @static
+<span class='line'> 52</span>  * @final
+<span class='line'> 53</span>  */</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="NAME">physics.PLANK</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rat.fromValues</span><span class="PUNC">(</span><span class="NUMB">662606957</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="NAME">e42</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 55</span> 
+<span class='line'> 56</span> </span><span class="COMM">/**
+<span class='line'> 57</span>  * Alias for {@link physics.PLANKS}
+<span class='line'> 58</span>  * @type rat
+<span class='line'> 59</span>  * @static
+<span class='line'> 60</span>  * @final
+<span class='line'> 61</span>  */</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="NAME">physics.H</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.PLANK</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> 
+<span class='line'> 64</span> </span><span class="COMM">/**
+<span class='line'> 65</span>  * Reduced Planck's constant (h / 2π)
+<span class='line'> 66</span>  *
+<span class='line'> 67</span>  * @property HBAR
+<span class='line'> 68</span>  * @type rat
+<span class='line'> 69</span>  * @static
+<span class='line'> 70</span>  * @final
+<span class='line'> 71</span>  */</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="NAME">physics.HBAR</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rat.fromValues</span><span class="PUNC">(</span><span class="NUMB">1054571726</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="NAME">e43</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 73</span> </span></pre></body></html>
