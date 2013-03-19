@@ -98,34 +98,50 @@ window.onkeyup = function(e) {
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
 var PHI = ( 1 + Math.sqrt(5) ) / 2;
-
-print(rat.dump(rat.fromDecimal(PHI - 1)));
-
 print(rat.dump(rat.fromDecimal(PHI)));
-
-var r2 = rat.fromInteger(2);
-var root = rat.fromInteger(2);
-
-print(rat.dump(rat.fromDecimal(Math.PI)));
-
-for (var n=1; n<100; n++) {
-  print('sqrt('+n+')');
-  print(rat.dump(rat.fromDecimal(Math.sqrt(n))));
-}
+print(rat.dump(rat.fromDecimal(PHI - 1)));
 
 print(rat.dump(rat.fromDecimal(Math.PI)));
 
 print(rat.dump(rat.fromDecimal(Math.E)));
 
+print(rat.dump(physics.A));
+print(rat.dump(rat.invert(rat.create(), physics.A)));
+
 print(rat.dump(rat.fromDecimal(Math.LN2)));
-
 print(rat.dump(rat.fromDecimal(Math.LOG2E)));
-
 print(rat.dump(rat.fromDecimal(Math.LN10)));
-
 print(rat.dump(rat.fromDecimal(Math.LOG10E)));
 
-print(rat.dump(rat.invert(rat.create(), physics.A)));
+var r2 = rat.fromInteger(2);
+var root = rat.fromInteger(2);
+
+for (var n=1; n<72; n++) {
+  print('sqrt('+n+')');
+  print(rat.dump(rat.fromDecimal(Math.sqrt(n))));
+}
+
+
+/*
+for (var n=1; n<20; n++) {
+  var p = n * n + 1;
+  print('sqrt('+p+')');
+  print(rat.dump(rat.fromDecimal(Math.sqrt(p))));
+}
+*/
+
+/*
+for (var n=1; n<7; n++) {
+  print('sqrt('+n+')');
+  rat.sqrt(root, rat.fromInteger(n));
+  print(rat.dump(root));
+}
+
+for (var n=1; n<7; n++) {
+  print('sqrt('+n+')');
+  print(rat.dump(rat.fromDecimal(Math.sqrt(n))));
+}
+*/
 
 </textarea>
 

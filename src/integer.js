@@ -37,6 +37,7 @@ integer.greatest_common_divisor = function(a, b) {
 	while (b !== 0) {
 		t = b;
 		b = a % b;
+		if (!isFinite(b)) return 0;
 		a = t;
 	}
 	return a;
@@ -49,11 +50,29 @@ integer.greatest_common_divisor = function(a, b) {
 integer.gcd = integer.greatest_common_divisor;
 
 /**
- * Creates a new random unsigned integer with a maximum size specified in bytes
+ * Returns a new random unsigned integer with a maximum size specified in bytes
  *
  * @param {Integer} maximum number of bits
  * @returns {Integer} a random integer from Zero to 2^bytes (inclusive)
  */
 integer.fromRandom = function(bits) {
 	return Math.random() * (1 << bits) >>> 0;
+};
+
+/**
+ * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+ *
+ * @returns {Integer} milliseconds since the 60's ended
+ */
+integer.fromMillitime = function() {
+	return +new Date;
+};
+
+/**
+ * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+ *
+ * @returns {Integer} milliseconds since the 60's ended
+ */
+integer.fromUnixtime = function() {
+	return integer.fromMillitime() / 1000 | 0;
 };

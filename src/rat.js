@@ -227,6 +227,20 @@ rat.multiply = function(out, a, b) {
 rat.mul = rat.multiply;
 
 /**
+ * Mediant of two rats
+ *
+ * @param {rat} out the receiving number
+ * @param {rat} a the first operand
+ * @param {rat} b the second operand
+ * @returns {rat} out the sum of the numerators divided by the sum of the denominators
+ */
+rat.mediant = function(out, a, b) {
+	out[0] = a[0] + b[0];
+	out[1] = a[1] + b[1];
+	return rat.normalize(out, out);
+};
+
+/**
  * Divides two rats
  *
  * @param {rat} out the receiving number
@@ -461,6 +475,8 @@ rat.sqrt = function (out, a) {
 
 /**
  * Find a rat approximation which equals the input rat when raised to the given integer exponent
+ * 
+ * Newton's method converges alot faster... could that be used to find the pattern in the SB tree?
  *
  * @param {rat} out the receiving number
  * @param {rat} a the number to find the root of
@@ -509,7 +525,7 @@ rat.nthRoot = function (out, a, n) {
  *
  * @param {rat} a the first operand
  * @param {rat} b the second operand
- * @returns {Number} dot product of a and b
+ * @returns {Integer} dot product of a and b
  */
 rat.dot = function (a, b) {
 	return a[0] * b[0] + a[1] * b[1];
@@ -827,63 +843,46 @@ rat.traceSternBrocot = function (a) {
 	var r = rat.clone(rat.ONE);
 	var m = [1, 0, 0, 1];
 	
+	var r_streak = 0;
+	var l_streak = 0;
+	
 	var c = RAT_MAX_LOOPS;
 	while ( !rat.equals(a, r) && c-- ) {
 		if (rat.isLessThan(a, r)) {
-			path += 'L';
 			m[0] += m[1];
 			m[2] += m[3];
+			l_streak++;
+			if (r_streak) {
+				path += 'R';
+				if (r_streak!==1) path += r_streak;
+				r_streak = 0;
+				path += ' ';
+			}
 		}
 		else {
-			path += 'R';
 			m[1] += m[0];
 			m[3] += m[2];
+			r_streak++;
+			if (l_streak) {
+				path += 'L';
+				if (l_streak!==1) path += l_streak;
+				l_streak = 0;
+				path += ' ';
+			}
 		}
 		r[0] = m[0] + m[1];
 		r[1] = m[2] + m[3];
+	}
+	if (l_streak) {
+		path += 'L';
+		if (l_streak!==1) path += l_streak;
+	}
+	else if (r_streak) {
+		path += 'R';
+		if (r_streak!==1) path += r_streak;
 	}
 	
 	if (c<0) path += '...';
-	
-	if (neg) a[0] = -a[0];
-	
-	return path;
-};
-
-/**
- * Returns a string of L's and R's representing the Stern Brocot path
- *
- * @param {rat} a number to trace in the Stern Brocot tree
- * @returns {String} Stern Brocot path
- */
-rat.dumpSternBrocot = function (a) {
-	var path = '';
-	if (a===rat.ZERO||a===rat.ONE||a===rat.INFINITY||a===rat.INFINULL) return path;
-
-	var neg = rat.isNegative(a);
-	if (neg) a[0] = -a[0];
-	
-	var r = rat.clone(rat.ONE);
-	var m = [1, 0, 0, 1];
-	
-	var c = RAT_MAX_LOOPS;
-	while ( !rat.approximates(a, r) && c-- ) {
-		if (rat.isLessThan(a, r)) {
-			path += 'L';
-			m[0] += m[1];
-			m[2] += m[3];
-		}
-		else {
-			path += 'R';
-			m[1] += m[0];
-			m[3] += m[2];
-		}
-		r[0] = m[0] + m[1];
-		r[1] = m[2] + m[3];
-		path += ' => ' + rat.str(r) + '\n';
-	}
-	
-	if (!rat.equals(a, r)) path += '...';
 	
 	if (neg) a[0] = -a[0];
 	
@@ -907,7 +906,6 @@ rat.dump = function(r) {
 	//+ '\nsin:\t ~ '+rat.toDecimal(rat.sin(t, r))
 	//+ '\ncos:\t ~ '+rat.toDecimal(rat.cos(t, r))
 	//+ '\ntan:\t ~ '+rat.toDecimal(rat.tan(t, r))
-	//+ '\n\n'+rat.dumpSternBrocot(r)
 	+ '\n';
 };
 
