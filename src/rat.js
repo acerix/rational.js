@@ -268,6 +268,8 @@ rat.div = rat.divide;
  * @returns {Bool} true when the two rats are equal
  */
 rat.equals = function(a, b) {
+	if (a[0] === 0 && b[0] === 0) return true; // both are Zero
+	if (a[1] === 0 && b[1] === 0) return true; // both are Infinity
 	return a[0] === b[0] && a[1] === b[1];
 };
 
@@ -484,11 +486,10 @@ rat.sqrt = function (out, a) {
  * @returns {rat} out
  */
 rat.nthRoot = function (out, a, n) {
-	
-	if (a===rat.ZERO) return rat.copy(out, rat.ZERO);
-	if (a===rat.ONE) return rat.copy(out, rat.ONE);
-	if (a===rat.INFINITY) return rat.copy(out, rat.INFINITY);
-	if (a===rat.INFINULL) return rat.copy(out, rat.INFINULL);
+	if (rat.equals(a, rat.ZERO)) return rat.copy(out, rat.ZERO);
+	if (rat.equals(a, rat.ONE)) return rat.copy(out, rat.ONE);
+	if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
+	if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
 	
 	var neg = rat.isNegative(a);
 	if (neg) a[0] = -a[0];
@@ -835,8 +836,21 @@ rat.toBabylonian = function (a) {
  */
 rat.traceSternBrocot = function (a) {
 	var path = '';
-	if (a===rat.ZERO||a===rat.ONE||a===rat.INFINITY||a===rat.INFINULL) return path;
+	if (
+		rat.equals(a, rat.ZERO)
+	||
+		rat.equals(a, rat.ONE)
+	||
+		rat.equals(a, rat.INFINITY)
+	||
+		rat.equals(a, rat.INFINULL)
+		) return path;
 
+	if (rat.equals(a, rat.ZERO)) return rat.copy(out, rat.ZERO);
+	if (rat.equals(a, rat.ONE)) return rat.copy(out, rat.ONE);
+	if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
+	if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
+	
 	var neg = rat.isNegative(a);
 	if (neg) a[0] = -a[0];
 	
@@ -848,7 +862,7 @@ rat.traceSternBrocot = function (a) {
 	
 	var c = RAT_MAX_LOOPS;
 	while ( !rat.equals(a, r) && c-- ) {
-		if (rat.isLessThan(a, r)) {
+		if (rat.isGreaterThan(a, r)) {
 			m[0] += m[1];
 			m[2] += m[3];
 			l_streak++;

@@ -135,6 +135,151 @@ ratTest.prototype.testRound = function() {
 	);
 };
 
+ratTest.prototype.testEquals = function() {
+	
+	assertTrue(
+		rat.equals(
+			rat.ONE
+			,rat.clone(rat.ONE)
+		)
+	);
+	
+	assertFalse(
+		rat.equals(
+			rat.NEGONE
+			,rat.clone(rat.ONE)
+		)
+	);
+	
+	assertTrue(
+		rat.equals(
+			rat.INFINITY
+			,rat.fromValues(7, 0)
+		)
+	);
+	
+};
+
+ratTest.prototype.testIsGreaterThan = function() {
+	
+	assertFalse(
+		rat.isGreaterThan(
+			rat.ONE
+			,rat.fromValues(3, 2)
+		)
+	);
+	
+	assertTrue(
+		rat.isGreaterThan(
+			rat.ONE
+			,rat.fromValues(-3, 2)
+		)
+	);
+	
+	assertTrue(
+		rat.isGreaterThan(
+			rat.ONE
+			,rat.fromValues(2, 3)
+		)
+	);
+	
+	assertTrue(
+		rat.isGreaterThan(
+			rat.ONE
+			,rat.fromValues(-2, 3)
+		)
+	);
+	
+	assertFalse(
+		rat.isGreaterThan(
+			rat.NEGONE
+			,rat.fromValues(-2, 3)
+		)
+	);
+	
+	assertTrue(
+		rat.isGreaterThan(
+			rat.NEGONE
+			,rat.fromValues(-3, 2)
+		)
+	);
+	
+	assertFalse(
+		rat.isGreaterThan(
+			rat.fromValues(2, 3)
+			,rat.fromValues(3, 2)
+		)
+	);
+	
+	assertFalse(
+		rat.isGreaterThan(
+			rat.fromValues(5, 7)
+			,rat.fromValues(5, 6)
+		)
+	);
+	
+};
+
+ratTest.prototype.testIsLessThan = function() {
+	
+	assertTrue(
+		rat.isLessThan(
+			rat.ONE
+			,rat.fromValues(3, 2)
+		)
+	);
+	
+	assertFalse(
+		rat.isLessThan(
+			rat.ONE
+			,rat.fromValues(-3, 2)
+		)
+	);
+	
+	assertFalse(
+		rat.isLessThan(
+			rat.ONE
+			,rat.fromValues(2, 3)
+		)
+	);
+	
+	assertFalse(
+		rat.isLessThan(
+			rat.ONE
+			,rat.fromValues(-2, 3)
+		)
+	);
+	
+	assertTrue(
+		rat.isLessThan(
+			rat.NEGONE
+			,rat.fromValues(-2, 3)
+		)
+	);
+	
+	assertFalse(
+		rat.isLessThan(
+			rat.NEGONE
+			,rat.fromValues(-3, 2)
+		)
+	);
+	
+	assertTrue(
+		rat.isLessThan(
+			rat.fromValues(2, 3)
+			,rat.fromValues(3, 2)
+		)
+	);
+	
+	assertTrue(
+		rat.isLessThan(
+			rat.fromValues(5, 7)
+			,rat.fromValues(5, 6)
+		)
+	);
+	
+};
+
 ratTest.prototype.testSqrt = function() {
 	var t1 = rat.fromInteger(4);
 	var t2 = rat.create();
