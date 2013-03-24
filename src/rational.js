@@ -52,7 +52,7 @@ rational.prototype.invert = function() {
  * Alias for {@link rational.invert}
  * @function
  */
-rational.prototype.reciprocal = rational.invert;
+rational.prototype.reciprocal = rational.prototype.invert;
 
 /**
  * Add
@@ -62,7 +62,7 @@ rational.prototype.reciprocal = rational.invert;
  */
 rational.prototype.add = function(b) {
 	var out = rat.create();
-	out = rat.add(out, this.a, b.a);
+	rat.add(out, this.a, b.a);
 	return new rational(out[0], out[1]);
 };
 
@@ -70,7 +70,7 @@ rational.prototype.add = function(b) {
  * Alias for {@link rational.add}
  * @function
  */
-rational.prototype.plus = rational.add;
+rational.prototype.plus = rational.prototype.add;
 
 /**
  * Subtract
@@ -80,7 +80,7 @@ rational.prototype.plus = rational.add;
  */
 rational.prototype.subtract = function(b) {
 	var out = rat.create();
-	out = rat.sub(out, this.a, b.a);
+	rat.sub(out, this.a, b.a);
 	return new rational(out[0], out[1]);
 };
 
@@ -88,13 +88,13 @@ rational.prototype.subtract = function(b) {
  * Alias for {@link rational.subtract}
  * @function
  */
-rational.prototype.sub = rational.subtract;
+rational.prototype.sub = rational.prototype.subtract;
 
 /**
  * Alias for {@link rational.subtract}
  * @function
  */
-rational.prototype.minus = rational.subtract;
+rational.prototype.minus = rational.prototype.subtract;
 
 /**
  * Multiplies two rationals
@@ -104,7 +104,7 @@ rational.prototype.minus = rational.subtract;
  */
 rational.prototype.multiply = function(b) {
 	var out = rat.create();
-	out = rat.mul(out, this.a, b.a);
+	rat.mul(out, this.a, b.a);
 	return new rational(out[0], out[1]);
 };
 
@@ -128,7 +128,7 @@ rational.prototype.times = rational.prototype.multiply;
  */
 rational.prototype.mediant = function(b) {
 	var out = rat.create();
-	out = rat.mediant(out, this.a, b.a);
+	rat.mediant(out, this.a, b.a);
 	return new rational(out[0], out[1]);
 };
 
@@ -140,7 +140,7 @@ rational.prototype.mediant = function(b) {
  */
 rational.prototype.divide = function(b) {
 	var out = rat.create();
-	out = rat.div(out, this.a, b.a);
+	rat.div(out, this.a, b.a);
 	return new rational(out[0], out[1]);
 };
 
@@ -148,10 +148,28 @@ rational.prototype.divide = function(b) {
  * Alias for {@link rational.divide}
  * @function
  */
-rational.prototype.div = rational.divide;
+rational.prototype.div = rational.prototype.divide;
 
 /**
  * Alias for {@link rational.divide}
  * @function
  */
-rational.prototype.divided_by = rational.divide;
+rational.prototype.divided_by = rational.prototype.divide;
+
+/**
+ * Raises a rat to an integer exponent
+ *
+ * @param {Integer} p power to raise the number by
+ * @returns {rat} out
+ */
+rational.prototype.power = function(p) {
+	var out = rat.create();
+	rat.pow(out, this.a, p);
+	return new rational(out[0], out[1]);
+};
+
+/**
+ * Alias for {@link rational.power}
+ * @function
+ */
+rational.prototype.pow = rational.prototype.power;
