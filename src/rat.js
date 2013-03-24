@@ -149,8 +149,9 @@ rat.abs = function(out, a) {
  * @returns {rat} out
  */
 rat.invert = function(out, a) {
+	var temp = a[0];
 	out[0] = a[1];
-	out[1] = a[0];
+	out[1] = temp;
 	return out;
 };
 
@@ -296,6 +297,7 @@ rat.approximates = function(a, b) {
  * @returns {Bool} true when the first operand is larger
  */
 rat.isGreaterThan = function(a, b) {
+	if (rat.equals(a, b)) return false;
 	return a[0] * b[1] > b[0] * a[1];
 };
 
@@ -307,6 +309,7 @@ rat.isGreaterThan = function(a, b) {
  * @returns {Bool} true when the first operand is smaller
  */
 rat.isLessThan = function(a, b) {
+	if (rat.equals(a, b)) return false;
 	return a[0] * b[1] < b[0] * a[1];
 };
 
