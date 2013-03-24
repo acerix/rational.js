@@ -18,31 +18,10 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
-
-/**
- * Find the greatest common divisor of two big integers
- *
- * @param {Integer} b the second operand
- * @returns {Integer} greatest common divisor
- */
-greatest_common_divisor = function(b) {
-	if (b.isUnit() || self.isUnit()) return BigInteger.ONE;
-	var t;
-	while (!b.isZero()) {
-		t = b;
-		b = a.mod(b);
-		a = t;
-	}
-	return a;
-}
-
-
 /**
  * @class Arbitrary Sized Rational Number
  * @name bigrat
- * @requires integer
+ * @requires bigint BigInteger
  */
 var bigrat = {};
 
@@ -394,8 +373,8 @@ bigrat.normalize = function(out, a) {
 		out[0] = a[0].negate();
 		out[1] = a[1].negate();
 	}
-	var gcd = greatest_common_divisor(out[0].abs(), out[1]);
-	if (gcd > 1) {
+	var gcd = bigint.greatest_common_divisor(out[0].abs(), out[1]);
+	if (gcd.compare(BigInteger.ONE)>0) {
 		out[0] = out[0].quotient(gcd);
 		out[1] = out[0].quotient(gcd);
 	}

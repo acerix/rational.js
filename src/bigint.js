@@ -1,8 +1,9 @@
+
 /*
  * rational.js - Javascript tools and libraries based around rational numbers.
  * Copyright (C) 2013 Dylan Ferris
  *
- * This file is part of rational.js.
+ * The rest of this file is part of rational.js.
  *
  * rational.js is free software: you may redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,10 +20,30 @@
  */
 
 /**
- * @class Integer of Arbitrary Size
+ * @class Arbitrary Sized Integer
  * @name bigint
+ * @requires BigInteger (for now...)
  */
 var bigint = {};
+
+/**
+ * Find the greatest common divisor of two big integers
+ *
+ * @param {BigInteger} a the first operand
+ * @param {BigInteger} b the second operand
+ * @returns {BigInteger} greatest common divisor
+ */
+bigint.greatest_common_divisor = function(a, b) {
+	if (b.isUnit() || a.isUnit()) return BigInteger.ONE;
+	return BigInteger.ONE;
+	var t;
+	while (!b.isZero()) {
+		t = b;
+		b = a.mod(b);
+		a = t;
+	}
+	return a;
+}
 
 /**
  * Creates a new, empty bigint
