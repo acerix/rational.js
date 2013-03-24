@@ -1,5 +1,5 @@
 /*
- * rational.js - Javascript tools and libraries based around bigintional numbers.
+ * rational.js - Javascript tools and libraries based around rational numbers.
  * Copyright (C) 2013 Dylan Ferris
  *
  * This file is part of rational.js.

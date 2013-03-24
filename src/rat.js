@@ -598,16 +598,6 @@ rat.ceil = function (a) {
 };
 
 /**
- * Returns a rat from an integer, creating a new rat
- *
- * @param {Integer} signed integer
- * @returns {rat} out
- */
-rat.fromInteger = function (a) {
-	return rat.fromInteger_copy(rat.create(), a);
-};
-
-/**
  * Returns a rat from an integer, copying to an existing rat
  *
  * @param {rat} out the receiving number
@@ -621,12 +611,12 @@ rat.fromInteger_copy = function (out, a) {
 };
 
 /**
- * Returns a rat from the inverse of an integer, creating a new rat
+ * Returns a rat from an integer, creating a new rat
  *
  * @param {Integer} signed integer
  * @returns {rat} out
  */
-rat.fromIntegerInverse = function (a) {
+rat.fromInteger = function (a) {
 	return rat.fromInteger_copy(rat.create(), a);
 };
 
@@ -641,6 +631,16 @@ rat.fromIntegerInverse_copy = function (out, a) {
 	out[0] = 1;
 	out[1] = parseInt(a);
 	return out;
+};
+
+/**
+ * Returns a rat from the inverse of an integer, creating a new rat
+ *
+ * @param {Integer} signed integer
+ * @returns {rat} out
+ */
+rat.fromIntegerInverse = function (a) {
+	return rat.fromIntegerInverse_copy(rat.create(), a);
 };
 
 /**
@@ -984,4 +984,4 @@ rat.INFINULL = rat.fromValues(0, 0);
  * @static
  * @final
  */
-rat.INFINITESIMAL = rat.clone([1, rat.INFINITESIMAL_PRECISION]);
+rat.INFINITESIMAL = rat.clone([1, RAT_INFINITESIMAL_PRECISION]);

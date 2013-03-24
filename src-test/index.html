@@ -7,6 +7,8 @@
 <script src="../src/rat.js"></script>
 <script src="../src/rational.js"></script>
 <script src="../src/physics.js"></script>
+<script src="../src/biginteger.js"></script>
+<script src="../src/bigrat.js"></script>
 <script>
 
 var input, output;
@@ -98,6 +100,28 @@ window.onkeyup = function(e) {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
+var r = bigrat.fromIntegerInverse(24);
+
+//var r = bigrat.fromValues(2, 4);
+
+//var r = bigrat.clone(bigrat.ONE);
+
+//bigrat.scalar_multiply(r, r, 27);
+
+print(bigrat.str(r));
+
+
+/*
+var nth = 3;
+var root = rat.fromInteger(2);
+
+for (var n=1; n<28; n++) {
+  print('nthRoot('+n+', '+nth+')');
+  rat.nthRoot(root, rat.fromInteger(n), nth);
+  print(rat.dump(root));
+}
+
+
 var PHI = ( 1 + Math.sqrt(5) ) / 2;
 print(rat.dump(rat.fromDecimal(PHI)));
 print(rat.dump(rat.fromDecimal(PHI - 1)));
@@ -114,38 +138,9 @@ print(rat.dump(rat.fromDecimal(Math.LOG2E)));
 print(rat.dump(rat.fromDecimal(Math.LN10)));
 print(rat.dump(rat.fromDecimal(Math.LOG10E)));
 
-var r2 = rat.fromInteger(2);
-var root = rat.fromInteger(2);
-
-for (var n=1; n<72; n++) {
-  print('sqrt('+n+')');
-  print(rat.dump(rat.fromDecimal(Math.sqrt(n))));
-}
-
-
-/*
-for (var n=1; n<20; n++) {
-  var p = n * n + 1;
-  print('sqrt('+p+')');
-  print(rat.dump(rat.fromDecimal(Math.sqrt(p))));
-}
-*/
-
-/*
-for (var n=1; n<7; n++) {
-  print('sqrt('+n+')');
-  rat.sqrt(root, rat.fromInteger(n));
-  print(rat.dump(root));
-}
-
-for (var n=1; n<7; n++) {
-  print('sqrt('+n+')');
-  print(rat.dump(rat.fromDecimal(Math.sqrt(n))));
-}
-*/
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)));
-
+*/
 </textarea>
 
 <br />
