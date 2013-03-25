@@ -400,10 +400,27 @@ rat.scalar_divide = function(out, a, b) {
  * @returns {rat} out
  */
 rat.normalize = function(out, a) {
-	if (isNaN(a[0])||isNaN(a[1])) return out = rat.clone(rat.INFINULL);
-	if (a[0]===0||a[1]===0) return out = a;
-	if (a[0]===a[1]) return out = rat.clone(rat.ONE);
-	if (a[1] > 0) {
+	if (isNaN(a[0])||isNaN(a[1])||(a[0]===0&&a[1]===0)) {
+		out[0] = 0;
+		out[1] = 0;
+		return out;
+	}
+	else if (a[0]===0) {
+		out[0] = 0;
+		out[1] = 1;
+		return out;
+	}
+	else if (a[1]===0){
+		out[0] = 1;
+		out[1] = 0;
+		return out;
+	}
+	else if (a[0]===a[1]){
+		out[0] = 1;
+		out[1] = 1;
+		return out;
+	}
+	else if (a[1] > 0) {
 		out[0] = a[0];
 		out[1] = a[1];
 	}
@@ -448,8 +465,8 @@ rat.neg = rat.negative = rat.opposite;
  */
 rat.power = function(out, a, p) {
 	if (p===2) {
-		out[0] = out[0] * out[0];
-		out[1] = out[1] * out[1];
+		out[0] = a[0] * a[0];
+		out[1] = a[1] * a[1];
 	}
 	else if (p>0) {
 		out[0] = Math.pow(a[0], p);
@@ -463,7 +480,7 @@ rat.power = function(out, a, p) {
 	else {
 		rat.copy(out, rat.ONE);
 	}
-	return out;
+	return rat.normalize(out, out);
 };
 
 /**

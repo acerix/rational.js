@@ -461,7 +461,7 @@ ratTest.prototype.testTan = function() {
 	
 	rat.tan(t, rat.ONE);
 	assertEquals(
-		'4/0',
+		'1/0',
 		rat.str(t)
 	);
 	
