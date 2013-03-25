@@ -19,6 +19,18 @@
  */
 
 /**
+ * The inverse of the allowable difference in approximations
+ *
+ * @property RAT_INFINITESIMAL_PRECISION
+ * @type Integer
+ * @static
+ * @final
+ */
+if(!BIGRAT_INFINITESIMAL_PRECISION) {
+	var BIGRAT_INFINITESIMAL_PRECISION = new BigInteger('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
+}
+
+/**
  * @class Arbitrary Sized Rational Number
  * @name bigrat
  * @requires bigint BigInteger
@@ -654,33 +666,32 @@ bigrat.fromDecimal_copy = function (out, a) {
 	if (a%1===0) return bigrat.fromInteger_copy(out, a);
 	if ((1/a)%1===0) return bigrat.fromIntegerInverse_copy(out, parseInt(1/a));
 	
-	out[0] = 1;
-	out[1] = 1;
+	bigrat.copy(out, bigrat.ONE);
 	
-	var neg = a < 0;
-	if (neg) a = Math.abs(a);
-	
-	var m = [1, 0, 0, 1];
+	var m = [
+		BigInteger(1),
+		BigInteger(0),
+		BigInteger(0),
+		BigInteger(1)
+	];
 	var test = a;
-	
+
 	// traverse the Stern-Brocot tree until a match is found
-	// this is comparing the numebigrator to the denominator multiplied by the target decimal
+	// this is comparing the numerator to the denominator multiplied by the target decimal
 	var c = RAT_MAX_LOOPS;
-	while ( out[0] !== test && c-- ) {
-		if (out[0] > test) {
-			m[0] += m[1];
-			m[2] += m[3];
+	while ( out[0].valueOf() !== test && c-- ) {
+		if (out[0].valueOf() > test) {
+			m[0] = m[0].add(m[1]);
+			m[2] = m[2].add(m[3]);
 		}
 		else {
-			m[1] += m[0];
-			m[3] += m[2];
+			m[1] = m[1].add(m[0]);
+			m[3] = m[3].add(m[2]);
 		}
-		out[0] = m[0] + m[1];
-		out[1] = m[2] + m[3];
-		test = a * out[1];
+		out[0] = m[0].add(m[1]);
+		out[1] = m[2].add(m[3]);
+		test = out[1].valueOf() * a;
 	}
-	
-	if (neg) bigrat.neg(out, out);
 	return out;
 };
 
@@ -837,12 +848,18 @@ bigrat.traceSternBrocot = function (a) {
 	if (bigrat.equals(a, bigrat.ONE)) return bigrat.copy(out, bigrat.ONE);
 	if (bigrat.equals(a, bigrat.INFINITY)) return bigrat.copy(out, bigrat.INFINITY);
 	if (bigrat.equals(a, bigrat.INFINULL)) return bigrat.copy(out, bigrat.INFINULL);
-	
+
 	var neg = bigrat.isNegative(a);
 	if (neg) a[0] = a[0].negate();
 	
 	var r = bigrat.clone(bigrat.ONE);
-	var m = [1, 0, 0, 1];
+	
+	var m = [
+		BigInteger(1),
+		BigInteger(0),
+		BigInteger(0),
+		BigInteger(1)
+	];
 	
 	var r_streak = 0;
 	var l_streak = 0;
@@ -850,8 +867,8 @@ bigrat.traceSternBrocot = function (a) {
 	var c = RAT_MAX_LOOPS;
 	while ( !bigrat.equals(a, r) && c-- ) {
 		if (bigrat.isLessThan(a, r)) {
-			m[0] += m[1];
-			m[2] += m[3];
+			m[0] = m[0].add(m[1]);
+			m[2] = m[2].add(m[3]);
 			l_streak++;
 			if (r_streak) {
 				path += 'R';
@@ -861,8 +878,8 @@ bigrat.traceSternBrocot = function (a) {
 			}
 		}
 		else {
-			m[1] += m[0];
-			m[3] += m[2];
+			m[1] = m[1].add(m[0]);
+			m[3] = m[3].add(m[2]);
 			r_streak++;
 			if (l_streak) {
 				path += 'L';
@@ -871,8 +888,8 @@ bigrat.traceSternBrocot = function (a) {
 				path += ' ';
 			}
 		}
-		r[0] = m[0] + m[1];
-		r[1] = m[2] + m[3];
+		r[0] = m[0].add(m[1]);
+		r[1] = m[2].add(m[3]);
 	}
 	if (l_streak) {
 		path += 'L';
@@ -968,4 +985,4 @@ bigrat.INFINULL = bigrat.fromValues(0, 0);
  * @static
  * @final
  */
-bigrat.INFINITESIMAL = bigrat.clone([new BigInteger(1), new BigInteger('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF')]);
+bigrat.INFINITESIMAL = bigrat.clone([new BigInteger(1), BIGRAT_INFINITESIMAL_PRECISION]);

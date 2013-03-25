@@ -106,49 +106,45 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
-var r = bigrat.fromIntegerInverse(24);
 
-bigrat.pow(r, r, 69);
+var nth = 2;
+var root = bigrat.fromInteger(2);
 
-//var r = bigrat.fromValues(2, 4);
-
-//var r = bigrat.clone(bigrat.ONE);
-
-//bigrat.scalar_multiply(r, r, 27);
-
-print(bigrat.str(r));
-
-
-/*
-var nth = 3;
-var root = rat.fromInteger(2);
-
-for (var n=1; n<28; n++) {
+for (var n=1; n<30; n++) {
   print('nthRoot('+n+', '+nth+')');
-  rat.nthRoot(root, rat.fromInteger(n), nth);
-  print(rat.dump(root));
+  bigrat.nthRoot(root, bigrat.fromInteger(n), nth);
+  print(bigrat.dump(root));
 }
 
-
 var PHI = ( 1 + Math.sqrt(5) ) / 2;
-print(rat.dump(rat.fromDecimal(PHI)));
-print(rat.dump(rat.fromDecimal(PHI - 1)));
+print(bigrat.dump(bigrat.fromDecimal(PHI)));
+print(bigrat.dump(bigrat.fromDecimal(PHI - 1)));
 
-print(rat.dump(rat.fromDecimal(Math.PI)));
 
-print(rat.dump(rat.fromDecimal(Math.E)));
+bigrat.PHI = bigrat.fromInteger(5);
 
-print(rat.dump(physics.A));
-print(rat.dump(rat.invert(rat.create(), physics.A)));
+bigrat.sqrt(bigrat.PHI, bigrat.clone(bigrat.PHI));
+bigrat.add(bigrat.PHI, bigrat.clone(bigrat.PHI), bigrat.ONE);
+bigrat.scalar_divide(bigrat.PHI, bigrat.clone(bigrat.PHI), 2);
 
-print(rat.dump(rat.fromDecimal(Math.LN2)));
-print(rat.dump(rat.fromDecimal(Math.LOG2E)));
-print(rat.dump(rat.fromDecimal(Math.LN10)));
-print(rat.dump(rat.fromDecimal(Math.LOG10E)));
+print(bigrat.dump(bigrat.PHI));
+
+
+print(bigrat.dump(bigrat.fromDecimal(Math.PI)));
+
+print(bigrat.dump(bigrat.fromDecimal(Math.E)));
+
+print(bigrat.dump(physics.A));
+print(bigrat.dump(bigrat.invert(bigrat.create(), physics.A)));
+
+print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
+print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
+print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
+print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
 
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)));
-*/
+
 </textarea>
 
 <br />
