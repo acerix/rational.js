@@ -33,7 +33,7 @@ var physics = {};
  * @static
  * @final
  */
-physics.FINESTRUCTURE = bigrat.fromValues(145947, 20000000);
+physics.FINESTRUCTURE = bigrat.fromValues(100478167, 13769126000);
 
 /**
  * Alias for {@link physics.FINESTRUCTURE}
@@ -70,3 +70,21 @@ physics.H = physics.PLANK;
  * @final
  */
 physics.HBAR = bigrat.fromValues(1054571726, 1e43);
+
+/**
+ * Fine-structure constant (α)
+ *
+ * @property FINESTRUCTURE
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.FINESTRUCTURE = bigrat.fromValues(100478167, 13769126000);
+
+/**
+ * Alias for {@link physics.FINESTRUCTURE}
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.A = physics.FINESTRUCTURE;
