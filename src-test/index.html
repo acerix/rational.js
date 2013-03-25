@@ -6,10 +6,10 @@
 <script src="../src/integer.js"></script>
 <script src="../src/rat.js"></script>
 <script src="../src/rational.js"></script>
-<script src="../src/physics.js"></script>
 <script src="../src/biginteger.js"></script>
 <script src="../src/bigint.js"></script>
 <script src="../src/bigrat.js"></script>
+<script src="../src/physics.js"></script>
 <script>
 
 var input, output;
@@ -136,6 +136,9 @@ print(bigrat.dump(bigrat.fromDecimal(Math.E)));
 
 print(bigrat.dump(physics.A));
 print(bigrat.dump(bigrat.invert(bigrat.create(), physics.A)));
+
+print(bigrat.dump(physics.H));
+print(bigrat.dump(physics.HBAR));
 
 print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));

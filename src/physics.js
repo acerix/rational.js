@@ -21,7 +21,7 @@
 /**
  * @class Physics
  * @name physics
- * @requires rat
+ * @requires bigrat
  */
 var physics = {};
 
@@ -29,15 +29,15 @@ var physics = {};
  * Fine-structure constant (α)
  *
  * @property FINESTRUCTURE
- * @type rat
+ * @type bigrat
  * @static
  * @final
  */
-physics.FINESTRUCTURE = rat.fromValues(145947, 20000000);
+physics.FINESTRUCTURE = bigrat.fromValues(145947, 20000000);
 
 /**
  * Alias for {@link physics.FINESTRUCTURE}
- * @type rat
+ * @type bigrat
  * @static
  * @final
  */
@@ -47,11 +47,11 @@ physics.A = physics.FINESTRUCTURE;
  * Planck's constant (h) in Joule seconds
  *
  * @property PLANK
- * @type rat
+ * @type bigrat
  * @static
  * @final
  */
-physics.PLANK = rat.fromValues(662606957, 1e42);
+physics.PLANK = bigrat.fromValues(662606957, 1e42);
 
 /**
  * Alias for {@link physics.PLANKS}
@@ -65,8 +65,8 @@ physics.H = physics.PLANK;
  * Reduced Planck's constant (h / 2π)
  *
  * @property HBAR
- * @type rat
+ * @type bigrat
  * @static
  * @final
  */
-physics.HBAR = rat.fromValues(1054571726, 1e43);
+physics.HBAR = bigrat.fromValues(1054571726, 1e43);
