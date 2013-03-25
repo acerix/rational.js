@@ -1007,3 +1007,16 @@ rat.INFINULL = rat.fromValues(0, 0);
  * @final
  */
 rat.INFINITESIMAL = rat.clone([1, RAT_INFINITESIMAL_PRECISION]);
+
+/**
+ * Pi, an approximation of the ratio between a circle's circumference and it's diameter
+ *
+ * @property PI
+ * @type rat
+ * @static
+ * @final
+ */
+rat.PI = rat.fromValues(
+	1320192667429,
+	420230377710
+);

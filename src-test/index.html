@@ -106,7 +106,6 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
-
 var nth = 2;
 var root = bigrat.fromInteger(2);
 
@@ -120,19 +119,16 @@ var PHI = ( 1 + Math.sqrt(5) ) / 2;
 print(bigrat.dump(bigrat.fromDecimal(PHI)));
 print(bigrat.dump(bigrat.fromDecimal(PHI - 1)));
 
-
 bigrat.PHI = bigrat.fromInteger(5);
-
 bigrat.sqrt(bigrat.PHI, bigrat.clone(bigrat.PHI));
 bigrat.add(bigrat.PHI, bigrat.clone(bigrat.PHI), bigrat.ONE);
 bigrat.scalar_divide(bigrat.PHI, bigrat.clone(bigrat.PHI), 2);
-
 print(bigrat.dump(bigrat.PHI));
 
-
 print(bigrat.dump(bigrat.fromDecimal(Math.PI)));
+print(rat.dump(rat.PI));
+print(bigrat.dump(bigrat.PI));
 
-print(bigrat.dump(bigrat.fromDecimal(Math.E)));
 
 print(bigrat.dump(physics.A));
 print(bigrat.dump(bigrat.invert(bigrat.create(), physics.A)));
@@ -140,11 +136,12 @@ print(bigrat.dump(bigrat.invert(bigrat.create(), physics.A)));
 print(bigrat.dump(physics.H));
 print(bigrat.dump(physics.HBAR));
 
+print(bigrat.dump(bigrat.fromDecimal(Math.E)));
+
 print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
-
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)));
 
