@@ -95,6 +95,11 @@ window.onkeyup = function(e) {
 	}
 }
 
+function dumpStack() {
+	try {fake+=0;}
+	catch(e) {console.log(e.stack);}
+}
+
 </script>
 </head>
 <body>

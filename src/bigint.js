@@ -35,11 +35,10 @@ var bigint = {};
  */
 bigint.greatest_common_divisor = function(a, b) {
 	if (b.isUnit() || a.isUnit()) return BigInteger.ONE;
-	return BigInteger.ONE;
 	var t;
 	while (!b.isZero()) {
 		t = b;
-		b = a.mod(b);
+		b = a.remainder(b);
 		a = t;
 	}
 	return a;

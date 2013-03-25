@@ -788,7 +788,7 @@ BigInteger.prototype.compare = function(n) {
 
 /*
 	Function: isUnit
-	Return true iff *this* is either 1 or -1.
+	Return true if *this* is either 1 or -1.
 
 	Returns:
 

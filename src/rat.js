@@ -401,10 +401,11 @@ rat.scalar_divide = function(out, a, b) {
  */
 rat.normalize = function(out, a) {
 	if (isNaN(a[0])||isNaN(a[1])) return out = rat.clone(rat.INFINULL);
-	if (a[1] >= 0) {
+	if (a[0]===0||a[1]===0) return out = a;
+	if (a[0]===a[1]) return out = rat.clone(rat.ONE);
+	if (a[1] > 0) {
 		out[0] = a[0];
 		out[1] = a[1];
-		if (a[1] === 0) return out = a;
 	}
 	else {
 		out[0] = -a[0];
@@ -446,7 +447,11 @@ rat.neg = rat.negative = rat.opposite;
  * @returns {rat} out
  */
 rat.power = function(out, a, p) {
-	if (p>0) {
+	if (p===2) {
+		out[0] = out[0] * out[0];
+		out[1] = out[1] * out[1];
+	}
+	else if (p>0) {
 		out[0] = Math.pow(a[0], p);
 		out[1] = Math.pow(a[1], p);
 	}

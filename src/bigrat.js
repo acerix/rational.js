@@ -99,7 +99,7 @@ bigrat.set = function(out, n, d) {
  * @returns {bigrat} out
  */
 bigrat.abs = function(out, a) {
-	out[0] = Math.abs(a[0]);
+	out[0] = a[0].abs();
 	out[1] = a[1];
 	return out;
 };
@@ -214,7 +214,7 @@ bigrat.mediant = function(out, a, b) {
  */
 bigrat.divide = function(out, a, b) {
 	out[0] = a[0].multiply(b[1]);
-	out[1] = a[1].multiply(b[0]);
+	out[1] = a[1].multiply(b[0]); 
 	return bigrat.normalize(out, out);
 };
 
@@ -364,10 +364,12 @@ bigrat.scalar_divide = function(out, a, b) {
  */
 bigrat.normalize = function(out, a) {
 	//if (isNaN(a[0])||isNaN(a[1])) return out = bigrat.clone(bigrat.INFINULL);
+	if (a[0].isZero()||a[1].isZero()) return out = a;
+	if (a[0].compare(a[1])===0) return out = bigrat.clone(bigrat.ONE);
 	if (!a[1].isNegative()) {
 		out[0] = a[0];
 		out[1] = a[1];
-		if (a[1].isZero()) return out = a;
+		if (out[1].isZero()) return out
 	}
 	else {
 		out[0] = a[0].negate();
@@ -376,7 +378,7 @@ bigrat.normalize = function(out, a) {
 	var gcd = bigint.greatest_common_divisor(out[0].abs(), out[1]);
 	if (gcd.compare(BigInteger.ONE)>0) {
 		out[0] = out[0].quotient(gcd);
-		out[1] = out[0].quotient(gcd);
+		out[1] = out[1].quotient(gcd);
 	}
 	return out;
 };
@@ -409,7 +411,11 @@ bigrat.neg = bigrat.negative = bigrat.opposite;
  * @returns {bigrat} out
  */
 bigrat.power = function(out, a, p) {
-	if (p>0) {
+	if (p===2) {
+		out[0] = a[0].square();
+		out[1] = a[1].square();
+	}
+	else if (p>0) {
 		out[0] = a[0].pow(p);
 		out[1] = a[1].pow(p);
 	}
@@ -452,39 +458,43 @@ bigrat.sqrt = function (out, a) {
  * @returns {bigrat} out
  */
 bigrat.nthRoot = function (out, a, n) {
-	return alert('fail');
 	if (bigrat.equals(a, bigrat.ZERO)) return bigrat.copy(out, bigrat.ZERO);
 	if (bigrat.equals(a, bigrat.ONE)) return bigrat.copy(out, bigrat.ONE);
 	if (bigrat.equals(a, bigrat.INFINITY)) return bigrat.copy(out, bigrat.INFINITY);
 	if (bigrat.equals(a, bigrat.INFINULL)) return bigrat.copy(out, bigrat.INFINULL);
 	
 	var neg = bigrat.isNegative(a);
-	if (neg) a[0] = -a[0];
+	if (neg) a[0] = a[0].negate();
 	
-	out = bigrat.copy(out, bigrat.ONE);
-	var m = [1, 0, 0, 1];
+	bigrat.copy(out, bigrat.ONE);
+	var m = [
+		BigInteger(1),
+		BigInteger(0),
+		BigInteger(0),
+		BigInteger(1)
+	];
 	var test = bigrat.clone(bigrat.ONE);
 	
 	var c = RAT_MAX_LOOPS;
 	while ( !bigrat.approximates(a, test) && c-- ) {
 		if (bigrat.isLessThan(a, test)) {
-			m[0] += m[1];
-			m[2] += m[3];
+			m[0] = m[0].add(m[1]);
+			m[2] = m[2].add(m[3]);
 		}
 		else {
-			m[1] += m[0];
-			m[3] += m[2];
+			m[1] = m[1].add(m[0]);
+			m[3] = m[3].add(m[2]);
 		}
-		out[0] = m[0] + m[1];
-		out[1] = m[2] + m[3];
+		out[0] = m[0].add(m[1]);
+		out[1] = m[2].add(m[3]);
 		bigrat.pow(test, out, n);
 	}
 	
 	if (neg) { 
-		a[0] = -a[0];
+		a[0] = a[0].negate();
 		if (n%2===1) bigrat.neg(out, out);
 	}
-		
+	
 	return out;
 };
 
@@ -829,7 +839,7 @@ bigrat.traceSternBrocot = function (a) {
 	if (bigrat.equals(a, bigrat.INFINULL)) return bigrat.copy(out, bigrat.INFINULL);
 	
 	var neg = bigrat.isNegative(a);
-	if (neg) a[0] = -a[0];
+	if (neg) a[0] = a[0].negate();
 	
 	var r = bigrat.clone(bigrat.ONE);
 	var m = [1, 0, 0, 1];
@@ -875,7 +885,7 @@ bigrat.traceSternBrocot = function (a) {
 	
 	if (c<0) path += '...';
 	
-	if (neg) a[0] = -a[0];
+	if (neg) a[0] = a[0].negate();
 	
 	return path;
 };
@@ -958,4 +968,4 @@ bigrat.INFINULL = bigrat.fromValues(0, 0);
  * @static
  * @final
  */
-bigrat.INFINITESIMAL = bigrat.clone([1, RAT_INFINITESIMAL_PRECISION]);
+bigrat.INFINITESIMAL = bigrat.clone([new BigInteger(1), new BigInteger('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF')]);
