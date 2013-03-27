@@ -124,6 +124,22 @@ ratTest.prototype.testFromDecimal = function() {
 		rat.toDecimal(rat.fromDecimal(t1))
 	);
 	
+	assertEquals(
+		'-1/2',
+		rat.str(rat.fromDecimal(-1/2))
+	);
+	
+	
+	assertEquals(
+		'-1/101',
+		rat.str(rat.fromDecimal(-1/101))
+	);
+	
+	assertEquals(
+		'-1/100001',
+		rat.str(rat.fromDecimal(1/-100001))
+	);
+	
 };
 
 ratTest.prototype.testRound = function() {

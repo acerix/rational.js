@@ -52,7 +52,7 @@ if(!RAT_INFINITESIMAL_PRECISION) {
  * @final
  */
 if(!RAT_MAX_LOOPS) {
-	var RAT_MAX_LOOPS = 1024;
+	var RAT_MAX_LOOPS = Math.pow(2, 32);
 }
 
 /**
@@ -652,6 +652,10 @@ rat.fromInteger = function (a) {
 rat.fromIntegerInverse_copy = function (out, a) {
 	out[0] = 1;
 	out[1] = parseInt(a);
+	if (out[1]<0) {
+		out[0] = -out[0];
+		out[1] = -out[1];
+	}
 	return out;
 };
 
@@ -683,6 +687,8 @@ rat.fromDecimal = function (a) {
  * @returns {rat} out
  */
 rat.fromDecimal_copy = function (out, a) {
+	
+	console.log(a);
 	
 	a = parseFloat(a);
 	if (a===0) return rat.copy(out, rat.ZERO);
@@ -719,6 +725,8 @@ rat.fromDecimal_copy = function (out, a) {
 	}
 	
 	if (neg) rat.neg(out, out);
+	console.log(out);
+	
 	return out;
 };
 
