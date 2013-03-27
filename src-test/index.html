@@ -106,6 +106,12 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
+print(rational.fromDecimal(420.00000069).dump());
+
+
+print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
+
+
 var nth = 2;
 var root = bigrat.fromInteger(2);
 
@@ -125,11 +131,6 @@ bigrat.add(bigrat.PHI, bigrat.clone(bigrat.PHI), bigrat.ONE);
 bigrat.scalar_divide(bigrat.PHI, bigrat.clone(bigrat.PHI), 2);
 print(bigrat.dump(bigrat.PHI));
 
-bigrat.PHII = bigrat.create();
-bigrat.invert(bigrat.PHII, bigrat.PHI);
-print(bigrat.dump(bigrat.PHII));
-print(bigrat.dump(bigrat.PHII));
-
 print(bigrat.dump(bigrat.fromDecimal(Math.PI)));
 print(rat.dump(rat.PI));
 print(bigrat.dump(bigrat.PI));
@@ -146,11 +147,6 @@ print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
-
-print(rational.fromDecimal(420.00000069).dump());
-
-print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
-
 
 </textarea>
 

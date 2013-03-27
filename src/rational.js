@@ -203,7 +203,7 @@ rational.fromRat = function (a) {
  * @returns {rational} out
  */
 rational.prototype.fromInteger = function (a) {
-	return new rational.fromRat(rat.fromInteger(a));
+	return rational.fromRat(rat.fromInteger(a));
 };
 
 /**
