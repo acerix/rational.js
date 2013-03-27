@@ -180,4 +180,56 @@
 <span class='line'>173</span>  * @function
 <span class='line'>174</span>  */</span><span class="WHIT">
 <span class='line'>175</span> </span><span class="NAME">rational.prototype.pow</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">rational.prototype.power</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>176</span> </span></pre></body></html>
+<span class='line'>176</span> 
+<span class='line'>177</span> </span><span class="COMM">/**
+<span class='line'>178</span>  * Returns a string with the fraction in various formats
+<span class='line'>179</span>  *
+<span class='line'>180</span>  * @returns {String} string various conversions
+<span class='line'>181</span>  */</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="NAME">rational.prototype.dump</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>183</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">rat.dump</span><span class="PUNC">(</span><span class="NAME">this.a</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>184</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>185</span> 
+<span class='line'>186</span> </span><span class="COMM">/**
+<span class='line'>187</span>  * Returns a rational from a rat array
+<span class='line'>188</span>  *
+<span class='line'>189</span>  * @param {rat} rat
+<span class='line'>190</span>  * @returns {rational} out
+<span class='line'>191</span>  */</span><span class="WHIT">
+<span class='line'>192</span> </span><span class="NAME">rational.fromRat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>193</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">r</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">rational</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>194</span> </span><span class="WHIT">	</span><span class="NAME">r.a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">	</span><span class="NAME">r.a</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">r</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>198</span> 
+<span class='line'>199</span> </span><span class="COMM">/**
+<span class='line'>200</span>  * Returns a rational from an integer
+<span class='line'>201</span>  *
+<span class='line'>202</span>  * @param {Integer} signed integer
+<span class='line'>203</span>  * @returns {rational} out
+<span class='line'>204</span>  */</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="NAME">rational.prototype.fromInteger</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">rational.fromRat</span><span class="PUNC">(</span><span class="NAME">rat.fromInteger</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> 
+<span class='line'>209</span> </span><span class="COMM">/**
+<span class='line'>210</span>  * Returns a rational from the inverse of an integer
+<span class='line'>211</span>  *
+<span class='line'>212</span>  * @param {Integer} signed integer
+<span class='line'>213</span>  * @returns {rational} out
+<span class='line'>214</span>  */</span><span class="WHIT">
+<span class='line'>215</span> </span><span class="NAME">rational.prototype.fromIntegerInverse</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>216</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">rational.fromRat</span><span class="PUNC">(</span><span class="NAME">rat.fromIntegerInverse</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>217</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>218</span> 
+<span class='line'>219</span> </span><span class="COMM">/**
+<span class='line'>220</span>  * Returns a rational from a decimal number
+<span class='line'>221</span>  * 
+<span class='line'>222</span>  * @param {Number} a decimal number
+<span class='line'>223</span>  * @returns {rational} out
+<span class='line'>224</span>  */</span><span class="WHIT">
+<span class='line'>225</span> </span><span class="NAME">rational.fromDecimal</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>226</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">rational.fromRat</span><span class="PUNC">(</span><span class="NAME">rat.fromDecimal</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>227</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>228</span> </span></pre></body></html>
