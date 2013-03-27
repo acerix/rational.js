@@ -626,6 +626,10 @@ bigrat.fromInteger = function (a) {
 bigrat.fromIntegerInverse_copy = function (out, a) {
 	out[0] = BigInteger.ONE;
 	out[1] = BigInteger(parseInt(a));
+	if (out[1].isNegative()) {
+		out[0] = out[0].negate();
+		out[1] = out[1].negate();
+	}
 	return out;
 };
 
@@ -677,7 +681,7 @@ bigrat.fromDecimal_copy = function (out, a) {
 	var test = a;
 
 	// traverse the Stern-Brocot tree until a match is found
-	// this is comparing the numerator to the denominator multiplied by the target decimal
+	// ... comparing the numerator to the denominator multiplied by the target decimal
 	var c = RAT_MAX_LOOPS;
 	while ( out[0].valueOf() !== test && c-- ) {
 		if (out[0].valueOf() > test) {
@@ -864,7 +868,7 @@ bigrat.traceSternBrocot = function (a) {
 	var r_streak = 0;
 	var l_streak = 0;
 	
-	var c = RAT_MAX_LOOPS;
+	var c = 65536;
 	while ( !bigrat.equals(a, r) && c-- ) {
 		if (bigrat.isLessThan(a, r)) {
 			m[0] = m[0].add(m[1]);

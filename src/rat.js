@@ -52,7 +52,9 @@ if(!RAT_INFINITESIMAL_PRECISION) {
  * @final
  */
 if(!RAT_MAX_LOOPS) {
-	var RAT_MAX_LOOPS = Math.pow(2, 32);
+	//var RAT_MAX_LOOPS = Math.pow(2, 32);
+	var RAT_MAX_LOOPS = 16777216
+	//var RAT_MAX_LOOPS = 4096;
 }
 
 /**
@@ -688,8 +690,6 @@ rat.fromDecimal = function (a) {
  */
 rat.fromDecimal_copy = function (out, a) {
 	
-	console.log(a);
-	
 	a = parseFloat(a);
 	if (a===0) return rat.copy(out, rat.ZERO);
 	if (a===1) return rat.copy(out, rat.ONE);
@@ -725,7 +725,6 @@ rat.fromDecimal_copy = function (out, a) {
 	}
 	
 	if (neg) rat.neg(out, out);
-	console.log(out);
 	
 	return out;
 };
@@ -894,7 +893,7 @@ rat.traceSternBrocot = function (a) {
 	var l_streak = 0;
 	
 	var c = RAT_MAX_LOOPS;
-	while ( !rat.equals(a, r) && c-- ) {
+	while ( !rat.approximates(a, r) && c-- ) {
 		if (rat.isLessThan(a, r)) {
 			m[0] += m[1];
 			m[2] += m[3];

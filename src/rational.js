@@ -173,3 +173,55 @@ rational.prototype.power = function(p) {
  * @function
  */
 rational.prototype.pow = rational.prototype.power;
+
+/**
+ * Returns a string with the fraction in various formats
+ *
+ * @returns {String} string various conversions
+ */
+rational.prototype.dump = function() {
+	return rat.dump(this.a);
+};
+
+/**
+ * Returns a rational from a rat array
+ *
+ * @param {rat} rat
+ * @returns {rational} out
+ */
+rational.fromRat = function (a) {
+	var r = new rational();
+	r.a[0] = a[0];
+	r.a[1] = a[1];
+	return r;
+};
+
+/**
+ * Returns a rational from an integer
+ *
+ * @param {Integer} signed integer
+ * @returns {rational} out
+ */
+rational.prototype.fromInteger = function (a) {
+	return new rational.fromRat(rat.fromInteger(a));
+};
+
+/**
+ * Returns a rational from the inverse of an integer
+ *
+ * @param {Integer} signed integer
+ * @returns {rational} out
+ */
+rational.prototype.fromIntegerInverse = function (a) {
+	return rational.fromRat(rat.fromIntegerInverse(a));
+};
+
+/**
+ * Returns a rational from a decimal number
+ * 
+ * @param {Number} a decimal number
+ * @returns {rational} out
+ */
+rational.fromDecimal = function (a) {
+	return rational.fromRat(rat.fromDecimal(a));
+};
