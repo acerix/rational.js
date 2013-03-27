@@ -129,7 +129,6 @@ ratTest.prototype.testFromDecimal = function() {
 		rat.str(rat.fromDecimal(-1/2))
 	);
 	
-	
 	assertEquals(
 		'-1/101',
 		rat.str(rat.fromDecimal(-1/101))
@@ -140,6 +139,44 @@ ratTest.prototype.testFromDecimal = function() {
 		rat.str(rat.fromDecimal(1/-100001))
 	);
 	
+	assertEquals(
+		'611951/611953',
+		rat.str(rat.fromDecimal(611951/611953))
+	);
+	
+	assertEquals(
+		'-611953/611951',
+		rat.str(rat.fromDecimal(-611953/611951))
+	);
+	
+	
+	
+	var test_decimal = 100000.000001;
+	assertEquals(
+		test_decimal,
+		rat.toDecimal(rat.fromDecimal(test_decimal))
+	);
+	
+	test_decimal = 420.00000069;
+	assertEquals(
+		test_decimal,
+		rat.toDecimal(rat.fromDecimal(test_decimal))
+	);
+	
+	// fromDecimal() is very slow here
+	/*
+	var test_decimal = 420.0000000069;
+	assertEquals(
+		test_decimal,
+		rat.toDecimal(rat.fromDecimal(test_decimal))
+	);
+		
+	var test_decimal = 420.00000000069;
+	assertEquals(
+		test_decimal,
+		rat.toDecimal(rat.fromDecimal(test_decimal))
+	);
+	*/
 };
 
 ratTest.prototype.testRound = function() {
