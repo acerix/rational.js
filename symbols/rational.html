@@ -318,6 +318,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromContinuedFraction">fromContinuedFraction</a></b>(integers)
+								</div>
+								<div class="description">Returns a rational from an array of integers representing a continued fraction</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromDecimal">fromDecimal</a></b>(a)
 								</div>
 								<div class="description">Returns a rational from a decimal number</div>
@@ -325,18 +334,18 @@ ul.inheritsList
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/rational.html#fromInteger">fromInteger</a></b>(signed)
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromInteger">fromInteger</a></b>(signed)
 								</div>
 								<div class="description">Returns a rational from an integer</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/rational.html#fromIntegerInverse">fromIntegerInverse</a></b>(signed)
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromIntegerInverse">fromIntegerInverse</a></b>(signed)
 								</div>
 								<div class="description">Returns a rational from the inverse of an integer</div>
 							</td>
@@ -456,6 +465,33 @@ ul.inheritsList
 								<div class="fixedFont"><b><a href="../symbols/rational.html#times">times</a></b>()
 								</div>
 								<div class="description">Alias for rational.prototype.multiply</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#toContinuedFraction">toContinuedFraction</a></b>(maximum)
+								</div>
+								<div class="description">Returns a rational from an array of integers representing a continued fraction</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#toDecimal">toDecimal</a></b>()
+								</div>
+								<div class="description">Returns a decimal approximation</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#toRat">toRat</a></b>()
+								</div>
+								<div class="description">Returns a rat array from a rational</div>
 							</td>
 						</tr>
 					
@@ -691,6 +727,49 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name=".fromContinuedFraction"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<span class="light">rational.</span><b>fromContinuedFraction</b>(integers)
+					
+					</div>
+					<div class="description">
+						Returns a rational from an array of integers representing a continued fraction
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>integers</b>
+									
+								</dt>
+								<dd>of the continued fraction</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".fromDecimal"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -734,11 +813,11 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="fromInteger"> </a>
-					<div class="fixedFont">
+					<a name=".fromInteger"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
-					<b>fromInteger</b>(signed)
+					<span class="light">rational.</span><b>fromInteger</b>(signed)
 					
 					</div>
 					<div class="description">
@@ -777,11 +856,11 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="fromIntegerInverse"> </a>
-					<div class="fixedFont">
+					<a name=".fromIntegerInverse"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
-					<b>fromIntegerInverse</b>(signed)
+					<span class="light">rational.</span><b>fromIntegerInverse</b>(signed)
 					
 					</div>
 					<div class="description">
@@ -1242,6 +1321,113 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name="toContinuedFraction"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Array}</span>
+					<b>toContinuedFraction</b>(maximum)
+					
+					</div>
+					<div class="description">
+						Returns a rational from an array of integers representing a continued fraction
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>maximum</b>
+									
+								</dt>
+								<dd>number of iterations</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> integers of the continued fraction</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toDecimal"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Number}</span>
+					<b>toDecimal</b>()
+					
+					</div>
+					<div class="description">
+						Returns a decimal approximation
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toRat"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<b>toRat</b>()
+					
+					</div>
+					<div class="description">
+						Returns a rat array from a rational
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="toString"> </a>
 					<div class="fixedFont">
 					
@@ -1286,7 +1472,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Mar 26 2013 23:35:07 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri Mar 29 2013 10:56:20 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>

@@ -496,6 +496,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.fromContinuedFraction">fromContinuedFraction</a></b>(out, integers)
+								</div>
+								<div class="description">Returns a bigrat from an array of integers representing a continued fraction</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.fromDecimal">fromDecimal</a></b>(a)
 								</div>
 								<div class="description">Returns a bigrat from a decimal number, creating a new bigrat</div>
@@ -553,6 +562,15 @@ ul.inheritsList
 								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.fromRandom">fromRandom</a></b>(out)
 								</div>
 								<div class="description">Creates a new bigrat from two random integers</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.fromRat">fromRat</a></b>(out, a)
+								</div>
+								<div class="description">Returns a bigrat from a rat</div>
 							</td>
 						</tr>
 					
@@ -823,6 +841,15 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.toContinuedFraction">toContinuedFraction</a></b>(a, maximum)
+								</div>
+								<div class="description">Returns an array of integers representing the continued fraction</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.toDecimal">toDecimal</a></b>(a)
 								</div>
 								<div class="description">Returns a decimal approximation</div>
@@ -845,6 +872,15 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.toInteger">toInteger</a></b>(a)
 								</div>
 								<div class="description">Returns a big integer approximation (truncated towards zero)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">bigrat.<b><a href="../symbols/bigrat.html#.toRat">toRat</a></b>(out, a)
+								</div>
+								<div class="description">Returns a rat from a bigrat</div>
 							</td>
 						</tr>
 					
@@ -1729,6 +1765,55 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 
 					<hr />
 				
+					<a name=".fromContinuedFraction"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
+					<span class="light">bigrat.</span><b>fromContinuedFraction</b>(out, integers)
+					
+					</div>
+					<div class="description">
+						Returns a bigrat from an array of integers representing a continued fraction
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/bigrat.html">bigrat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>integers</b>
+									
+								</dt>
+								<dd>of the continued fraction</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/bigrat.html">bigrat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".fromDecimal"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -2040,6 +2125,55 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"<
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{<a href="../symbols/bigrat.html">bigrat</a>}</span> a random bigrational number</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromRat"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
+					<span class="light">bigrat.</span><b>fromRat</b>(out, a)
+					
+					</div>
+					<div class="description">
+						Returns a bigrat from a rat
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/bigrat.html">bigrat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>number to convert</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/bigrat.html">bigrat</a>}</span> out</dd>
 							
 							</dl>
 						
@@ -3364,6 +3498,55 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"
 
 					<hr />
 				
+					<a name=".toContinuedFraction"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Array}</span>
+					<span class="light">bigrat.</span><b>toContinuedFraction</b>(a, maximum)
+					
+					</div>
+					<div class="description">
+						Returns an array of integers representing the continued fraction
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/bigrat.html">bigrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>number to convert to a continued fraction</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>maximum</b>
+									
+								</dt>
+								<dd>number of iterations</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> integers of the continued fraction</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".toDecimal"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -3494,6 +3677,55 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"
 
 					<hr />
 				
+					<a name=".toRat"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">bigrat.</span><b>toRat</b>(out, a)
+					
+					</div>
+					<div class="description">
+						Returns a rat from a bigrat
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/bigrat.html">bigrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>number to truncate</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".traceSternBrocot"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -3549,7 +3781,7 @@ The returned string can be evaluated in "calc - arbitrary precision calculator"
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Mar 26 2013 23:35:07 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri Mar 29 2013 10:56:19 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
