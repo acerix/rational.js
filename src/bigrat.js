@@ -104,6 +104,28 @@ bigrat.set = function(out, n, d) {
 };
 
 /**
+ * Returns a rat from a bigrat
+ *
+ * @param {rat} out the receiving number
+ * @param {bigrat} a number to truncate
+ * @returns {rat} out
+ */
+bigrat.toRat = function (out, a) {
+	return rat.set(out, a[0].toJSValue(), a[1].toJSValue());
+};
+
+/**
+ * Returns a bigrat from a rat
+ *
+ * @param {bigrat} out the receiving number
+ * @param {rat} a number to convert
+ * @returns {bigrat} out
+ */
+bigrat.fromRat = function (out, a) {
+	return bigrat.set(out, BigInteger(a[0]), BigInteger(a[1]));
+};
+
+/**
  * Absolute value of a bigrat
  *
  * @param {bigrat} out the receiving number
@@ -848,11 +870,6 @@ bigrat.traceSternBrocot = function (a) {
 		bigrat.equals(a, bigrat.INFINULL)
 		) return path;
 
-	if (bigrat.equals(a, bigrat.ZERO)) return bigrat.copy(out, bigrat.ZERO);
-	if (bigrat.equals(a, bigrat.ONE)) return bigrat.copy(out, bigrat.ONE);
-	if (bigrat.equals(a, bigrat.INFINITY)) return bigrat.copy(out, bigrat.INFINITY);
-	if (bigrat.equals(a, bigrat.INFINULL)) return bigrat.copy(out, bigrat.INFINULL);
-
 	var neg = bigrat.isNegative(a);
 	if (neg) a[0] = a[0].negate();
 	
@@ -912,6 +929,90 @@ bigrat.traceSternBrocot = function (a) {
 };
 
 /**
+ * Returns an array of integers representing the continued fraction
+ *
+ * @param {bigrat} a number to convert to a continued fraction
+ * @param {Integer} maximum number of iterations
+ * @returns {Array} integers of the continued fraction
+ */
+bigrat.toContinuedFraction = function (a, loop_limit) {
+	loop_limit = typeof loop_limit==='undefined' ? 65536 : parseInt(loop_limit);
+	if (bigrat.equals(a, bigrat.ZERO)) return [0];
+	if (bigrat.equals(a, bigrat.ONE)) return [1];
+	if (bigrat.equals(a, bigrat.NEGONE)) return [-1];
+	if (bigrat.equals(a, bigrat.INFINITY)) return [1, 0];
+	if (bigrat.equals(a, bigrat.INFINULL)) return [0, 0];
+
+	var neg = bigrat.isNegative(a);
+	if (neg) a[0] = a[0].negate();
+	
+	var r = bigrat.clone(bigrat.ONE);
+	
+	var m = [
+		BigInteger(1),
+		BigInteger(0),
+		BigInteger(0),
+		BigInteger(1)
+	];
+	
+	var direction = 1;
+	var result = [0];
+	var result_last = result.length - 1;
+	
+	while ( !bigrat.equals(a, r) && loop_limit-- ) {
+		if (bigrat.isLessThan(a, r)) {
+			if (direction===-1) {
+				result[result_last]++;
+			}
+			else {
+				direction = -1;
+				result.push(1);
+				result_last++;
+			}
+			m[0] = m[0].add(m[1]);
+			m[2] = m[2].add(m[3]);
+		}
+		else {
+			if (direction===1) {
+				result[result_last]++;
+			}
+			else {
+				direction = 1;
+				result.push(1);
+				result_last++;
+			}
+			m[1] = m[1].add(m[0]);
+			m[3] = m[3].add(m[2]);
+		}
+		r[0] = m[0].add(m[1]);
+		r[1] = m[2].add(m[3]);
+	}
+
+	// add a zero to the end to indicate an incomplete result
+	if (loop_limit<0) result.push(0);
+	
+	if (neg) for (var i in result) result[i] = -result[i];
+	
+	return result;
+};
+
+/**
+ * Returns a bigrat from an array of integers representing a continued fraction
+ *
+ * @param {bigrat} out the receiving number
+ * @param {Array} integers of the continued fraction
+ * @returns {bigrat} out
+ */
+bigrat.fromContinuedFraction = function(out, cf) {
+	bigrat.fromInteger_copy(out, cf[cf.length-1]);
+	for (var i=cf.length-1;i>=0;i--) {
+		bigrat.invert(out, out);
+		bigrat.add(out, out, bigrat.fromInteger(cf[i]));
+	}
+	return out;
+};
+
+/**
  * Returns a string with the fraction in various formats
  *
  * @param {bigrat} a number to dump
@@ -921,7 +1022,8 @@ bigrat.dump = function(r) {
 	var t = bigrat.create();
 	return 'bigrat\t'+bigrat.str(r)
 	+ '\n~\t'+bigrat.toDecimal(r)
-	+ '\nSB:\t'+bigrat.traceSternBrocot(r)
+	+ '\nCF:\t['+bigrat.toContinuedFraction(r)+']'
+//	+ '\nSB:\t'+bigrat.traceSternBrocot(r)
 	//+ '\n'
 	//+ '\ntoBabylonian\t ~ '+bigrat.toBabylonian(r)
 	//+ '\ntoEgyptian\t = '+bigrat.toEgyptian(r)  // can be very slow

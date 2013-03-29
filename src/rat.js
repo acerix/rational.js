@@ -936,6 +936,85 @@ rat.traceSternBrocot = function (a) {
 };
 
 /**
+ * Returns an array of integers representing the continued fraction
+ *
+ * @param {rat} a number to convert to a continued fraction
+ * @param {Integer} maximum number of iterations
+ * @returns {Array} integers of the continued fraction
+ */
+rat.toContinuedFraction = function (a, loop_limit) {
+	loop_limit = typeof loop_limit==='undefined' ? 65536 : parseInt(loop_limit);
+	if (rat.equals(a, rat.ZERO)) return [0];
+	if (rat.equals(a, rat.ONE)) return [1];
+	if (rat.equals(a, rat.NEGONE)) return [-1];
+	if (rat.equals(a, rat.INFINITY)) return [1, 0];
+	if (rat.equals(a, rat.INFINULL)) return [0, 0];
+
+	var neg = rat.isNegative(a);
+	if (neg) a[0] = -a[0];
+	
+	var r = rat.clone(rat.ONE);
+	
+	var m = [1,0,0,1];
+	
+	var direction = 1;
+	var result = [0];
+	var result_last = result.length - 1;
+	
+	while ( !rat.equals(a, r) && loop_limit-- ) {
+		if (rat.isLessThan(a, r)) {
+			if (direction===-1) {
+				result[result_last]++;
+			}
+			else {
+				direction = -1;
+				result.push(1);
+				result_last++;
+			}
+			m[0] += m[1];
+			m[2] += m[3];
+		}
+		else {
+			if (direction===1) {
+				result[result_last]++;
+			}
+			else {
+				direction = 1;
+				result.push(1);
+				result_last++;
+			}
+			m[1] += m[0];
+			m[3] += m[2];
+		}
+		r[0] = m[0] + m[1];
+		r[1] = m[2] + m[3];
+	}
+
+	// add a zero to the end to indicate an incomplete result
+	if (loop_limit<0) result.push(0);
+	
+	if (neg) for (var i in result) result[i] = -result[i];
+	
+	return result;
+};
+
+/**
+ * Returns a rat from an array of integers representing a continued fraction
+ *
+ * @param {rat} out the receiving number
+ * @param {Array} integers of the continued fraction
+ * @returns {rat} out
+ */
+rat.fromContinuedFraction = function(out, cf) {
+	rat.fromInteger_copy(out, cf[cf.length-1]);
+	for (var i=cf.length-1;i>=0;i--) {
+		rat.invert(out, out);
+		rat.add(out, out, rat.fromInteger(cf[i]));
+	}
+	return out;
+};
+
+/**
  * Returns a string with the fraction in various formats
  *
  * @param {rat} a number to dump
@@ -945,7 +1024,8 @@ rat.dump = function(r) {
 	var t = rat.create();
 	return 'rat\t'+rat.str(r)
 	+ '\n~\t'+rat.toDecimal(r)
-	+ '\nSB:\t'+rat.traceSternBrocot(r)
+	+ '\nCF:\t['+rat.toContinuedFraction(r)+']'
+	//+ '\nSB:\t'+rat.traceSternBrocot(r)
 	//+ '\n'
 	//+ '\ntoBabylonian\t ~ '+rat.toBabylonian(r)
 	//+ '\ntoEgyptian\t = '+rat.toEgyptian(r)  // can be very slow

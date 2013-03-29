@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>rational.js tester</title>
+<script src="http://acerix.github.com/rational.js/releases/rationaljs.alpha.js"></script>
 <script src="../src/integer.js"></script>
 <script src="../src/rat.js"></script>
 <script src="../src/rational.js"></script>
@@ -107,7 +108,6 @@ function dumpStack() {
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
 print(rational.fromDecimal(420.00000069).dump());
-
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
 

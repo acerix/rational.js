@@ -40,6 +40,16 @@ rational.prototype.toString = function() {
 };
 
 /**
+ * Returns a rational from an array of integers representing a continued fraction
+ *
+ * @param {Integer} maximum number of iterations
+ * @returns {Array} integers of the continued fraction
+ */
+rational.prototype.toContinuedFraction = function(loop_limit) {
+	return rat.toContinuedFraction(this.a, loop_limit);
+};
+
+/**
  * Inverts a rational
  *
  * @returns {rational} out
@@ -184,6 +194,24 @@ rational.prototype.dump = function() {
 };
 
 /**
+ * Returns a rat array from a rational
+ *
+ * @returns {rat} out
+ */
+rational.prototype.toRat = function () {
+	return rat.clone(this.a);
+};
+
+/**
+ * Returns a decimal approximation
+ *
+ * @returns {Number} out
+ */
+rational.prototype.toDecimal = function () {
+	return rat.toDecimal(this.a);
+};
+
+/**
  * Returns a rational from a rat array
  *
  * @param {rat} rat
@@ -202,7 +230,7 @@ rational.fromRat = function (a) {
  * @param {Integer} signed integer
  * @returns {rational} out
  */
-rational.prototype.fromInteger = function (a) {
+rational.fromInteger = function (a) {
 	return rational.fromRat(rat.fromInteger(a));
 };
 
@@ -212,7 +240,7 @@ rational.prototype.fromInteger = function (a) {
  * @param {Integer} signed integer
  * @returns {rational} out
  */
-rational.prototype.fromIntegerInverse = function (a) {
+rational.fromIntegerInverse = function (a) {
 	return rational.fromRat(rat.fromIntegerInverse(a));
 };
 
@@ -224,4 +252,14 @@ rational.prototype.fromIntegerInverse = function (a) {
  */
 rational.fromDecimal = function (a) {
 	return rational.fromRat(rat.fromDecimal(a));
+};
+
+/**
+ * Returns a rational from an array of integers representing a continued fraction
+ *
+ * @param {Array} integers of the continued fraction
+ * @returns {rational} out
+ */
+rational.fromContinuedFraction = function(cf) {
+	return rational.fromRat(rat.fromContinuedFraction(rat.create(), cf));
 };
