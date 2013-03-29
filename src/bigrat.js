@@ -990,6 +990,7 @@ bigrat.toContinuedFraction = function (a, loop_limit) {
 
 	// add a zero to the end to indicate an incomplete result
 	if (loop_limit<0) result.push(0);
+	else result[result_last]++;
 	
 	if (neg) for (var i in result) result[i] = -result[i];
 	
@@ -1005,9 +1006,9 @@ bigrat.toContinuedFraction = function (a, loop_limit) {
  */
 bigrat.fromContinuedFraction = function(out, cf) {
 	bigrat.fromInteger_copy(out, cf[cf.length-1]);
-	for (var i=cf.length-1;i>=0;i--) {
+	for (var i=cf.length-2;i>-1;i--) {
 		bigrat.invert(out, out);
-		bigrat.add(out, out, bigrat.fromInteger(cf[i]));
+		bigrat.add(out, bigrat.fromInteger(cf[i]), out);
 	}
 	return out;
 };

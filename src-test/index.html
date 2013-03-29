@@ -107,6 +107,14 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
+print(new rational(45, 16).dump());
+
+print(rational.fromContinuedFraction([2,1,4,3]).dump());
+
+print(rational.fromContinuedFraction([0, 8]).dump());
+
+return;
+
 print(rational.fromDecimal(420.00000069).dump());
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());

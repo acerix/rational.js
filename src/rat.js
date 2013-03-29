@@ -992,6 +992,7 @@ rat.toContinuedFraction = function (a, loop_limit) {
 
 	// add a zero to the end to indicate an incomplete result
 	if (loop_limit<0) result.push(0);
+	else result[result_last]++;
 	
 	if (neg) for (var i in result) result[i] = -result[i];
 	
@@ -1007,9 +1008,9 @@ rat.toContinuedFraction = function (a, loop_limit) {
  */
 rat.fromContinuedFraction = function(out, cf) {
 	rat.fromInteger_copy(out, cf[cf.length-1]);
-	for (var i=cf.length-1;i>=0;i--) {
+	for (var i=cf.length-2;i>-1;i--) {
 		rat.invert(out, out);
-		rat.add(out, out, rat.fromInteger(cf[i]));
+		rat.add(out, rat.fromInteger(cf[i]), out);
 	}
 	return out;
 };

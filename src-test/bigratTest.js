@@ -43,8 +43,8 @@ bigratTest.prototype.testToContinuedFraction = function() {
 	);
 	
 	assertEquals(
-		[-2, -1, -4, -3],
-		bigrat.toContinuedFraction(bigrat.fromValues(-45, 16))
+		[0, -2, -1, -4, -3],
+		bigrat.toContinuedFraction(bigrat.fromValues(-16, 45))
 	);
 	
 };
