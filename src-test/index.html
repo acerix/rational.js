@@ -107,10 +107,13 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
-print(rational.fromDecimal(420.00000069).dump());
-
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
 
+print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+)));
+
+print(rational.fromDecimal(0.697774657964008).dump());
 
 var nth = 2;
 var root = bigrat.fromInteger(2);
