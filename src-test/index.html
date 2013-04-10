@@ -109,6 +109,14 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
+clr();
+
+print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
+	[2,1,2,1,1,4,1,1,6,1,1,8,1,1,1,10,1,1,1,12,1,1,1,14,1,1,1,16,1,1,1,18,1,1,1,20,1,1,1,22,1,1,1,24]
+)));
+
+/*
+
 print(vars);
 
 var x2_y2_z2 = polyrat.fromValues([
@@ -151,11 +159,14 @@ var x2_y2_z2 = polyrat.fromValues([
 
 print(rat.str(polyrat.evaluate(x2_y2_z2, [2, 3, 5])));
 
-/*
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
 
 print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
-	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+)));
+
+print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
+	[2,1,2,1,1,4,1,1,6,1,1,8,1,1,1,10,1,1,1,12,1,1,1,14,1,1,1,16,1,1,1,18,1,1,1,20,1,1,1,22,1,1,1,24]
 )));
 
 print(rational.fromDecimal(0.697774657964008).dump());

@@ -4461,7 +4461,7 @@ physics.HBAR = bigrat.fromValues(1054571726, 1e43);
 /**
  * @class Rational Polynumber (of arbitrary dimension)
  * @name polyrat
- * @requires rat
+ * @requires rat alpha
  */
 var polyrat = {};
 
@@ -4486,6 +4486,7 @@ polyrat.create = function() {
 polyrat.fromValues = function(a) {
 	var out = polyrat.create();
 	out[0] = a.slice(0);
+	out[1].push(a.length);
 	return rat.normalize(out, out);
 };
 
@@ -4499,6 +4500,7 @@ polyrat.fromValues = function(a) {
  */
 polyrat.mergeDimension = function(out, a, m) {
 	out[0] = [a.slice(0)];
+	out[1].push(0);
 	for (var i in m) out[0].push(m[i]);
 	return out;
 };
@@ -4531,6 +4533,20 @@ polyrat.evaluate = function(out, a, m) {
 };
 
 /**
+ * Calculates the derivates of a polynumber
+ *
+ * @param {polyrat} a the polynumber to take the derivatives of
+ * @returns {Array} array of polyrats, with the same dimensions as the input polyrat ( 0th entry is the input polynumber itself )
+ */
+polyrat.derivatives = function(a) {
+	// MF78 @ 10:00
+	return [
+		polyrat.clone(a), polyrat.clone(a),
+		polyrat.clone(a), polyrat.clone(a),
+	];
+};
+
+/**
  * Returns a string representation
  *
  * @param {polyrat} a rational polynumber to represent as a string
@@ -4556,22 +4572,22 @@ polyrat.normalize = function(out, a) {
 /**
  * Zero, the additive identity
  *
- * @property POLYRAT_ZERO
- * @type Array
+ * @property ZERO
+ * @type polyrat
  * @static
  * @final
  */
-var POLYRAT_ZERO = polyrat.fromValues([0]);
+var polyrat.ZERO = polyrat.fromValues([0]);
 
 /**
  * One, the multiplicative identity
  *
- * @property RAT_ONE
- * @type RAT_ARRAY_TYPE
+ * @property IDENTITY
+ * @type polyrat
  * @static
  * @final
  */
-var POLYRAT_IDENTITY = polyrat.fromValues([1]);
+var polyrat.IDENTITY = polyrat.fromValues([1]);
 /*
  * rational.js - Javascript tools and libraries based around rational numbers.
  * Copyright (C) 2013 Dylan Ferris
