@@ -26,7 +26,7 @@
 <span class='line'> 19</span>  */</span><span class="WHIT">
 <span class='line'> 20</span> 
 <span class='line'> 21</span> </span><span class="COMM">/**
-<span class='line'> 22</span>  * @class Rational Polynumber
+<span class='line'> 22</span>  * @class Rational Polynumber (of arbitrary dimension)
 <span class='line'> 23</span>  * @name polyrat
 <span class='line'> 24</span>  * @requires rat
 <span class='line'> 25</span>  */</span><span class="WHIT">
@@ -38,53 +38,105 @@
 <span class='line'> 31</span>  * @returns {polyrat} a new polynumber
 <span class='line'> 32</span>  */</span><span class="WHIT">
 <span class='line'> 33</span> </span><span class="NAME">polyrat.create</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 34</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 35</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 36</span> 
-<span class='line'> 37</span> </span><span class="COMM">/**
-<span class='line'> 38</span>  * Creates a new polynumber initialized with the given values
-<span class='line'> 39</span>  *
-<span class='line'> 40</span>  * @param {Array} 2D array of values
-<span class='line'> 41</span>  * @returns {polyrat} a new polynumber
-<span class='line'> 42</span>  */</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="NAME">polyrat.fromValues</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 44</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">out</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 45</span> </span><span class="WHIT">	</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="WHIT">		</span><span class="NAME">out</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 47</span> </span><span class="WHIT">		</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">j</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 48</span> </span><span class="WHIT">			</span><span class="COMM">//out[i][j] = rat.fromInteger(a[i][j]);</span><span class="WHIT">
-<span class='line'> 49</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 50</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 51</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 52</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 53</span> 
-<span class='line'> 54</span> </span><span class="COMM">/**
-<span class='line'> 55</span>  * Returns a string representation
-<span class='line'> 56</span>  *
-<span class='line'> 57</span>  * @param {rat} a rational polynumber to represent as a string
-<span class='line'> 58</span>  * @returns {String} string representation of the number
+<span class='line'> 34</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">		</span><span class="PUNC">[</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">// multi-dimensional array of coefficients</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">		</span><span class="PUNC">[</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="COMM">// array of coefficient offsets</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> 
+<span class='line'> 40</span> </span><span class="COMM">/**
+<span class='line'> 41</span>  * Creates a new polynumber initialized with the given array of values
+<span class='line'> 42</span>  *
+<span class='line'> 43</span>  * @param {Array} array of values (of type "rat")
+<span class='line'> 44</span>  * @returns {polyrat} a new polynumber
+<span class='line'> 45</span>  */</span><span class="WHIT">
+<span class='line'> 46</span> </span><span class="NAME">polyrat.fromValues</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 47</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">out</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.create</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 48</span> </span><span class="WHIT">	</span><span class="NAME">out</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a.slice</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">rat.normalize</span><span class="PUNC">(</span><span class="NAME">out</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> 
+<span class='line'> 52</span> </span><span class="COMM">/**
+<span class='line'> 53</span>  * Add another variable/dimension to a polynumber
+<span class='line'> 54</span>  *
+<span class='line'> 55</span>  * @param {polyrat} out the receiving number
+<span class='line'> 56</span>  * @param {rat} a the first operand
+<span class='line'> 57</span>  * @param {Array} array of values (of type "rat")
+<span class='line'> 58</span>  * @returns {polyrat} a new polynumber
 <span class='line'> 59</span>  */</span><span class="WHIT">
-<span class='line'> 60</span> </span><span class="NAME">polyrat.str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 62</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 63</span> 
-<span class='line'> 64</span> </span><span class="COMM">/**
-<span class='line'> 65</span>  * Zero, the additive identity
-<span class='line'> 66</span>  *
-<span class='line'> 67</span>  * @property POLYRAT_ZERO
-<span class='line'> 68</span>  * @type Array
-<span class='line'> 69</span>  * @static
-<span class='line'> 70</span>  * @final
-<span class='line'> 71</span>  */</span><span class="WHIT">
-<span class='line'> 72</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">POLYRAT_ZERO</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 73</span> 
-<span class='line'> 74</span> </span><span class="COMM">/**
-<span class='line'> 75</span>  * One, the multiplicative identity
-<span class='line'> 76</span>  *
-<span class='line'> 77</span>  * @property RAT_ONE
-<span class='line'> 78</span>  * @type RAT_ARRAY_TYPE
-<span class='line'> 79</span>  * @static
-<span class='line'> 80</span>  * @final
-<span class='line'> 81</span>  */</span><span class="WHIT">
-<span class='line'> 82</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">POLYRAT_IDENTITY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 83</span> </span></pre></body></html>
+<span class='line'> 60</span> </span><span class="NAME">polyrat.mergeDimension</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">out</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="NAME">out</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">a.slice</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">	</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">push</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 65</span> 
+<span class='line'> 66</span> </span><span class="COMM">/**
+<span class='line'> 67</span>  * Evaluate a polynomial for a certain variable(s)
+<span class='line'> 68</span>  *
+<span class='line'> 69</span>  * @param {rat} out the receiving number
+<span class='line'> 70</span>  * @param {polyrat} a the polynumber to evaluate 
+<span class='line'> 71</span>  * @param {Array} array of values (of type "rat") to plug in to the polynomial
+<span class='line'> 72</span>  * @returns {rat} resulting rational number
+<span class='line'> 73</span>  */</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="NAME">polyrat.evaluate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">out</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">	</span><span class="NAME">out</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NAME">a.slice</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">	</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="KEYW">in</span><span class="WHIT"> </span><span class="NAME">m</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">push</span><span class="PUNC">(</span><span class="NAME">m</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">	</span><span class="COMM">/*
+<span class='line'> 78</span> 	
+<span class='line'> 79</span> 		x = x * plot_scale[0] - plot_origin[0];
+<span class='line'> 80</span> 		y = plot_origin[1] - y * plot_scale[1];
+<span class='line'> 81</span> 		var result = 0;
+<span class='line'> 82</span> 		for (var b in self.m) {
+<span class='line'> 83</span> 			for (var a in self.m[b]) {
+<span class='line'> 84</span> 				result += self.m[b][a] * Math.pow(x, a) * Math.pow(y, b);
+<span class='line'> 85</span> 			}
+<span class='line'> 86</span> 		}
+<span class='line'> 87</span> 		return result;
+<span class='line'> 88</span> 	
+<span class='line'> 89</span> 	*/</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 91</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 92</span> 
+<span class='line'> 93</span> </span><span class="COMM">/**
+<span class='line'> 94</span>  * Returns a string representation
+<span class='line'> 95</span>  *
+<span class='line'> 96</span>  * @param {polyrat} a rational polynumber to represent as a string
+<span class='line'> 97</span>  * @returns {String} string representation of the number
+<span class='line'> 98</span>  */</span><span class="WHIT">
+<span class='line'> 99</span> </span><span class="NAME">polyrat.str</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">.</span><span class="NAME">toString</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>102</span> 
+<span class='line'>103</span> </span><span class="COMM">/**
+<span class='line'>104</span>  * Normalize a polynumber
+<span class='line'>105</span>  *
+<span class='line'>106</span>  * @param {polyrat} out the receiving number
+<span class='line'>107</span>  * @param {polyrat} a number to normalize
+<span class='line'>108</span>  * @returns {polyrat} out
+<span class='line'>109</span>  */</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="NAME">polyrat.normalize</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">out</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">	</span><span class="NAME">out</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">	</span><span class="NAME">out</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> 
+<span class='line'>116</span> </span><span class="COMM">/**
+<span class='line'>117</span>  * Zero, the additive identity
+<span class='line'>118</span>  *
+<span class='line'>119</span>  * @property POLYRAT_ZERO
+<span class='line'>120</span>  * @type Array
+<span class='line'>121</span>  * @static
+<span class='line'>122</span>  * @final
+<span class='line'>123</span>  */</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">POLYRAT_ZERO</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> 
+<span class='line'>126</span> </span><span class="COMM">/**
+<span class='line'>127</span>  * One, the multiplicative identity
+<span class='line'>128</span>  *
+<span class='line'>129</span>  * @property RAT_ONE
+<span class='line'>130</span>  * @type RAT_ARRAY_TYPE
+<span class='line'>131</span>  * @static
+<span class='line'>132</span>  * @final
+<span class='line'>133</span>  */</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">POLYRAT_IDENTITY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>135</span> </span></pre></body></html>

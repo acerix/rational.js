@@ -222,7 +222,7 @@ ul.inheritsList
 				
 				
 			
-				Rational Polynumber
+				Rational Polynumber (of arbitrary dimension)
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/src_polyrat.js.html">polyrat.js</a>.
@@ -282,9 +282,36 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.fromValues">fromValues</a></b>(2D)
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.evaluate">evaluate</a></b>(out, a, array)
 								</div>
-								<div class="description">Creates a new polynumber initialized with the given values</div>
+								<div class="description">Evaluate a polynomial for a certain variable(s)</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.fromValues">fromValues</a></b>(array)
+								</div>
+								<div class="description">Creates a new polynumber initialized with the given array of values</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.mergeDimension">mergeDimension</a></b>(out, a, array)
+								</div>
+								<div class="description">Add another variable/dimension to a polynumber</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.normalize">normalize</a></b>(out, a)
+								</div>
+								<div class="description">Normalize a polynumber</div>
 							</td>
 						</tr>
 					
@@ -384,15 +411,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".fromValues"> </a>
+					<a name=".evaluate"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
-					<span class="light">polyrat.</span><b>fromValues</b>(2D)
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">polyrat.</span><b>evaluate</b>(out, a, array)
 					
 					</div>
 					<div class="description">
-						Creates a new polynumber initialized with the given values
+						Evaluate a polynomial for a certain variable(s)
 						
 						
 					</div>
@@ -404,10 +431,65 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Array}</span> <b>2D</b>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
 									
 								</dt>
-								<dd>array of values</dd>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>the polynumber to evaluate</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>of values (of type "rat") to plug in to the polynomial</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> resulting rational number</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromValues"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
+					<span class="light">polyrat.</span><b>fromValues</b>(array)
+					
+					</div>
+					<div class="description">
+						Creates a new polynumber initialized with the given array of values
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>of values (of type "rat")</dd>
 							
 							</dl>
 						
@@ -419,6 +501,110 @@ ul.inheritsList
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> a new polynumber</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".mergeDimension"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
+					<span class="light">polyrat.</span><b>mergeDimension</b>(out, a, array)
+					
+					</div>
+					<div class="description">
+						Add another variable/dimension to a polynumber
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>the first operand</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>array</b>
+									
+								</dt>
+								<dd>of values (of type "rat")</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> a new polynumber</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".normalize"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
+					<span class="light">polyrat.</span><b>normalize</b>(out, a)
+					
+					</div>
+					<div class="description">
+						Normalize a polynumber
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>out</b>
+									
+								</dt>
+								<dd>the receiving number</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>number to normalize</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> out</dd>
 							
 							</dl>
 						
@@ -447,7 +633,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
 									
 								</dt>
 								<dd>rational polynumber to represent as a string</dd>
@@ -482,7 +668,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Fri Mar 29 2013 10:56:20 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Apr 09 2013 21:13:58 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
