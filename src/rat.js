@@ -407,22 +407,22 @@ rat.normalize = function(out, a) {
 		out[1] = 0;
 		return out;
 	}
-	else if (a[0]===0) {
+	if (a[0]===0) {
 		out[0] = 0;
 		out[1] = 1;
 		return out;
 	}
-	else if (a[1]===0){
+	if (a[1]===0){
 		out[0] = 1;
 		out[1] = 0;
 		return out;
 	}
-	else if (a[0]===a[1]){
+	if (a[0]===a[1]){
 		out[0] = 1;
 		out[1] = 1;
 		return out;
 	}
-	else if (a[1] > 0) {
+	if (a[1] > 0) {
 		out[0] = a[0];
 		out[1] = a[1];
 	}
@@ -436,6 +436,7 @@ rat.normalize = function(out, a) {
 		out[1] /= gcd;
 	}
 	return out;
+	
 };
 
 /**

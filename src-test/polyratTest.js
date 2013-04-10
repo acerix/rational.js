@@ -18,11 +18,11 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
 polyratTest = TestCase("polyratTest");
 
 polyratTest.prototype.testStr = function() {
-	
+
+/*
 	assertEquals(
 		"0",
 		polyrat.str(POLYRAT_ZERO)
@@ -32,6 +32,55 @@ polyratTest.prototype.testStr = function() {
 		"1",
 		polyrat.str(POLYRAT_IDENTITY)
 	);
+*/
+
+
 	
 };
-*/
+
+polyratTest.prototype.testFromValues = function() {
+	return;
+	var x2_y2_z2 = polyrat.fromValues([
+[
+	[0, 0, 0, 0, 1],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[1, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[1, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+]
+]);
+
+	assertEquals(
+		"38",
+		rat.str(polyrat.evaluate(x2_y2_z2, [2, 3, 5]))
+	);
+	
+};

@@ -5,11 +5,13 @@
 <title>rational.js tester</title>
 <script src="http://acerix.github.com/rational.js/releases/rationaljs.alpha.js"></script>
 <script src="../src/integer.js"></script>
-<script src="../src/rat.js"></script>
-<script src="../src/rational.js"></script>
 <script src="../src/biginteger.js"></script>
 <script src="../src/bigint.js"></script>
+<script src="../src/rat.js"></script>
 <script src="../src/bigrat.js"></script>
+<script src="../src/rational.js"></script>
+<script src="../src/alpha.js"></script>
+<script src="../src/polyrat.js"></script>
 <script src="../src/physics.js"></script>
 <script>
 
@@ -107,6 +109,49 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
+print(vars);
+
+var x2_y2_z2 = polyrat.fromValues([
+[
+	[0, 0, 0, 0, 1],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[1, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[1, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+]
+]);
+
+print(rat.str(polyrat.evaluate(x2_y2_z2, [2, 3, 5])));
+
+/*
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
 
 print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
@@ -150,6 +195,8 @@ print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
+
+*/
 
 </textarea>
 

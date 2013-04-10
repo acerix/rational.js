@@ -19,7 +19,7 @@
  */
 
 /**
- * @class Rational Polynumber
+ * @class Rational Polynumber (of arbitrary dimension)
  * @name polyrat
  * @requires rat
  */
@@ -31,34 +31,86 @@ var polyrat = {};
  * @returns {polyrat} a new polynumber
  */
 polyrat.create = function() {
-	return [];
+	return [
+		[], // multi-dimensional array of coefficients
+		[] // array of coefficient offsets
+	];
 };
 
 /**
- * Creates a new polynumber initialized with the given values
+ * Creates a new polynumber initialized with the given array of values
  *
- * @param {Array} 2D array of values
+ * @param {Array} array of values (of type "rat")
  * @returns {polyrat} a new polynumber
  */
 polyrat.fromValues = function(a) {
-	var out = [];
-	for (var i in a) {
-		out[i] = [];
-		for (var j in a[i]) {
-			//out[i][j] = rat.fromInteger(a[i][j]);
+	var out = polyrat.create();
+	out[0] = a.slice(0);
+	return rat.normalize(out, out);
+};
+
+/**
+ * Add another variable/dimension to a polynumber
+ *
+ * @param {polyrat} out the receiving number
+ * @param {rat} a the first operand
+ * @param {Array} array of values (of type "rat")
+ * @returns {polyrat} a new polynumber
+ */
+polyrat.mergeDimension = function(out, a, m) {
+	out[0] = [a.slice(0)];
+	for (var i in m) out[0].push(m[i]);
+	return out;
+};
+
+/**
+ * Evaluate a polynomial for a certain variable(s)
+ *
+ * @param {rat} out the receiving number
+ * @param {polyrat} a the polynumber to evaluate 
+ * @param {Array} array of values (of type "rat") to plug in to the polynomial
+ * @returns {rat} resulting rational number
+ */
+polyrat.evaluate = function(out, a, m) {
+	out[1] = [a.slice(0)];
+	for (var i in m) out[1].push(m[i]);
+	/*
+	
+		x = x * plot_scale[0] - plot_origin[0];
+		y = plot_origin[1] - y * plot_scale[1];
+		var result = 0;
+		for (var b in self.m) {
+			for (var a in self.m[b]) {
+				result += self.m[b][a] * Math.pow(x, a) * Math.pow(y, b);
+			}
 		}
-	}
+		return result;
+	
+	*/
 	return out;
 };
 
 /**
  * Returns a string representation
  *
- * @param {rat} a rational polynumber to represent as a string
+ * @param {polyrat} a rational polynumber to represent as a string
  * @returns {String} string representation of the number
  */
 polyrat.str = function (a) {
-	return a[0][0][0].toString();
+	return a[1].toString();
+};
+
+/**
+ * Normalize a polynumber
+ *
+ * @param {polyrat} out the receiving number
+ * @param {polyrat} a number to normalize
+ * @returns {polyrat} out
+ */
+polyrat.normalize = function(out, a) {
+	out[0] = a[0];
+	out[1] = a[1];
+	return out;
 };
 
 /**
@@ -69,7 +121,7 @@ polyrat.str = function (a) {
  * @static
  * @final
  */
-var POLYRAT_ZERO = polyrat.fromValues([[0]]);
+var POLYRAT_ZERO = polyrat.fromValues([0]);
 
 /**
  * One, the multiplicative identity
@@ -79,4 +131,4 @@ var POLYRAT_ZERO = polyrat.fromValues([[0]]);
  * @static
  * @final
  */
-var POLYRAT_IDENTITY = polyrat.fromValues([[1]]);
+var POLYRAT_IDENTITY = polyrat.fromValues([1]);
