@@ -244,12 +244,86 @@ polyrat.str = function(a) {
 		}
 	}
 	else {
-		// recursive function?
 		alert('unsupported dimension '+d);
 	}
 	if (s==='') s = '0';
 	return s;
 };
+
+
+/**
+ * Evaluate a polynomial for a certain variable(s)
+ *
+ * @param {polyrat} a polynumber
+ * @returns {String} javascript formula to evaluate the polynomial
+ */
+polyrat.getJSFormula = function(a) {
+	var f = '';
+	var d = polyrat.countDimensions(a);
+	if (d===1) {
+		for (var i in a[0]) {
+			if (!a[0][i]) continue;
+			if (f) f += '+';
+			f += a[0][i];
+			var i_power = a[1][0] + +i;
+			if (i_power===0) continue;
+			else if (i_power===1) f += '*m[0]';
+			else f += '*Math.pow(m[0],' + i_power + ')';
+		}
+	}
+	else if (d===2) {
+		for (var j in a[0]) {
+			for (var i in a[0][j]) {
+				if (!a[0][j][i]) continue;
+				if (f) f += '+';
+				f += a[0][j][i];
+				var i_power = a[1][1] + +i;
+				var j_power = a[1][0] + +j;
+				if (i_power!==0) {
+					if (i_power===1) f += '*m[0]';
+					else f += '*Math.pow(m[0],' + i_power + ')';
+				}
+				if (j_power!==0) {
+					if (j_power===1) f += '*m[1]';
+					else f += '*Math.pow(m[1],' + j_power + ')';
+				}
+			}
+		}
+	}
+	else if (d===3) {
+		for (var k in a[0]) {
+			for (var j in a[0][k]) {
+				for (var i in a[0][k][j]) {
+					if (!a[0][k][j][i]) continue;
+					if (f) f += '+';
+					f += a[0][k][j][i];
+					var i_power = a[1][2] + +i;
+					var j_power = a[1][1] + +j;
+					var k_power = a[1][0] + +k;
+					if (i_power!==0) {
+						if (i_power===1) f += '*m[0]';
+						else f += '*Math.pow(m[0],' + i_power + ')';
+					}
+					if (j_power!==0) {
+						if (j_power===1) f += '*m[1]';
+						else f += '*Math.pow(m[1],' + j_power + ')';
+					}
+					if (k_power!==0) {
+						if (k_power===1) f += '*m[2]';
+						else f += '*Math.pow(m[2],' + k_power + ')';
+					}
+				}
+			}
+		}
+	}
+	else {
+		alert('unsupported dimension '+d);
+	}
+	if (f==='') f = '0';
+	return f;
+};
+
+
 
 /**
  * Returns a string representation (JSON)

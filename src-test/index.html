@@ -103,6 +103,7 @@ function dumpStack() {
 	catch(e) {console.log(e.stack);}
 }
 
+
 </script>
 </head>
 <body>
@@ -117,13 +118,13 @@ var PN_Fermat = [
   [1]
 ]
 
-
 var fermat = polyrat.fromValues(PN_Fermat);
 
+
+
 print(polyrat.str(fermat));
-
-
-
+print('');
+print(polyrat.getJSFormula(fermat));
 
 print('');
 print('');
@@ -151,6 +152,8 @@ var x2_y2 = polyrat.fromValues([
 ]);
 
 print(polyrat.str(x2_y2));
+print('');
+print(polyrat.getJSFormula(x2_y2));
 
 print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), x2_y2, [6, 9])));
 
@@ -199,6 +202,8 @@ var x4_y4_z4 = polyrat.fromValues([
 ]);
 
 print(polyrat.str(x4_y4_z4));
+print('');
+print(polyrat.getJSFormula(x4_y4_z4));
 
 //print(polyrat.forEachNonZeroElement(x4_y4_z4, print));
 
@@ -250,7 +255,8 @@ crazy_polynomial[1][1] = -9;
 
 print(polyrat.str(crazy_polynomial));
 
-
+print('');
+print(polyrat.getJSFormula(crazy_polynomial));
 print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
 
 /*
