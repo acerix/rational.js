@@ -191,6 +191,8 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
+	<li><a href="../symbols/alpha.html">alpha</a></li>
+	
 	<li><a href="../symbols/bigint.html">bigint</a></li>
 	
 	<li><a href="../symbols/bigrat.html">bigrat</a></li>
@@ -255,6 +257,44 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class polyrat.">
+					<caption>Field Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Field Attributes</th>
+							<th scope="col">Field Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								polyrat.<b><a href="../symbols/polyrat.html#.IDENTITY">IDENTITY</a></b>
+								</div>
+								<div class="description">One, the multiplicative identity</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								polyrat.<b><a href="../symbols/polyrat.html#.ZERO">ZERO</a></b>
+								</div>
+								<div class="description">Zero, the additive identity</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
 
 <!-- ============================== methods summary ======================== -->
 			
@@ -273,9 +313,27 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.countDimensions">countDimensions</a></b>(a)
+								</div>
+								<div class="description">Count the number of dimensions of an array</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.create">create</a></b>()
 								</div>
 								<div class="description">Creates a new, empty polyrat</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.derivatives">derivatives</a></b>(a)
+								</div>
+								<div class="description">Calculates the derivates of a polynumber</div>
 							</td>
 						</tr>
 					
@@ -291,9 +349,27 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.forEachNonZeroElement">forEachNonZeroElement</a></b>(a, callback)
+								</div>
+								<div class="description">Calls a function for each non-zero element in the polynumber</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.fromJSON">fromJSON</a></b>(JSON)
+								</div>
+								<div class="description">Creates a polynumber from it's JSON representation</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.fromValues">fromValues</a></b>(array)
 								</div>
-								<div class="description">Creates a new polynumber initialized with the given array of values</div>
+								<div class="description">Creates a new polynumber initialized with the given array of either integers or rats</div>
 							</td>
 						</tr>
 					
@@ -320,7 +396,16 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.str">str</a></b>(a)
 								</div>
-								<div class="description">Returns a string representation</div>
+								<div class="description">Returns a string representation (polynomial format, in ascending order by degree, then alphabetically) -- not yet!</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.toJSON">toJSON</a></b>(a)
+								</div>
+								<div class="description">Returns a string representation (JSON)</div>
 							</td>
 						</tr>
 					
@@ -361,7 +446,7 @@ ul.inheritsList
 						<dl class="detailList">
 						<dt class="heading">Requires:</dt>
 						
-							<dd><a href="../symbols/rat.html">rat</a></dd>
+							<dd><a href="../symbols/rat.html">rat</a> alpha</dd>
 						
 						</dl>
 					
@@ -372,12 +457,104 @@ ul.inheritsList
 
 <!-- ============================== field details ========================== -->		
 			
+				<div class="sectionTitle">
+					Field Detail
+				</div>
+				
+					<a name=".IDENTITY"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
+					<span class="light">polyrat.</span><b>IDENTITY</b>
+					
+					</div>
+					<div class="description">
+						One, the multiplicative identity
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".ZERO"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
+					<span class="light">polyrat.</span><b>ZERO</b>
+					
+					</div>
+					<div class="description">
+						Zero, the additive identity
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					
+				
+			
 
 <!-- ============================== method details ========================= -->		
 			
 				<div class="sectionTitle">
 					Method Detail
 				</div>
+				
+					<a name=".countDimensions"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Integer}</span>
+					<span class="light">polyrat.</span><b>countDimensions</b>(a)
+					
+					</div>
+					<div class="description">
+						Count the number of dimensions of an array
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>number to count the dimensions of</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Integer}</span> number of dimensions</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
 				
 					<a name=".create"> </a>
 					<div class="fixedFont">&lt;static&gt; 
@@ -403,6 +580,49 @@ ul.inheritsList
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> a new polynumber</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".derivatives"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Array}</span>
+					<span class="light">polyrat.</span><b>derivatives</b>(a)
+					
+					</div>
+					<div class="description">
+						Calculates the derivates of a polynumber
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>the polynumber to take the derivatives of</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> array of polyrats, with the same dimensions as the input polyrat ( 0th entry is the input polynumber itself )</dd>
 							
 							</dl>
 						
@@ -466,6 +686,91 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name=".forEachNonZeroElement"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">polyrat.</span><b>forEachNonZeroElement</b>(a, callback)
+					
+					</div>
+					<div class="description">
+						Calls a function for each non-zero element in the polynumber
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>rational polynumber</dd>
+							
+								<dt>
+									<span class="light fixedFont">{function}</span> <b>callback</b>
+									
+								</dt>
+								<dd>function</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromJSON"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
+					<span class="light">polyrat.</span><b>fromJSON</b>(JSON)
+					
+					</div>
+					<div class="description">
+						Creates a polynumber from it's JSON representation
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{String}</span> <b>JSON</b>
+									
+								</dt>
+								<dd>representation of the number</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> a rational polynumber</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name=".fromValues"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -474,7 +779,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Creates a new polynumber initialized with the given array of values
+						Creates a new polynumber initialized with the given array of either integers or rats
 						
 						
 					</div>
@@ -621,7 +926,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Returns a string representation
+						Returns a string representation (polynomial format, in ascending order by degree, then alphabetically) -- not yet!
 						
 						
 					</div>
@@ -654,6 +959,49 @@ ul.inheritsList
 						
 						
 
+					<hr />
+				
+					<a name=".toJSON"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{String}</span>
+					<span class="light">polyrat.</span><b>toJSON</b>(a)
+					
+					</div>
+					<div class="description">
+						Returns a string representation (JSON)
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
+									
+								</dt>
+								<dd>rational polynumber to represent as a string</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> JSON representation of the number</dd>
+							
+							</dl>
+						
+						
+						
+
 					
 				
 			
@@ -668,7 +1016,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Apr 09 2013 21:13:58 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Apr 11 2013 20:48:54 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
