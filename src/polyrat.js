@@ -47,7 +47,8 @@ polyrat.fromValues = function(a) {
 	var out = polyrat.create();
 	out[0] = a.slice();
 	out[1] = new Array(polyrat.countDimensions(out));
-	for (var i=out[1].length; i--; 1) out[1][i] = 0;
+	var i=out[1].length
+	while (i--) out[1][i] = 0;
 	return polyrat.normalize(out, out);
 };
 
@@ -102,7 +103,7 @@ polyrat.evaluate = function(out, a, m) {
 polyrat.derivatives = function(a) {
 	// MF78 @ 10:00
 	return [
-		polyrat.clone(a),
+//		polyrat.clone(a),
 	];
 };
 
