@@ -78,7 +78,7 @@ window.onkeydown = function(e) {
 		case 18: // alt
 			alt_down = true;
 			break;
-		default: print('key down: '+k);
+//		default: print('key down: '+k);
 	}
 }
 
@@ -133,6 +133,8 @@ var x2 = polyrat.fromValues([0, 0, 1]);
 
 print(polyrat.str(x2));
 
+print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), x2, [6])));
+
 //print(polyrat.forEachNonZeroElement(x2, print));
 
 //print(rat.str(polyrat.evaluate(x2, [2])));
@@ -149,6 +151,8 @@ var x2_y2 = polyrat.fromValues([
 ]);
 
 print(polyrat.str(x2_y2));
+
+print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), x2_y2, [6, 9])));
 
 
 
@@ -198,7 +202,7 @@ print(polyrat.str(x4_y4_z4));
 
 //print(polyrat.forEachNonZeroElement(x4_y4_z4, print));
 
-//print(rat.str(polyrat.evaluate(x4_y4_z4, [2, 3, 5])));
+print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), x4_y4_z4, [5,9,3])));
 
 print('');
 print('');
@@ -247,6 +251,7 @@ crazy_polynomial[1][1] = -9;
 print(polyrat.str(crazy_polynomial));
 
 
+print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
 
 /*
 

@@ -46,9 +46,42 @@ polyrat.create = function() {
 polyrat.fromValues = function(a) {
 	var out = polyrat.create();
 	out[0] = a.slice();
-	out[1] = new Array(polyrat.countDimensions(out));
-	var i=out[1].length
+	
+	var d = polyrat.countDimensions(out);
+	
+	out[1] = new Array(d);
+	
+	var i=d;
 	while (i--) out[1][i] = 0;
+	
+	/*
+	if (d===1) {
+		for (var i in out[0]) {
+			if (typeof out[0][i] !== 'object') out[0][i] = rat.fromDecimal(out[0][i]);
+		}
+	}
+	else if (d===2) {
+		for (var j in out[0]) {
+			for (var i in out[0][j]) {
+				if (typeof out[0][j][i] !== 'object') out[0][j][i] = rat.fromDecimal(out[0][j][i]);
+			}
+		}
+	}
+	else if (d===3) {
+		for (var k in out[0]) {
+			for (var j in out[0][k]) {
+				for (var i in out[0][k][j]) {
+					if (typeof out[0][k][j][i] !== 'object') out[0][k][j][i] = rat.fromDecimal(out[0][k][j][i]);
+				}
+			}
+		}
+	}
+	else {
+		// recursive function?
+		alert('unsupported dimension '+d);
+	}
+	*/
+	
 	return polyrat.normalize(out, out);
 };
 
@@ -76,22 +109,37 @@ polyrat.mergeDimension = function(out, a, m) {
  * @returns {rat} resulting rational number
  */
 polyrat.evaluate = function(out, a, m) {
-	out[1] = [a.slice()];
-	for (var i in m) out[1].push(m[i]);
-	/*
-	
-		x = x * plot_scale[0] - plot_origin[0];
-		y = plot_origin[1] - y * plot_scale[1];
-		var result = 0;
-		for (var b in self.m) {
-			for (var a in self.m[b]) {
-				result += self.m[b][a] * Math.pow(x, a) * Math.pow(y, b);
+	var result = 0;
+	var d = polyrat.countDimensions(a);
+	if (d===1) {
+		for (var i in a[0]) {
+			if (!a[0][i]) continue;
+			result += a[0][i] * Math.pow(m[0], a[1][0] + +i);
+		}
+	}
+	else if (d===2) {
+		for (var j in a[0]) {
+			for (var i in a[0][j]) {
+				if (!a[0][j][i]) continue;
+				result += a[0][j][i] * Math.pow(m[0], a[1][1] + +i) * Math.pow(m[1], a[1][0] + +j);
 			}
 		}
-		return result;
-	
-	*/
-	return out;
+	}
+	else if (d===3) {
+		for (var k in a[0]) {
+			for (var j in a[0][k]) {
+				for (var i in a[0][k][j]) {
+					if (!a[0][k][j][i]) continue;
+					result += a[0][k][j][i] * Math.pow(m[0], a[1][2] + +i) * Math.pow(m[1], a[1][1] + +j) * Math.pow(m[2], a[1][0] + +k);
+				}
+			}
+		}
+	}
+	else {
+		// recursive function?
+		alert('unsupported dimension '+d);
+	}
+	return out = bigrat.fromDecimal(result);
 };
 
 /**
@@ -156,8 +204,9 @@ polyrat.str = function(a) {
 			if (s) s += ' ' + (a[0][i]<0?'-':'+') + ' ';
 			else if (a[0][i]<0) s += '-';
 			var c = Math.abs(a[0][i]);
-			if (c!=1||(i==0)) s += c;
-			if (i!=0) s += _i + (i > 1 ? '<sup>'+i+'</sup>' : '');
+			var i_power = a[1][0] + +i;
+			if (c!==1||(i_power===0)) s += c;
+			if (i_power!==0) s += _i + (Math.abs(i_power) === 1 ? '' : '<sup>'+i_power+'</sup>');
 		}
 	}
 	else if (d===2) {
@@ -167,9 +216,11 @@ polyrat.str = function(a) {
 				if (s) s += ' ' + (a[0][j][i]<0?'-':'+') + ' ';
 				else if (a[0][j][i]<0) s += '-';
 				var c = Math.abs(a[0][j][i]);
-				if (c!=1||(j==0&&i==0)) s += c;
-				if (i!=0) s += _i + (i > 1 ? '<sup>'+i+'</sup>' : '');
-				if (j!=0) s += _j + (j > 1 ? '<sup>'+j+'</sup>' : '');
+				var i_power = a[1][1] + +i;
+				var j_power = a[1][0] + +j;
+				if (c!==1||(j_power===0&&i_power===0)) s += c;
+				if (i_power!==0) s += _i + (Math.abs(i_power) === 1 ? '' : '<sup>'+i_power+'</sup>');
+				if (j_power!==0) s += _j + (Math.abs(j_power) === 1 ? '' : '<sup>'+j_power+'</sup>');
 			}
 		}
 	}
@@ -181,17 +232,20 @@ polyrat.str = function(a) {
 					if (s) s += ' ' + (a[0][k][j][i]<0?'-':'+') + ' ';
 					else if (a[0][k][j][i]<0) s += '-';
 					var c = Math.abs(a[0][k][j][i]);
-					if (c!=1||(k==0&&j==0&&i==0)) s += c;
-					if (i!=0) s += _i + (i > 1 ? '<sup>'+(a[1][2]+ +i)+'</sup>' : '');
-					if (j!=0) s += _j + (j > 1 ? '<sup>'+(a[1][1]+ +j)+'</sup>' : '');
-					if (k!=0) s += _k + (k > 1 ? '<sup>'+(a[1][0]+ +k)+'</sup>' : '');
+					var i_power = a[1][2] + +i;
+					var j_power = a[1][1] + +j;
+					var k_power = a[1][0] + +k;
+					if (c!==1||(k_power===0&&j_power===0&&i_power===0)) s += c;
+					if (i_power!==0) s += _i + (Math.abs(i_power) === 1 ? '' : '<sup>'+i_power+'</sup>');
+					if (j_power!==0) s += _j + (Math.abs(j_power) === 1 ? '' : '<sup>'+j_power+'</sup>');
+					if (k_power!==0) s += _k + (Math.abs(k_power) === 1 ? '' : '<sup>'+k_power+'</sup>');
 				}
 			}
 		}
 	}
 	else {
 		// recursive function?
-		alert('unsupported dimension');
+		alert('unsupported dimension '+d);
 	}
 	if (s==='') s = '0';
 	return s;
