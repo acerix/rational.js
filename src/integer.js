@@ -18,6 +18,8 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+'use strict';
+
 /**
  * @class Integer
  * @name integer

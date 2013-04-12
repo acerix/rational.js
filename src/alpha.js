@@ -18,26 +18,30 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var vars = [];
+/**
+ * @class Alpha to Omega
+ * @name alpha
+ */
+var alpha = {};
 
-// α - ω
-for (var i = 0; i < 25; i++) {
-	vars[i] = String.fromCharCode(i+945);
-}
+/**
+ * List of some distint looking greek letters for use in polynomials
+ *
+ * @property GREEK
+ * @type Array
+ * @static
+ * @final
+ */
+alpha.GREEK = 'αβγδμπρςτφχψωΘΦΩ'.split('');
 
-// Α - Ω
-for (var i = 0; i < 25; i++) {
-	if (i+913 !== 930)
-		vars[25+i] = String.fromCharCode(i+913);
-}
-
-/*
-
-var vars_index = -1;
-
-function next_available_letter() {
-	vars_index++;
-	return vars[vars_index];
-}
-
-*/
+/**
+ * Returns the next consecutive greek letter from the list
+ *
+ * @returns {String} greek letter
+ */
+alpha.iterator = function() {
+	this.i = 0;
+	this.next = function() {
+		return this.i < alpha.GREEK.length ? alpha.GREEK[this.i++] : '?';
+	}
+};

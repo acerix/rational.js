@@ -108,18 +108,55 @@ function dumpStack() {
 <body>
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
+clr(); print('');
 
-clr();
+var PN_Fermat = [
+  [-1, 0, 0, 1],
+  [0],
+  [0],
+  [1]
+]
 
-print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
-	[2,1,2,1,1,4,1,1,6,1,1,8,1,1,1,10,1,1,1,12,1,1,1,14,1,1,1,16,1,1,1,18,1,1,1,20,1,1,1,22,1,1,1,24]
-)));
 
-/*
+var fermat = polyrat.fromValues(PN_Fermat);
 
-print(vars);
+print(polyrat.str(fermat));
 
-var x2_y2_z2 = polyrat.fromValues([
+
+
+
+print('');
+print('');
+print('');
+
+var x2 = polyrat.fromValues([0, 0, 1]);
+
+print(polyrat.str(x2));
+
+//print(polyrat.forEachNonZeroElement(x2, print));
+
+//print(rat.str(polyrat.evaluate(x2, [2])));
+
+
+print('');
+print('');
+print('');
+
+var x2_y2 = polyrat.fromValues([
+	[0, 0, 1],
+	[0, 0, 0],
+	[1, 0, 0]
+]);
+
+print(polyrat.str(x2_y2));
+
+
+
+print('');
+print('');
+print('');
+
+var x4_y4_z4 = polyrat.fromValues([
 [
 	[0, 0, 0, 0, 1],
 	[0, 0, 0, 0, 0],
@@ -157,7 +194,61 @@ var x2_y2_z2 = polyrat.fromValues([
 ]
 ]);
 
-print(rat.str(polyrat.evaluate(x2_y2_z2, [2, 3, 5])));
+print(polyrat.str(x4_y4_z4));
+
+//print(polyrat.forEachNonZeroElement(x4_y4_z4, print));
+
+//print(rat.str(polyrat.evaluate(x4_y4_z4, [2, 3, 5])));
+
+print('');
+print('');
+
+var crazy_polynomial = polyrat.fromValues([
+[
+	[7, 6, 3, 0, 1],
+	[0, 0, 4, 0, 0],
+	[0, 0, 1, 0, 0],
+	[0, 0, 0, 0, 0],
+	[1, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 6, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 5, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 4, 0, 0]
+],
+[
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0]
+],
+[
+	[1, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0],
+	[0, 0, 4, 0, 0],
+	[1, 0, 0, 5, 99]
+]
+]);
+
+crazy_polynomial[1][2] = 24;
+crazy_polynomial[1][1] = -9;
+
+print(polyrat.str(crazy_polynomial));
+
+
+
+/*
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
 

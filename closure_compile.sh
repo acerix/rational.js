@@ -1,4 +1,4 @@
-cat \
+closure --js \
 src/integer.js \
 src/biginteger.js \
 src/bigint.js \
