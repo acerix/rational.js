@@ -7,7 +7,13 @@ rational.js's architecture is heavily inspired by glMatrix (http://glmatrix.net/
 
 Many of the glMatrix's methods are available in rational.js, and the parameters are consistent.
 
-http://acerix.github.com/rational.js/releases/rationaljs.alpha.js
+Documentation:
 
-http://acerix.github.io/rational.js/releases/ratjs.alpha.min.js
+http://acerix.github.io/rational.js/
+
+Releases:
+
+http://acerix.github.com/rational.js/releases/rationaljs.alpha.js (Includes everything)
+
+http://acerix.github.io/rational.js/releases/ratjs.alpha.min.js (Includes bare minimum for rat())
 
