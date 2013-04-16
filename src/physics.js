@@ -33,7 +33,7 @@ var physics = {};
  * @static
  * @final
  */
-physics.FINESTRUCTURE = bigrat.fromValues(100478167, 13769126000);
+physics.FINESTRUCTURE = bigrat.fromValues(30223, 4141639);
 
 /**
  * Alias for {@link physics.FINESTRUCTURE}

@@ -33,11 +33,8 @@ function clr() {
 }
 
 function print(s) {
-	output.innerHTML += s.toString() + '\n';
-}
-
-function display(s) {
-	output.innerHTML = s.toString();
+	if (typeof s !== 'undefined') output.innerHTML += s.toString();
+	output.innerHTML += '\n';
 }
 
 var alt_down = false, shift_down = false, ctrl_down = false;
@@ -111,6 +108,60 @@ function dumpStack() {
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 clr(); print('');
 
+
+var precision = 4;
+
+var x = bigrat.fromInteger(0);
+var r = bigrat.fromInteger(0);
+var t = bigrat.fromInteger(2);
+
+for (var n=0; n<=precision; n++) {
+  print('n['+n+']');
+  bigrat.add(r, x, t);
+  bigrat.sqrt(x, r);
+  print(bigrat.dump(x));
+  print();
+}
+
+print();
+print('pi() :');
+
+// 2^(2n+1)
+var a1 = 2 << (2 * precision);
+
+// 2^(2n)
+var a2 = a1 >> 1;
+
+var pi = bigrat.fromInteger( a1 );
+var p2 = bigrat.fromInteger( a2 );
+
+bigrat.mul(x, x, p2);
+bigrat.sub(pi, pi, x);
+
+print(bigrat.dump(pi));
+
+bigrat.sqrt(x, pi);
+bigrat.scalar_multiply(x, x, 4);
+
+print(bigrat.dump(x));
+
+/*
+  print();
+print('pi :');
+
+print(bigrat.dump(bigrat.PI));
+*/
+  print();
+  print();	
+print('pi^2 / 16 :');
+
+var p16 = bigrat.fromRat(bigrat.create(), rat.PI);
+bigrat.pow(p16, p16, 2);
+bigrat.scalar_divide(p16, p16, 16);
+
+print(bigrat.dump(p16));
+
+/*
 var PN_Fermat = [
   [-1, 0, 0, 1],
   [0],
@@ -258,6 +309,8 @@ print(polyrat.str(crazy_polynomial));
 print('');
 print(polyrat.getJSFormula(crazy_polynomial));
 print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
+
+*/
 
 /*
 
