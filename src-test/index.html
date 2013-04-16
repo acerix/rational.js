@@ -108,93 +108,13 @@ function dumpStack() {
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 clr(); print('');
 
-
-var precision = 4;
-
-var x = bigrat.fromInteger(0);
-var r = bigrat.fromInteger(0);
-var t = bigrat.fromInteger(2);
-
-for (var n=0; n<=precision; n++) {
-  print('n['+n+']');
-  bigrat.add(r, x, t);
-  bigrat.sqrt(x, r);
-  print(bigrat.dump(x));
-  print();
-}
-
-print();
-print('pi() :');
-
-// 2^(2n+1)
-var a1 = 2 << (2 * precision);
-
-// 2^(2n)
-var a2 = a1 >> 1;
-
-var pi = bigrat.fromInteger( a1 );
-var p2 = bigrat.fromInteger( a2 );
-
-bigrat.mul(x, x, p2);
-bigrat.sub(pi, pi, x);
-
-print(bigrat.dump(pi));
-
-bigrat.sqrt(x, pi);
-bigrat.scalar_multiply(x, x, 4);
-
-print(bigrat.dump(x));
-
-/*
-  print();
-print('pi :');
-
-print(bigrat.dump(bigrat.PI));
-*/
-  print();
-  print();	
-print('pi^2 / 16 :');
-
-var p16 = bigrat.fromRat(bigrat.create(), rat.PI);
-bigrat.pow(p16, p16, 2);
-bigrat.scalar_divide(p16, p16, 16);
-
-print(bigrat.dump(p16));
-
-/*
-var PN_Fermat = [
-  [-1, 0, 0, 1],
-  [0],
-  [0],
-  [1]
-]
-
-var fermat = polyrat.fromValues(PN_Fermat);
-
-
-
-print(polyrat.str(fermat));
-print('');
-print(polyrat.getJSFormula(fermat));
-
-print('');
-print('');
-print('');
-
 var x2 = polyrat.fromValues([0, 0, 1]);
 
 print(polyrat.str(x2));
 
-print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), x2, [6])));
+print('@[x=6] => '+bigrat.str(polyrat.evaluate(bigrat.create(), x2, [6])));
 
-//print(polyrat.forEachNonZeroElement(x2, print));
-
-//print(rat.str(polyrat.evaluate(x2, [2])));
-
-
-print('');
-print('');
-print('');
+print();
 
 var x2_y2 = polyrat.fromValues([
 	[0, 0, 1],
@@ -203,16 +123,10 @@ var x2_y2 = polyrat.fromValues([
 ]);
 
 print(polyrat.str(x2_y2));
-print('');
-print(polyrat.getJSFormula(x2_y2));
 
-print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), x2_y2, [6, 9])));
+print('@[x=6, y=9] => '+bigrat.str(polyrat.evaluate(bigrat.create(), x2_y2, [6, 9])));
 
-
-
-print('');
-print('');
-print('');
+print();
 
 var x4_y4_z4 = polyrat.fromValues([
 [
@@ -253,15 +167,27 @@ var x4_y4_z4 = polyrat.fromValues([
 ]);
 
 print(polyrat.str(x4_y4_z4));
-print('');
-print(polyrat.getJSFormula(x4_y4_z4));
 
-//print(polyrat.forEachNonZeroElement(x4_y4_z4, print));
+print('@[x=5, y=9, z=3] =>  '+bigrat.str(polyrat.evaluate(bigrat.create(), x4_y4_z4, [5,9,3])));
 
-print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), x4_y4_z4, [5,9,3])));
+print();
 
-print('');
-print('');
+
+var PN_Fermat = [
+  [-1, 0, 0, 1],
+  [0],
+  [0],
+  [1]
+];
+
+var fermat = polyrat.fromValues(PN_Fermat);
+
+print(polyrat.str(fermat));
+
+print('@[x=5, y=9] =>  '+bigrat.str(polyrat.evaluate(bigrat.create(), fermat, [5,9])));
+
+print();
+
 
 var crazy_polynomial = polyrat.fromValues([
 [
@@ -306,15 +232,15 @@ crazy_polynomial[1][1] = -9;
 
 print(polyrat.str(crazy_polynomial));
 
-print('');
-print(polyrat.getJSFormula(crazy_polynomial));
-print('= '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
+print('@[x=5, y=9, z=3] => '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
 
-*/
+
 
 /*
 
+
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
+
 
 print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
 	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
