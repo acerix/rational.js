@@ -372,8 +372,8 @@ polyrat.getGLSLFormula = function(a) {
 			var i_power = a[1][0] + +i;
 			if (i_power===0) continue;
 			else if (i_power===1) f += '*m_0';
-			//else f += '*pow(m_0,' + i_power + '.0)';
-			else f += ('*m_0').repeat(i_power);
+			else if (i_power>1) f += ('*m_0').repeat(i_power);
+			else f += '*pow(1.0'+('*m_0').repeat(Math.abs(i_power))+',-1.0)';
 		}
 	}
 	else if (d===2) {
@@ -382,17 +382,17 @@ polyrat.getGLSLFormula = function(a) {
 				if (!a[0][j][i]) continue;
 				if (f) f += '+';
 				f += a[0][j][i]+'.0';
-				var i_power = a[1][1] + +i; // offset + current position
+				var i_power = a[1][1] + +i;
 				var j_power = a[1][0] + +j;
 				if (i_power!==0) {
 					if (i_power===1) f += '*m_0';
-					//else f += '*pow(m_0,' + i_power + '.0)';
-					else f += ('*m_0').repeat(i_power);
+					else if (i_power>1) f += ('*m_0').repeat(i_power);
+					else f += '*pow(1.0'+('*m_0').repeat(Math.abs(i_power))+',-1.0)';
 				}
 				if (j_power!==0) {
 					if (j_power===1) f += '*m_1';
-					//else f += '*pow(m_1,' + j_power + '.0)';
-					else f += ('*m_1').repeat(j_power);
+					else if (j_power>1) f += ('*m_1').repeat(j_power);
+					else f += '*pow(1.0'+('*m_1').repeat(Math.abs(j_power))+',-1.0)';
 				}
 			}
 		}
