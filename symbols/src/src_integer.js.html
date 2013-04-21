@@ -25,64 +25,62 @@
 <span class='line'> 18</span>  * along with rational.js.  If not, see &lt;http://www.gnu.org/licenses/>.
 <span class='line'> 19</span>  */</span><span class="WHIT">
 <span class='line'> 20</span> 
-<span class='line'> 21</span> </span><span class="STRN">'use strict'</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 22</span> 
-<span class='line'> 23</span> </span><span class="COMM">/**
-<span class='line'> 24</span>  * @class Integer
-<span class='line'> 25</span>  * @name integer
-<span class='line'> 26</span>  */</span><span class="WHIT">
-<span class='line'> 27</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">integer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 28</span> 
-<span class='line'> 29</span> </span><span class="COMM">/**
-<span class='line'> 30</span>  * Find the greatest common divisor of two integers
-<span class='line'> 31</span>  *
-<span class='line'> 32</span>  * @param {Integer} a the first operand
-<span class='line'> 33</span>  * @param {Integer} b the second operand
-<span class='line'> 34</span>  * @returns {Integer} greatest common divisor
-<span class='line'> 35</span>  */</span><span class="WHIT">
-<span class='line'> 36</span> </span><span class="NAME">integer.greatest_common_divisor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">===</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">===</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">t</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 39</span> </span><span class="WHIT">	</span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 40</span> </span><span class="WHIT">		</span><span class="NAME">t</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 41</span> </span><span class="WHIT">		</span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 42</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">isFinite</span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 43</span> </span><span class="WHIT">		</span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">t</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 44</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 45</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="COMM">/**
-<span class='line'> 49</span>  * Alias for {@link integer.greatest_common_divisor}
-<span class='line'> 50</span>  * @function
-<span class='line'> 51</span>  */</span><span class="WHIT">
-<span class='line'> 52</span> </span><span class="NAME">integer.gcd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">integer.greatest_common_divisor</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 53</span> 
-<span class='line'> 54</span> </span><span class="COMM">/**
-<span class='line'> 55</span>  * Returns a new random unsigned integer with a maximum size specified in bytes
-<span class='line'> 56</span>  *
-<span class='line'> 57</span>  * @param {Integer} maximum number of bits
-<span class='line'> 58</span>  * @returns {Integer} a random integer from Zero to 2^bytes (inclusive)
-<span class='line'> 59</span>  */</span><span class="WHIT">
-<span class='line'> 60</span> </span><span class="NAME">integer.fromRandom</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">bits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 61</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.random</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&lt;&lt;</span><span class="WHIT"> </span><span class="NAME">bits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">>>></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 62</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 63</span> 
-<span class='line'> 64</span> </span><span class="COMM">/**
-<span class='line'> 65</span>  * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
-<span class='line'> 66</span>  *
-<span class='line'> 67</span>  * @returns {Integer} milliseconds since the 60's ended
-<span class='line'> 68</span>  */</span><span class="WHIT">
-<span class='line'> 69</span> </span><span class="NAME">integer.fromMillitime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 70</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 71</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 72</span> 
-<span class='line'> 73</span> </span><span class="COMM">/**
-<span class='line'> 74</span>  * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
-<span class='line'> 75</span>  *
-<span class='line'> 76</span>  * @returns {Integer} milliseconds since the 60's ended
-<span class='line'> 77</span>  */</span><span class="WHIT">
-<span class='line'> 78</span> </span><span class="NAME">integer.fromUnixtime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 79</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">integer.fromMillitime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="WHIT"> </span><span class="PUNC">|</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 80</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 81</span> </span></pre></body></html>
+<span class='line'> 21</span> </span><span class="COMM">/**
+<span class='line'> 22</span>  * @class Integer
+<span class='line'> 23</span>  * @name integer
+<span class='line'> 24</span>  */</span><span class="WHIT">
+<span class='line'> 25</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">integer</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 26</span> 
+<span class='line'> 27</span> </span><span class="COMM">/**
+<span class='line'> 28</span>  * Find the greatest common divisor of two integers
+<span class='line'> 29</span>  *
+<span class='line'> 30</span>  * @param {Integer} a the first operand
+<span class='line'> 31</span>  * @param {Integer} b the second operand
+<span class='line'> 32</span>  * @returns {Integer} greatest common divisor
+<span class='line'> 33</span>  */</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="NAME">integer.greatest_common_divisor</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">===</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">===</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> </span><span class="WHIT">	</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">t</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="KEYW">while</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">		</span><span class="NAME">t</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">		</span><span class="NAME">b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">!</span><span class="NAME">isFinite</span><span class="PUNC">(</span><span class="NAME">b</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">		</span><span class="NAME">a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">t</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 42</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 43</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="COMM">/**
+<span class='line'> 47</span>  * Alias for {@link integer.greatest_common_divisor}
+<span class='line'> 48</span>  * @function
+<span class='line'> 49</span>  */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="NAME">integer.gcd</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">integer.greatest_common_divisor</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 51</span> 
+<span class='line'> 52</span> </span><span class="COMM">/**
+<span class='line'> 53</span>  * Returns a new random unsigned integer with a maximum size specified in bytes
+<span class='line'> 54</span>  *
+<span class='line'> 55</span>  * @param {Integer} maximum number of bits
+<span class='line'> 56</span>  * @returns {Integer} a random integer from Zero to 2^bytes (inclusive)
+<span class='line'> 57</span>  */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="NAME">integer.fromRandom</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">bits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.random</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">1</span><span class="WHIT"> </span><span class="PUNC">&lt;&lt;</span><span class="WHIT"> </span><span class="NAME">bits</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">>>></span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 61</span> 
+<span class='line'> 62</span> </span><span class="COMM">/**
+<span class='line'> 63</span>  * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+<span class='line'> 64</span>  *
+<span class='line'> 65</span>  * @returns {Integer} milliseconds since the 60's ended
+<span class='line'> 66</span>  */</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="NAME">integer.fromMillitime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 70</span> 
+<span class='line'> 71</span> </span><span class="COMM">/**
+<span class='line'> 72</span>  * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+<span class='line'> 73</span>  *
+<span class='line'> 74</span>  * @returns {Integer} milliseconds since the 60's ended
+<span class='line'> 75</span>  */</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="NAME">integer.fromUnixtime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">integer.fromMillitime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="WHIT"> </span><span class="PUNC">|</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 79</span> </span></pre></body></html>

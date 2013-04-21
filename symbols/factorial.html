@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - alpha</title>
+		<title>JsDoc Reference - factorial</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -218,7 +218,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class alpha
+				Class factorial
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -226,16 +226,16 @@ ul.inheritsList
 				
 				
 			
-				Alpha to Omega
+				Factorial
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_alpha.js.html">alpha.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_factorial.js.html">factorial.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class alpha.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class factorial.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -248,7 +248,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/alpha.html#constructor">alpha</a></b>()
+								<b><a href="../symbols/factorial.html#constructor">factorial</a></b>()
 							</div>
 							<div class="description"></div>
 						</td>
@@ -261,7 +261,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class alpha.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class factorial.">
 					<caption>Field Summary</caption>
 					<thead>
 						<tr>
@@ -275,9 +275,9 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								alpha.<b><a href="../symbols/alpha.html#.GREEK">GREEK</a></b>
+								factorial.<b><a href="../symbols/factorial.html#.PREPARED">PREPARED</a></b>
 								</div>
-								<div class="description">List of some distinct looking greek letters for use in polynomials</div>
+								<div class="description">Array of factorials up to n = 100; the first 21 are integers, and the rest are strings</div>
 							</td>
 						</tr>
 					
@@ -292,7 +292,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class alpha.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class factorial.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -305,9 +305,9 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">alpha.<b><a href="../symbols/alpha.html#.iterator">iterator</a></b>()
+								<div class="fixedFont">factorial.<b><a href="../symbols/factorial.html#.of">of</a></b>(n)
 								</div>
-								<div class="description">Returns the next consecutive greek letter from the list</div>
+								<div class="description">Return the factorial of n as a Javascript number</div>
 							</td>
 						</tr>
 					
@@ -328,7 +328,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>alpha</b>()
+						<b>factorial</b>()
 				</div>
 				
 				<div class="description">
@@ -356,15 +356,15 @@ ul.inheritsList
 					Field Detail
 				</div>
 				
-					<a name=".GREEK"> </a>
+					<a name=".PREPARED"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{Array}</span>
-					<span class="light">alpha.</span><b>GREEK</b>
+					<span class="light">factorial.</span><b>PREPARED</b>
 					
 					</div>
 					<div class="description">
-						List of some distinct looking greek letters for use in polynomials
+						Array of factorials up to n = 100; the first 21 are integers, and the rest are strings
 						
 						
 					</div>
@@ -386,21 +386,32 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".iterator"> </a>
+					<a name=".of"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{String}</span>
-					<span class="light">alpha.</span><b>iterator</b>()
+					<span class="light">{Integer}</span>
+					<span class="light">factorial.</span><b>of</b>(n)
 					
 					</div>
 					<div class="description">
-						Returns the next consecutive greek letter from the list
+						Return the factorial of n as a Javascript number
 						
 						
 					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>n</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
 						
 						
 						
@@ -409,7 +420,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{String}</span> greek letter</dd>
+								<dd><span class="light fixedFont">{Integer}</span> factorial of n</dd>
 							
 							</dl>
 						
@@ -430,7 +441,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Apr 21 2013 13:18:39 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sun Apr 21 2013 13:18:40 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
