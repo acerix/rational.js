@@ -454,7 +454,7 @@ bigrat.power = function(out, a, p) {
 		out[1] = a[1].pow(p);
 	}
 	else if (p<0) {
-		p = p.abs();
+		p = Math.abs(p);
 		out[0] = a[1].pow(p);
 		out[1] = a[0].pow(p);
 	}
@@ -623,7 +623,7 @@ bigrat.ceil = function (a) {
  * @returns {bigrat} out
  */
 bigrat.fromInteger_copy = function (out, a) {
-	out[0] = BigInteger(parseInt(a));
+	out[0] = BigInteger(a);
 	out[1] = BigInteger.ONE;
 	return out;
 };
@@ -647,7 +647,7 @@ bigrat.fromInteger = function (a) {
  */
 bigrat.fromIntegerInverse_copy = function (out, a) {
 	out[0] = BigInteger.ONE;
-	out[1] = BigInteger(parseInt(a));
+	out[1] = BigInteger(a);
 	if (out[1].isNegative()) {
 		out[0] = out[0].negate();
 		out[1] = out[1].negate();
@@ -683,7 +683,6 @@ bigrat.fromDecimal = function (a) {
  * @returns {bigrat} out
  */
 bigrat.fromDecimal_copy = function (out, a) {
-	
 	a = parseFloat(a);
 	if (a===0) return bigrat.copy(out, bigrat.ZERO);
 	if (a===1) return bigrat.copy(out, bigrat.ONE);
@@ -1012,6 +1011,24 @@ bigrat.fromContinuedFraction = function(out, cf) {
 	}
 	return out;
 };
+
+/**
+ * Return the factorial of n as a big rational number
+ *
+ * @param {bigrat} out the receiving number
+ * @param {Integer} n
+ * @returns {bigrat} factorial of n
+ */
+bigrat.fromFactorial = function(out, n) {
+	if (typeof factorial.PREPARED[n] !== 'undefined') return bigrat.fromInteger_copy(out, factorial.PREPARED[n]);
+	// calculate the factorial if it was not predefiend
+	var p = factorial.PREPARED.length - 1;
+	bigrat.fromInteger_copy(out, factorial.PREPARED[p]);
+	while (p < n) {
+		bigrat.scalar_multiply(out, out, ++p);
+	}
+	return out;
+}
 
 /**
  * Returns a string with the fraction in various formats

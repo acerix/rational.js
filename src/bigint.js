@@ -22,7 +22,7 @@
 /**
  * @class Arbitrary Sized Integer
  * @name bigint
- * @requires BigInteger (for now...)
+ * @requires BigInteger
  */
 var bigint = {};
 

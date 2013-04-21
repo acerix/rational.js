@@ -13,6 +13,8 @@
 <script src="../src/alpha.js"></script>
 <script src="../src/polyrat.js"></script>
 <script src="../src/physics.js"></script>
+<script src="../src/factorial.js"></script>
+<script src="../src/polyrat.examples.js"></script>
 <script>
 
 var input, output;
@@ -106,9 +108,11 @@ function dumpStack() {
 <body>
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
-clr(); print('');
+clr(); print();
 
 var x2 = polyrat.fromValues([0, 0, 1]);
+
+print(polyrat.toJSON(x2));
 
 print(polyrat.str(x2));
 
@@ -122,13 +126,19 @@ var x2_y2 = polyrat.fromValues([
 	[1, 0, 0]
 ]);
 
+print(polyrat.toJSON(x2_y2));
+
 print(polyrat.str(x2_y2));
 
-print(polyrat.getJSFormula(x2_y2));
-
-print(polyrat.getGLSLFormula(x2_y2));
-
 print('@[x=6, y=9] => '+bigrat.str(polyrat.evaluate(bigrat.create(), x2_y2, [6, 9])));
+
+print();
+
+print(polyrat.toJSON(polyrat.PARABOLA_INVERSE));
+
+print(polyrat.str(polyrat.PARABOLA_INVERSE));
+
+print('@[x=7, y=11] => '+bigrat.str(polyrat.evaluate(bigrat.create(), polyrat.PARABOLA_INVERSE, [7, 11])));
 
 print();
 
@@ -170,6 +180,8 @@ var x4_y4_z4 = polyrat.fromValues([
 ]
 ]);
 
+print(polyrat.toJSON(x4_y4_z4));
+
 print(polyrat.str(x4_y4_z4));
 
 print('@[x=5, y=9, z=3] =>  '+bigrat.str(polyrat.evaluate(bigrat.create(), x4_y4_z4, [5,9,3])));
@@ -185,6 +197,8 @@ var PN_Fermat = [
 ];
 
 var fermat = polyrat.fromValues(PN_Fermat);
+
+print(polyrat.toJSON(fermat));
 
 print(polyrat.str(fermat));
 
@@ -234,11 +248,11 @@ var crazy_polynomial = polyrat.fromValues([
 crazy_polynomial[1][2] = 24;
 crazy_polynomial[1][1] = -9;
 
+print(polyrat.toJSON(crazy_polynomial));
+
 print(polyrat.str(crazy_polynomial));
 
 print('@[x=5, y=9, z=3] => '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
-
-
 
 /*
 

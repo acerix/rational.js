@@ -109,7 +109,8 @@ polyrat.mergeDimension = function(out, a, m) {
  * @returns {bigrat} resulting big rational number
  */
 polyrat.evaluate = function(out, a, m) {
-	var result = 0;
+	//var result = 0;
+	bigrat.copy(out, bigrat.ZERO);
 	var d = polyrat.countDimensions(a);
 	if (d===0) {
 		return '0';
@@ -117,14 +118,24 @@ polyrat.evaluate = function(out, a, m) {
 	else if (d===1) {
 		for (var i in a[0]) {
 			if (!a[0][i]) continue;
-			result += a[0][i] * Math.pow(m[0], a[1][0] + +i);
+			//result += a[0][i] * Math.pow(m[0], a[1][0] + +i);
+			var p = bigrat.fromInteger(a[0][i]);
+			var pi = bigrat.pow(bigrat.create(), bigrat.fromInteger(m[0]), a[1][0] + +i);
+			bigrat.mul(p, p, pi);
+			bigrat.add(out, out, p);
 		}
 	}
 	else if (d===2) {
 		for (var j in a[0]) {
 			for (var i in a[0][j]) {
 				if (!a[0][j][i]) continue;
-				result += a[0][j][i] * Math.pow(m[0], a[1][1] + +i) * Math.pow(m[1], a[1][0] + +j);
+				//result += a[0][j][i] * Math.pow(m[0], a[1][1] + +i) * Math.pow(m[1], a[1][0] + +j);
+				var p = bigrat.fromInteger(a[0][j][i]);
+				var pi = bigrat.pow(bigrat.create(), bigrat.fromInteger(m[0]), a[1][1] + +i);
+				var pj = bigrat.pow(bigrat.create(), bigrat.fromInteger(m[1]), a[1][0] + +j);
+				bigrat.mul(p, p, pi);
+				bigrat.mul(p, p, pj);
+				bigrat.add(out, out, p);
 			}
 		}
 	}
@@ -133,7 +144,15 @@ polyrat.evaluate = function(out, a, m) {
 			for (var j in a[0][k]) {
 				for (var i in a[0][k][j]) {
 					if (!a[0][k][j][i]) continue;
-					result += a[0][k][j][i] * Math.pow(m[0], a[1][2] + +i) * Math.pow(m[1], a[1][1] + +j) * Math.pow(m[2], a[1][0] + +k);
+					//result += a[0][k][j][i] * Math.pow(m[0], a[1][2] + +i) * Math.pow(m[1], a[1][1] + +j) * Math.pow(m[2], a[1][0] + +k);
+					var p = bigrat.fromInteger(a[0][k][j][i]);
+					var pi = bigrat.pow(bigrat.create(), bigrat.fromInteger(m[0]), a[1][2] + +i);
+					var pj = bigrat.pow(bigrat.create(), bigrat.fromInteger(m[1]), a[1][1] + +j);
+					var pk = bigrat.pow(bigrat.create(), bigrat.fromInteger(m[1]), a[1][0] + +k);
+					bigrat.mul(p, p, pi);
+					bigrat.mul(p, p, pj);
+					bigrat.mul(p, p, pk);
+					bigrat.add(out, out, p);
 				}
 			}
 		}
@@ -142,7 +161,8 @@ polyrat.evaluate = function(out, a, m) {
 		// recursive function?
 		alert('unsupported dimension '+d);
 	}
-	return out = bigrat.fromDecimal(result);
+	//return out = bigrat.fromInteger(parseInt(result));
+	return out;
 };
 
 /**
@@ -329,6 +349,8 @@ polyrat.getJSFormula = function(a) {
 	return f;
 };
 
+// this is used in getGLSLFormula as a quick hack, shouldn't actually be here...
+String.prototype.repeat = function(n) {return new Array(n+1).join(this);}
 
 /**
  * Evaluate a polynomial for a certain variable(s), modified to work in GLSL (to run on GPU)
@@ -336,7 +358,6 @@ polyrat.getJSFormula = function(a) {
  * @param {polyrat} a polynumber
  * @returns {String} GLSL formula to evaluate the polynomial
  */
-
 polyrat.getGLSLFormula = function(a) {
 	var f = '';
 	var d = polyrat.countDimensions(a);

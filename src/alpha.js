@@ -25,7 +25,7 @@
 var alpha = {};
 
 /**
- * List of some distint looking greek letters for use in polynomials
+ * List of some distinct looking greek letters for use in polynomials
  *
  * @property GREEK
  * @type Array
