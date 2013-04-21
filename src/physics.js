@@ -26,7 +26,7 @@
 var physics = {};
 
 /**
- * Fine-structure constant (α)
+ * Fine-structure constant (α), according to CODATA 2011
  *
  * @property FINESTRUCTURE
  * @type bigrat
@@ -34,6 +34,16 @@ var physics = {};
  * @final
  */
 physics.FINESTRUCTURE = bigrat.fromValues(30223, 4141639);
+
+/**
+ * Fine-structure constant (α), test value generated mathematically
+ *
+ * @property FINESTRUCTURE_EXPERIMENTAL
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.FINESTRUCTURE_EXPERIMENTAL = bigrat.fromValues(13355891, 1830237867);
 
 /**
  * Alias for {@link physics.FINESTRUCTURE}

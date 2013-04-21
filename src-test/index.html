@@ -124,6 +124,10 @@ var x2_y2 = polyrat.fromValues([
 
 print(polyrat.str(x2_y2));
 
+print(polyrat.getJSFormula(x2_y2));
+
+print(polyrat.getGLSLFormula(x2_y2));
+
 print('@[x=6, y=9] => '+bigrat.str(polyrat.evaluate(bigrat.create(), x2_y2, [6, 9])));
 
 print();

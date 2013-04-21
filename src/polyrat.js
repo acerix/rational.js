@@ -32,8 +32,8 @@ var polyrat = {};
  */
 polyrat.create = function() {
 	return [
-		[], // multi-dimensional array of coefficients (will be rational numbers, for now integers...)
-		[] // array of coefficient offsets (integers)
+		[], // multi-dimensional array of coefficients
+		[] // array of integers to offset the exponents of each dimension
 	];
 };
 
@@ -103,15 +103,18 @@ polyrat.mergeDimension = function(out, a, m) {
 /**
  * Evaluate a polynomial for a certain variable(s)
  *
- * @param {rat} out the receiving number
+ * @param {bigrat} out the receiving number
  * @param {polyrat} a the polynumber to evaluate 
- * @param {Array} array of values (of type "rat") to plug in to the polynomial
- * @returns {rat} resulting rational number
+ * @param {Array} array of values (of type "bigrat") to plug in to the polynomial
+ * @returns {bigrat} resulting big rational number
  */
 polyrat.evaluate = function(out, a, m) {
 	var result = 0;
 	var d = polyrat.countDimensions(a);
-	if (d===1) {
+	if (d===0) {
+		return '0';
+	}
+	else if (d===1) {
 		for (var i in a[0]) {
 			if (!a[0][i]) continue;
 			result += a[0][i] * Math.pow(m[0], a[1][0] + +i);
@@ -146,7 +149,7 @@ polyrat.evaluate = function(out, a, m) {
  * Calculates the derivates of a polynumber
  *
  * @param {polyrat} a the polynumber to take the derivatives of
- * @returns {Array} array of polyrats, with the same dimensions as the input polyrat ( 0th entry is the input polynumber itself )
+ * @returns {Array} array of polyrats, corresponding to the sub-derivatives of the input
  */
 polyrat.derivatives = function(a) {
 	// MF78 @ 10:00
@@ -260,7 +263,10 @@ polyrat.str = function(a) {
 polyrat.getJSFormula = function(a) {
 	var f = '';
 	var d = polyrat.countDimensions(a);
-	if (d===1) {
+	if (d===0) {
+		return '0';
+	}
+	else if (d===1) {
 		for (var i in a[0]) {
 			if (!a[0][i]) continue;
 			if (f) f += '+';
@@ -324,6 +330,58 @@ polyrat.getJSFormula = function(a) {
 };
 
 
+/**
+ * Evaluate a polynomial for a certain variable(s), modified to work in GLSL (to run on GPU)
+ *
+ * @param {polyrat} a polynumber
+ * @returns {String} GLSL formula to evaluate the polynomial
+ */
+
+polyrat.getGLSLFormula = function(a) {
+	var f = '';
+	var d = polyrat.countDimensions(a);
+	if (d===0) {
+		return '0.0';
+	}
+	else if (d===1) {
+		for (var i in a[0]) {
+			if (!a[0][i]) continue;
+			if (f) f += '+';
+			f += a[0][i]+'.0';
+			var i_power = a[1][0] + +i;
+			if (i_power===0) continue;
+			else if (i_power===1) f += '*m_0';
+			//else f += '*pow(m_0,' + i_power + '.0)';
+			else f += ('*m_0').repeat(i_power);
+		}
+	}
+	else if (d===2) {
+		for (var j in a[0]) {
+			for (var i in a[0][j]) {
+				if (!a[0][j][i]) continue;
+				if (f) f += '+';
+				f += a[0][j][i]+'.0';
+				var i_power = a[1][1] + +i; // offset + current position
+				var j_power = a[1][0] + +j;
+				if (i_power!==0) {
+					if (i_power===1) f += '*m_0';
+					//else f += '*pow(m_0,' + i_power + '.0)';
+					else f += ('*m_0').repeat(i_power);
+				}
+				if (j_power!==0) {
+					if (j_power===1) f += '*m_1';
+					//else f += '*pow(m_1,' + j_power + '.0)';
+					else f += ('*m_1').repeat(j_power);
+				}
+			}
+		}
+	}
+	else {
+		alert('unsupported dimension '+d);
+	}
+	if (f==='') f = '0.0';
+	return f;
+};
 
 /**
  * Returns a string representation (JSON)
