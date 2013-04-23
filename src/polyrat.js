@@ -168,7 +168,7 @@ polyrat.evaluate = function(out, a, m) {
 /**
  * Calculates the derivates of a polynumber
  *
- * @param {polyrat} a the polynumber to take the derivatives of
+ * @param {polyrat} a polynumber to take the derivatives of
  * @returns {Array} array of polyrats, corresponding to the sub-derivatives of the input
  */
 polyrat.derivatives = function(a) {
@@ -229,7 +229,7 @@ polyrat.str = function(a) {
 			var c = Math.abs(a[0][i]);
 			var i_power = a[1][0] + +i;
 			if (c!==1||(i_power===0)) s += c;
-			if (i_power!==0) s += _i + (Math.abs(i_power) === 1 ? '' : '<sup>'+i_power+'</sup>');
+			if (i_power!==0) s += _i + (i_power === 1 ? '' : '<sup>'+i_power+'</sup>');
 		}
 	}
 	else if (d===2) {
@@ -242,8 +242,8 @@ polyrat.str = function(a) {
 				var i_power = a[1][1] + +i;
 				var j_power = a[1][0] + +j;
 				if (c!==1||(j_power===0&&i_power===0)) s += c;
-				if (i_power!==0) s += _i + (Math.abs(i_power) === 1 ? '' : '<sup>'+i_power+'</sup>');
-				if (j_power!==0) s += _j + (Math.abs(j_power) === 1 ? '' : '<sup>'+j_power+'</sup>');
+				if (i_power!==0) s += _i + (i_power === 1 ? '' : '<sup>'+i_power+'</sup>');
+				if (j_power!==0) s += _j + (j_power === 1 ? '' : '<sup>'+j_power+'</sup>');
 			}
 		}
 	}
@@ -259,9 +259,9 @@ polyrat.str = function(a) {
 					var j_power = a[1][1] + +j;
 					var k_power = a[1][0] + +k;
 					if (c!==1||(k_power===0&&j_power===0&&i_power===0)) s += c;
-					if (i_power!==0) s += _i + (Math.abs(i_power) === 1 ? '' : '<sup>'+i_power+'</sup>');
-					if (j_power!==0) s += _j + (Math.abs(j_power) === 1 ? '' : '<sup>'+j_power+'</sup>');
-					if (k_power!==0) s += _k + (Math.abs(k_power) === 1 ? '' : '<sup>'+k_power+'</sup>');
+					if (i_power!==0) s += _i + (i_power === 1 ? '' : '<sup>'+i_power+'</sup>');
+					if (j_power!==0) s += _j + (j_power === 1 ? '' : '<sup>'+j_power+'</sup>');
+					if (k_power!==0) s += _k + (k_power === 1 ? '' : '<sup>'+k_power+'</sup>');
 				}
 			}
 		}

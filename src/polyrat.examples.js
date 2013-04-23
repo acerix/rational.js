@@ -32,7 +32,7 @@ polyrat.LINEAR = polyrat.fromValues([
 ]);
 
 /**
- * z = -1 + x^2 + y^2
+ * z = -1 + x² + y²
  *
  * @property CIRCLE
  * @type polyrat
@@ -41,12 +41,12 @@ polyrat.LINEAR = polyrat.fromValues([
  */
 polyrat.CIRCLE = polyrat.fromValues([
   [-1, 0, 1],
-  [0],
+  [],
   [1]
 ]);
 
 /**
- * z = 1 + x^2 + y^2
+ * z = 1 + x² + y²
  *
  * @property NIRCLE
  * @type polyrat
@@ -55,12 +55,12 @@ polyrat.CIRCLE = polyrat.fromValues([
  */
 polyrat.NIRCLE = polyrat.fromValues([
   [1, 0, 1],
-  [0],
+  [],
   [1]
 ]);
 
 /**
- * z = x^2 - y
+ * z = x² - y
  *
  * @property PARABOLA
  * @type polyrat
@@ -73,7 +73,7 @@ polyrat.PARABOLA = polyrat.fromValues([
 ]);
 
 /**
- * z = 1/x^2 - y
+ * z = 1/x² - y
  *
  * @property PARABOLA_INVERSE
  * @type polyrat
@@ -81,11 +81,11 @@ polyrat.PARABOLA = polyrat.fromValues([
  * @final
  */
 polyrat.PARABOLA_INVERSE = [
-	[
-		[1,0,0],
-		[0,0,-1]
-	],
-	[0,-2]
+[
+	[1],
+	[0, 0, -1]
+],
+[0,-2]
 ];
 
 /**
@@ -102,7 +102,7 @@ polyrat.HYPERBOLA = polyrat.fromValues([
 ]);
 
 /**
- * z = -1 + x^3 + y^3
+ * z = -1 + x³ + y³
  *
  * @property FERMAT
  * @type polyrat
@@ -111,13 +111,13 @@ polyrat.HYPERBOLA = polyrat.fromValues([
  */
 polyrat.FERMAT = polyrat.fromValues([
   [-1, 0, 0, 1],
-  [0],
-  [0],
+  [],
+  [],
   [1]
 ]);
 
 /**
- * z = x3 - 3xy + y3
+ * z = x³ - 3xy + y³
  *
  * @property FOLIUM
  * @type polyrat
@@ -127,28 +127,50 @@ polyrat.FERMAT = polyrat.fromValues([
 polyrat.FOLIUM = polyrat.fromValues([
   [0, 0, 0, 1],
   [0, -3],
-  [0],
+  [],
   [1]
 ]);
 
 /**
- * z = -2x^2 + 2y^2 + 2x^2y^2 + x^4 + y^4
+ * z = -2x² + 2y² + 2x²y² + x^4 + y^4
  *
- * @property LEMNISCATE
+ * @property LEMNISCATE_BERNOULLI
  * @type polyrat
  * @static
  * @final
  */
-polyrat.LEMNISCATE = polyrat.fromValues([
+polyrat.LEMNISCATE_BERNOULLI = polyrat.fromValues([
   [0, 0, -2, 0, 1],
-  [0],
+  [],
   [2, 0, 2],
-  [0],
-  [1],
+  [],
+  [1]
 ]);
 
 /**
- * z = -xy - x^2 - y^2
+ * Alias for {@link polyrat.LEMNISCATE_BERNOULLI}
+ * @type polyrat
+ * @static
+ * @final
+ */
+polyrat.LEMNISCATE = polyrat.LEMNISCATE_BERNOULLI;
+
+/**
+ * z = -2x² + 2y² + 2x²y² + x^4 + y^4
+ *
+ * @property LEMNISCATE_GERONO
+ * @type polyrat
+ * @static
+ * @final
+ */
+polyrat.LEMNISCATE_GERONO = polyrat.fromValues([
+  [0, 0, -1, 0, 1],
+  [],
+  [1]
+]);
+
+/**
+ * z = -xy - x² - y²
  *
  * @property PHI
  * @type polyrat
@@ -186,4 +208,20 @@ polyrat.JUMPINGJACK = polyrat.fromValues([
 polyrat.QUARTIC = polyrat.fromValues([
   [8, -5, 0, 4, -1],
   [-1]
+]);
+
+/**
+ * A quartic polynomial
+ *
+ * @property HIPPOPEDE
+ * @type polyrat
+ * @static
+ * @final
+ */
+polyrat.HIPPOPEDE = polyrat.fromValues([
+  [0, -4, 0, 0, 1],
+  [],
+  [-1, 0, 2],
+  [],
+  [1]
 ]);
