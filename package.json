@@ -1,8 +1,8 @@
 {
-	"name" : "rational",
-	"version" : "0.1",
+	"name" : "bigrat",
+	"version" : "0.0.1",
 	"homepage" : "http://acerix.github.io/rational.js/",
-	"description" : "Tools and libraries based around rational numbers.",
+	"description" : "rational.js: tools and libraries based around rational numbers.",
 	"keywords" : ["rational", "ratio", "fraction", "numbers", "math"],
 	"author" : {
 		"name" : "Dylan Ferris",
