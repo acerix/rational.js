@@ -1,0 +1,25 @@
+{
+	"name" : "rational",
+	"version" : "0.1",
+	"homepage" : "http://acerix.github.io/rational.js/",
+	"description" : "Tools and libraries based around rational numbers.",
+	"keywords" : ["rational", "ratio", "fraction", "numbers", "math"],
+	"author" : {
+		"name" : "Dylan Ferris",
+		"email": "dylan@psilly.com",
+		"url" : "http://psilly.com/"
+	},
+	"bugs" : {
+		"url" : "https://github.com/acerix/rational.js/issues"
+	},
+	"main" : "./dist/rational.js",
+	"repository" : {
+		"type" : "git",
+		"url" : "https://github.com/acerix/rational.js.git"
+	},
+	"engines" : {
+		"node" : "*"
+	},
+	"license" : "GPLv3",
+	"url": "https://raw.github.com/acerix/rational.js/master/LICENSE.txt"
+}
