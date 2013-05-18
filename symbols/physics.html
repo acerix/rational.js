@@ -203,6 +203,8 @@ ul.inheritsList
 	
 	<li><a href="../symbols/physics.html">physics</a></li>
 	
+	<li><a href="../symbols/planet.html">planet</a></li>
+	
 	<li><a href="../symbols/polyrat.html">polyrat</a></li>
 	
 	<li><a href="../symbols/rat.html">rat</a></li>
@@ -275,9 +277,19 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								physics.<b><a href="../symbols/physics.html#.A">A</a></b>
+								physics.<b><a href="../symbols/physics.html#.a">a</a></b>
 								</div>
 								<div class="description">Alias for <a href="../symbols/physics.html#.FINESTRUCTURE">physics.FINESTRUCTURE</a></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								physics.<b><a href="../symbols/physics.html#.c">c</a></b>
+								</div>
+								<div class="description">Alias for <a href="../symbols/physics.html#.SPEEDOFLIGHT">physics.SPEEDOFLIGHT</a></div>
 							</td>
 						</tr>
 					
@@ -295,9 +307,9 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								physics.<b><a href="../symbols/physics.html#.FINESTRUCTURE_EXPERIMENTAL">FINESTRUCTURE_EXPERIMENTAL</a></b>
+								physics.<b><a href="../symbols/physics.html#.FINESTRUCTURE_ALT">FINESTRUCTURE_ALT</a></b>
 								</div>
-								<div class="description">Fine-structure constant (α), test value generated mathematically</div>
+								<div class="description">Approximately the fine-structure constant, generated mathematically from a limit</div>
 							</td>
 						</tr>
 					
@@ -305,7 +317,27 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								physics.<b><a href="../symbols/physics.html#.H">H</a></b>
+								physics.<b><a href="../symbols/physics.html#.G">G</a></b>
+								</div>
+								<div class="description">Alias for <a href="../symbols/physics.html#.GRAVITATIONAL">physics.GRAVITATIONAL</a></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								physics.<b><a href="../symbols/physics.html#.GRAVITATIONAL">GRAVITATIONAL</a></b>
+								</div>
+								<div class="description">Gravitational constant (G) in m³ / kg s²</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								physics.<b><a href="../symbols/physics.html#.h">h</a></b>
 								</div>
 								<div class="description">Alias for physics.PLANKS</div>
 							</td>
@@ -315,7 +347,7 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
-								physics.<b><a href="../symbols/physics.html#.HBAR">HBAR</a></b>
+								physics.<b><a href="../symbols/physics.html#.hBAR">hBAR</a></b>
 								</div>
 								<div class="description">Reduced Planck's constant (h / 2π)</div>
 							</td>
@@ -328,6 +360,16 @@ ul.inheritsList
 								physics.<b><a href="../symbols/physics.html#.PLANK">PLANK</a></b>
 								</div>
 								<div class="description">Planck's constant (h) in Joule seconds</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
+								physics.<b><a href="../symbols/physics.html#.SPEEDOFLIGHT">SPEEDOFLIGHT</a></b>
+								</div>
+								<div class="description">The speed of light in vacuum (c) in m / s</div>
 							</td>
 						</tr>
 					
@@ -386,15 +428,37 @@ ul.inheritsList
 					Field Detail
 				</div>
 				
-					<a name=".A"> </a>
+					<a name=".a"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
-					<span class="light">physics.</span><b>A</b>
+					<span class="light">physics.</span><b>a</b>
 					
 					</div>
 					<div class="description">
 						Alias for <a href="../symbols/physics.html#.FINESTRUCTURE">physics.FINESTRUCTURE</a>
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".c"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
+					<span class="light">physics.</span><b>c</b>
+					
+					</div>
+					<div class="description">
+						Alias for <a href="../symbols/physics.html#.SPEEDOFLIGHT">physics.SPEEDOFLIGHT</a>
 						
 						
 					</div>
@@ -430,15 +494,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".FINESTRUCTURE_EXPERIMENTAL"> </a>
+					<a name=".FINESTRUCTURE_ALT"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
-					<span class="light">physics.</span><b>FINESTRUCTURE_EXPERIMENTAL</b>
+					<span class="light">physics.</span><b>FINESTRUCTURE_ALT</b>
 					
 					</div>
 					<div class="description">
-						Fine-structure constant (α), test value generated mathematically
+						Approximately the fine-structure constant, generated mathematically from a limit
 						
 						
 					</div>
@@ -452,11 +516,55 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".H"> </a>
+					<a name=".G"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
-					<span class="light">physics.</span><b>H</b>
+					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
+					<span class="light">physics.</span><b>G</b>
+					
+					</div>
+					<div class="description">
+						Alias for <a href="../symbols/physics.html#.GRAVITATIONAL">physics.GRAVITATIONAL</a>
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".GRAVITATIONAL"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
+					<span class="light">physics.</span><b>GRAVITATIONAL</b>
+					
+					</div>
+					<div class="description">
+						Gravitational constant (G) in m³ / kg s²
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name=".h"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
+					<span class="light">physics.</span><b>h</b>
 					
 					</div>
 					<div class="description">
@@ -474,11 +582,11 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".HBAR"> </a>
+					<a name=".hBAR"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
 					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
-					<span class="light">physics.</span><b>HBAR</b>
+					<span class="light">physics.</span><b>hBAR</b>
 					
 					</div>
 					<div class="description">
@@ -516,6 +624,28 @@ ul.inheritsList
 						
 						
 
+					<hr />
+				
+					<a name=".SPEEDOFLIGHT"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/bigrat.html">bigrat</a>}</span>
+					<span class="light">physics.</span><b>SPEEDOFLIGHT</b>
+					
+					</div>
+					<div class="description">
+						The speed of light in vacuum (c) in m / s
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
 					
 				
 			
@@ -533,7 +663,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Apr 23 2013 18:39:15 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Sat May 18 2013 13:13:46 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>

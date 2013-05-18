@@ -43,22 +43,22 @@
 <span class='line'> 36</span> </span><span class="NAME">physics.FINESTRUCTURE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">bigrat.fromValues</span><span class="PUNC">(</span><span class="NUMB">30223</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">4141639</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 37</span> 
 <span class='line'> 38</span> </span><span class="COMM">/**
-<span class='line'> 39</span>  * Fine-structure constant (α), test value generated mathematically
-<span class='line'> 40</span>  *
-<span class='line'> 41</span>  * @property FINESTRUCTURE_EXPERIMENTAL
-<span class='line'> 42</span>  * @type bigrat
-<span class='line'> 43</span>  * @static
-<span class='line'> 44</span>  * @final
-<span class='line'> 45</span>  */</span><span class="WHIT">
-<span class='line'> 46</span> </span><span class="NAME">physics.FINESTRUCTURE_EXPERIMENTAL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">bigrat.fromValues</span><span class="PUNC">(</span><span class="NUMB">13355891</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1830237867</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 47</span> 
-<span class='line'> 48</span> </span><span class="COMM">/**
-<span class='line'> 49</span>  * Alias for {@link physics.FINESTRUCTURE}
+<span class='line'> 39</span>  * Alias for {@link physics.FINESTRUCTURE}
+<span class='line'> 40</span>  * @type bigrat
+<span class='line'> 41</span>  * @static
+<span class='line'> 42</span>  * @final
+<span class='line'> 43</span>  */</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="NAME">physics.a</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.FINESTRUCTURE</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 45</span> 
+<span class='line'> 46</span> </span><span class="COMM">/**
+<span class='line'> 47</span>  * Approximately the fine-structure constant, generated mathematically from a limit
+<span class='line'> 48</span>  *
+<span class='line'> 49</span>  * @property FINESTRUCTURE_ALT
 <span class='line'> 50</span>  * @type bigrat
 <span class='line'> 51</span>  * @static
 <span class='line'> 52</span>  * @final
 <span class='line'> 53</span>  */</span><span class="WHIT">
-<span class='line'> 54</span> </span><span class="NAME">physics.A</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.FINESTRUCTURE</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="NAME">physics.FINESTRUCTURE_ALT</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">bigrat.fromValues</span><span class="PUNC">(</span><span class="NUMB">13355891</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1830237867</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 55</span> 
 <span class='line'> 56</span> </span><span class="COMM">/**
 <span class='line'> 57</span>  * Planck's constant (h) in Joule seconds
@@ -72,11 +72,11 @@
 <span class='line'> 65</span> 
 <span class='line'> 66</span> </span><span class="COMM">/**
 <span class='line'> 67</span>  * Alias for {@link physics.PLANKS}
-<span class='line'> 68</span>  * @type rat
+<span class='line'> 68</span>  * @type bigrat
 <span class='line'> 69</span>  * @static
 <span class='line'> 70</span>  * @final
 <span class='line'> 71</span>  */</span><span class="WHIT">
-<span class='line'> 72</span> </span><span class="NAME">physics.H</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.PLANK</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="NAME">physics.h</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.PLANK</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 73</span> 
 <span class='line'> 74</span> </span><span class="COMM">/**
 <span class='line'> 75</span>  * Reduced Planck's constant (h / 2π)
@@ -86,5 +86,45 @@
 <span class='line'> 79</span>  * @static
 <span class='line'> 80</span>  * @final
 <span class='line'> 81</span>  */</span><span class="WHIT">
-<span class='line'> 82</span> </span><span class="NAME">physics.HBAR</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">bigrat.fromValues</span><span class="PUNC">(</span><span class="NUMB">1054571726</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="NAME">e43</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'> 83</span> </span></pre></body></html>
+<span class='line'> 82</span> </span><span class="NAME">physics.hBAR</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">bigrat.fromValues</span><span class="PUNC">(</span><span class="NUMB">1054571726</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="NAME">e43</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 83</span> 
+<span class='line'> 84</span> </span><span class="COMM">/**
+<span class='line'> 85</span>  * Gravitational constant (G) in m³ / kg s²
+<span class='line'> 86</span>  *
+<span class='line'> 87</span>  * @property GRAVITATIONAL
+<span class='line'> 88</span>  * @type bigrat
+<span class='line'> 89</span>  * @static
+<span class='line'> 90</span>  * @final
+<span class='line'> 91</span>  */</span><span class="WHIT">
+<span class='line'> 92</span> </span><span class="NAME">physics.GRAVITATIONAL</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">bigrat.fromValues</span><span class="PUNC">(</span><span class="NUMB">667384</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="NAME">e16</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 93</span> 
+<span class='line'> 94</span> </span><span class="COMM">/**
+<span class='line'> 95</span>  * Alias for {@link physics.GRAVITATIONAL}
+<span class='line'> 96</span>  * @type bigrat
+<span class='line'> 97</span>  * @static
+<span class='line'> 98</span>  * @final
+<span class='line'> 99</span>  */</span><span class="WHIT">
+<span class='line'>100</span> </span><span class="NAME">physics.G</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.GRAVITATIONAL</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>101</span> 
+<span class='line'>102</span> </span><span class="COMM">/**
+<span class='line'>103</span>  * The speed of light in vacuum (c) in m / s
+<span class='line'>104</span>  *
+<span class='line'>105</span>  * @property SPEEDOFLIGHT
+<span class='line'>106</span>  * @type bigrat
+<span class='line'>107</span>  * @static
+<span class='line'>108</span>  * @final
+<span class='line'>109</span>  */</span><span class="WHIT">
+<span class='line'>110</span> </span><span class="NAME">physics.SPEEDOFLIGHT</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">bigrat.fromInteger</span><span class="PUNC">(</span><span class="NUMB">299792458</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>111</span> 
+<span class='line'>112</span> </span><span class="COMM">/**
+<span class='line'>113</span>  * Alias for {@link physics.SPEEDOFLIGHT}
+<span class='line'>114</span>  * @type bigrat
+<span class='line'>115</span>  * @static
+<span class='line'>116</span>  * @final
+<span class='line'>117</span>  */</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="NAME">physics.c</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics.SPEEDOFLIGHT</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>119</span> 
+<span class='line'>120</span> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">exports</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">	</span><span class="NAME">exports.physics</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">physics</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>123</span> </span></pre></body></html>

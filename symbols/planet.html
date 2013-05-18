@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - integer</title>
+		<title>JsDoc Reference - planet</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -220,7 +220,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class integer
+				Class planet
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -228,16 +228,16 @@ ul.inheritsList
 				
 				
 			
-				Integer
+				Planet physics
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_integer.js.html">integer.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_physics.planets.js.html">physics.planets.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class integer.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class planet.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -250,7 +250,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/integer.html#constructor">integer</a></b>()
+								<b><a href="../symbols/planet.html#constructor">planet</a></b>()
 							</div>
 							<div class="description"></div>
 						</td>
@@ -266,7 +266,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class integer.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class planet.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -277,47 +277,20 @@ ul.inheritsList
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">integer.<b><a href="../symbols/integer.html#.fromMillitime">fromMillitime</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/planet.html#getGravity">getGravity</a></b>(that)
 								</div>
-								<div class="description">Returns a new unsigned integer with the number of milliseconds since the Unix epoch</div>
+								<div class="description">Returns the force of gravity pulling this planet towards that one</div>
 							</td>
 						</tr>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">integer.<b><a href="../symbols/integer.html#.fromRandom">fromRandom</a></b>(maximum)
+								<div class="fixedFont"><b><a href="../symbols/planet.html#toString">toString</a></b>()
 								</div>
-								<div class="description">Returns a new random unsigned integer with a maximum size specified in bytes</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">integer.<b><a href="../symbols/integer.html#.fromUnixtime">fromUnixtime</a></b>()
-								</div>
-								<div class="description">Returns a new unsigned integer with the number of milliseconds since the Unix epoch</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">integer.<b><a href="../symbols/integer.html#.gcd">gcd</a></b>()
-								</div>
-								<div class="description">Alias for <a href="../symbols/integer.html#.greatest_common_divisor">integer.greatest_common_divisor</a></div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">integer.<b><a href="../symbols/integer.html#.greatest_common_divisor">greatest_common_divisor</a></b>(a, b)
-								</div>
-								<div class="description">Find the greatest common divisor of two integers</div>
+								<div class="description">Returns a string representation of the planet</div>
 							</td>
 						</tr>
 					
@@ -338,7 +311,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>integer</b>()
+						<b>planet</b>()
 				</div>
 				
 				<div class="description">
@@ -355,6 +328,13 @@ ul.inheritsList
 					
 					
 					
+						<dl class="detailList">
+						<dt class="heading">Requires:</dt>
+						
+							<dd>vec3</dd>
+						
+						</dl>
+					
 					
 
 			</div>
@@ -369,47 +349,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".fromMillitime"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="getGravity"> </a>
+					<div class="fixedFont">
 					
-					<span class="light">{Integer}</span>
-					<span class="light">integer.</span><b>fromMillitime</b>()
-					
-					</div>
-					<div class="description">
-						Returns a new unsigned integer with the number of milliseconds since the Unix epoch
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Integer}</span> milliseconds since the 60's ended</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".fromRandom"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Integer}</span>
-					<span class="light">integer.</span><b>fromRandom</b>(maximum)
+					<span class="light">{vec3}</span>
+					<b>getGravity</b>(that)
 					
 					</div>
 					<div class="description">
-						Returns a new random unsigned integer with a maximum size specified in bytes
+						Returns the force of gravity pulling this planet towards that one
 						
 						
 					</div>
@@ -421,10 +369,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Integer}</span> <b>maximum</b>
+									<b>that</b>
 									
 								</dt>
-								<dd>number of bits</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -435,7 +383,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Integer}</span> a random integer from Zero to 2^bytes (inclusive)</dd>
+								<dd><span class="light fixedFont">{vec3}</span> </dd>
 							
 							</dl>
 						
@@ -444,15 +392,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name=".fromUnixtime"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="toString"> </a>
+					<div class="fixedFont">
 					
-					<span class="light">{Integer}</span>
-					<span class="light">integer.</span><b>fromUnixtime</b>()
+					<span class="light">{String}</span>
+					<b>toString</b>()
 					
 					</div>
 					<div class="description">
-						Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+						Returns a string representation of the planet
 						
 						
 					</div>
@@ -467,81 +415,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Integer}</span> milliseconds since the 60's ended</dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name=".gcd"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					
-					<span class="light">integer.</span><b>gcd</b>()
-					
-					</div>
-					<div class="description">
-						Alias for <a href="../symbols/integer.html#.greatest_common_divisor">integer.greatest_common_divisor</a>
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name=".greatest_common_divisor"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Integer}</span>
-					<span class="light">integer.</span><b>greatest_common_divisor</b>(a, b)
-					
-					</div>
-					<div class="description">
-						Find the greatest common divisor of two integers
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{Integer}</span> <b>a</b>
-									
-								</dt>
-								<dd>the first operand</dd>
-							
-								<dt>
-									<span class="light fixedFont">{Integer}</span> <b>b</b>
-									
-								</dt>
-								<dd>the second operand</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{Integer}</span> greatest common divisor</dd>
+								<dd><span class="light fixedFont">{String}</span> </dd>
 							
 							</dl>
 						
