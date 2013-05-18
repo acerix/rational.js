@@ -77,4 +77,6 @@ integer.fromUnixtime = function() {
 	return integer.fromMillitime() / 1000 | 0;
 };
 
-goog.exportSymbol('integer', integer);
+if(typeof(exports) !== 'undefined') {
+	exports.integer = integer;
+}

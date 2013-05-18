@@ -47,4 +47,6 @@ factorial.of = function(n) {
 	}
 }
 
-goog.exportSymbol('factorial', factorial);
+if(typeof(exports) !== 'undefined') {
+	exports.factorial = factorial;
+}

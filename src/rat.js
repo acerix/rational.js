@@ -1110,4 +1110,6 @@ rat.PI = rat.fromValues(
 	420230377710
 );
 
-goog.exportSymbol('rat', rat);
+if(typeof(exports) !== 'undefined') {
+	exports.rat = rat;
+}

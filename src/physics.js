@@ -117,4 +117,6 @@ physics.SPEEDOFLIGHT = bigrat.fromInteger(299792458);
  */
 physics.c = physics.SPEEDOFLIGHT;
 
-goog.exportSymbol('physics', physics);
+if(typeof(exports) !== 'undefined') {
+	exports.physics = physics;
+}

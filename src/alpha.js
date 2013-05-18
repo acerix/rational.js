@@ -46,4 +46,6 @@ alpha.iterator = function() {
 	}
 };
 
-goog.exportSymbol('alpha', alpha);
+if(typeof(exports) !== 'undefined') {
+	exports.alpha = alpha;
+}

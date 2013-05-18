@@ -264,4 +264,6 @@ rational.fromContinuedFraction = function(cf) {
 	return rational.fromRat(rat.fromContinuedFraction(rat.create(), cf));
 };
 
-goog.exportSymbol('rational', rational);
+if(typeof(exports) !== 'undefined') {
+	exports.rational = rational;
+}

@@ -143,4 +143,6 @@ var BIGINT_ZERO = bigint.fromInteger(0);
  */
 var BIGINT_ONE = bigint.fromInteger(1);
 
-goog.exportSymbol('bigint', bigint);
+if(typeof(exports) !== 'undefined') {
+	exports.bigint = bigint;
+}

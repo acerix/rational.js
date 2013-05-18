@@ -65,4 +65,6 @@ planet.prototype.getGravity = function(that) {
 	return vec3.scale(gravity, gravity, magnitude);
 };
 
-goog.exportSymbol('planet', planet);
+if(typeof(exports) !== 'undefined') {
+	exports.planet = planet;
+}
