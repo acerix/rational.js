@@ -36,22 +36,22 @@ var physics = {};
 physics.FINESTRUCTURE = bigrat.fromValues(30223, 4141639);
 
 /**
- * Fine-structure constant (α), test value generated mathematically
- *
- * @property FINESTRUCTURE_EXPERIMENTAL
- * @type bigrat
- * @static
- * @final
- */
-physics.FINESTRUCTURE_EXPERIMENTAL = bigrat.fromValues(13355891, 1830237867);
-
-/**
  * Alias for {@link physics.FINESTRUCTURE}
  * @type bigrat
  * @static
  * @final
  */
-physics.A = physics.FINESTRUCTURE;
+physics.a = physics.FINESTRUCTURE;
+
+/**
+ * Approximately the fine-structure constant, generated mathematically from a limit
+ *
+ * @property FINESTRUCTURE_ALT
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.FINESTRUCTURE_ALT = bigrat.fromValues(13355891, 1830237867);
 
 /**
  * Planck's constant (h) in Joule seconds
@@ -65,11 +65,11 @@ physics.PLANK = bigrat.fromValues(662606957, 1e42);
 
 /**
  * Alias for {@link physics.PLANKS}
- * @type rat
+ * @type bigrat
  * @static
  * @final
  */
-physics.H = physics.PLANK;
+physics.h = physics.PLANK;
 
 /**
  * Reduced Planck's constant (h / 2π)
@@ -79,4 +79,42 @@ physics.H = physics.PLANK;
  * @static
  * @final
  */
-physics.HBAR = bigrat.fromValues(1054571726, 1e43);
+physics.hBAR = bigrat.fromValues(1054571726, 1e43);
+
+/**
+ * Gravitational constant (G) in m³ / kg s²
+ *
+ * @property GRAVITATIONAL
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.GRAVITATIONAL = bigrat.fromValues(667384, 1e16);
+
+/**
+ * Alias for {@link physics.GRAVITATIONAL}
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.G = physics.GRAVITATIONAL;
+
+/**
+ * The speed of light in vacuum (c) in m / s
+ *
+ * @property SPEEDOFLIGHT
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.SPEEDOFLIGHT = bigrat.fromInteger(299792458);
+
+/**
+ * Alias for {@link physics.SPEEDOFLIGHT}
+ * @type bigrat
+ * @static
+ * @final
+ */
+physics.c = physics.SPEEDOFLIGHT;
+
+goog.exportSymbol('physics', physics);

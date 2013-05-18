@@ -45,3 +45,5 @@ alpha.iterator = function() {
 		return this.i < alpha.GREEK.length ? alpha.GREEK[this.i++] : '?';
 	}
 };
+
+goog.exportSymbol('alpha', alpha);

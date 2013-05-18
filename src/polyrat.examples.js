@@ -211,7 +211,7 @@ polyrat.QUARTIC = polyrat.fromValues([
 ]);
 
 /**
- * A quartic polynomial
+ * A hippopede
  *
  * @property HIPPOPEDE
  * @type polyrat

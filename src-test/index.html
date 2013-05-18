@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>rational.js tester</title>
-<script src="http://acerix.github.com/rational.js/releases/rationaljs.alpha.js"></script>
+<script src="../lib/closure-library/closure/goog/base.js"></script>
 <script src="../src/integer.js"></script>
 <script src="../src/biginteger.js"></script>
 <script src="../src/bigint.js"></script>
@@ -15,6 +15,7 @@
 <script src="../src/physics.js"></script>
 <script src="../src/factorial.js"></script>
 <script src="../src/polyrat.examples.js"></script>
+
 <script>
 
 var input, output;
@@ -108,8 +109,7 @@ function dumpStack() {
 <body>
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
-clr(); print();
-
+	
 var x2 = polyrat.fromValues([0, 0, 1]);
 
 print(polyrat.toJSON(x2));
@@ -254,8 +254,6 @@ print(polyrat.str(crazy_polynomial));
 
 print('@[x=5, y=9, z=3] => '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
 
-/*
-
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
 
@@ -293,11 +291,11 @@ print(bigrat.dump(bigrat.fromDecimal(Math.PI)));
 print(rat.dump(rat.PI));
 print(bigrat.dump(bigrat.PI));
 
-print(bigrat.dump(physics.A));
-print(bigrat.dump(bigrat.invert(bigrat.create(), physics.A)));
+print(bigrat.dump(physics.a));
+print(bigrat.dump(bigrat.invert(bigrat.create(), physics.a)));
 
-print(bigrat.dump(physics.H));
-print(bigrat.dump(physics.HBAR));
+print(bigrat.dump(physics.h));
+print(bigrat.dump(physics.hBAR));
 
 print(bigrat.dump(bigrat.fromDecimal(Math.E)));
 
@@ -305,8 +303,6 @@ print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
-
-*/
 
 </textarea>
 

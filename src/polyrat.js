@@ -477,3 +477,5 @@ polyrat.ZERO = polyrat.fromValues([0]);
  * @final
  */
 polyrat.IDENTITY = polyrat.fromValues([1]);
+
+goog.exportSymbol('polyrat', polyrat);

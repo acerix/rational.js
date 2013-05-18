@@ -43,6 +43,8 @@ factorial.PREPARED = [0, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39
 factorial.of = function(n) {
 	switch (typeof factorial.PREPARED[n]) {
 		case 'number': return factorial.PREPARED[n];
-		case 'string': return parseInt(factorial.PREPARED[n]);
+		case 'string': return parseInt(factorial.PREPARED[n]); // float approx.
 	}
 }
+
+goog.exportSymbol('factorial', factorial);

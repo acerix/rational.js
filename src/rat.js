@@ -1109,3 +1109,5 @@ rat.PI = rat.fromValues(
 	1320192667429,
 	420230377710
 );
+
+goog.exportSymbol('rat', rat);

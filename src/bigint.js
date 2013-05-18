@@ -142,3 +142,5 @@ var BIGINT_ZERO = bigint.fromInteger(0);
  * @final
  */
 var BIGINT_ONE = bigint.fromInteger(1);
+
+goog.exportSymbol('bigint', bigint);
