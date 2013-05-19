@@ -12,6 +12,9 @@
 <script src="../src/alpha.js"></script>
 <script src="../src/polyrat.js"></script>
 <script src="../src/physics.js"></script>
+<script src="../src/physics.planets.js"></script>
+<script src="../src/chemistry.js"></script>
+<script src="../src/chemistry.elements.js"></script>
 <script src="../src/factorial.js"></script>
 <script src="../src/polyrat.examples.js"></script>
 
@@ -108,7 +111,18 @@ function dumpStack() {
 <body>
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
-	
+
+for (var n=0; n<elements.length; n++) {
+  print();
+  print('element('+n+')');
+  print(elements[n].name);
+  print('QN = '+chemistry.quantum_numbers_of_atoms_electron(n - 1));
+  print();
+}
+
+
+/*
+
 var x2 = polyrat.fromValues([0, 0, 1]);
 
 print(polyrat.toJSON(x2));
@@ -302,6 +316,8 @@ print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
+
+*/
 
 </textarea>
 
