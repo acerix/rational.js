@@ -3,7 +3,7 @@
 	"version" : "0.0.1",
 	"homepage" : "http://acerix.github.io/rational.js/",
 	"description" : "rational.js: tools and libraries based around rational numbers.",
-	"keywords" : ["rational", "ratio", "fraction", "numbers", "math"],
+	"keywords" : ["rational", "ratio", "fraction", "numbers", "math", "polyrat", "polynumber"],
 	"author" : {
 		"name" : "Dylan Ferris",
 		"email": "dylan@psilly.com",
@@ -21,5 +21,5 @@
 		"node" : "*"
 	},
 	"license" : "GPLv3",
-	"url": "https://raw.github.com/acerix/rational.js/master/LICENSE.txt"
+	"url": "https://raw.github.com/acerix/rational.js/master/LICENSE.txt",
 }
