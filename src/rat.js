@@ -57,6 +57,10 @@ if(!RAT_MAX_LOOPS) {
 	//var RAT_MAX_LOOPS = 4096;
 }
 
+if (typeof integer !== 'object') {
+	var integer = require('../src/integer.js').integer;
+}
+
 /**
  * @class Rational Number
  * @name rat
@@ -436,7 +440,6 @@ rat.normalize = function(out, a) {
 		out[1] /= gcd;
 	}
 	return out;
-	
 };
 
 /**

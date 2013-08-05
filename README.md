@@ -13,6 +13,7 @@ http://acerix.github.io/rational.js/
 
 Releases:
 
-http://acerix.github.com/rational.js/releases/rationaljs.alpha.js (Includes everything)
+http://acerix.github.io/rational.js/releases/rationaljs.lite.alpha.js (only contains rat{} and rational{})
 
-http://acerix.github.io/rational.js/releases/ratjs.alpha.min.js (Includes bare minimum for rat())
+http://acerix.github.com/rational.js/releases/rationaljs.alpha.js (includes bigrat{}, etc.)
+

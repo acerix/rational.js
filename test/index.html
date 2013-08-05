@@ -2,8 +2,22 @@
 <html lang="en-ca">
 <head>
 <meta charset="utf-8">
-<title>rational.js tester</title>
-<script data-main="../src/main" src="../dist/require.js"></script>
+<title>rational.js browser tester</title>
+<script src="../src/integer.js"></script>
+<script src="../src/factorial.js"></script>
+<script src="../src/biginteger.js"></script>
+<script src="../src/bigint.js"></script>
+<script src="../src/rat.js"></script>
+<script src="../src/bigrat.js"></script>
+<script src="../src/rational.js"></script>
+<script src="../src/alpha.js"></script>
+<script src="../src/physics.js"></script>
+<script src="../src/physics.planets.js"></script>
+<script src="../src/chemistry.js"></script>
+<script src="../src/chemistry.elements.js"></script>
+<script src="../src/polyrat.js"></script>
+<script src="../src/polyrat.examples.js"></script>
+<script src="../src/deprecated.js"></script>
 <script>
 
 var input, output;
@@ -241,6 +255,7 @@ print(polyrat.str(crazy_polynomial));
 
 print('@[x=5, y=9, z=3] => '+bigrat.str(polyrat.evaluate(bigrat.create(), crazy_polynomial, [5,9,3])));
 
+print('');
 
 print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rational(2446, 445)).divide(new rational(22, 33)).dump());
 
