@@ -18,7 +18,7 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (typeof BigInteger !== 'object') {
+if (typeof BigInteger !== 'function') {
 	var BigInteger = require('../src/biginteger.js').BigInteger;
 }
 
