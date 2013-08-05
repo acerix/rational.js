@@ -18,11 +18,9 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
-if (typeof rat !== 'object' && typeof require === 'function') {
+if (typeof rat !== 'object') {
 	var rat = require('../src/rat.js').rat;
 }
-*/
 
 /**
  * Chainable wrapper functions for rat.js
