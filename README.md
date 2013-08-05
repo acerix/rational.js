@@ -6,6 +6,15 @@ javascript tools and libraries based around rational numbers.
 heavily inspired by glMatrix (http://glmatrix.net/), a high performance matrix and vector library.
 
 
+Example usage in Node.js:
+
+	var rational = require('bigrat').rational;
+	var a = new rational(4, 5); // 4/5 
+	var b = rational.fromDecimal(123.456789);
+	var c = a.times(b);
+	console.log('result: ' + c);
+
+
 Documentation:
 
 http://acerix.github.io/rational.js/
