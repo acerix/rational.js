@@ -126,22 +126,22 @@ bigint.fromInteger = function (a) {
 /**
  * Zero, the additive identity
  *
- * @property bigint_ZERO
- * @type bigint_ARRAY_TYPE
+ * @property ZERO
+ * @type bigint
  * @static
  * @final
  */
-var BIGINT_ZERO = bigint.fromInteger(0);
+bigint.ZERO = bigint.fromInteger(0);
 
 /**
  * One, the multiplicative identity
  *
- * @property bigint_ONE
- * @type bigint_ARRAY_TYPE
+ * @property ONE
+ * @type bigint
  * @static
  * @final
  */
-var BIGINT_ONE = bigint.fromInteger(1);
+bigint.ONE = bigint.fromInteger(1);
 
 if(typeof(exports) !== 'undefined') {
 	exports.bigint = bigint;

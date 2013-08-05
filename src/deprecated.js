@@ -18,9 +18,7 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Where old code comes to die...
- */
+// This is where old code comes to die...
  
 var RAT_ZERO = rat.ZERO;
 var RAT_ONE = rat.ONE;
