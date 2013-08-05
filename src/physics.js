@@ -18,10 +18,6 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (typeof bigrat !== 'object') {
-	var bigrat = require('../src/bigrat.js').bigrat;
-}
-
 /**
  * @class Physics
  * @name physics

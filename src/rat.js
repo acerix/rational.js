@@ -18,6 +18,12 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/* needed for tests to work
+if (typeof integer !== 'object' && typeof require === 'function') {
+	var integer = require('../src/integer.js').integer;
+}
+*/
+
 /**
  * The type of array to store the numerator and denominator in
  *
@@ -55,10 +61,6 @@ if(!RAT_MAX_LOOPS) {
 	//var RAT_MAX_LOOPS = Math.pow(2, 32);
 	var RAT_MAX_LOOPS = 16777216;
 	//var RAT_MAX_LOOPS = 4096;
-}
-
-if (typeof integer !== 'object' && typeof require === 'function') {
-	var integer = require('../src/integer.js').integer;
 }
 
 /**
