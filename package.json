@@ -12,7 +12,7 @@
 	"bugs" : {
 		"url" : "https://github.com/acerix/rational.js/issues"
 	},
-	"main" : "./dist/rational.js",
+	"main" : "./lib/rational.js",
 	"dependencies": {
 		"vows": "~0.7.0"
 	},
@@ -26,3 +26,4 @@
 	"license" : "GPLv3",
 	"url": "https://raw.github.com/acerix/rational.js/master/LICENSE.txt"
 }
+
