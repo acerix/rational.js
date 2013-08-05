@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - factorial</title>
+		<title>JsDoc Reference - chemistry</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -224,7 +224,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class factorial
+				Class chemistry
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -232,16 +232,16 @@ ul.inheritsList
 				
 				
 			
-				Factorial
+				Chemistry
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/src_factorial.js.html">factorial.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_chemistry.js.html">chemistry.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class factorial.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class chemistry.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -254,7 +254,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/factorial.html#constructor">factorial</a></b>()
+								<b><a href="../symbols/chemistry.html#constructor">chemistry</a></b>()
 							</div>
 							<div class="description"></div>
 						</td>
@@ -265,40 +265,12 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
-				
-				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the fields documented in the class factorial.">
-					<caption>Field Summary</caption>
-					<thead>
-						<tr>
-							<th scope="col">Field Attributes</th>
-							<th scope="col">Field Name and Description</th>
-						</tr>
-					</thead>
-					<tbody>
-					
-						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont">
-								factorial.<b><a href="../symbols/factorial.html#.PREPARED">PREPARED</a></b>
-								</div>
-								<div class="description">Array of factorials up to n = 100; the first 21 are integers, and the rest are strings</div>
-							</td>
-						</tr>
-					
-					</tbody>
-				</table>
-				
-				
-				
-			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class factorial.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class chemistry.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -311,9 +283,9 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">factorial.<b><a href="../symbols/factorial.html#.of">of</a></b>(n)
+								<div class="fixedFont">chemistry.<b><a href="../symbols/chemistry.html#.quantum_numbers_of_atoms_electron">quantum_numbers_of_atoms_electron</a></b>(n)
 								</div>
-								<div class="description">Return the factorial of n as a Javascript number</div>
+								<div class="description">Returns the quantum numbers of the nth electron, starting at n = 0</div>
 							</td>
 						</tr>
 					
@@ -334,7 +306,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>factorial</b>()
+						<b>chemistry</b>()
 				</div>
 				
 				<div class="description">
@@ -358,33 +330,6 @@ ul.inheritsList
 
 <!-- ============================== field details ========================== -->		
 			
-				<div class="sectionTitle">
-					Field Detail
-				</div>
-				
-					<a name=".PREPARED"> </a>
-					<div class="fixedFont">&lt;static&gt; 
-					
-					<span class="light">{Array}</span>
-					<span class="light">factorial.</span><b>PREPARED</b>
-					
-					</div>
-					<div class="description">
-						Array of factorials up to n = 100; the first 21 are integers, and the rest are strings
-						
-						
-					</div>
-					
-					
-
-						
-						
-						
-						
-
-					
-				
-			
 
 <!-- ============================== method details ========================= -->		
 			
@@ -392,15 +337,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".of"> </a>
+					<a name=".quantum_numbers_of_atoms_electron"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Integer}</span>
-					<span class="light">factorial.</span><b>of</b>(n)
+					<span class="light">{Array}</span>
+					<span class="light">chemistry.</span><b>quantum_numbers_of_atoms_electron</b>(n)
 					
 					</div>
 					<div class="description">
-						Return the factorial of n as a Javascript number
+						Returns the quantum numbers of the nth electron, starting at n = 0
 						
 						
 					</div>
@@ -415,7 +360,7 @@ ul.inheritsList
 									<span class="light fixedFont">{Integer}</span> <b>n</b>
 									
 								</dt>
-								<dd></dd>
+								<dd>the number of electrons before this one</dd>
 							
 							</dl>
 						
@@ -426,7 +371,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Integer}</span> factorial of n</dd>
+								<dd><span class="light fixedFont">{Array}</span> [n, l, m_l, m_s]</dd>
 							
 							</dl>
 						
