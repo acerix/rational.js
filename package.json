@@ -1,11 +1,11 @@
 {
 	"name" : "bigrat",
-	"version" : "0.0.1",
+	"version" : "0.0.2",
 	"homepage" : "http://acerix.github.io/rational.js/",
-	"description" : "rational.js: tools and libraries based around rational numbers.",
+	"description" : "rational.js: tools and libraries using rational numbers.",
 	"keywords" : ["rational", "ratio", "fraction", "numbers", "math", "polyrat", "polynumber"],
 	"author" : {
-		"name" : "Dylan Ferris",
+		"name" : "Dylan",
 		"email": "dylan@psilly.com",
 		"url" : "http://psilly.com/"
 	},
@@ -13,6 +13,9 @@
 		"url" : "https://github.com/acerix/rational.js/issues"
 	},
 	"main" : "./dist/rational.js",
+	"dependencies": {
+		"vows": "~0.7.0"
+	},
 	"repository" : {
 		"type" : "git",
 		"url" : "https://github.com/acerix/rational.js.git"
@@ -21,5 +24,5 @@
 		"node" : "*"
 	},
 	"license" : "GPLv3",
-	"url": "https://raw.github.com/acerix/rational.js/master/LICENSE.txt",
+	"url": "https://raw.github.com/acerix/rational.js/master/LICENSE.txt"
 }

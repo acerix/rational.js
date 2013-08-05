@@ -47,6 +47,16 @@ factorial.of = function(n) {
 	}
 }
 
+if(typeof(integer) === 'object') {
+
+	/**
+	 * Alias for {@link factorial.of}
+	 * @function
+	 */
+	integer.factorial = factorial.of;
+
+}
+
 if(typeof(exports) !== 'undefined') {
 	exports.factorial = factorial;
 }

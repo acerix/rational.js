@@ -53,7 +53,7 @@ if(!RAT_INFINITESIMAL_PRECISION) {
  */
 if(!RAT_MAX_LOOPS) {
 	//var RAT_MAX_LOOPS = Math.pow(2, 32);
-	var RAT_MAX_LOOPS = 16777216
+	var RAT_MAX_LOOPS = 16777216;
 	//var RAT_MAX_LOOPS = 4096;
 }
 
@@ -456,7 +456,13 @@ rat.opposite = function(out, a) {
  * Alias for {@link rat.opposite}
  * @function
  */
-rat.neg = rat.negative = rat.opposite;
+rat.negative = rat.opposite;
+
+/**
+ * Alias for {@link rat.opposite}
+ * @function
+ */
+rat.neg = rat.opposite;
 
 /**
  * Raises a rat to an integer exponent

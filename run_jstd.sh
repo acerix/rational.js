@@ -1,1 +1,0 @@
-jstestdriver --tests all

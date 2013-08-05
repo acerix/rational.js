@@ -28,30 +28,30 @@ var physics = {};
 /**
  * Fine-structure constant (α), according to CODATA 2011
  *
- * @property FINESTRUCTURE
+ * @property FINE_STRUCTURE
  * @type bigrat
  * @static
  * @final
  */
-physics.FINESTRUCTURE = bigrat.fromValues(30223, 4141639);
+physics.FINE_STRUCTURE = bigrat.fromValues(30223, 4141639);
 
 /**
- * Alias for {@link physics.FINESTRUCTURE}
+ * Alias for {@link physics.FINE_STRUCTURE}
  * @type bigrat
  * @static
  * @final
  */
-physics.a = physics.FINESTRUCTURE;
+physics.a = physics.FINE_STRUCTURE;
 
 /**
- * Approximately the fine-structure constant, generated mathematically from a limit
+ * Approximately the fine-structure constant, generated mathematically
  *
- * @property FINESTRUCTURE_ALT
+ * @property FINE_STRUCTURE_ALT
  * @type bigrat
  * @static
  * @final
  */
-physics.FINESTRUCTURE_ALT = bigrat.fromValues(13355891, 1830237867);
+physics.FINE_STRUCTURE_ALT = bigrat.fromValues(13355891, 1830237867);
 
 /**
  * Planck's constant (h) in Joule seconds
@@ -102,20 +102,20 @@ physics.G = physics.GRAVITATIONAL;
 /**
  * The speed of light in vacuum (c) in m / s
  *
- * @property SPEEDOFLIGHT
+ * @property SPEED_OF_LIGHT
  * @type bigrat
  * @static
  * @final
  */
-physics.SPEEDOFLIGHT = bigrat.fromInteger(299792458);
+physics.SPEED_OF_LIGHT = bigrat.fromInteger(299792458);
 
 /**
- * Alias for {@link physics.SPEEDOFLIGHT}
+ * Alias for {@link physics.SPEED_OF_LIGHT}
  * @type bigrat
  * @static
  * @final
  */
-physics.c = physics.SPEEDOFLIGHT;
+physics.c = physics.SPEED_OF_LIGHT;
 
 if(typeof(exports) !== 'undefined') {
 	exports.physics = physics;

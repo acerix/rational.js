@@ -9,27 +9,26 @@ src/alpha.js \
 src/physics.js \
 src/polyrat.js \
 src/deprecated.js \
-> dist/temp.js
+> lib/temp.js
 
 sed -e '/COMPILED_JAVASCRIPT_GOES_HERE/{
-r dist/temp.js
+r lib/temp.js
 d
-}' < src/dist-template.js > dist/rational.js
+}' < src/release-template.js > lib/rational.js
 
-cp dist/rational.js ../gh-pages/releases/rationaljs.alpha.js
+cp lib/rational.js ../gh-pages/releases/rationaljs.alpha.js
 
 closure --js \
 src/integer.js \
 src/rat.js \
 src/rational.js \
-> dist/temp.js
+> lib/temp.js
 
 sed -e '/COMPILED_JAVASCRIPT_GOES_HERE/{
-r dist/temp.js
+r lib/temp.js
 d
-}' < src/dist-template.js > dist/rational.min.js
+}' < src/release-template.js > lib/rational.lite.js
 
-cp dist/rational.min.js ../gh-pages/releases/ratjs.alpha.min.js
+cp lib/rational.lite.js ../gh-pages/releases/rationaljs.lite.alpha.js
 
-rm dist/temp.js
-
+rm lib/temp.js

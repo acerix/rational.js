@@ -60,7 +60,7 @@ integer.fromRandom = function(bits) {
 };
 
 /**
- * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+ * Returns the number of milliseconds since the Unix epoch
  *
  * @returns {Integer} milliseconds since the 60's ended
  */
@@ -69,12 +69,12 @@ integer.fromMillitime = function() {
 };
 
 /**
- * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+ * Returns the number of seconds since the Unix epoch
  *
- * @returns {Integer} milliseconds since the 60's ended
+ * @returns {Integer} seconds since the 60's ended
  */
 integer.fromUnixtime = function() {
-	return integer.fromMillitime() / 1000 | 0;
+	return integer.fromMillitime() * .001 | 0;
 };
 
 if(typeof(exports) !== 'undefined') {

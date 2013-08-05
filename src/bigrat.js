@@ -434,7 +434,13 @@ bigrat.opposite = function(out, a) {
  * Alias for {@link bigrat.opposite}
  * @function
  */
-bigrat.neg = bigrat.negative = bigrat.opposite;
+bigrat.negative = bigrat.opposite;
+
+/**
+ * Alias for {@link bigrat.opposite}
+ * @function
+ */
+bigrat.neg = bigrat.opposite;
 
 /**
  * Raises a bigrat to an integer exponent
