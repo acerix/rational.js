@@ -18,12 +18,16 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+if (typeof rat !== 'object' && typeof require === 'function') {
+	var rat = require('../src/rat.js').rat;
+}
+
 /**
  * Chainable wrapper functions for rat.js
  *
  * @class Rational Number (Chainable)
  * @name rational
- * @requires integer rat
+ * @requires rat
  */
 var rational = function(numerator, denominator) {
 	//if (numerator.constructor.name==='rational'||numerator.denominator.name==='rational') return rational.divide(numerator, denominator);

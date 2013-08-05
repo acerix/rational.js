@@ -57,7 +57,7 @@ if(!RAT_MAX_LOOPS) {
 	//var RAT_MAX_LOOPS = 4096;
 }
 
-if (typeof integer !== 'object') {
+if (typeof integer !== 'object' && typeof require === 'function') {
 	var integer = require('../src/integer.js').integer;
 }
 
