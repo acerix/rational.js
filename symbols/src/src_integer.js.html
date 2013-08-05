@@ -67,7 +67,7 @@
 <span class='line'> 60</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 61</span> 
 <span class='line'> 62</span> </span><span class="COMM">/**
-<span class='line'> 63</span>  * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+<span class='line'> 63</span>  * Returns the number of milliseconds since the Unix epoch
 <span class='line'> 64</span>  *
 <span class='line'> 65</span>  * @returns {Integer} milliseconds since the 60's ended
 <span class='line'> 66</span>  */</span><span class="WHIT">
@@ -76,12 +76,12 @@
 <span class='line'> 69</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 70</span> 
 <span class='line'> 71</span> </span><span class="COMM">/**
-<span class='line'> 72</span>  * Returns a new unsigned integer with the number of milliseconds since the Unix epoch
+<span class='line'> 72</span>  * Returns the number of seconds since the Unix epoch
 <span class='line'> 73</span>  *
-<span class='line'> 74</span>  * @returns {Integer} milliseconds since the 60's ended
+<span class='line'> 74</span>  * @returns {Integer} seconds since the 60's ended
 <span class='line'> 75</span>  */</span><span class="WHIT">
 <span class='line'> 76</span> </span><span class="NAME">integer.fromUnixtime</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'> 77</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">integer.fromMillitime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="WHIT"> </span><span class="PUNC">|</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">integer.fromMillitime</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="PUNC">.</span><span class="NUMB">001</span><span class="WHIT"> </span><span class="PUNC">|</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 78</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'> 79</span> 
 <span class='line'> 80</span> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">exports</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
