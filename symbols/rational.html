@@ -1,0 +1,1488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="generator" content="JsDoc Toolkit" />
+		
+		<title>JsDoc Reference - rational</title>
+
+		<style type="text/css">
+			/* default.css */
+body
+{
+	font: 12px "Lucida Grande", Tahoma, Arial, Helvetica, sans-serif;
+	width: 800px;
+}
+
+.header
+{
+	clear: both;
+	background-color: #ccc;
+	padding: 8px;
+}
+
+h1
+{
+	font-size: 150%;
+	font-weight: bold;
+	padding: 0;
+	margin: 1em 0 0 .3em;
+}
+
+hr
+{
+	border: none 0;
+	border-top: 1px solid #7F8FB1;
+	height: 1px;
+}
+
+pre.code
+{
+	display: block;
+	padding: 8px;
+	border: 1px dashed #ccc;
+}
+
+#index
+{
+	margin-top: 24px;
+	float: left;
+	width: 160px;
+	position: absolute;
+	left: 8px;
+	background-color: #F3F3F3;
+	padding: 8px;
+}
+
+#content
+{
+	margin-left: 190px;
+	width: 600px;
+}
+
+.classList
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 8px;
+	font-family: arial, sans-serif;
+	font-size: 1em;
+	overflow: auto;
+}
+
+.classList li
+{
+	padding: 0;
+	margin: 0 0 8px 0;
+}
+
+.summaryTable { width: 100%; }
+
+h1.classTitle
+{
+	font-size:170%;
+	line-height:130%;
+}
+
+h2 { font-size: 110%; }
+caption, div.sectionTitle
+{
+	background-color: #7F8FB1;
+	color: #fff;
+	font-size:130%;
+	text-align: left;
+	padding: 2px 6px 2px 6px;
+	border: 1px #7F8FB1 solid;
+}
+
+div.sectionTitle { margin-bottom: 8px; }
+.summaryTable thead { display: none; }
+
+.summaryTable td
+{
+	vertical-align: top;
+	padding: 4px;
+	border-bottom: 1px #7F8FB1 solid;
+	border-right: 1px #7F8FB1 solid;
+}
+
+/*col#summaryAttributes {}*/
+.summaryTable td.attributes
+{
+	border-left: 1px #7F8FB1 solid;
+	width: 140px;
+	text-align: right;
+}
+
+td.attributes, .fixedFont
+{
+	line-height: 15px;
+	color: #002EBE;
+	font-family: "Courier New",Courier,monospace;
+	font-size: 13px;
+}
+
+.summaryTable td.nameDescription
+{
+	text-align: left;
+	font-size: 13px;
+	line-height: 15px;
+}
+
+.summaryTable td.nameDescription, .description
+{
+	line-height: 15px;
+	padding: 4px;
+	padding-left: 4px;
+}
+
+.summaryTable { margin-bottom: 8px; }
+
+ul.inheritsList
+{
+	list-style: square;
+	margin-left: 20px;
+	padding-left: 0;
+}
+
+.detailList {
+	margin-left: 20px; 
+	line-height: 15px;
+}
+.detailList dt { margin-left: 20px; }
+
+.detailList .heading
+{
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-left: 0;
+}
+
+.light, td.attributes, .light a:link, .light a:visited
+{
+	color: #777;
+	font-style: italic;
+}
+
+.fineprint
+{
+	text-align: right;
+	font-size: 10px;
+}
+		</style>
+	</head>
+
+	<body>
+<!-- ============================== header ================================= -->	
+		<!-- begin static/header.html -->
+		<div id="header">
+</div>
+		<!-- end static/header.html -->
+
+<!-- ============================== classes index ============================ -->
+		<div id="index">
+			<!-- begin publish.classesIndex -->
+			<div align="center"><a href="../index.html">Class Index</a>
+| <a href="../files.html">File Index</a></div>
+<hr />
+<h2>Classes</h2>
+<ul class="classList">
+	
+	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
+	
+	<li><a href="../symbols/alpha.html">alpha</a></li>
+	
+	<li><a href="../symbols/bigint.html">bigint</a></li>
+	
+	<li><a href="../symbols/bigrat.html">bigrat</a></li>
+	
+	<li><a href="../symbols/chemistry.html">chemistry</a></li>
+	
+	<li><a href="../symbols/elements.html">elements</a></li>
+	
+	<li><a href="../symbols/factorial.html">factorial</a></li>
+	
+	<li><a href="../symbols/integer.html">integer</a></li>
+	
+	<li><a href="../symbols/physics.html">physics</a></li>
+	
+	<li><a href="../symbols/planet.html">planet</a></li>
+	
+	<li><a href="../symbols/polyrat.html">polyrat</a></li>
+	
+	<li><a href="../symbols/rat.html">rat</a></li>
+	
+	<li><a href="../symbols/rational.html">rational</a></li>
+	
+</ul>
+<hr />
+			<!-- end publish.classesIndex -->
+		</div>
+		
+		<div id="content">
+<!-- ============================== class title ============================ -->
+			<h1 class="classTitle">
+				
+				Class rational
+			</h1>
+
+<!-- ============================== class summary ========================== -->			
+			<p class="description">
+				
+				
+			
+				Rational Number (Chainable)
+				
+				
+					<br /><i>Defined in: </i> <a href="../symbols/src/src_rational.js.html">rational.js</a>.
+				
+			</p>
+
+<!-- ============================== constructor summary ==================== -->			
+			
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class rational.">
+				<caption>Class Summary</caption>
+				<thead>
+					<tr>
+						<th scope="col">Constructor Attributes</th>
+						<th scope="col">Constructor Name and Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="attributes">&nbsp;</td>
+						<td class="nameDescription" >
+							<div class="fixedFont">
+								<b><a href="../symbols/rational.html#constructor">rational</a></b>()
+							</div>
+							<div class="description">Chainable wrapper functions for rat.js</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+
+<!-- ============================== properties summary ===================== -->
+			
+
+<!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class rational.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#add">add</a></b>(b)
+								</div>
+								<div class="description">Add</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#div">div</a></b>()
+								</div>
+								<div class="description">Alias for rational.divide</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#divide">divide</a></b>(b)
+								</div>
+								<div class="description">Divides two rationals</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#divided_by">divided_by</a></b>()
+								</div>
+								<div class="description">Alias for rational.divide</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#dump">dump</a></b>()
+								</div>
+								<div class="description">Returns a string with the fraction in various formats</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromContinuedFraction">fromContinuedFraction</a></b>(integers)
+								</div>
+								<div class="description">Returns a rational from an array of integers representing a continued fraction</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromDecimal">fromDecimal</a></b>(a)
+								</div>
+								<div class="description">Returns a rational from a decimal number</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromInteger">fromInteger</a></b>(signed)
+								</div>
+								<div class="description">Returns a rational from an integer</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromIntegerInverse">fromIntegerInverse</a></b>(signed)
+								</div>
+								<div class="description">Returns a rational from the inverse of an integer</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">rational.<b><a href="../symbols/rational.html#.fromRat">fromRat</a></b>(rat)
+								</div>
+								<div class="description">Returns a rational from a rat array</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#invert">invert</a></b>()
+								</div>
+								<div class="description">Inverts a rational</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#mediant">mediant</a></b>(b)
+								</div>
+								<div class="description">Mediant of two rationals</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#minus">minus</a></b>()
+								</div>
+								<div class="description">Alias for rational.subtract</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#mul">mul</a></b>()
+								</div>
+								<div class="description">Alias for rational.prototype.multiply</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#multiply">multiply</a></b>(b)
+								</div>
+								<div class="description">Multiplies two rationals</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#plus">plus</a></b>()
+								</div>
+								<div class="description">Alias for rational.add</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#pow">pow</a></b>()
+								</div>
+								<div class="description">Alias for rational.power</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#power">power</a></b>(p)
+								</div>
+								<div class="description">Raises a rat to an integer exponent</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#reciprocal">reciprocal</a></b>()
+								</div>
+								<div class="description">Alias for rational.invert</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#sub">sub</a></b>()
+								</div>
+								<div class="description">Alias for rational.subtract</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#subtract">subtract</a></b>(b)
+								</div>
+								<div class="description">Subtract</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#times">times</a></b>()
+								</div>
+								<div class="description">Alias for rational.prototype.multiply</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#toContinuedFraction">toContinuedFraction</a></b>(maximum)
+								</div>
+								<div class="description">Returns a rational from an array of integers representing a continued fraction</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#toDecimal">toDecimal</a></b>()
+								</div>
+								<div class="description">Returns a decimal approximation</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#toRat">toRat</a></b>()
+								</div>
+								<div class="description">Returns a rat array from a rational</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/rational.html#toString">toString</a></b>()
+								</div>
+								<div class="description">Expresses the rational in a string as "numerator/denominator"</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
+			
+<!-- ============================== events summary ======================== -->
+			
+
+<!-- ============================== constructor details ==================== -->		
+			
+			<div class="details"><a name="constructor"> </a>
+				<div class="sectionTitle">
+					Class Detail
+				</div>
+				
+				<div class="fixedFont">
+						<b>rational</b>()
+				</div>
+				
+				<div class="description">
+					Chainable wrapper functions for rat.js
+					
+				</div>
+				
+				
+				
+				
+					
+					
+					
+					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">Requires:</dt>
+						
+							<dd><a href="../symbols/rat.html">rat</a></dd>
+						
+						</dl>
+					
+					
+
+			</div>
+			
+
+<!-- ============================== field details ========================== -->		
+			
+
+<!-- ============================== method details ========================= -->		
+			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name="add"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<b>add</b>(b)
+					
+					</div>
+					<div class="description">
+						Add
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> <b>b</b>
+									
+								</dt>
+								<dd>the second operand</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="div"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>div</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.divide
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="divide"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<b>divide</b>(b)
+					
+					</div>
+					<div class="description">
+						Divides two rationals
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> <b>b</b>
+									
+								</dt>
+								<dd>the second operand</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="divided_by"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>divided_by</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.divide
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="dump"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>dump</b>()
+					
+					</div>
+					<div class="description">
+						Returns a string with the fraction in various formats
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> string various conversions</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromContinuedFraction"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<span class="light">rational.</span><b>fromContinuedFraction</b>(integers)
+					
+					</div>
+					<div class="description">
+						Returns a rational from an array of integers representing a continued fraction
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Array}</span> <b>integers</b>
+									
+								</dt>
+								<dd>of the continued fraction</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromDecimal"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<span class="light">rational.</span><b>fromDecimal</b>(a)
+					
+					</div>
+					<div class="description">
+						Returns a rational from a decimal number
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>a</b>
+									
+								</dt>
+								<dd>decimal number</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromInteger"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<span class="light">rational.</span><b>fromInteger</b>(signed)
+					
+					</div>
+					<div class="description">
+						Returns a rational from an integer
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>signed</b>
+									
+								</dt>
+								<dd>integer</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromIntegerInverse"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<span class="light">rational.</span><b>fromIntegerInverse</b>(signed)
+					
+					</div>
+					<div class="description">
+						Returns a rational from the inverse of an integer
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>signed</b>
+									
+								</dt>
+								<dd>integer</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromRat"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<span class="light">rational.</span><b>fromRat</b>(rat)
+					
+					</div>
+					<div class="description">
+						Returns a rational from a rat array
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>rat</b>
+									
+								</dt>
+								<dd></dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="invert"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rational.html">rational</a>}</span>
+					<b>invert</b>()
+					
+					</div>
+					<div class="description">
+						Inverts a rational
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="mediant"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<b>mediant</b>(b)
+					
+					</div>
+					<div class="description">
+						Mediant of two rationals
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>b</b>
+									
+								</dt>
+								<dd>the second operand</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out the sum of the numerators divided by the sum of the denominators</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="minus"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>minus</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.subtract
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="mul"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>mul</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.prototype.multiply
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="multiply"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<b>multiply</b>(b)
+					
+					</div>
+					<div class="description">
+						Multiplies two rationals
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rational.html">rational</a>}</span> <b>b</b>
+									
+								</dt>
+								<dd>the second operand</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="plus"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>plus</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.add
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="pow"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>pow</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.power
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="power"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<b>power</b>(p)
+					
+					</div>
+					<div class="description">
+						Raises a rat to an integer exponent
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>p</b>
+									
+								</dt>
+								<dd>power to raise the number by</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="reciprocal"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>reciprocal</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.invert
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="sub"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>sub</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.subtract
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="subtract"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<b>subtract</b>(b)
+					
+					</div>
+					<div class="description">
+						Subtract
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>b</b>
+									
+								</dt>
+								<dd>the second operand</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="times"> </a>
+					<div class="fixedFont">
+					
+					
+					<b>times</b>()
+					
+					</div>
+					<div class="description">
+						Alias for rational.prototype.multiply
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+						
+						
+
+					<hr />
+				
+					<a name="toContinuedFraction"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Array}</span>
+					<b>toContinuedFraction</b>(maximum)
+					
+					</div>
+					<div class="description">
+						Returns a rational from an array of integers representing a continued fraction
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Integer}</span> <b>maximum</b>
+									
+								</dt>
+								<dd>number of iterations</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Array}</span> integers of the continued fraction</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toDecimal"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Number}</span>
+					<b>toDecimal</b>()
+					
+					</div>
+					<div class="description">
+						Returns a decimal approximation
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toRat"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<b>toRat</b>()
+					
+					</div>
+					<div class="description">
+						Returns a rat array from a rational
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toString"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>toString</b>()
+					
+					</div>
+					<div class="description">
+						Expresses the rational in a string as "numerator/denominator"
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> numerator/denominator</dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
+			
+<!-- ============================== event details ========================= -->		
+			
+			
+			<hr />
+		</div>
+
+		
+<!-- ============================== footer ================================= -->
+		<div class="fineprint" style="clear:both">
+			
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Aug 08 2013 19:22:32 GMT-0400 (EDT)
+		</div>
+	</body>
+</html>
