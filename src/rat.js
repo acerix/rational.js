@@ -18,10 +18,6 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (typeof integer !== 'object') {
-	var integer = require('../src/integer.js').integer;
-}
-
 /**
  * The type of array to store the numerator and denominator in
  *
