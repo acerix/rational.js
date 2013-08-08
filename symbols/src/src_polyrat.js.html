@@ -47,7 +47,7 @@
 <span class='line'> 40</span> </span><span class="COMM">/**
 <span class='line'> 41</span>  * Creates a new polynumber initialized with the given array of either integers or rats
 <span class='line'> 42</span>  *
-<span class='line'> 43</span>  * @param {Array} array of values (of type "rat")
+<span class='line'> 43</span>  * @param {Array} array of values (of type "rat" --- not yet)
 <span class='line'> 44</span>  * @returns {polyrat} a new polynumber
 <span class='line'> 45</span>  */</span><span class="WHIT">
 <span class='line'> 46</span> </span><span class="NAME">polyrat.fromValues</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
@@ -488,7 +488,7 @@
 <span class='line'>481</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>482</span> 
 <span class='line'>483</span> </span><span class="COMM">/**
-<span class='line'>484</span>  * Alias for {@link rat.subtract}
+<span class='line'>484</span>  * Alias for {@link polyrat.subtract}
 <span class='line'>485</span>  * @function
 <span class='line'>486</span>  */</span><span class="WHIT">
 <span class='line'>487</span> </span><span class="NAME">polyrat.sub</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.subtract</span><span class="PUNC">;</span><span class="WHIT">
@@ -512,78 +512,82 @@
 <span class='line'>505</span> </span><span class="NAME">polyrat.mul</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.multiply</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>506</span> 
 <span class='line'>507</span> </span><span class="COMM">/**
-<span class='line'>508</span>  * Divides two rats
+<span class='line'>508</span>  * Divides two polyrats
 <span class='line'>509</span>  *
-<span class='line'>510</span>  * @param {rat} out the receiving number
-<span class='line'>511</span>  * @param {rat} a the first operand
-<span class='line'>512</span>  * @param {rat} b the second operand
-<span class='line'>513</span>  * @returns {rat} out
+<span class='line'>510</span>  * @param {polyrat} out the receiving number
+<span class='line'>511</span>  * @param {polyrat} a the first operand
+<span class='line'>512</span>  * @param {polyrat} b the second operand
+<span class='line'>513</span>  * @returns {polyrat} out
 <span class='line'>514</span>  */</span><span class="WHIT">
 <span class='line'>515</span> </span><span class="NAME">polyrat.divide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">out</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
 <span class='line'>516</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">out</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>517</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>518</span> 
 <span class='line'>519</span> </span><span class="COMM">/**
-<span class='line'>520</span>  * Alias for {@link rat.divide}
+<span class='line'>520</span>  * Alias for {@link polyrat.divide}
 <span class='line'>521</span>  * @function
 <span class='line'>522</span>  */</span><span class="WHIT">
 <span class='line'>523</span> </span><span class="NAME">polyrat.div</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.divide</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>524</span> 
 <span class='line'>525</span> </span><span class="COMM">/**
-<span class='line'>526</span>  * Returns true when the first rat is equal to the second
+<span class='line'>526</span>  * Returns true when the first polyrat is equal to the second
 <span class='line'>527</span>  *
-<span class='line'>528</span>  * @param {rat} a the first operand
-<span class='line'>529</span>  * @param {rat} b the second operand
-<span class='line'>530</span>  * @returns {Bool} true when the two rats are equal
+<span class='line'>528</span>  * @param {polyrat} a the first operand
+<span class='line'>529</span>  * @param {polyrat} b the second operand
+<span class='line'>530</span>  * @returns {Bool} true when the two polyrats are equal
 <span class='line'>531</span>  */</span><span class="WHIT">
 <span class='line'>532</span> </span><span class="NAME">polyrat.equals</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>533</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// both are Zero</span><span class="WHIT">
-<span class='line'>534</span> </span><span class="WHIT">	</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="COMM">// both are Infinity</span><span class="WHIT">
-<span class='line'>535</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>536</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>537</span> 
-<span class='line'>538</span> </span><span class="COMM">/**
-<span class='line'>539</span>  * Count the number of dimensions of an array
-<span class='line'>540</span>  *
-<span class='line'>541</span>  * @param {polyrat} a number to count the dimensions of
-<span class='line'>542</span>  * @returns {Integer} number of dimensions
-<span class='line'>543</span>  */</span><span class="WHIT">
-<span class='line'>544</span> </span><span class="NAME">polyrat.countDimensions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>545</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">polyrat._countDimensions</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>546</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>547</span> 
-<span class='line'>548</span> </span><span class="COMM">/**
-<span class='line'>549</span>  * Count the number of dimensions of an array recursively
-<span class='line'>550</span>  *
-<span class='line'>551</span>  * @param {polyrat} an array to count the dimensions of
-<span class='line'>552</span>  * @param {polyrat} c (counter used during recursion)
-<span class='line'>553</span>  * @returns {Integer} number of dimensions
-<span class='line'>554</span>  */</span><span class="WHIT">
-<span class='line'>555</span> </span><span class="NAME">polyrat._countDimensions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">c</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>556</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">polyrat._countDimensions</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">c</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">c</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>557</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>558</span> 
-<span class='line'>559</span> </span><span class="COMM">/**
-<span class='line'>560</span>  * Zero, the additive identity
-<span class='line'>561</span>  *
-<span class='line'>562</span>  * @property ZERO
-<span class='line'>563</span>  * @type polyrat
-<span class='line'>564</span>  * @static
-<span class='line'>565</span>  * @final
-<span class='line'>566</span>  */</span><span class="WHIT">
-<span class='line'>567</span> </span><span class="NAME">polyrat.ZERO</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>568</span> 
-<span class='line'>569</span> </span><span class="COMM">/**
-<span class='line'>570</span>  * One, the multiplicative identity
-<span class='line'>571</span>  *
-<span class='line'>572</span>  * @property IDENTITY
-<span class='line'>573</span>  * @type polyrat
-<span class='line'>574</span>  * @static
-<span class='line'>575</span>  * @final
-<span class='line'>576</span>  */</span><span class="WHIT">
-<span class='line'>577</span> </span><span class="NAME">polyrat.IDENTITY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>578</span> 
-<span class='line'>579</span> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">exports</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>580</span> </span><span class="WHIT">	</span><span class="NAME">exports.polyrat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>581</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>582</span> </span></pre></body></html>
+<span class='line'>533</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">&&</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="NAME">b</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>534</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>535</span> 
+<span class='line'>536</span> </span><span class="COMM">/**
+<span class='line'>537</span>  * Count the number of dimensions of an array
+<span class='line'>538</span>  *
+<span class='line'>539</span>  * @param {polyrat} a number to count the dimensions of
+<span class='line'>540</span>  * @returns {Integer} number of dimensions
+<span class='line'>541</span>  */</span><span class="WHIT">
+<span class='line'>542</span> </span><span class="NAME">polyrat.countDimensions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>543</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">polyrat._countDimensions</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>544</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>545</span> 
+<span class='line'>546</span> </span><span class="COMM">/**
+<span class='line'>547</span>  * Count the number of dimensions of an array recursively
+<span class='line'>548</span>  *
+<span class='line'>549</span>  * @param {polyrat} an array to count the dimensions of
+<span class='line'>550</span>  * @param {polyrat} c (counter used during recursion)
+<span class='line'>551</span>  * @returns {Integer} number of dimensions
+<span class='line'>552</span>  */</span><span class="WHIT">
+<span class='line'>553</span> </span><span class="NAME">polyrat._countDimensions</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">c</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>554</span> </span><span class="WHIT">	</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">===</span><span class="WHIT"> </span><span class="STRN">'object'</span><span class="WHIT"> </span><span class="PUNC">?</span><span class="WHIT"> </span><span class="NAME">polyrat._countDimensions</span><span class="PUNC">(</span><span class="NAME">a</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">++</span><span class="NAME">c</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">c</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>555</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>556</span> 
+<span class='line'>557</span> </span><span class="COMM">/**
+<span class='line'>558</span>  * Zero, the additive identity
+<span class='line'>559</span>  *
+<span class='line'>560</span>  * @property ZERO
+<span class='line'>561</span>  * @type polyrat
+<span class='line'>562</span>  * @static
+<span class='line'>563</span>  * @final
+<span class='line'>564</span>  */</span><span class="WHIT">
+<span class='line'>565</span> </span><span class="NAME">polyrat.ZERO</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NUMB">0</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>566</span> 
+<span class='line'>567</span> </span><span class="COMM">/**
+<span class='line'>568</span>  * One, the multiplicative identity
+<span class='line'>569</span>  *
+<span class='line'>570</span>  * @property IDENTITY
+<span class='line'>571</span>  * @type polyrat
+<span class='line'>572</span>  * @static
+<span class='line'>573</span>  * @final
+<span class='line'>574</span>  */</span><span class="WHIT">
+<span class='line'>575</span> </span><span class="NAME">polyrat.IDENTITY</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.fromValues</span><span class="PUNC">(</span><span class="PUNC">[</span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>576</span> 
+<span class='line'>577</span> </span><span class="COMM">/**
+<span class='line'>578</span>  * Alias for {@link polyrat.IDENTITY}
+<span class='line'>579</span>  * @static
+<span class='line'>580</span>  */</span><span class="WHIT">
+<span class='line'>581</span> </span><span class="NAME">polyrat.ONE</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat.IDENTITY</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>582</span> 
+<span class='line'>583</span> </span><span class="KEYW">if</span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="PUNC">(</span><span class="NAME">exports</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="STRN">'undefined'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>584</span> </span><span class="WHIT">	</span><span class="NAME">exports.polyrat</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">polyrat</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>585</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>586</span> </span></pre></body></html>

@@ -401,6 +401,16 @@ ul.inheritsList
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
 								<div class="fixedFont">
+								polyrat.<b><a href="../symbols/polyrat.html#.ONE">ONE</a></b>
+								</div>
+								<div class="description">Alias for <a href="../symbols/polyrat.html#.IDENTITY">polyrat.IDENTITY</a></div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">
 								polyrat.<b><a href="../symbols/polyrat.html#.PARABOLA">PARABOLA</a></b>
 								</div>
 								<div class="description">z = x² - y</div>
@@ -509,7 +519,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.div">div</a></b>()
 								</div>
-								<div class="description">Alias for <a href="../symbols/rat.html#.divide">rat.divide</a></div>
+								<div class="description">Alias for <a href="../symbols/polyrat.html#.divide">polyrat.divide</a></div>
 							</td>
 						</tr>
 					
@@ -518,7 +528,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.divide">divide</a></b>(out, a, b)
 								</div>
-								<div class="description">Divides two rats</div>
+								<div class="description">Divides two polyrats</div>
 							</td>
 						</tr>
 					
@@ -527,7 +537,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.equals">equals</a></b>(a, b)
 								</div>
-								<div class="description">Returns true when the first rat is equal to the second</div>
+								<div class="description">Returns true when the first polyrat is equal to the second</div>
 							</td>
 						</tr>
 					
@@ -635,7 +645,7 @@ ul.inheritsList
 							<td class="nameDescription">
 								<div class="fixedFont">polyrat.<b><a href="../symbols/polyrat.html#.sub">sub</a></b>()
 								</div>
-								<div class="description">Alias for <a href="../symbols/rat.html#.subtract">rat.subtract</a></div>
+								<div class="description">Alias for <a href="../symbols/polyrat.html#.subtract">polyrat.subtract</a></div>
 							</td>
 						</tr>
 					
@@ -1006,6 +1016,28 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name=".ONE"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					
+					<span class="light">polyrat.</span><b>ONE</b>
+					
+					</div>
+					<div class="description">
+						Alias for <a href="../symbols/polyrat.html#.IDENTITY">polyrat.IDENTITY</a>
+						
+						
+					</div>
+					
+					
+
+						
+						
+						
+						
+
+					<hr />
+				
 					<a name=".PARABOLA"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
@@ -1317,7 +1349,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Alias for <a href="../symbols/rat.html#.divide">rat.divide</a>
+						Alias for <a href="../symbols/polyrat.html#.divide">polyrat.divide</a>
 						
 						
 					</div>
@@ -1337,12 +1369,12 @@ ul.inheritsList
 					<a name=".divide"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/rat.html">rat</a>}</span>
+					<span class="light">{<a href="../symbols/polyrat.html">polyrat</a>}</span>
 					<span class="light">polyrat.</span><b>divide</b>(out, a, b)
 					
 					</div>
 					<div class="description">
-						Divides two rats
+						Divides two polyrats
 						
 						
 					</div>
@@ -1354,19 +1386,19 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>out</b>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>out</b>
 									
 								</dt>
 								<dd>the receiving number</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
 									
 								</dt>
 								<dd>the first operand</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>b</b>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>b</b>
 									
 								</dt>
 								<dd>the second operand</dd>
@@ -1380,7 +1412,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> out</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> out</dd>
 							
 							</dl>
 						
@@ -1397,7 +1429,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Returns true when the first rat is equal to the second
+						Returns true when the first polyrat is equal to the second
 						
 						
 					</div>
@@ -1409,13 +1441,13 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>a</b>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>a</b>
 									
 								</dt>
 								<dd>the first operand</dd>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/rat.html">rat</a>}</span> <b>b</b>
+									<span class="light fixedFont">{<a href="../symbols/polyrat.html">polyrat</a>}</span> <b>b</b>
 									
 								</dt>
 								<dd>the second operand</dd>
@@ -1429,7 +1461,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Bool}</span> true when the two rats are equal</dd>
+								<dd><span class="light fixedFont">{Bool}</span> true when the two polyrats are equal</dd>
 							
 							</dl>
 						
@@ -1601,7 +1633,7 @@ ul.inheritsList
 									<span class="light fixedFont">{Array}</span> <b>array</b>
 									
 								</dt>
-								<dd>of values (of type "rat")</dd>
+								<dd>of values (of type "rat" --- not yet)</dd>
 							
 							</dl>
 						
@@ -1942,7 +1974,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Alias for <a href="../symbols/rat.html#.subtract">rat.subtract</a>
+						Alias for <a href="../symbols/polyrat.html#.subtract">polyrat.subtract</a>
 						
 						
 					</div>
@@ -2069,7 +2101,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed Aug 07 2013 21:52:23 GMT-0400 (EDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Thu Aug 08 2013 19:18:28 GMT-0400 (EDT)
 		</div>
 	</body>
 </html>
