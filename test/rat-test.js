@@ -38,8 +38,44 @@ vows.describe('convert rat{} constants to strings').addBatch({
     },
 }).export(module);
 
+vows.describe('convert decimal numbers to rat{}').addBatch({
+	
+    'rat.toDecimal(1/7)': {
+        topic: function () { return rat.str(rat.fromDecimal(1/7)) },
+        'equals "1/7"': function (v) {
+            assert.equal (v, '1/7');
+        }
+    },
+    'rat.toDecimal(1/49)': {
+        topic: function () { return rat.str(rat.fromDecimal(1/49)) },
+        'equals "1/49"': function (v) {
+            assert.equal (v, '1/49');
+        }
+    },
+    'rat.toDecimal(1/98)': {
+        topic: function () { return rat.str(rat.fromDecimal(1/98)) },
+        'equals "1/98"': function (v) {
+            assert.equal (v, '1/98');
+        }
+    },
+    'rat.toDecimal(1/103)': {
+        topic: function () { return rat.str(rat.fromDecimal(1/103)) },
+        'equals "1/103"': function (v) {
+            assert.equal (v, '1/103');
+        }
+    },
+    'rat.toDecimal(1/107)': {
+        topic: function () { return rat.str(rat.fromDecimal(1/107)) },
+        'equals "1/107"': function (v) {
+            assert.equal (v, '1/107');
+        }
+    },
+}).export(module);
+
 /*
- * 
+
+//need to convert these to vows...
+
 ratTest = TestCase("ratTest");
 
 ratTest.prototype.testNormalize = function() {

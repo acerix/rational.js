@@ -720,7 +720,8 @@ rat.fromDecimal_copy = function (out, a) {
 	// traverse the Stern-Brocot tree until a match is found
 	// this is comparing the numerator to the denominator multiplied by the target decimal
 	var c = RAT_MAX_LOOPS;
-	while ( out[0] !== test && c-- ) {
+	// the .0000...02 is to ignore rounding errors ( eg. 1 / 49 * 49 !== 1 )
+	while ( Math.abs(out[0] - test) > .0000000000000002 && c-- ) {
 		if (out[0] > test) {
 			m[0] += m[1];
 			m[2] += m[3];
