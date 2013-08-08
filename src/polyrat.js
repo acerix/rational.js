@@ -40,7 +40,7 @@ polyrat.create = function() {
 /**
  * Creates a new polynumber initialized with the given array of either integers or rats
  *
- * @param {Array} array of values (of type "rat")
+ * @param {Array} array of values (of type "rat" --- not yet)
  * @returns {polyrat} a new polynumber
  */
 polyrat.fromValues = function(a) {
@@ -481,7 +481,7 @@ polyrat.subtract = function(out, a, b) {
 };
 
 /**
- * Alias for {@link rat.subtract}
+ * Alias for {@link polyrat.subtract}
  * @function
  */
 polyrat.sub = polyrat.subtract;
@@ -505,33 +505,31 @@ polyrat.multiply = function(out, a, b) {
 polyrat.mul = polyrat.multiply;
 
 /**
- * Divides two rats
+ * Divides two polyrats
  *
- * @param {rat} out the receiving number
- * @param {rat} a the first operand
- * @param {rat} b the second operand
- * @returns {rat} out
+ * @param {polyrat} out the receiving number
+ * @param {polyrat} a the first operand
+ * @param {polyrat} b the second operand
+ * @returns {polyrat} out
  */
 polyrat.divide = function(out, a, b) {
 	return out;
 };
 
 /**
- * Alias for {@link rat.divide}
+ * Alias for {@link polyrat.divide}
  * @function
  */
 polyrat.div = polyrat.divide;
 
 /**
- * Returns true when the first rat is equal to the second
+ * Returns true when the first polyrat is equal to the second
  *
- * @param {rat} a the first operand
- * @param {rat} b the second operand
- * @returns {Bool} true when the two rats are equal
+ * @param {polyrat} a the first operand
+ * @param {polyrat} b the second operand
+ * @returns {Bool} true when the two polyrats are equal
  */
 polyrat.equals = function(a, b) {
-	if (a[0] === 0 && b[0] === 0) return true; // both are Zero
-	if (a[1] === 0 && b[1] === 0) return true; // both are Infinity
 	return a[0] === b[0] && a[1] === b[1];
 };
 
@@ -575,6 +573,12 @@ polyrat.ZERO = polyrat.fromValues([0]);
  * @final
  */
 polyrat.IDENTITY = polyrat.fromValues([1]);
+
+/**
+ * Alias for {@link polyrat.IDENTITY}
+ * @static
+ */
+polyrat.ONE = polyrat.IDENTITY;
 
 if(typeof(exports) !== 'undefined') {
 	exports.polyrat = polyrat;
