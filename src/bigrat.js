@@ -18,14 +18,6 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-if (typeof BigInteger !== 'function') {
-	var BigInteger = require('../src/biginteger.js').BigInteger;
-}
-
-if (typeof bigint !== 'object') {
-	var bigint = require('../src/bigint.js').bigint;
-}
-
 /**
  * The inverse of the allowable difference in approximations
  *
