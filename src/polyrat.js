@@ -48,7 +48,7 @@ polyrat.fromValues = function(a) {
 	out[0] = a.slice();
 	
 	var d = polyrat.countDimensions(out);
-	
+
 	out[1] = new Array(d);
 	
 	var i=d;
@@ -432,9 +432,107 @@ polyrat.fromJSON = function(a) {
  * @returns {polyrat} out
  */
 polyrat.normalize = function(out, a) {
-	//out[0] = a[0];
-	//out[1] = a[1];
 	return out = a;
+};
+
+/**
+ * Adds two polyrats
+ *
+ * @param {polyrat} out the receiving number
+ * @param {polyrat} a the first operand
+ * @param {polyrat} b the second operand
+ * @returns {polyrat} out
+ */
+polyrat.add = function(out, a, b) {
+	var 	a_dimensions = polyrat.countDimensions(a),
+			b_dimensions = polyrat.countDimensions(b);
+	if (a[1][i]!==b[1][i]) {
+		alert('adding polyrats only works if the offsets are the same (for now)');
+	}
+	if (a_dimensions===1&&b_dimensions===1) {
+		for (var i in a[0]) {
+			out[0][i] = typeof b[0][i] === 'undefined' ? a[0][i] : a[0][i] + b[0][i];
+		}
+		for (var i in b[0]) {
+			if (typeof a[0][i] === 'undefined') out[0][i] = b[0][i];
+		}
+		for (var i in out[0]) {
+			if (typeof a[0][i] === 'undefined' && typeof b[0][i] === 'undefined') out[0][i] = null;
+		}
+	}
+	else {
+		alert('unsupported dimension '+a_dimensions);
+	}
+	var i=a_dimensions;
+	while (i--) out[1][i] = a[1][i];
+	return out;
+};
+
+/**
+ * Subtracts two polyrats
+ *
+ * @param {polyrat} out the receiving number
+ * @param {polyrat} a the first operand
+ * @param {polyrat} b the second operand
+ * @returns {polyrat} out
+ */
+polyrat.subtract = function(out, a, b) {
+	return out;
+};
+
+/**
+ * Alias for {@link rat.subtract}
+ * @function
+ */
+polyrat.sub = polyrat.subtract;
+
+/**
+ * Multiplies two polyrats
+ *
+ * @param {polyrat} out the receiving number
+ * @param {polyrat} a the first operand
+ * @param {polyrat} b the second operand
+ * @returns {polyrat} out
+ */
+polyrat.multiply = function(out, a, b) {
+	return out;
+};
+
+/**
+ * Alias for {@link polyrat.multiply}
+ * @function
+ */
+polyrat.mul = polyrat.multiply;
+
+/**
+ * Divides two rats
+ *
+ * @param {rat} out the receiving number
+ * @param {rat} a the first operand
+ * @param {rat} b the second operand
+ * @returns {rat} out
+ */
+polyrat.divide = function(out, a, b) {
+	return out;
+};
+
+/**
+ * Alias for {@link rat.divide}
+ * @function
+ */
+polyrat.div = polyrat.divide;
+
+/**
+ * Returns true when the first rat is equal to the second
+ *
+ * @param {rat} a the first operand
+ * @param {rat} b the second operand
+ * @returns {Bool} true when the two rats are equal
+ */
+polyrat.equals = function(a, b) {
+	if (a[0] === 0 && b[0] === 0) return true; // both are Zero
+	if (a[1] === 0 && b[1] === 0) return true; // both are Infinity
+	return a[0] === b[0] && a[1] === b[1];
 };
 
 /**
