@@ -18,6 +18,7 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*
 // for nodejs
 if (typeof bigint==='undefined'&&typeof require==='function') {
 	var bigint = require('../src/bigint.js').bigint;
@@ -25,6 +26,7 @@ if (typeof bigint==='undefined'&&typeof require==='function') {
 if (typeof BigInteger==='undefined'&&typeof require==='function') {
 	var BigInteger = require('../src/biginteger.js').BigInteger;
 }
+*/
 
 /**
  * The inverse of the allowable difference in approximations
