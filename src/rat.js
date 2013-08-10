@@ -18,12 +18,10 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
 // for nodejs
-if (typeof integer==='undefined'&&typeof require==='function') {
+if (typeof integer==='undefined'&&typeof(window)==='undefined') {
 	var integer = require('../src/integer.js').integer;
 }
-*/
 
 /**
  * The type of array to store the numerator and denominator in
@@ -68,6 +66,16 @@ if(!RAT_MAX_LOOPS) {
  * @requires integer
  */
 var rat = {};
+
+/**
+ * Machine Epsilon, floats within this distance of eachother are considered equal (to avoid rounding errors)
+ *
+ * @property EPSILON
+ * @type rat
+ * @static
+ * @final
+ */
+rat.EPSILON = 2E-16;
 
 /**
  * Creates a new, empty rat
@@ -720,8 +728,7 @@ rat.fromDecimal_copy = function (out, a) {
 	// traverse the Stern-Brocot tree until a match is found
 	// this is comparing the numerator to the denominator multiplied by the target decimal
 	var c = RAT_MAX_LOOPS;
-	// the .0000...02 is to ignore rounding errors ( eg. 1 / 49 * 49 !== 1 )
-	while ( Math.abs(out[0] - test) > 2E-16 && c-- ) {
+	while ( Math.abs(out[0] - test) > rat.EPSILON && c-- ) {
 		if (out[0] > test) {
 			m[0] += m[1];
 			m[2] += m[3];

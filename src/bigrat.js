@@ -18,15 +18,13 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
 // for nodejs
-if (typeof bigint==='undefined'&&typeof require==='function') {
+if (typeof bigint==='undefined'&&typeof(window)==='undefined') {
 	var bigint = require('../src/bigint.js').bigint;
 }
-if (typeof BigInteger==='undefined'&&typeof require==='function') {
+if (typeof BigInteger==='undefined'&&typeof(window)==='undefined') {
 	var BigInteger = require('../src/biginteger.js').BigInteger;
 }
-*/
 
 /**
  * The inverse of the allowable difference in approximations
@@ -58,6 +56,16 @@ if(!BIGRAT_MAX_LOOPS) {
  * @requires bigint BigInteger
  */
 var bigrat = {};
+
+/**
+ * Machine Epsilon, floats within this distance of eachother are considered equal (to avoid rounding errors)
+ *
+ * @property EPSILON
+ * @type rat
+ * @static
+ * @final
+ */
+bigrat.EPSILON = 2E-16;
 
 /**
  * Creates a new, empty bigrat
@@ -730,9 +738,8 @@ bigrat.fromDecimal_copy = function (out, a) {
 	var test = a;
 	
 	// traverse the Stern-Brocot tree until a match is found
-	// ... comparing the numerator to the denominator multiplied by the target decimal
 	var c = BIGRAT_MAX_LOOPS;
-	while ( Math.abs(out[0].valueOf() - test) > 2E-16 && c-- ) {
+	while ( Math.abs(out[0].valueOf() - test) > bigrat.EPSILON && c-- ) {
 		if (out[0].valueOf() > test) {
 			m[0] = m[0].add(m[1]);
 			m[2] = m[2].add(m[3]);
