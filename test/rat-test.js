@@ -628,19 +628,4 @@ ratTest.prototype.testTan = function() {
 	
 };
 
-ratTest.prototype.testToEgyptian = function() {
-	return;
-	assertEquals(
-		"1/22 + 1/566 + 1/1120680",
-		rat.toEgyptian(rat.fromValues(17, 360))
-	);
-};
-
-ratTest.prototype.testToBabylonian = function() {
-	assertEquals(
-		"5 * 60^2 + 2 * 60^1 + 3 * 60^0 + 42 * 60^-1",
-		rat.toBabylonian(rat.fromValues(181237, 10))
-	);
-};
-
 */
