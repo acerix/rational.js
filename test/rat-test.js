@@ -2,7 +2,8 @@
 var vows = require('vows'),
 	assert = require('assert');
 
-var rat = require('../src/rat.js').rat;
+integer = require('../src/integer.js').integer;
+rat = require('../src/rat.js').rat;
 
 vows.describe('convert rat{} constants to strings').addBatch({
     'rat.str(rat.ZERO)': {

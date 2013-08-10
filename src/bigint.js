@@ -19,11 +19,6 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-// for nodejs
-if (typeof BigInteger==='undefined'&&typeof(window)==='undefined') {
-	var BigInteger = require('../src/biginteger.js').BigInteger;
-}
-
 /**
  * @class Arbitrary Sized Integer
  * @name bigint

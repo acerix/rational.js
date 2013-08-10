@@ -2,7 +2,11 @@
 var vows = require('vows'),
 	assert = require('assert');
 
-var bigrat = require('../src/bigrat.js').bigrat;
+integer = require('../src/integer.js').integer;
+rat = require('../src/rat.js').rat;
+BigInteger = require('../src/biginteger.js').BigInteger;
+bigint = require('../src/bigint.js').bigint;
+bigrat = require('../src/bigrat.js').bigrat;
 
 vows.describe('convert bigrat{} constants to strings').addBatch({
     'bigrat.str(bigrat.ZERO)': {
