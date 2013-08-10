@@ -49,7 +49,7 @@ if(!BIGRAT_INFINITESIMAL_PRECISION) {
  * @final
  */
 if(!BIGRAT_MAX_LOOPS) {
-	var BIGRAT_MAX_LOOPS = Math.pow(2, 32);
+	var BIGRAT_MAX_LOOPS = 1<<30;
 }
 
 /**
@@ -732,7 +732,7 @@ bigrat.fromDecimal_copy = function (out, a) {
 	// traverse the Stern-Brocot tree until a match is found
 	// ... comparing the numerator to the denominator multiplied by the target decimal
 	var c = BIGRAT_MAX_LOOPS;
-	while ( Math.abs(out[0].valueOf() - test) > .0000000000000002 && c-- ) {
+	while ( Math.abs(out[0].valueOf() - test) > 2E-16 && c-- ) {
 		if (out[0].valueOf() > test) {
 			m[0] = m[0].add(m[1]);
 			m[2] = m[2].add(m[3]);
@@ -746,6 +746,8 @@ bigrat.fromDecimal_copy = function (out, a) {
 		
 		test = out[1].valueOf() * a;
 	}
+	console.log(BIGRAT_MAX_LOOPS);
+	console.log(Math.abs(out[0].valueOf() - test) > 2E-16);
 	
 	return out;
 };
@@ -757,8 +759,8 @@ bigrat.fromDecimal_copy = function (out, a) {
  * @returns {bigrat} a random bigrational number
  */
 bigrat.fromRandom = function(out) {
-	out[0] = BigInteger(2147483648 - Math.floor( Math.random() * 4294967296 + 1 ));
-	out[1] = BigInteger(Math.floor( Math.random() * 4294967296 + 1 ));
+	out[0] = BigInteger(Math.random()*0xFFFFFFFFFFFFF<<0);
+	out[1] = BigInteger(Math.abs(Math.random()*0xFFFFFFFFFFFFF<<0));
 	return bigrat.normalize(out, out);
 };
 
@@ -872,9 +874,9 @@ bigrat.toBabylonian = function (a) {
 	p = -1;
 	while (r > 0) {
 		r *= 60;
-		d = parseInt(r + .0000000000001);
+		d = parseInt(r + 1E-13);
 		r = r - d;
-		if (r < -.0000000000001) continue;
+		if (r < -1E-13) continue;
 		if (d) s += ( s ? ' + ' : '' ) + d + ' * 60^' + p;
 		p--;
 	}

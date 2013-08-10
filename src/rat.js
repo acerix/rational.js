@@ -59,9 +59,7 @@ if(!RAT_INFINITESIMAL_PRECISION) {
  * @final
  */
 if(!RAT_MAX_LOOPS) {
-	//var RAT_MAX_LOOPS = Math.pow(2, 32);
-	var RAT_MAX_LOOPS = 16777216;
-	//var RAT_MAX_LOOPS = 4096;
+	var RAT_MAX_LOOPS = 1<<24;
 }
 
 /**
@@ -702,7 +700,6 @@ rat.fromDecimal = function (a) {
  * @returns {rat} out
  */
 rat.fromDecimal_copy = function (out, a) {
-	
 	a = parseFloat(a);
 	if (a===0) return rat.copy(out, rat.ZERO);
 	if (a===1) return rat.copy(out, rat.ONE);
@@ -724,7 +721,7 @@ rat.fromDecimal_copy = function (out, a) {
 	// this is comparing the numerator to the denominator multiplied by the target decimal
 	var c = RAT_MAX_LOOPS;
 	// the .0000...02 is to ignore rounding errors ( eg. 1 / 49 * 49 !== 1 )
-	while ( Math.abs(out[0] - test) > .0000000000000002 && c-- ) {
+	while ( Math.abs(out[0] - test) > 2E-16 && c-- ) {
 		if (out[0] > test) {
 			m[0] += m[1];
 			m[2] += m[3];
@@ -750,8 +747,8 @@ rat.fromDecimal_copy = function (out, a) {
  * @returns {rat} a random rational number
  */
 rat.fromRandom = function(out) {
-	out[0] = 2147483648 - Math.floor( Math.random() * 4294967296 + 1 );
-	out[1] = Math.floor( Math.random() * 4294967296 + 1 );
+	out[0] = Math.random()*0xFFFFFFFFFFFFF<<0;
+	out[1] = Math.abs(Math.random()*0xFFFFFFFFFFFFF<<0);
 	return rat.normalize(out, out);
 };
 
@@ -865,9 +862,9 @@ rat.toBabylonian = function (a) {
 	p = -1;
 	while (r > 0) {
 		r *= 60;
-		d = parseInt(r + .0000000000001);
+		d = parseInt(r + 1E-13);
 		r = r - d;
-		if (r < -.0000000000001) continue;
+		if (r < -1E-13) continue;
 		if (d) s += ( s ? ' + ' : '' ) + d + ' * 60^' + p;
 		p--;
 	}

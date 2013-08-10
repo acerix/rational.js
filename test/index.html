@@ -111,6 +111,9 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
+var r = bigrat.fromRandom(bigrat.create());
+
+print(bigrat.dump(r));
 
 
 var a = polyrat.fromValues(
@@ -139,8 +142,15 @@ polyrat.add(result, a, b);
 //print(polyrat.toJSON(result));
 print(polyrat.str(result));
 
-/*
+print();
 
+print('@'+r[0]+' => '+bigrat.str(polyrat.evaluate(bigrat.create(), result, [r[0]])));
+
+
+exit(); /* remove this to test the rest */
+
+
+print();
 
 var x2 = polyrat.fromValues([0, 0, 1]);
 
@@ -337,7 +347,6 @@ print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
 
-*/
 
 </textarea>
 
