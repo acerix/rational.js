@@ -753,9 +753,6 @@ bigrat.fromDecimal_copy = function (out, a) {
 		
 		test = out[1].valueOf() * a;
 	}
-	console.log(BIGRAT_MAX_LOOPS);
-	console.log(Math.abs(out[0].valueOf() - test) > 2E-16);
-	
 	return out;
 };
 
