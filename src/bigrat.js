@@ -18,6 +18,14 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// for nodejs
+if (typeof bigint==='undefined'&&typeof require==='function') {
+	var bigint = require('../src/bigint.js').bigint;
+}
+if (typeof BigInteger==='undefined'&&typeof require==='function') {
+	var BigInteger = require('../src/biginteger.js').BigInteger;
+}
+
 /**
  * The inverse of the allowable difference in approximations
  *
@@ -28,6 +36,18 @@
  */
 if(!BIGRAT_INFINITESIMAL_PRECISION) {
 	var BIGRAT_INFINITESIMAL_PRECISION = new BigInteger('0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF');
+}
+
+/**
+ * Exit (possibly infinite) loops after this many iterations
+ *
+ * @property BIGRAT_MAX_LOOPS
+ * @type Integer
+ * @static
+ * @final
+ */
+if(!BIGRAT_MAX_LOOPS) {
+	var BIGRAT_MAX_LOOPS = Math.pow(2, 32);
 }
 
 /**
@@ -515,7 +535,7 @@ bigrat.nthRoot = function (out, a, n) {
 	];
 	var test = bigrat.clone(bigrat.ONE);
 	
-	var c = RAT_MAX_LOOPS;
+	var c = BIGRAT_MAX_LOOPS;
 	while ( !bigrat.approximates(a, test) && c-- ) {
 		if (bigrat.isLessThan(a, test)) {
 			m[0] = m[0].add(m[1]);
@@ -706,11 +726,11 @@ bigrat.fromDecimal_copy = function (out, a) {
 		BigInteger(1)
 	];
 	var test = a;
-
+	
 	// traverse the Stern-Brocot tree until a match is found
 	// ... comparing the numerator to the denominator multiplied by the target decimal
-	var c = RAT_MAX_LOOPS;
-	while ( out[0].valueOf() !== test && c-- ) {
+	var c = BIGRAT_MAX_LOOPS;
+	while ( Math.abs(out[0].valueOf() - test) > .0000000000000002 && c-- ) {
 		if (out[0].valueOf() > test) {
 			m[0] = m[0].add(m[1]);
 			m[2] = m[2].add(m[3]);
@@ -721,8 +741,10 @@ bigrat.fromDecimal_copy = function (out, a) {
 		}
 		out[0] = m[0].add(m[1]);
 		out[1] = m[2].add(m[3]);
+		
 		test = out[1].valueOf() * a;
 	}
+	
 	return out;
 };
 

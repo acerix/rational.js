@@ -5,7 +5,6 @@ var vows = require('vows'),
 var rat = require('../src/rat.js').rat;
 
 vows.describe('convert rat{} constants to strings').addBatch({
-	
     'rat.str(rat.ZERO)': {
         topic: function () { return rat.str(rat.ZERO) },
         'equals "0"': function (v) {
@@ -39,93 +38,164 @@ vows.describe('convert rat{} constants to strings').addBatch({
 }).export(module);
 
 vows.describe('convert decimal numbers to rat{}').addBatch({
-	
-    'rat.toDecimal(1/7)': {
+    'rat.fromDecimal(1/7)': {
         topic: function () { return rat.str(rat.fromDecimal(1/7)) },
         'equals "1/7"': function (v) {
             assert.equal (v, '1/7');
         }
     },
-    'rat.toDecimal(1/49)': {
+    'rat.fromDecimal(1/49)': {
         topic: function () { return rat.str(rat.fromDecimal(1/49)) },
         'equals "1/49"': function (v) {
             assert.equal (v, '1/49');
         }
     },
-    'rat.toDecimal(1/98)': {
+    'rat.fromDecimal(1/98)': {
         topic: function () { return rat.str(rat.fromDecimal(1/98)) },
         'equals "1/98"': function (v) {
             assert.equal (v, '1/98');
         }
     },
-    'rat.toDecimal(1/103)': {
+    'rat.fromDecimal(1/103)': {
         topic: function () { return rat.str(rat.fromDecimal(1/103)) },
         'equals "1/103"': function (v) {
             assert.equal (v, '1/103');
         }
     },
-    'rat.toDecimal(1/107)': {
+    'rat.fromDecimal(1/107)': {
         topic: function () { return rat.str(rat.fromDecimal(1/107)) },
         'equals "1/107"': function (v) {
             assert.equal (v, '1/107');
         }
     },
+    /*
+    // slow!
+    'rat.toDecimal(rat.fromDecimal(100000.000001))': {
+        topic: function () { return rat.toDecimal(rat.fromDecimal(100000.000001)) },
+        'equals 100000.000001': function (v) {
+            assert.equal (v, 100000.000001);
+        }
+    },
+    'rat.toDecimal(rat.fromDecimal(420.00000069))': {
+        topic: function () { return rat.toDecimal(rat.fromDecimal(420.00000069)) },
+        'equals 420.00000069': function (v) {
+            assert.equal (v, 420.00000069);
+        }
+    },
+    */
 }).export(module);
+
+vows.describe('rat.PI gives the correct approximation').addBatch({
+    'rat.toDecimal(rat.PI)': {
+        topic: function () { return rat.toDecimal(rat.PI) },
+        'equals Math.PI': function (v) {
+            assert.equal (v, Math.PI);
+        }
+    },
+}).export(module);
+
+vows.describe('rats are properly normalized').addBatch({
+    '-3/71': {
+        topic: function () {
+			var t = 2;
+			return rat.str(rat.fromValues(3 * t, -71 * t))
+		},
+        'equals "-3/71"': function (v) {
+            assert.equal (v, '-3/71');
+        }
+    },
+    '11/3': {
+        topic: function () {
+			var t = -12147;
+			return rat.str(rat.fromValues(11 * t, 3 * t));
+		},
+        'equals "11/3"': function (v) {
+            assert.equal (v, '11/3');
+        }
+    },
+    '7/9': {
+        topic: function () {
+			var t = 6934546;
+			return rat.str(rat.fromValues(-7 * t, -9 * t));
+		},
+        'equals "7/9"': function (v) {
+            assert.equal (v, '7/9');
+        }
+    },
+}).export(module);
+
+vows.describe('convert rats to decimal numbers').addBatch({
+    'ZERO': {
+        topic: function () { return rat.toDecimal(rat.ZERO) },
+        'equals 0': function (v) {
+            assert.equal (v, 0);
+        }
+    },
+    'ONE': {
+        topic: function () { return rat.toDecimal(rat.ONE) },
+        'equals 1': function (v) {
+            assert.equal (v, 1);
+        }
+    },
+    'NEGONE': {
+        topic: function () { return rat.toDecimal(rat.NEGONE) },
+        'equals -1': function (v) {
+            assert.equal (v, -1);
+        }
+    },
+    'INFINITY': {
+        topic: function () { return rat.toDecimal(rat.INFINITY) },
+        'equals Infinity': function (v) {
+            assert.equal (v, Infinity);
+        }
+    },
+    'INFINULL': {
+        topic: function () { return rat.toDecimal(rat.INFINULL) },
+        'equals INFINULL': function (v) {
+            assert.isNaN (v);
+        }
+    },
+    'Infinity': {
+        topic: function () { return rat.toDecimal(rat.INFINITY) },
+        'equals Infinity': function (v) {
+            assert.equal (v, Infinity);
+        }
+    },
+    'rat(-1/10)': {
+        topic: function () { return rat.toDecimal(rat.fromValues(-1, 10)) },
+        'equals -1/10': function (v) {
+            assert.equal (v, -1/10);
+        }
+    },
+}).export(module);
+
+vows.describe('convert rats to Egyptian fractions').addBatch({
+    'rat.toEgyptian(rat.fromValues(17, 360))': {
+        topic: function () { return rat.toEgyptian(rat.fromValues(17, 360)) },
+        'equals "1/22 + 1/566 + 1/1120680"': function (v) {
+            assert.equal (v, "1/22 + 1/566 + 1/1120680");
+        }
+    },
+}).export(module);
+
+vows.describe('convert rats to Babylonian fractions').addBatch({
+    'rat.toBabylonian(rat.fromValues(181237, 10))': {
+        topic: function () { return rat.toBabylonian(rat.fromValues(181237, 10)) },
+        'equals "5 * 60^2 + 2 * 60^1 + 3 * 60^0 + 42 * 60^-1"': function (v) {
+            assert.equal (v, "5 * 60^2 + 2 * 60^1 + 3 * 60^0 + 42 * 60^-1");
+        }
+    },
+}).export(module);
+
+
+
+
 
 /*
 
 //need to convert these to vows...
 
 ratTest = TestCase("ratTest");
-
-ratTest.prototype.testNormalize = function() {
-	
-	var t = 2;
-	assertEquals(
-		"-3/71",
-		rat.str(rat.fromValues(3 * t, -71 * t))
-	);
-	
-	t = -12147;
-	assertEquals(
-		"11/3",
-		rat.str(rat.fromValues(11 * t, 3 * t))
-	);
-	
-	t = 6934546;
-	assertEquals(
-		"7/9",
-		rat.str(rat.fromValues(-7 * t, -9 * t))
-	);
-	
-};
-
-ratTest.prototype.testToDecimal = function() {
-	
-	assertEquals(
-		0,
-		rat.toDecimal(rat.ZERO)
-	);
-	
-	assertEquals(
-		1,
-		rat.toDecimal(rat.ONE)
-	);
-	
-	assertSame(
-		Infinity,
-		rat.toDecimal(rat.INFINITY)
-	);
-	
-	assertNaN(
-		rat.toDecimal(rat.INFINULL)
-	);
-	
-	assertEquals(
-		-1/10,
-		rat.toDecimal(rat.fromValues(1, -10))
-	);
-};
 
 ratTest.prototype.testFromDecimal = function() {
 	
@@ -190,19 +260,6 @@ ratTest.prototype.testFromDecimal = function() {
 		rat.str(rat.fromDecimal(-611953/611951))
 	);
 	
-	
-	
-	var test_decimal = 100000.000001;
-	assertEquals(
-		test_decimal,
-		rat.toDecimal(rat.fromDecimal(test_decimal))
-	);
-	
-	test_decimal = 420.00000069;
-	assertEquals(
-		test_decimal,
-		rat.toDecimal(rat.fromDecimal(test_decimal))
-	);
 	
 };
 
