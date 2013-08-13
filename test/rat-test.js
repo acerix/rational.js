@@ -69,8 +69,12 @@ vows.describe('convert decimal numbers to rat{}').addBatch({
             assert.equal (v, '1/107');
         }
     },
-    /*
-    // slow!
+    'rat.fromDecimal(31/30)': {
+        topic: function () { return rat.str(rat.fromDecimal(31/30)) },
+        'equals "31/30"': function (v) {
+            assert.equal (v, '31/30');
+        }
+    },
     'rat.toDecimal(rat.fromDecimal(100000.000001))': {
         topic: function () { return rat.toDecimal(rat.fromDecimal(100000.000001)) },
         'equals 100000.000001': function (v) {
@@ -83,7 +87,6 @@ vows.describe('convert decimal numbers to rat{}').addBatch({
             assert.equal (v, 420.00000069);
         }
     },
-    */
 }).export(module);
 
 vows.describe('rat.PI gives the correct approximation').addBatch({

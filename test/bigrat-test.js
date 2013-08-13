@@ -79,7 +79,6 @@ vows.describe('convert decimal numbers to bigrat{}').addBatch({
         }
     },
     /*
-    // slow!
     'bigrat.toDecimal(bigrat.fromDecimal(100000.000001))': {
         topic: function () { return bigrat.toDecimal(bigrat.fromDecimal(100000.000001)) },
         'equals 100000.000001': function (v) {

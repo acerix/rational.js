@@ -70,7 +70,17 @@ var rat = {};
  * @static
  * @final
  */
-rat.EPSILON = 2E-16;
+rat.EPSILON = 5E-15;
+
+/**
+ * Exit (possibly infinite) loops after this many iterations
+ *
+ * @property MAX_LOOPS
+ * @type rat
+ * @static
+ * @final
+ */
+rat.MAX_LOOPS = RAT_MAX_LOOPS;
 
 /**
  * Creates a new, empty rat
@@ -539,7 +549,7 @@ rat.nthRoot = function (out, a, n) {
 	var m = [1, 0, 0, 1];
 	var test = rat.clone(rat.ONE);
 	
-	var c = RAT_MAX_LOOPS;
+	var c = rat.MAX_LOOPS;
 	while ( !rat.approximates(a, test) && c-- ) {
 		if (rat.isLessThan(a, test)) {
 			m[0] += m[1];
@@ -709,7 +719,7 @@ rat.fromDecimal_copy = function (out, a) {
 	if (a===Infinity) return rat.copy(out, rat.INFINITY);
 	if (isNaN(a)) return rat.copy(out, rat.INFINULL);
 	if (a%1===0) return rat.fromInteger_copy(out, a);
-	if ((1/a)%1===0) return rat.fromIntegerInverse_copy(out, parseInt(1/a));
+	if (Math.abs((1/a)%1) < rat.EPSILON) return rat.fromIntegerInverse_copy(out, Math.round(1/a));
 	
 	out[0] = 1;
 	out[1] = 1;
@@ -722,7 +732,7 @@ rat.fromDecimal_copy = function (out, a) {
 	
 	// traverse the Stern-Brocot tree until a match is found
 	// this is comparing the numerator to the denominator multiplied by the target decimal
-	var c = RAT_MAX_LOOPS;
+	var c = rat.MAX_LOOPS;
 	while ( Math.abs(out[0] - test) > rat.EPSILON && c-- ) {
 		if (out[0] > test) {
 			m[0] += m[1];
@@ -905,7 +915,7 @@ rat.traceSternBrocot = function (a) {
 	var r_streak = 0;
 	var l_streak = 0;
 	
-	var c = RAT_MAX_LOOPS;
+	var c = rat.MAX_LOOPS;
 	while ( !rat.approximates(a, r) && c-- ) {
 		if (rat.isLessThan(a, r)) {
 			m[0] += m[1];

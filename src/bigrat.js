@@ -57,7 +57,17 @@ var bigrat = {};
  * @static
  * @final
  */
-bigrat.EPSILON = 2E-16;
+bigrat.EPSILON = 5E-15;
+
+/**
+ * Exit (possibly infinite) loops after this many iterations
+ *
+ * @property MAX_LOOPS
+ * @type bigrat
+ * @static
+ * @final
+ */
+bigrat.MAX_LOOPS = BIGRAT_MAX_LOOPS;
 
 /**
  * Creates a new, empty bigrat
@@ -717,7 +727,7 @@ bigrat.fromDecimal_copy = function (out, a) {
 	if (a===Infinity) return bigrat.copy(out, bigrat.INFINITY);
 	if (isNaN(a)) return bigrat.copy(out, bigrat.INFINULL);
 	if (a%1===0) return bigrat.fromInteger_copy(out, a);
-	if ((1/a)%1===0) return bigrat.fromIntegerInverse_copy(out, parseInt(1/a));
+	if (Math.abs((1/a)%1) < bigrat.EPSILON) return bigrat.fromIntegerInverse_copy(out, parseInt(1/a));
 	
 	bigrat.copy(out, bigrat.ONE);
 	
