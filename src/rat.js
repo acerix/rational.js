@@ -707,12 +707,14 @@ rat.fromDecimal = function (a) {
 
 /**
  * Returns a rat from a decimal number, copying to an existing rat
+ * ... new algo based on Ratio.getApprox()
  *
  * @param {rat} out the receiving number
  * @param {Number} a decimal number
  * @returns {rat} out
  */
 rat.fromDecimal_copy = function (out, a) {
+	
 	a = parseFloat(a);
 	if (a===0) return rat.copy(out, rat.ZERO);
 	if (a===1) return rat.copy(out, rat.ONE);
@@ -720,35 +722,33 @@ rat.fromDecimal_copy = function (out, a) {
 	if (isNaN(a)) return rat.copy(out, rat.INFINULL);
 	if (a%1===0) return rat.fromInteger_copy(out, a);
 	if (Math.abs((1/a)%1) < rat.EPSILON) return rat.fromIntegerInverse_copy(out, Math.round(1/a));
-	
+
 	out[0] = 1;
 	out[1] = 1;
 	
-	var neg = a < 0;
-	if (neg) a = Math.abs(a);
-	
-	var m = [1, 0, 0, 1];
-	var test = a;
-	
-	// traverse the Stern-Brocot tree until a match is found
-	// this is comparing the numerator to the denominator multiplied by the target decimal
-	var c = rat.MAX_LOOPS;
-	while ( Math.abs(out[0] - test) > rat.EPSILON && c-- ) {
-		if (out[0] > test) {
-			m[0] += m[1];
-			m[2] += m[3];
-		}
-		else {
-			m[1] += m[0];
-			m[3] += m[2];
-		}
-		out[0] = m[0] + m[1];
-		out[1] = m[2] + m[3];
-		test = a * out[1];
+	var
+		m = [1, 0, 0, 1],
+		test = a,
+		floorOfMid,
+		result,
+		last_result = NaN,
+		c = rat.MAX_LOOPS;
+		
+	while (c--) {
+		integer_part = Math.floor(test);
+		out[0] = integer_part * m[0] + m[2];
+		out[1] = integer_part * m[1] + m[3];
+		result = rat.toDecimal(out);
+		if (result === a || result === last_result)
+			return out;
+		last_result = result;
+		test = 1 / (test - integer_part);
+		m[2] = m[0];
+		m[3] = m[1];
+		m[0] = out[0];
+		m[1] = out[1];
 	}
-	
-	if (neg) rat.neg(out, out);
-	
+	if (!limit) console.log('rat.fromDecimal('+a+') reached limit at '+rat.str(out));
 	return out;
 };
 
@@ -807,13 +807,13 @@ rat.cos = function(out, a) {
  * @returns {rat} out
  */
 rat.tan = function(out, a) {
-	rat.scalar_multiply(out, a, 2); // out = a * 2
+	rat.scalar_multiply(out, a, 2);
 	var t = rat.create();
-	rat.pow(t, a, 2); // t = a * a
-	rat.scalar_multiply(t, t, 2); // t *= 2
-	rat.add(out, out, t); // out += t
-	rat.pow(t, a, 4); // t = a * a * a * a
-	rat.sub(t, rat.ONE, t); // t = 1 - t
+	rat.pow(t, a, 2);
+	rat.scalar_multiply(t, t, 2);
+	rat.add(out, out, t);
+	rat.pow(t, a, 4);
+	rat.sub(t, rat.ONE, t);
 	rat.divide(out, out, t);
 	return out;
 };
