@@ -729,7 +729,7 @@ rat.fromDecimal_copy = function (out, a) {
 	var
 		m = [1, 0, 0, 1],
 		test = a,
-		floorOfMid,
+		integer_part,
 		result,
 		last_result = NaN,
 		c = rat.MAX_LOOPS;
