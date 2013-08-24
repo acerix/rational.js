@@ -1,9 +1,9 @@
 {
 	"name" : "bigrat",
-	"version" : "0.0.5",
+	"version" : "0.0.6",
 	"homepage" : "http://acerix.github.io/rational.js/",
 	"description" : "rational.js: tools and libraries using rational numbers.",
-	"keywords" : ["rational", "rationals", "ratio", "ratios", "fraction", "fractions", "number", "numbers", "math", "polyrat", "polynumber", "polynumbers"],
+	"keywords" : ["rational", "rationals", "ratio", "ratios", "fraction", "fractions", "number", "numbers", "math", "polyrat", "polyrats", "polynumber", "polynumbers"],
 	"author" : {
 		"name" : "Dylan",
 		"email": "dylan@psilly.com",
