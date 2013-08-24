@@ -78,11 +78,16 @@ vows.describe('convert decimal numbers to bigrat{}').addBatch({
             assert.equal (v, 10000.00001);
         }
     },
-    /*
     'bigrat.toDecimal(bigrat.fromDecimal(100000.000001))': {
         topic: function () { return bigrat.toDecimal(bigrat.fromDecimal(100000.000001)) },
         'equals 100000.000001': function (v) {
             assert.equal (v, 100000.000001);
+        }
+    },
+    'bigrat.toDecimal(bigrat.fromDecimal(.0123456789))': {
+        topic: function () { return bigrat.toDecimal(bigrat.fromDecimal(.0123456789)) },
+        'approximates .0123456789': function (v) {
+            assert.ok (Math.abs(v-.0123456789) < bigrat.EPSILON);
         }
     },
     'bigrat.toDecimal(bigrat.fromDecimal(420.00000069))': {
@@ -91,7 +96,6 @@ vows.describe('convert decimal numbers to bigrat{}').addBatch({
             assert.equal (v, 420.00000069);
         }
     },
-    */
 }).export(module);
 
 vows.describe('bigrat.PI gives the correct approximation').addBatch({

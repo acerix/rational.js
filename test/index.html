@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>rational.js browser tester</title>
+<!-- the latest release, replaced with the dev versions below if they exist -->
+<script src="http://acerix.github.com/rational.js/releases/rationaljs.alpha.js"></script>
 <script src="../src/integer.js"></script>
 <script src="../src/factorial.js"></script>
 <script src="../src/biginteger.js"></script>
@@ -115,6 +117,11 @@ var r = bigrat.fromRandom(bigrat.create());
 
 print(bigrat.dump(r));
 
+print(bigrat.dump(bigrat.fromDecimal(bigrat.toDecimal(r))));
+
+print();
+
+
 
 var a = polyrat.fromValues(
 	[0, 0, 7, 1, 2, 3, 81, 4, 23]
@@ -147,7 +154,10 @@ print();
 print('@'+r[0]+' => '+bigrat.str(polyrat.evaluate(bigrat.create(), result, [r[0]])));
 
 
+
+
 exit(); /* remove this to test the rest */
+
 
 
 print();
@@ -346,7 +356,6 @@ print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
 print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
-
 
 </textarea>
 

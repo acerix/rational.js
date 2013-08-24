@@ -18,6 +18,14 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// for nodejs
+if (typeof rat !== 'object') {
+  var rat = require('../src/rat.js').rat;
+}
+if (typeof alpha !== 'object') {
+  var alpha = require('../src/alpha.js').alpha;
+}
+
 /**
  * @class Rational Polynumber (of arbitrary dimension)
  * @name polyrat

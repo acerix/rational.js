@@ -101,8 +101,8 @@ vows.describe('convert decimal numbers to rat{}').addBatch({
     },
     'rat.toDecimal(rat.fromDecimal(.0123456789))': {
         topic: function () { return rat.toDecimal(rat.fromDecimal(.0123456789)) },
-        'equals .0123456789': function (v) {
-            assert.equal (v, .0123456789);
+        'approximates .0123456789': function (v) {
+            assert.ok (Math.abs(v-.0123456789) < rat.EPSILON);
         }
     },
     'rat.toDecimal(rat.fromDecimal(420.00000000069))': {

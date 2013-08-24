@@ -18,6 +18,11 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// for nodejs
+if (typeof integer !== 'object') {
+  var integer = require('../src/integer.js').integer;
+}
+
 /**
  * The type of array to store the numerator and denominator in
  *
@@ -70,7 +75,7 @@ var rat = {};
  * @static
  * @final
  */
-rat.EPSILON = 5E-15;
+rat.EPSILON = 2e-16;
 
 /**
  * Exit (possibly infinite) loops after this many iterations
@@ -707,48 +712,41 @@ rat.fromDecimal = function (a) {
 
 /**
  * Returns a rat from a decimal number, copying to an existing rat
- * ... new algo based on Ratio.getApprox()
  *
  * @param {rat} out the receiving number
  * @param {Number} a decimal number
  * @returns {rat} out
  */
 rat.fromDecimal_copy = function (out, a) {
-	
 	a = parseFloat(a);
-	if (a===0) return rat.copy(out, rat.ZERO);
-	if (a===1) return rat.copy(out, rat.ONE);
-	if (a===Infinity) return rat.copy(out, rat.INFINITY);
 	if (isNaN(a)) return rat.copy(out, rat.INFINULL);
-	if (a%1===0) return rat.fromInteger_copy(out, a);
+	if (a===Infinity) return rat.copy(out, rat.INFINITY);
+	if (Math.abs(a) < rat.EPSILON) return rat.copy(out, rat.ZERO);
+	if (Math.abs(a-1) < rat.EPSILON) return rat.copy(out, rat.ONE);
+	if (Math.abs(a%1) < rat.EPSILON) return rat.fromInteger_copy(out, a);
 	if (Math.abs((1/a)%1) < rat.EPSILON) return rat.fromIntegerInverse_copy(out, Math.round(1/a));
-
-	out[0] = 1;
-	out[1] = 1;
-	
+	rat.copy(out, rat.ONE);
 	var
-		m = [1, 0, 0, 1],
+		m = [
+			1,
+			0,
+			0,
+			1
+		],
 		test = a,
-		integer_part,
-		result,
-		last_result = NaN,
+		integer_part = 1,
 		c = rat.MAX_LOOPS;
-		
-	while (c--) {
+	//while (c-- && Math.abs(out[0] - a*out[1]) > 2e-8) {
+	while (c-- && Math.abs(a - rat.toDecimal(out)) > rat.EPSILON) {
 		integer_part = Math.floor(test);
 		out[0] = integer_part * m[0] + m[2];
 		out[1] = integer_part * m[1] + m[3];
-		result = rat.toDecimal(out);
-		if (result === a || result === last_result)
-			return out;
-		last_result = result;
 		test = 1 / (test - integer_part);
 		m[2] = m[0];
 		m[3] = m[1];
 		m[0] = out[0];
 		m[1] = out[1];
 	}
-	if (!limit) console.log('rat.fromDecimal('+a+') reached limit at '+rat.str(out));
 	return out;
 };
 
@@ -906,8 +904,9 @@ rat.traceSternBrocot = function (a) {
 	if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
 	if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
 	
-	var neg = rat.isNegative(a);
-	if (neg) a[0] = -a[0];
+	var test = rat.clone(a);
+	var neg = rat.isNegative(test);
+	if (neg) test[0] = -test[0];
 	
 	var r = rat.clone(rat.ONE);
 	var m = [1, 0, 0, 1];
@@ -916,8 +915,8 @@ rat.traceSternBrocot = function (a) {
 	var l_streak = 0;
 	
 	var c = rat.MAX_LOOPS;
-	while ( !rat.approximates(a, r) && c-- ) {
-		if (rat.isLessThan(a, r)) {
+	while ( !rat.approximates(test, r) && c-- ) {
+		if (rat.isLessThan(test, r)) {
 			m[0] += m[1];
 			m[2] += m[3];
 			l_streak++;
@@ -953,8 +952,6 @@ rat.traceSternBrocot = function (a) {
 	
 	if (c<0) path += '...';
 	
-	if (neg) a[0] = -a[0];
-	
 	return path;
 };
 
@@ -973,8 +970,9 @@ rat.toContinuedFraction = function (a, loop_limit) {
 	if (rat.equals(a, rat.INFINITY)) return [1, 0];
 	if (rat.equals(a, rat.INFINULL)) return [0, 0];
 
-	var neg = rat.isNegative(a);
-	if (neg) a[0] = -a[0];
+	var test = rat.clone(a);
+	var neg = rat.isNegative(test);
+	if (neg) test[0] = -test[0];
 	
 	var r = rat.clone(rat.ONE);
 	
@@ -984,8 +982,8 @@ rat.toContinuedFraction = function (a, loop_limit) {
 	var result = [0];
 	var result_last = result.length - 1;
 	
-	while ( !rat.equals(a, r) && loop_limit-- ) {
-		if (rat.isLessThan(a, r)) {
+	while ( !rat.equals(test, r) && loop_limit-- ) {
+		if (rat.isLessThan(test, r)) {
 			if (direction===-1) {
 				result[result_last]++;
 			}

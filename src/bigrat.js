@@ -18,6 +18,14 @@
  * along with rational.js.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// for nodejs
+if (typeof BigInteger !== 'function') {
+  var BigInteger = require('../src/biginteger.js').BigInteger;
+}
+if (typeof bigint !== 'object') {
+  var bigint = require('../src/bigint.js').bigint;
+}
+
 /**
  * The inverse of the allowable difference in approximations
  *
@@ -50,14 +58,14 @@ if(!BIGRAT_MAX_LOOPS) {
 var bigrat = {};
 
 /**
- * Machine Epsilon, floats within this distance of eachother are considered equal (to avoid rounding errors)
+ * Machine Epsilon, floats within this distance of each other are considered equal
  *
  * @property EPSILON
  * @type rat
  * @static
  * @final
  */
-bigrat.EPSILON = 5E-15;
+bigrat.EPSILON = 2e-16;
 
 /**
  * Exit (possibly infinite) loops after this many iterations
@@ -714,7 +722,7 @@ bigrat.fromDecimal = function (a) {
 };
 
 /**
- * Returns a bigrat from a decimal number
+ * Returns a bigrat from a decimal number, copying to an existing bigrat
  *
  * @param {bigrat} out the receiving number
  * @param {Number} a decimal number
@@ -722,38 +730,33 @@ bigrat.fromDecimal = function (a) {
  */
 bigrat.fromDecimal_copy = function (out, a) {
 	a = parseFloat(a);
-	if (a===0) return bigrat.copy(out, bigrat.ZERO);
-	if (a===1) return bigrat.copy(out, bigrat.ONE);
-	if (a===Infinity) return bigrat.copy(out, bigrat.INFINITY);
 	if (isNaN(a)) return bigrat.copy(out, bigrat.INFINULL);
-	if (a%1===0) return bigrat.fromInteger_copy(out, a);
-	if (Math.abs((1/a)%1) < bigrat.EPSILON) return bigrat.fromIntegerInverse_copy(out, parseInt(1/a));
-	
+	if (a===Infinity) return bigrat.copy(out, bigrat.INFINITY);
+	if (Math.abs(a) < bigrat.EPSILON) return bigrat.copy(out, bigrat.ZERO);
+	if (Math.abs(a-1) < bigrat.EPSILON) return bigrat.copy(out, bigrat.ONE);
+	if (Math.abs(a%1) < bigrat.EPSILON) return bigrat.fromInteger_copy(out, a);
+	if (Math.abs((1/a)%1) < bigrat.EPSILON) return bigrat.fromIntegerInverse_copy(out, Math.round(1/a));
 	bigrat.copy(out, bigrat.ONE);
-	
-	var m = [
-		BigInteger(1),
-		BigInteger(0),
-		BigInteger(0),
-		BigInteger(1)
-	];
-	var test = a;
-	
-	// traverse the Stern-Brocot tree until a match is found
-	var c = BIGRAT_MAX_LOOPS;
-	while ( Math.abs(out[0].valueOf() - test) > bigrat.EPSILON && c-- ) {
-		if (out[0].valueOf() > test) {
-			m[0] = m[0].add(m[1]);
-			m[2] = m[2].add(m[3]);
-		}
-		else {
-			m[1] = m[1].add(m[0]);
-			m[3] = m[3].add(m[2]);
-		}
-		out[0] = m[0].add(m[1]);
-		out[1] = m[2].add(m[3]);
-		
-		test = out[1].valueOf() * a;
+	var
+		m = [
+			BigInteger(1),
+			BigInteger(0),
+			BigInteger(0),
+			BigInteger(1)
+		],
+		test = a,
+		integer_part = 1,
+		c = bigrat.MAX_LOOPS;
+	//while (c-- && Math.abs(out[0].valueOf() - a*out[1].valueOf()) > 2e-8) {
+	while (c-- && Math.abs(a - bigrat.toDecimal(out)) > bigrat.EPSILON) {
+		integer_part = Math.floor(test);
+		out[0] = BigInteger(integer_part * m[0] + m[2]);
+		out[1] = BigInteger(integer_part * m[1] + m[3]);
+		test = 1 / (test - integer_part);
+		m[2] = m[0];
+		m[3] = m[1];
+		m[0] = out[0];
+		m[1] = out[1];
 	}
 	return out;
 };
@@ -907,8 +910,9 @@ bigrat.traceSternBrocot = function (a) {
 		bigrat.equals(a, bigrat.INFINULL)
 		) return path;
 
-	var neg = bigrat.isNegative(a);
-	if (neg) a[0] = a[0].negate();
+	var test = bigrat.clone(a);
+	var neg = bigrat.isNegative(test);
+	if (neg) test[0] = test[0].negate();
 	
 	var r = bigrat.clone(bigrat.ONE);
 	
@@ -923,8 +927,8 @@ bigrat.traceSternBrocot = function (a) {
 	var l_streak = 0;
 	
 	var c = 65536;
-	while ( !bigrat.equals(a, r) && c-- ) {
-		if (bigrat.isLessThan(a, r)) {
+	while ( !bigrat.equals(test, r) && c-- ) {
+		if (bigrat.isLessThan(test, r)) {
 			m[0] = m[0].add(m[1]);
 			m[2] = m[2].add(m[3]);
 			l_streak++;
@@ -960,8 +964,6 @@ bigrat.traceSternBrocot = function (a) {
 	
 	if (c<0) path += '...';
 	
-	if (neg) a[0] = a[0].negate();
-	
 	return path;
 };
 
@@ -980,8 +982,9 @@ bigrat.toContinuedFraction = function (a, loop_limit) {
 	if (bigrat.equals(a, bigrat.INFINITY)) return [1, 0];
 	if (bigrat.equals(a, bigrat.INFINULL)) return [0, 0];
 
-	var neg = bigrat.isNegative(a);
-	if (neg) a[0] = a[0].negate();
+	var test = bigrat.clone(a);
+	var neg = bigrat.isNegative(test);
+	if (neg) test[0] = test[0].negate();
 	
 	var r = bigrat.clone(bigrat.ONE);
 	
@@ -996,8 +999,8 @@ bigrat.toContinuedFraction = function (a, loop_limit) {
 	var result = [0];
 	var result_last = result.length - 1;
 	
-	while ( !bigrat.equals(a, r) && loop_limit-- ) {
-		if (bigrat.isLessThan(a, r)) {
+	while ( !bigrat.equals(test, r) && loop_limit-- ) {
+		if (bigrat.isLessThan(test, r)) {
 			if (direction===-1) {
 				result[result_last]++;
 			}
@@ -1075,7 +1078,7 @@ bigrat.fromFactorial = function(out, n) {
  * @returns {String} string various conversions
  */
 bigrat.dump = function(r) {
-	var t = bigrat.create();
+	//var t = bigrat.create();
 	return 'bigrat\t'+bigrat.str(r)
 	+ '\n~\t'+bigrat.toDecimal(r)
 	+ '\nCF:\t['+bigrat.toContinuedFraction(r)+']'
