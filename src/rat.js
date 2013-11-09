@@ -34,8 +34,8 @@ if (typeof integer !== 'object') {
  * @final
  */
 if(!RAT_ARRAY_TYPE) {
-	//var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
-	var RAT_ARRAY_TYPE = Array;
+    //var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
+    var RAT_ARRAY_TYPE = Array;
 }
 
 /**
@@ -47,7 +47,7 @@ if(!RAT_ARRAY_TYPE) {
  * @final
  */
 if(!RAT_INFINITESIMAL_PRECISION) {
-	var RAT_INFINITESIMAL_PRECISION = Math.pow(2, 56);
+    var RAT_INFINITESIMAL_PRECISION = Math.pow(2, 56);
 }
 
 /**
@@ -59,7 +59,7 @@ if(!RAT_INFINITESIMAL_PRECISION) {
  * @final
  */
 if(!RAT_MAX_LOOPS) {
-	var RAT_MAX_LOOPS = 1<<24;
+    var RAT_MAX_LOOPS = 1<<24;
 }
 
 /**
@@ -95,10 +95,10 @@ rat.MAX_LOOPS = RAT_MAX_LOOPS;
  * @returns {rat} a new rational number
  */
 rat.create = function() {
-	var out = new RAT_ARRAY_TYPE(2);
-	out[0] = 0;
-	out[1] = 1;
-	return out;
+    var out = new RAT_ARRAY_TYPE(2);
+    out[0] = 0;
+    out[1] = 1;
+    return out;
 };
 
 /**
@@ -108,10 +108,10 @@ rat.create = function() {
  * @returns {rat} a new rational number
  */
 rat.clone = function(a) {
-	var out = new RAT_ARRAY_TYPE(2);
-	out[0] = a[0];
-	out[1] = a[1];
-	return out;
+    var out = new RAT_ARRAY_TYPE(2);
+    out[0] = a[0];
+    out[1] = a[1];
+    return out;
 };
 
 /**
@@ -122,10 +122,10 @@ rat.clone = function(a) {
  * @returns {rat} a new rational number
  */
 rat.fromValues = function(n, d) {
-	var out = new RAT_ARRAY_TYPE(2);
-	out[0] = n;
-	out[1] = d;
-	return rat.normalize(out, out);
+    var out = new RAT_ARRAY_TYPE(2);
+    out[0] = n;
+    out[1] = d;
+    return rat.normalize(out, out);
 };
 
 /**
@@ -136,9 +136,9 @@ rat.fromValues = function(n, d) {
  * @returns {rat} out
  */
 rat.copy = function(out, a) {
-	out[0] = a[0];
-	out[1] = a[1];
-	return out;
+    out[0] = a[0];
+    out[1] = a[1];
+    return out;
 };
 
 /**
@@ -150,9 +150,9 @@ rat.copy = function(out, a) {
  * @returns {rat} out
  */
 rat.set = function(out, n, d) {
-	out[0] = n;
-	out[1] = d;
-	return rat.normalize(out, out);
+    out[0] = n;
+    out[1] = d;
+    return rat.normalize(out, out);
 };
 
 /**
@@ -163,9 +163,9 @@ rat.set = function(out, n, d) {
  * @returns {rat} out
  */
 rat.abs = function(out, a) {
-	out[0] = Math.abs(a[0]);
-	out[1] = a[1];
-	return out;
+    out[0] = Math.abs(a[0]);
+    out[1] = a[1];
+    return out;
 };
 
 /**
@@ -176,10 +176,10 @@ rat.abs = function(out, a) {
  * @returns {rat} out
  */
 rat.invert = function(out, a) {
-	var temp = a[0];
-	out[0] = a[1];
-	out[1] = temp;
-	return out;
+    var temp = a[0];
+    out[0] = a[1];
+    out[1] = temp;
+    return out;
 };
 
 /**
@@ -197,15 +197,15 @@ rat.reciprocal = rat.invert;
  * @returns {rat} out
  */
 rat.add = function(out, a, b) {
-	if (a[1]===b[1]) {
-		out[0] = a[0] + b[0];
-		out[1] = a[1];
-	}
-	else {
-		out[0] = a[0] * b[1] + b[0] * a[1];
-		out[1] = a[1] * b[1];
-	}
-	return rat.normalize(out, out);
+    if (a[1]===b[1]) {
+        out[0] = a[0] + b[0];
+        out[1] = a[1];
+    }
+    else {
+        out[0] = a[0] * b[1] + b[0] * a[1];
+        out[1] = a[1] * b[1];
+    }
+    return rat.normalize(out, out);
 };
 
 /**
@@ -217,15 +217,15 @@ rat.add = function(out, a, b) {
  * @returns {rat} out
  */
 rat.subtract = function(out, a, b) {
-	if (a[1]===b[1]) {
-		out[0] = a[0] - b[0];
-		out[1] = a[1];
-	}
-	else {
-		out[0] = a[0] * b[1] - b[0] * a[1];
-		out[1] = a[1] * b[1];
-	}
-	return rat.normalize(out, out);
+    if (a[1]===b[1]) {
+        out[0] = a[0] - b[0];
+        out[1] = a[1];
+    }
+    else {
+        out[0] = a[0] * b[1] - b[0] * a[1];
+        out[1] = a[1] * b[1];
+    }
+    return rat.normalize(out, out);
 };
 
 /**
@@ -243,9 +243,9 @@ rat.sub = rat.subtract;
  * @returns {rat} out
  */
 rat.multiply = function(out, a, b) {
-	out[0] = a[0] * b[0];
-	out[1] = a[1] * b[1];
-	return rat.normalize(out, out);
+    out[0] = a[0] * b[0];
+    out[1] = a[1] * b[1];
+    return rat.normalize(out, out);
 };
 
 /**
@@ -263,9 +263,9 @@ rat.mul = rat.multiply;
  * @returns {rat} out the sum of the numerators divided by the sum of the denominators
  */
 rat.mediant = function(out, a, b) {
-	out[0] = a[0] + b[0];
-	out[1] = a[1] + b[1];
-	return rat.normalize(out, out);
+    out[0] = a[0] + b[0];
+    out[1] = a[1] + b[1];
+    return rat.normalize(out, out);
 };
 
 /**
@@ -277,9 +277,9 @@ rat.mediant = function(out, a, b) {
  * @returns {rat} out
  */
 rat.divide = function(out, a, b) {
-	out[0] = a[0] * b[1];
-	out[1] = a[1] * b[0];
-	return rat.normalize(out, out);
+    out[0] = a[0] * b[1];
+    out[1] = a[1] * b[0];
+    return rat.normalize(out, out);
 };
 
 /**
@@ -296,9 +296,9 @@ rat.div = rat.divide;
  * @returns {Bool} true when the two rats are equal
  */
 rat.equals = function(a, b) {
-	if (a[0] === 0 && b[0] === 0) return true; // both are Zero
-	if (a[1] === 0 && b[1] === 0) return true; // both are Infinity
-	return a[0] === b[0] && a[1] === b[1];
+    if (a[0] === 0 && b[0] === 0) return true; // both are Zero
+    if (a[1] === 0 && b[1] === 0) return true; // both are Infinity
+    return a[0] === b[0] && a[1] === b[1];
 };
 
 /**
@@ -309,7 +309,7 @@ rat.equals = function(a, b) {
  * @returns {Bool} true when the difference between the two rats is less than rat.INFINITESIMAL
  */
 rat.approximates = function(a, b) {
-	if (rat.equals(a, b)) return true;
+    if (rat.equals(a, b)) return true;
     var d = rat.create();
     rat.sub(d, a, b);
     rat.abs(d, d);
@@ -324,8 +324,8 @@ rat.approximates = function(a, b) {
  * @returns {Bool} true when the first operand is larger
  */
 rat.isGreaterThan = function(a, b) {
-	if (rat.equals(a, b)) return false;
-	return a[0] * b[1] > b[0] * a[1];
+    if (rat.equals(a, b)) return false;
+    return a[0] * b[1] > b[0] * a[1];
 };
 
 /**
@@ -336,8 +336,8 @@ rat.isGreaterThan = function(a, b) {
  * @returns {Bool} true when the first operand is smaller
  */
 rat.isLessThan = function(a, b) {
-	if (rat.equals(a, b)) return false;
-	return a[0] * b[1] < b[0] * a[1];
+    if (rat.equals(a, b)) return false;
+    return a[0] * b[1] < b[0] * a[1];
 };
 
 /**
@@ -347,7 +347,7 @@ rat.isLessThan = function(a, b) {
  * @returns {Bool} true when the number is less than zero
  */
 rat.isNegative = function(a) {
-	return a[0] < 0;
+    return a[0] < 0;
 };
 
 /**
@@ -359,15 +359,15 @@ rat.isNegative = function(a) {
  * @returns {rat} out
  */
 rat.min = function(out, a, b) {
-	if (rat.isLessThan(a, b)) {
-		out[0] = a[0];
-		out[1] = a[1];
-	}
-	else {
-		out[0] = b[0];
-		out[1] = b[1];
-	}
-	return out;
+    if (rat.isLessThan(a, b)) {
+        out[0] = a[0];
+        out[1] = a[1];
+    }
+    else {
+        out[0] = b[0];
+        out[1] = b[1];
+    }
+    return out;
 };
 
 /**
@@ -379,15 +379,15 @@ rat.min = function(out, a, b) {
  * @returns {rat} out
  */
 rat.max = function(out, a, b) {
-	if (rat.isGreaterThan(a, b)) {
-		out[0] = a[0];
-		out[1] = a[1];
-	}
-	else {
-		out[0] = b[0];
-		out[1] = b[1];
-	}
-	return out;
+    if (rat.isGreaterThan(a, b)) {
+        out[0] = a[0];
+        out[1] = a[1];
+    }
+    else {
+        out[0] = b[0];
+        out[1] = b[1];
+    }
+    return out;
 };
 
 /**
@@ -399,9 +399,9 @@ rat.max = function(out, a, b) {
  * @returns {rat} out
  */
 rat.scalar_multiply = function(out, a, b) {
-	out[0] = a[0] * b;
-	out[1] = a[1];
-	return rat.normalize(out, out);
+    out[0] = a[0] * b;
+    out[1] = a[1];
+    return rat.normalize(out, out);
 };
 
 
@@ -414,9 +414,9 @@ rat.scalar_multiply = function(out, a, b) {
  * @returns {rat} out
  */
 rat.scalar_divide = function(out, a, b) {
-	out[0] = a[0];
-	out[1] = a[1] * b;
-	return rat.normalize(out, out);
+    out[0] = a[0];
+    out[1] = a[1] * b;
+    return rat.normalize(out, out);
 };
 
 /**
@@ -427,40 +427,40 @@ rat.scalar_divide = function(out, a, b) {
  * @returns {rat} out
  */
 rat.normalize = function(out, a) {
-	if (isNaN(a[0])||isNaN(a[1])||(a[0]===0&&a[1]===0)) {
-		out[0] = 0;
-		out[1] = 0;
-		return out;
-	}
-	if (a[0]===0) {
-		out[0] = 0;
-		out[1] = 1;
-		return out;
-	}
-	if (a[1]===0){
-		out[0] = 1;
-		out[1] = 0;
-		return out;
-	}
-	if (a[0]===a[1]){
-		out[0] = 1;
-		out[1] = 1;
-		return out;
-	}
-	if (a[1] > 0) {
-		out[0] = a[0];
-		out[1] = a[1];
-	}
-	else {
-		out[0] = -a[0];
-		out[1] = -a[1];
-	}
-	var gcd = integer.greatest_common_divisor(Math.abs(out[0]), out[1]);
-	if (gcd > 1) {
-		out[0] /= gcd;
-		out[1] /= gcd;
-	}
-	return out;
+    if (isNaN(a[0])||isNaN(a[1])||(a[0]===0&&a[1]===0)) {
+        out[0] = 0;
+        out[1] = 0;
+        return out;
+    }
+    if (a[0]===0) {
+        out[0] = 0;
+        out[1] = 1;
+        return out;
+    }
+    if (a[1]===0){
+        out[0] = 1;
+        out[1] = 0;
+        return out;
+    }
+    if (a[0]===a[1]){
+        out[0] = 1;
+        out[1] = 1;
+        return out;
+    }
+    if (a[1] > 0) {
+        out[0] = a[0];
+        out[1] = a[1];
+    }
+    else {
+        out[0] = -a[0];
+        out[1] = -a[1];
+    }
+    var gcd = integer.greatest_common_divisor(Math.abs(out[0]), out[1]);
+    if (gcd > 1) {
+        out[0] /= gcd;
+        out[1] /= gcd;
+    }
+    return out;
 };
 
 /**
@@ -471,9 +471,9 @@ rat.normalize = function(out, a) {
  * @returns {rat} out
  */
 rat.opposite = function(out, a) {
-	out[0] = -a[0];
-	out[1] = a[1];
-	return out;
+    out[0] = -a[0];
+    out[1] = a[1];
+    return out;
 };
 
 /**
@@ -497,23 +497,23 @@ rat.neg = rat.opposite;
  * @returns {rat} out
  */
 rat.power = function(out, a, p) {
-	if (p===2) {
-		out[0] = a[0] * a[0];
-		out[1] = a[1] * a[1];
-	}
-	else if (p>0) {
-		out[0] = Math.pow(a[0], p);
-		out[1] = Math.pow(a[1], p);
-	}
-	else if (p<0) {
-		p = Math.abs(p);
-		out[0] = Math.pow(a[1], p);
-		out[1] = Math.pow(a[0], p);
-	}
-	else {
-		rat.copy(out, rat.ONE);
-	}
-	return rat.normalize(out, out);
+    if (p===2) {
+        out[0] = a[0] * a[0];
+        out[1] = a[1] * a[1];
+    }
+    else if (p>0) {
+        out[0] = Math.pow(a[0], p);
+        out[1] = Math.pow(a[1], p);
+    }
+    else if (p<0) {
+        p = Math.abs(p);
+        out[0] = Math.pow(a[1], p);
+        out[1] = Math.pow(a[0], p);
+    }
+    else {
+        rat.copy(out, rat.ONE);
+    }
+    return rat.normalize(out, out);
 };
 
 /**
@@ -530,12 +530,12 @@ rat.pow = rat.power;
  * @returns {rat} out
  */
 rat.sqrt = function (out, a) {
-	return rat.nthRoot(out, a, 2);
+    return rat.nthRoot(out, a, 2);
 };
 
 /**
  * Find a rat approximation which equals the input rat when raised to the given integer exponent
- * 
+ *
  * Newton's method converges alot faster... could that be used to find the pattern in the SB tree?
  *
  * @param {rat} out the receiving number
@@ -544,39 +544,39 @@ rat.sqrt = function (out, a) {
  * @returns {rat} out
  */
 rat.nthRoot = function (out, a, n) {
-	if (rat.equals(a, rat.ZERO)) return rat.copy(out, rat.ZERO);
-	if (rat.equals(a, rat.ONE)) return rat.copy(out, rat.ONE);
-	if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
-	if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
-	
-	var neg = rat.isNegative(a);
-	if (neg) a[0] = -a[0];
-	
-	out = rat.copy(out, rat.ONE);
-	var m = [1, 0, 0, 1];
-	var test = rat.clone(rat.ONE);
-	
-	var c = rat.MAX_LOOPS;
-	while ( !rat.approximates(a, test) && c-- ) {
-		if (rat.isLessThan(a, test)) {
-			m[0] += m[1];
-			m[2] += m[3];
-		}
-		else {
-			m[1] += m[0];
-			m[3] += m[2];
-		}
-		out[0] = m[0] + m[1];
-		out[1] = m[2] + m[3];
-		rat.pow(test, out, n);
-	}
-	
-	if (neg) { 
-		a[0] = -a[0];
-		if (n%2===1) rat.neg(out, out);
-	}
-		
-	return out;
+    if (rat.equals(a, rat.ZERO)) return rat.copy(out, rat.ZERO);
+    if (rat.equals(a, rat.ONE)) return rat.copy(out, rat.ONE);
+    if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
+    if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
+
+    var neg = rat.isNegative(a);
+    if (neg) a[0] = -a[0];
+
+    out = rat.copy(out, rat.ONE);
+    var m = [1, 0, 0, 1];
+    var test = rat.clone(rat.ONE);
+
+    var c = rat.MAX_LOOPS;
+    while ( !rat.approximates(a, test) && c-- ) {
+        if (rat.isLessThan(a, test)) {
+            m[0] += m[1];
+            m[2] += m[3];
+        }
+        else {
+            m[1] += m[0];
+            m[3] += m[2];
+        }
+        out[0] = m[0] + m[1];
+        out[1] = m[2] + m[3];
+        rat.pow(test, out, n);
+    }
+
+    if (neg) {
+        a[0] = -a[0];
+        if (n%2===1) rat.neg(out, out);
+    }
+
+    return out;
 };
 
 /**
@@ -587,7 +587,7 @@ rat.nthRoot = function (out, a, n) {
  * @returns {Integer} dot product of a and b
  */
 rat.dot = function (a, b) {
-	return a[0] * b[0] + a[1] * b[1];
+    return a[0] * b[0] + a[1] * b[1];
 };
 
 /**
@@ -597,7 +597,7 @@ rat.dot = function (a, b) {
  * @returns {String} string representation of the number
  */
 rat.str = function (a) {
-	return a[1] === 1 ? a[0] : a[0] + '/' + a[1];
+    return a[1] === 1 ? a[0].toString() : a[0] + '/' + a[1];
 };
 
 /**
@@ -607,7 +607,7 @@ rat.str = function (a) {
  * @returns {Float} decimal approximation of the number
  */
 rat.toDecimal = function (a) {
-	return a[0] / a[1];
+    return a[0] / a[1];
 };
 
 /**
@@ -623,7 +623,7 @@ rat.dec = rat.toDecimal;
  * @returns {Integer} integer approximation of the number
  */
 rat.toInteger = function (a) {
-	return Math.round(rat.toDecimal(a));
+    return Math.round(rat.toDecimal(a));
 };
 
 /**
@@ -639,7 +639,7 @@ rat.round = rat.toInteger;
  * @returns {Integer} integer approximation of the number
  */
 rat.floor = function (a) {
-	return Math.floor(rat.toDecimal(a));
+    return Math.floor(rat.toDecimal(a));
 };
 
 /**
@@ -649,7 +649,7 @@ rat.floor = function (a) {
  * @returns {Integer} integer approximation of the number
  */
 rat.ceil = function (a) {
-	return Math.ceil(rat.toDecimal(a));
+    return Math.ceil(rat.toDecimal(a));
 };
 
 /**
@@ -660,9 +660,9 @@ rat.ceil = function (a) {
  * @returns {rat} out
  */
 rat.fromInteger_copy = function (out, a) {
-	out[0] = parseInt(a);
-	out[1] = 1;
-	return out;
+    out[0] = parseInt(a);
+    out[1] = 1;
+    return out;
 };
 
 /**
@@ -672,7 +672,7 @@ rat.fromInteger_copy = function (out, a) {
  * @returns {rat} out
  */
 rat.fromInteger = function (a) {
-	return rat.fromInteger_copy(rat.create(), a);
+    return rat.fromInteger_copy(rat.create(), a);
 };
 
 /**
@@ -683,13 +683,13 @@ rat.fromInteger = function (a) {
  * @returns {rat} out
  */
 rat.fromIntegerInverse_copy = function (out, a) {
-	out[0] = 1;
-	out[1] = parseInt(a);
-	if (out[1]<0) {
-		out[0] = -out[0];
-		out[1] = -out[1];
-	}
-	return out;
+    out[0] = 1;
+    out[1] = parseInt(a);
+    if (out[1]<0) {
+        out[0] = -out[0];
+        out[1] = -out[1];
+    }
+    return out;
 };
 
 /**
@@ -699,17 +699,17 @@ rat.fromIntegerInverse_copy = function (out, a) {
  * @returns {rat} out
  */
 rat.fromIntegerInverse = function (a) {
-	return rat.fromIntegerInverse_copy(rat.create(), a);
+    return rat.fromIntegerInverse_copy(rat.create(), a);
 };
 
 /**
  * Returns a rat from a decimal number, creating a new rat
- * 
+ *
  * @param {Number} a decimal number
  * @returns {rat} out
  */
 rat.fromDecimal = function (a) {
-	return rat.fromDecimal_copy(rat.create(), a);
+    return rat.fromDecimal_copy(rat.create(), a);
 };
 
 /**
@@ -720,36 +720,36 @@ rat.fromDecimal = function (a) {
  * @returns {rat} out
  */
 rat.fromDecimal_copy = function (out, a) {
-	a = parseFloat(a);
-	if (isNaN(a)) return rat.copy(out, rat.INFINULL);
-	if (a===Infinity) return rat.copy(out, rat.INFINITY);
-	if (Math.abs(a) < rat.EPSILON) return rat.copy(out, rat.ZERO);
-	if (Math.abs(a-1) < rat.EPSILON) return rat.copy(out, rat.ONE);
-	if (Math.abs(a%1) < rat.EPSILON) return rat.fromInteger_copy(out, a);
-	if (Math.abs((1/a)%1) < rat.EPSILON) return rat.fromIntegerInverse_copy(out, Math.round(1/a));
-	rat.copy(out, rat.ONE);
-	var
-		m = [
-			1,
-			0,
-			0,
-			1
-		],
-		test = a,
-		integer_part = 1,
-		c = rat.MAX_LOOPS;
-	//while (c-- && Math.abs(out[0] - a*out[1]) > 2e-8) {
-	while (c-- && Math.abs(a - rat.toDecimal(out)) > rat.EPSILON) {
-		integer_part = Math.floor(test);
-		out[0] = integer_part * m[0] + m[2];
-		out[1] = integer_part * m[1] + m[3];
-		test = 1 / (test - integer_part);
-		m[2] = m[0];
-		m[3] = m[1];
-		m[0] = out[0];
-		m[1] = out[1];
-	}
-	return out;
+    a = parseFloat(a);
+    if (isNaN(a)) return rat.copy(out, rat.INFINULL);
+    if (a===Infinity) return rat.copy(out, rat.INFINITY);
+    if (Math.abs(a) < rat.EPSILON) return rat.copy(out, rat.ZERO);
+    if (Math.abs(a-1) < rat.EPSILON) return rat.copy(out, rat.ONE);
+    if (Math.abs(a%1) < rat.EPSILON) return rat.fromInteger_copy(out, a);
+    if (Math.abs((1/a)%1) < rat.EPSILON) return rat.fromIntegerInverse_copy(out, Math.round(1/a));
+    rat.copy(out, rat.ONE);
+    var
+        m = [
+            1,
+            0,
+            0,
+            1
+        ],
+        test = a,
+        integer_part = 1,
+        c = rat.MAX_LOOPS;
+    //while (c-- && Math.abs(out[0] - a*out[1]) > 2e-8) {
+    while (c-- && Math.abs(a - rat.toDecimal(out)) > rat.EPSILON) {
+        integer_part = Math.floor(test);
+        out[0] = integer_part * m[0] + m[2];
+        out[1] = integer_part * m[1] + m[3];
+        test = 1 / (test - integer_part);
+        m[2] = m[0];
+        m[3] = m[1];
+        m[0] = out[0];
+        m[1] = out[1];
+    }
+    return out;
 };
 
 /**
@@ -759,9 +759,9 @@ rat.fromDecimal_copy = function (out, a) {
  * @returns {rat} a random rational number
  */
 rat.fromRandom = function(out) {
-	out[0] = Math.random()*0xFFFFFFFFFFFFF<<0;
-	out[1] = Math.abs(Math.random()*0xFFFFFFFFFFFFF<<0);
-	return rat.normalize(out, out);
+    out[0] = Math.random()*0xFFFFFFFFFFFFF<<0;
+    out[1] = Math.abs(Math.random()*0xFFFFFFFFFFFFF<<0);
+    return rat.normalize(out, out);
 };
 
 /**
@@ -772,13 +772,13 @@ rat.fromRandom = function(out) {
  * @returns {rat} out
  */
 rat.sin = function(out, a) {
-	if (a[1] === 0) return rat.copy(out, rat.ZERO);
-	rat.scalar_multiply(out, a, 2);
-	var d = rat.create();
-	rat.pow(d, a, 2);
-	rat.add(d, d, rat.ONE);
-	rat.divide(out, out, d);
-	return out;
+    if (a[1] === 0) return rat.copy(out, rat.ZERO);
+    rat.scalar_multiply(out, a, 2);
+    var d = rat.create();
+    rat.pow(d, a, 2);
+    rat.add(d, d, rat.ONE);
+    rat.divide(out, out, d);
+    return out;
 };
 
 /**
@@ -789,14 +789,14 @@ rat.sin = function(out, a) {
  * @returns {rat} out
  */
 rat.cos = function(out, a) {
-	if (a[1] === 0) return rat.neg(out, rat.ONE);
-	var a2 = rat.create();
-	rat.pow(a2, a, 2);
-	rat.sub(out, rat.ONE, a2);
-	var d = rat.create();
-	rat.add(d, rat.ONE, a2);
-	rat.divide(out, out, d);
-	return out;
+    if (a[1] === 0) return rat.neg(out, rat.ONE);
+    var a2 = rat.create();
+    rat.pow(a2, a, 2);
+    rat.sub(out, rat.ONE, a2);
+    var d = rat.create();
+    rat.add(d, rat.ONE, a2);
+    rat.divide(out, out, d);
+    return out;
 };
 
 /**
@@ -807,15 +807,15 @@ rat.cos = function(out, a) {
  * @returns {rat} out
  */
 rat.tan = function(out, a) {
-	rat.scalar_multiply(out, a, 2);
-	var t = rat.create();
-	rat.pow(t, a, 2);
-	rat.scalar_multiply(t, t, 2);
-	rat.add(out, out, t);
-	rat.pow(t, a, 4);
-	rat.sub(t, rat.ONE, t);
-	rat.divide(out, out, t);
-	return out;
+    rat.scalar_multiply(out, a, 2);
+    var t = rat.create();
+    rat.pow(t, a, 2);
+    rat.scalar_multiply(t, t, 2);
+    rat.add(out, out, t);
+    rat.pow(t, a, 4);
+    rat.sub(t, rat.ONE, t);
+    rat.divide(out, out, t);
+    return out;
 };
 
 /**
@@ -826,28 +826,28 @@ rat.tan = function(out, a) {
  * @returns {String} string representing the most simple sum of fractions having a numerator of one, in "calc" format
  */
 rat.toEgyptian = function (a) {
-	var t = rat.clone(a);
-	rat.abs(t, t);
-	var b = rat.floor(t);
-	if (b) rat.sub(t, t, rat.fromInteger(b));
-	if (!t[0]) return b.toString();
-	if (!b) b = '';
-	var d = 1;
-	var f = rat.create();
-	while (t[0] !== 1) {
-		d++;
-		f = rat.fromValues(1, d);
-		if (rat.isGreaterThan(t, f)) {
-			if (b) b += ' + ';
-			b += rat.str(f);
-			rat.sub(t, t, f);
-		}
-	}
-	if (!t) {
-		if (!b) return '0';
-		return b;
-	}
-	return b ? b + ' + ' + rat.str(t) : rat.str(t);
+    var t = rat.clone(a);
+    rat.abs(t, t);
+    var b = rat.floor(t);
+    if (b) rat.sub(t, t, rat.fromInteger(b));
+    if (!t[0]) return b.toString();
+    if (!b) b = '';
+    var d = 1;
+    var f = rat.create();
+    while (t[0] !== 1) {
+        d++;
+        f = rat.fromValues(1, d);
+        if (rat.isGreaterThan(t, f)) {
+            if (b) b += ' + ';
+            b += rat.str(f);
+            rat.sub(t, t, f);
+        }
+    }
+    if (!t) {
+        if (!b) return '0';
+        return b;
+    }
+    return b ? b + ' + ' + rat.str(t) : rat.str(t);
 };
 
 /**
@@ -858,29 +858,29 @@ rat.toEgyptian = function (a) {
  * @returns {String} string containing the decimal representations of the base 60 digits and their powers, in "calc" format
  */
 rat.toBabylonian = function (a) {
-	var s = '';
-	 // there must be a better way to do this, avoiding conversion to decimal
-	var t = rat.toDecimal(a);
-	var n = parseInt(t);
-	var r = t - n;
-	var d = 0;
-	var p = 0;
-	while (n > 0) {
-		d = n % 60;
-		if (d) s = d + ' * 60^' + p + ( s ? ' + ' : '' ) + s;
-		n = (n - d) / 60;
-		p++;
-	}
-	p = -1;
-	while (r > 0) {
-		r *= 60;
-		d = parseInt(r + 1E-13);
-		r = r - d;
-		if (r < -1E-13) continue;
-		if (d) s += ( s ? ' + ' : '' ) + d + ' * 60^' + p;
-		p--;
-	}
-	return s ? s : '0';
+    var s = '';
+     // there must be a better way to do this, avoiding conversion to decimal
+    var t = rat.toDecimal(a);
+    var n = parseInt(t);
+    var r = t - n;
+    var d = 0;
+    var p = 0;
+    while (n > 0) {
+        d = n % 60;
+        if (d) s = d + ' * 60^' + p + ( s ? ' + ' : '' ) + s;
+        n = (n - d) / 60;
+        p++;
+    }
+    p = -1;
+    while (r > 0) {
+        r *= 60;
+        d = parseInt(r + 1E-13);
+        r = r - d;
+        if (r < -1E-13) continue;
+        if (d) s += ( s ? ' + ' : '' ) + d + ' * 60^' + p;
+        p--;
+    }
+    return s ? s : '0';
 };
 
 /**
@@ -890,71 +890,71 @@ rat.toBabylonian = function (a) {
  * @returns {String} Stern Brocot path
  */
 rat.traceSternBrocot = function (a) {
-	var path = '';
-	if (
-		rat.equals(a, rat.ZERO)
-	||
-		rat.equals(a, rat.ONE)
-	||
-		rat.equals(a, rat.INFINITY)
-	||
-		rat.equals(a, rat.INFINULL)
-		) return path;
+    var path = '';
+    if (
+        rat.equals(a, rat.ZERO)
+    ||
+        rat.equals(a, rat.ONE)
+    ||
+        rat.equals(a, rat.INFINITY)
+    ||
+        rat.equals(a, rat.INFINULL)
+        ) return path;
 
-	if (rat.equals(a, rat.ZERO)) return rat.copy(out, rat.ZERO);
-	if (rat.equals(a, rat.ONE)) return rat.copy(out, rat.ONE);
-	if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
-	if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
-	
-	var test = rat.clone(a);
-	var neg = rat.isNegative(test);
-	if (neg) test[0] = -test[0];
-	
-	var r = rat.clone(rat.ONE);
-	var m = [1, 0, 0, 1];
-	
-	var r_streak = 0;
-	var l_streak = 0;
-	
-	var c = rat.MAX_LOOPS;
-	while ( !rat.approximates(test, r) && c-- ) {
-		if (rat.isLessThan(test, r)) {
-			m[0] += m[1];
-			m[2] += m[3];
-			l_streak++;
-			if (r_streak) {
-				path += 'R';
-				if (r_streak!==1) path += r_streak;
-				r_streak = 0;
-				path += ' ';
-			}
-		}
-		else {
-			m[1] += m[0];
-			m[3] += m[2];
-			r_streak++;
-			if (l_streak) {
-				path += 'L';
-				if (l_streak!==1) path += l_streak;
-				l_streak = 0;
-				path += ' ';
-			}
-		}
-		r[0] = m[0] + m[1];
-		r[1] = m[2] + m[3];
-	}
-	if (l_streak) {
-		path += 'L';
-		if (l_streak!==1) path += l_streak;
-	}
-	else if (r_streak) {
-		path += 'R';
-		if (r_streak!==1) path += r_streak;
-	}
-	
-	if (c<0) path += '...';
-	
-	return path;
+    if (rat.equals(a, rat.ZERO)) return rat.copy(out, rat.ZERO);
+    if (rat.equals(a, rat.ONE)) return rat.copy(out, rat.ONE);
+    if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
+    if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
+
+    var test = rat.clone(a);
+    var neg = rat.isNegative(test);
+    if (neg) test[0] = -test[0];
+
+    var r = rat.clone(rat.ONE);
+    var m = [1, 0, 0, 1];
+
+    var r_streak = 0;
+    var l_streak = 0;
+
+    var c = rat.MAX_LOOPS;
+    while ( !rat.approximates(test, r) && c-- ) {
+        if (rat.isLessThan(test, r)) {
+            m[0] += m[1];
+            m[2] += m[3];
+            l_streak++;
+            if (r_streak) {
+                path += 'R';
+                if (r_streak!==1) path += r_streak;
+                r_streak = 0;
+                path += ' ';
+            }
+        }
+        else {
+            m[1] += m[0];
+            m[3] += m[2];
+            r_streak++;
+            if (l_streak) {
+                path += 'L';
+                if (l_streak!==1) path += l_streak;
+                l_streak = 0;
+                path += ' ';
+            }
+        }
+        r[0] = m[0] + m[1];
+        r[1] = m[2] + m[3];
+    }
+    if (l_streak) {
+        path += 'L';
+        if (l_streak!==1) path += l_streak;
+    }
+    else if (r_streak) {
+        path += 'R';
+        if (r_streak!==1) path += r_streak;
+    }
+
+    if (c<0) path += '...';
+
+    return path;
 };
 
 /**
@@ -965,61 +965,61 @@ rat.traceSternBrocot = function (a) {
  * @returns {Array} integers of the continued fraction
  */
 rat.toContinuedFraction = function (a, loop_limit) {
-	loop_limit = typeof loop_limit==='undefined' ? 65536 : parseInt(loop_limit);
-	if (rat.equals(a, rat.ZERO)) return [0];
-	if (rat.equals(a, rat.ONE)) return [1];
-	if (rat.equals(a, rat.NEGONE)) return [-1];
-	if (rat.equals(a, rat.INFINITY)) return [1, 0];
-	if (rat.equals(a, rat.INFINULL)) return [0, 0];
+    loop_limit = typeof loop_limit==='undefined' ? 65536 : parseInt(loop_limit);
+    if (rat.equals(a, rat.ZERO)) return [0];
+    if (rat.equals(a, rat.ONE)) return [1];
+    if (rat.equals(a, rat.NEGONE)) return [-1];
+    if (rat.equals(a, rat.INFINITY)) return [1, 0];
+    if (rat.equals(a, rat.INFINULL)) return [0, 0];
 
-	var test = rat.clone(a);
-	var neg = rat.isNegative(test);
-	if (neg) test[0] = -test[0];
-	
-	var r = rat.clone(rat.ONE);
-	
-	var m = [1,0,0,1];
-	
-	var direction = 1;
-	var result = [0];
-	var result_last = result.length - 1;
-	
-	while ( !rat.equals(test, r) && loop_limit-- ) {
-		if (rat.isLessThan(test, r)) {
-			if (direction===-1) {
-				result[result_last]++;
-			}
-			else {
-				direction = -1;
-				result.push(1);
-				result_last++;
-			}
-			m[0] += m[1];
-			m[2] += m[3];
-		}
-		else {
-			if (direction===1) {
-				result[result_last]++;
-			}
-			else {
-				direction = 1;
-				result.push(1);
-				result_last++;
-			}
-			m[1] += m[0];
-			m[3] += m[2];
-		}
-		r[0] = m[0] + m[1];
-		r[1] = m[2] + m[3];
-	}
+    var test = rat.clone(a);
+    var neg = rat.isNegative(test);
+    if (neg) test[0] = -test[0];
 
-	// add a zero to the end to indicate an incomplete result
-	if (loop_limit<0) result.push(0);
-	else result[result_last]++;
-	
-	if (neg) for (var i in result) result[i] = -result[i];
-	
-	return result;
+    var r = rat.clone(rat.ONE);
+
+    var m = [1,0,0,1];
+
+    var direction = 1;
+    var result = [0];
+    var result_last = result.length - 1;
+
+    while ( !rat.equals(test, r) && loop_limit-- ) {
+        if (rat.isLessThan(test, r)) {
+            if (direction===-1) {
+                result[result_last]++;
+            }
+            else {
+                direction = -1;
+                result.push(1);
+                result_last++;
+            }
+            m[0] += m[1];
+            m[2] += m[3];
+        }
+        else {
+            if (direction===1) {
+                result[result_last]++;
+            }
+            else {
+                direction = 1;
+                result.push(1);
+                result_last++;
+            }
+            m[1] += m[0];
+            m[3] += m[2];
+        }
+        r[0] = m[0] + m[1];
+        r[1] = m[2] + m[3];
+    }
+
+    // add a zero to the end to indicate an incomplete result
+    if (loop_limit<0) result.push(0);
+    else result[result_last]++;
+
+    if (neg) for (var i in result) result[i] = -result[i];
+
+    return result;
 };
 
 /**
@@ -1030,12 +1030,12 @@ rat.toContinuedFraction = function (a, loop_limit) {
  * @returns {rat} out
  */
 rat.fromContinuedFraction = function(out, cf) {
-	rat.fromInteger_copy(out, cf[cf.length-1]);
-	for (var i=cf.length-2;i>-1;i--) {
-		rat.invert(out, out);
-		rat.add(out, rat.fromInteger(cf[i]), out);
-	}
-	return out;
+    rat.fromInteger_copy(out, cf[cf.length-1]);
+    for (var i=cf.length-2;i>-1;i--) {
+        rat.invert(out, out);
+        rat.add(out, rat.fromInteger(cf[i]), out);
+    }
+    return out;
 };
 
 /**
@@ -1045,18 +1045,18 @@ rat.fromContinuedFraction = function(out, cf) {
  * @returns {String} string various conversions
  */
 rat.dump = function(r) {
-	var t = rat.create();
-	return 'rat\t'+rat.str(r)
-	+ '\n~\t'+rat.toDecimal(r)
-	+ '\nCF:\t['+rat.toContinuedFraction(r)+']'
-	//+ '\nSB:\t'+rat.traceSternBrocot(r)
-	//+ '\n'
-	//+ '\ntoBabylonian\t ~ '+rat.toBabylonian(r)
-	//+ '\ntoEgyptian\t = '+rat.toEgyptian(r)  // can be very slow
-	//+ '\nsin:\t ~ '+rat.toDecimal(rat.sin(t, r))
-	//+ '\ncos:\t ~ '+rat.toDecimal(rat.cos(t, r))
-	//+ '\ntan:\t ~ '+rat.toDecimal(rat.tan(t, r))
-	+ '\n';
+    var t = rat.create();
+    return 'rat\t'+rat.str(r)
+    + '\n~\t'+rat.toDecimal(r)
+    + '\nCF:\t['+rat.toContinuedFraction(r)+']'
+    //+ '\nSB:\t'+rat.traceSternBrocot(r)
+    //+ '\n'
+    //+ '\ntoBabylonian\t ~ '+rat.toBabylonian(r)
+    //+ '\ntoEgyptian\t = '+rat.toEgyptian(r)  // can be very slow
+    //+ '\nsin:\t ~ '+rat.toDecimal(rat.sin(t, r))
+    //+ '\ncos:\t ~ '+rat.toDecimal(rat.cos(t, r))
+    //+ '\ntan:\t ~ '+rat.toDecimal(rat.tan(t, r))
+    + '\n';
 };
 
 /**
@@ -1128,10 +1128,10 @@ rat.INFINITESIMAL = rat.clone([1, RAT_INFINITESIMAL_PRECISION]);
  * @final
  */
 rat.PI = rat.fromValues(
-	1320192667429,
-	420230377710
+    1320192667429,
+    420230377710
 );
 
 if(typeof(exports) !== 'undefined') {
-	exports.rat = rat;
+    exports.rat = rat;
 }
