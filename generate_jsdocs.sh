@@ -1,1 +1,1 @@
-jsdoc src/ -d=../gh-pages
+jsdoc src/ -d "../gh-pages"
