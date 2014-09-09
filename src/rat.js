@@ -34,8 +34,15 @@ if (typeof integer !== 'object') {
  * @final
  */
 if(!RAT_ARRAY_TYPE) {
+	
+	// Int Arrays cause some issues, eg. ratsynth
     //var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
-    var RAT_ARRAY_TYPE = Array;
+    
+	// Float32Array seems to work best overall
+    var RAT_ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
+    
+    // most compatible (eg. IE)
+    //var RAT_ARRAY_TYPE = Array;
 }
 
 /**
