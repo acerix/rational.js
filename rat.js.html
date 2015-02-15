@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>JSDoc: Source: rat.js</title>
-    
+
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -16,16 +16,16 @@
 <body>
 
 <div id="main">
-    
+
     <h1 class="page-title">Source: rat.js</h1>
-    
+
     
 
 
     
     <section>
         <article>
-            <pre class="prettyprint source"><code>/*
+            <pre class="prettyprint source linenums"><code>/*
  * rational.js - Javascript tools and libraries based around rational numbers.
  * Copyright (C) 2013 Dylan Ferris
  *
@@ -61,8 +61,16 @@ if (typeof integer !== 'object') {
  * @final
  */
 if(!RAT_ARRAY_TYPE) {
+
+    // Int32 doesn't allow much precision
     //var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
+
+    // Float32Array seems to work best overall, more recently some browsers treat large numbers at Infinity
+    //var RAT_ARRAY_TYPE = typeof Float64Array !== 'undefined' ? Float64Array : Array;
+
+    // most compatible
     var RAT_ARRAY_TYPE = Array;
+
 }
 
 /**
@@ -323,9 +331,9 @@ rat.div = rat.divide;
  * @returns {Bool} true when the two rats are equal
  */
 rat.equals = function(a, b) {
-    if (a[0] === 0 && b[0] === 0) return true; // both are Zero
-    if (a[1] === 0 && b[1] === 0) return true; // both are Infinity
-    return a[0] === b[0] && a[1] === b[1];
+    if (a[0] === 0 &amp;&amp; b[0] === 0) return true; // both are Zero
+    if (a[1] === 0 &amp;&amp; b[1] === 0) return true; // both are Infinity
+    return a[0] === b[0] &amp;&amp; a[1] === b[1];
 };
 
 /**
@@ -454,7 +462,7 @@ rat.scalar_divide = function(out, a, b) {
  * @returns {rat} out
  */
 rat.normalize = function(out, a) {
-    if (isNaN(a[0])||isNaN(a[1])||(a[0]===0&&a[1]===0)) {
+    if (isNaN(a[0])||isNaN(a[1])||(a[0]===0&amp;&amp;a[1]===0)) {
         out[0] = 0;
         out[1] = 0;
         return out;
@@ -584,7 +592,7 @@ rat.nthRoot = function (out, a, n) {
     var test = rat.clone(rat.ONE);
 
     var c = rat.MAX_LOOPS;
-    while ( !rat.approximates(a, test) && c-- ) {
+    while ( !rat.approximates(a, test) &amp;&amp; c-- ) {
         if (rat.isLessThan(a, test)) {
             m[0] += m[1];
             m[2] += m[3];
@@ -765,8 +773,8 @@ rat.fromDecimal_copy = function (out, a) {
         test = a,
         integer_part = 1,
         c = rat.MAX_LOOPS;
-    //while (c-- && Math.abs(out[0] - a*out[1]) > 2e-8) {
-    while (c-- && Math.abs(a - rat.toDecimal(out)) > rat.EPSILON) {
+    //while (c-- &amp;&amp; Math.abs(out[0] - a*out[1]) > 2e-8) {
+    while (c-- &amp;&amp; Math.abs(a - rat.toDecimal(out)) > rat.EPSILON) {
         integer_part = Math.floor(test);
         out[0] = integer_part * m[0] + m[2];
         out[1] = integer_part * m[1] + m[3];
@@ -944,7 +952,7 @@ rat.traceSternBrocot = function (a) {
     var l_streak = 0;
 
     var c = rat.MAX_LOOPS;
-    while ( !rat.approximates(test, r) && c-- ) {
+    while ( !rat.approximates(test, r) &amp;&amp; c-- ) {
         if (rat.isLessThan(test, r)) {
             m[0] += m[1];
             m[2] += m[3];
@@ -1011,7 +1019,7 @@ rat.toContinuedFraction = function (a, loop_limit) {
     var result = [0];
     var result_last = result.length - 1;
 
-    while ( !rat.equals(test, r) && loop_limit-- ) {
+    while ( !rat.equals(test, r) &amp;&amp; loop_limit-- ) {
         if (rat.isLessThan(test, r)) {
             if (direction===-1) {
                 result[result_last]++;
@@ -1172,13 +1180,13 @@ if(typeof(exports) !== 'undefined') {
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="alpha.html">alpha</a></li><li><a href="bigint.html">bigint</a></li><li><a href="bigrat.html">bigrat</a></li><li><a href="chemistry.html">chemistry</a></li><li><a href="elements.html">elements</a></li><li><a href="factorial.html">factorial</a></li><li><a href="integer.html">integer</a></li><li><a href="physics.html">physics</a></li><li><a href="planet.html">planet</a></li><li><a href="polyrat.html">polyrat</a></li><li><a href="rat.html">rat</a></li><li><a href="rational.html">rational</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BIGRAT_INFINITESIMAL_PRECISION">BIGRAT_INFINITESIMAL_PRECISION</a></li><li><a href="global.html#BIGRAT_MAX_LOOPS">BIGRAT_MAX_LOOPS</a></li><li><a href="global.html#RAT_ARRAY_TYPE">RAT_ARRAY_TYPE</a></li><li><a href="global.html#RAT_INFINITESIMAL_PRECISION">RAT_INFINITESIMAL_PRECISION</a></li><li><a href="global.html#RAT_MAX_LOOPS">RAT_MAX_LOOPS</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="alpha.html">alpha</a></li><li><a href="bigint.html">bigint</a></li><li><a href="bigrat.html">bigrat</a></li><li><a href="chemistry.html">chemistry</a></li><li><a href="elements.html">elements</a></li><li><a href="factorial.html">factorial</a></li><li><a href="integer.html">integer</a></li><li><a href="physics.html">physics</a></li><li><a href="planet.html">planet</a></li><li><a href="polyrat.html">polyrat</a></li><li><a href="rat.html">rat</a></li><li><a href="rational.html">rational</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Wed Mar 12 2014 19:45:48 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Feb 15 2015 14:56:43 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>

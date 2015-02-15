@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>JSDoc: Source: bigrat.js</title>
-    
+
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
     <!--[if lt IE 9]>
@@ -16,16 +16,16 @@
 <body>
 
 <div id="main">
-    
+
     <h1 class="page-title">Source: bigrat.js</h1>
-    
+
     
 
 
     
     <section>
         <article>
-            <pre class="prettyprint source"><code>/*
+            <pre class="prettyprint source linenums"><code>/*
  * rational.js - Javascript tools and libraries based around rational numbers.
  * Copyright (C) 2013 Dylan Ferris
  *
@@ -299,7 +299,7 @@ bigrat.mul = bigrat.multiply;
  * @param {bigrat} out the receiving number
  * @param {bigrat} a the first operand
  * @param {bigrat} b the second operand
- * @returns {bigrat} out the sum of the numebigrators divided by the sum of the denominators
+ * @returns {bigrat} out the sum of the numerators divided by the sum of the denominators
  */
 bigrat.mediant = function(out, a, b) {
 	out[0] = a[0].add(b[0]);
@@ -335,9 +335,9 @@ bigrat.div = bigrat.divide;
  * @returns {Bool} true when the two bigrats are equal
  */
 bigrat.equals = function(a, b) {
-	if (a[0].isZero() && b[0].isZero()) return true; // both are Zero
-	if (a[1].isZero() && b[1].isZero()) return true; // both are Infinity
-	return (a[0].compare(b[0])===0) && (a[1].compare(b[1])===0);
+	if (a[0].isZero() &amp;&amp; b[0].isZero()) return true; // both are Zero
+	if (a[1].isZero() &amp;&amp; b[1].isZero()) return true; // both are Infinity
+	return (a[0].compare(b[0])===0) &amp;&amp; (a[1].compare(b[1])===0);
 };
 
 /**
@@ -430,7 +430,7 @@ bigrat.max = function(out, a, b) {
 };
 
 /**
- * Multiplies a bigrat's numebigrator by an integer
+ * Multiplies a bigrat's numerator by an integer
  *
  * @param {bigrat} out the receiving number
  * @param {bigrat} a the number to multiply
@@ -585,7 +585,7 @@ bigrat.nthRoot = function (out, a, n) {
 	var test = bigrat.clone(bigrat.ONE);
 	
 	var c = BIGRAT_MAX_LOOPS;
-	while ( !bigrat.approximates(a, test) && c-- ) {
+	while ( !bigrat.approximates(a, test) &amp;&amp; c-- ) {
 		if (bigrat.isLessThan(a, test)) {
 			m[0] = m[0].add(m[1]);
 			m[2] = m[2].add(m[3]);
@@ -776,8 +776,8 @@ bigrat.fromDecimal_copy = function (out, a) {
 		test = a,
 		integer_part = 1,
 		c = bigrat.MAX_LOOPS;
-	//while (c-- && Math.abs(out[0].valueOf() - a*out[1].valueOf()) > 2e-8) {
-	while (c-- && Math.abs(a - bigrat.toDecimal(out)) > bigrat.EPSILON) {
+	//while (c-- &amp;&amp; Math.abs(out[0].valueOf() - a*out[1].valueOf()) > 2e-8) {
+	while (c-- &amp;&amp; Math.abs(a - bigrat.toDecimal(out)) > bigrat.EPSILON) {
 		integer_part = Math.floor(test);
 		out[0] = BigInteger(integer_part * m[0] + m[2]);
 		out[1] = BigInteger(integer_part * m[1] + m[3]);
@@ -861,7 +861,7 @@ bigrat.tan = function(out, a) {
  * The returned string can be evaluated in "calc - arbitrary precision calculator"
  *
  * @param {bigrat} a number to represent as an Egyptian fraction
- * @returns {String} string representing the most simple sum of fractions having a numebigrator of one, in "calc" format
+ * @returns {String} string representing the most simple sum of fractions having a numerator of one, in "calc" format
  */
 bigrat.toEgyptian = function (a) {
 	var t = bigrat.clone(a);
@@ -956,7 +956,7 @@ bigrat.traceSternBrocot = function (a) {
 	var l_streak = 0;
 	
 	var c = 65536;
-	while ( !bigrat.equals(test, r) && c-- ) {
+	while ( !bigrat.equals(test, r) &amp;&amp; c-- ) {
 		if (bigrat.isLessThan(test, r)) {
 			m[0] = m[0].add(m[1]);
 			m[2] = m[2].add(m[3]);
@@ -1028,7 +1028,7 @@ bigrat.toContinuedFraction = function (a, loop_limit) {
 	var result = [0];
 	var result_last = result.length - 1;
 	
-	while ( !bigrat.equals(test, r) && loop_limit-- ) {
+	while ( !bigrat.equals(test, r) &amp;&amp; loop_limit-- ) {
 		if (bigrat.isLessThan(test, r)) {
 			if (direction===-1) {
 				result[result_last]++;
@@ -1207,13 +1207,13 @@ if(typeof(exports) !== 'undefined') {
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="alpha.html">alpha</a></li><li><a href="bigint.html">bigint</a></li><li><a href="bigrat.html">bigrat</a></li><li><a href="chemistry.html">chemistry</a></li><li><a href="elements.html">elements</a></li><li><a href="factorial.html">factorial</a></li><li><a href="integer.html">integer</a></li><li><a href="physics.html">physics</a></li><li><a href="planet.html">planet</a></li><li><a href="polyrat.html">polyrat</a></li><li><a href="rat.html">rat</a></li><li><a href="rational.html">rational</a></li></ul><h3>Global</h3><ul><li><a href="global.html#BIGRAT_INFINITESIMAL_PRECISION">BIGRAT_INFINITESIMAL_PRECISION</a></li><li><a href="global.html#BIGRAT_MAX_LOOPS">BIGRAT_MAX_LOOPS</a></li><li><a href="global.html#RAT_ARRAY_TYPE">RAT_ARRAY_TYPE</a></li><li><a href="global.html#RAT_INFINITESIMAL_PRECISION">RAT_INFINITESIMAL_PRECISION</a></li><li><a href="global.html#RAT_MAX_LOOPS">RAT_MAX_LOOPS</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="alpha.html">alpha</a></li><li><a href="bigint.html">bigint</a></li><li><a href="bigrat.html">bigrat</a></li><li><a href="chemistry.html">chemistry</a></li><li><a href="elements.html">elements</a></li><li><a href="factorial.html">factorial</a></li><li><a href="integer.html">integer</a></li><li><a href="physics.html">physics</a></li><li><a href="planet.html">planet</a></li><li><a href="polyrat.html">polyrat</a></li><li><a href="rat.html">rat</a></li><li><a href="rational.html">rational</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Wed Mar 12 2014 19:45:48 GMT-0400 (EDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha9</a> on Sun Feb 15 2015 14:56:43 GMT-0500 (EST)
 </footer>
 
 <script> prettyPrint(); </script>
