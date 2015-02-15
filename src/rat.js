@@ -909,11 +909,6 @@ rat.traceSternBrocot = function (a) {
         rat.equals(a, rat.INFINULL)
         ) return path;
 
-    if (rat.equals(a, rat.ZERO)) return rat.copy(out, rat.ZERO);
-    if (rat.equals(a, rat.ONE)) return rat.copy(out, rat.ONE);
-    if (rat.equals(a, rat.INFINITY)) return rat.copy(out, rat.INFINITY);
-    if (rat.equals(a, rat.INFINULL)) return rat.copy(out, rat.INFINULL);
-
     var test = rat.clone(a);
     var neg = rat.isNegative(test);
     if (neg) test[0] = -test[0];
