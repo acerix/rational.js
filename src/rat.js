@@ -34,15 +34,16 @@ if (typeof integer !== 'object') {
  * @final
  */
 if(!RAT_ARRAY_TYPE) {
-	
-	// Int Arrays cause some issues, eg. ratsynth
+
+    // Int32 doesn't allow much precision
     //var RAT_ARRAY_TYPE = typeof Int32Array !== 'undefined' ? Int32Array : Array;
-    
-	// Float32Array seems to work best overall
-    var RAT_ARRAY_TYPE = typeof Float32Array !== 'undefined' ? Float32Array : Array;
-    
-    // most compatible (eg. IE)
-    //var RAT_ARRAY_TYPE = Array;
+
+    // Float32Array seems to work best overall, more recently some browsers treat large numbers at Infinity
+    //var RAT_ARRAY_TYPE = typeof Float64Array !== 'undefined' ? Float64Array : Array;
+
+    // most compatible
+    var RAT_ARRAY_TYPE = Array;
+
 }
 
 /**

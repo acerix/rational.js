@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <title>rational.js browser tester</title>
 <!-- the latest release, replaced with the dev versions below if they exist -->
+<!--
 <script src="http://acerix.github.com/rational.js/releases/rationaljs.alpha.js"></script>
+-->
 <script src="../src/integer.js"></script>
 <script src="../src/factorial.js"></script>
 <script src="../src/biginteger.js"></script>
@@ -25,86 +27,86 @@
 var input, output;
 
 window.onload = function() {
-	input = document.getElementById('input');
-	input.focus();
-	output = document.getElementById('output');
-	go();
+  input = document.getElementById('input');
+  input.focus();
+  output = document.getElementById('output');
+  go();
 }
 
 function go() {
-	eval('{'+input.value+'}');
+  eval('{'+input.value+'}');
 }
 
 function clr() {
-	output.innerHTML = '';
+  output.innerHTML = '';
 }
 
 function print(s) {
-	if (typeof s !== 'undefined') output.innerHTML += s.toString();
-	output.innerHTML += '\n';
+  if (typeof s !== 'undefined') output.innerHTML += s.toString();
+  output.innerHTML += '\n';
 }
 
 var alt_down = false, shift_down = false, ctrl_down = false;
 
 function insertTextAtCursor(text) {
-	var sel, range, html;
-	if (window.getSelection) {
-		sel = window.getSelection();
-		if (sel.getRangeAt && sel.rangeCount) {
-			range = sel.getRangeAt(0);
-			range.deleteContents();
-			range.insertNode( document.createTextNode(text) );
-		}
-	}
-	else if (document.selection && document.selection.createRange) {
-		document.selection.createRange().text = text;
-	}
+  var sel, range, html;
+  if (window.getSelection) {
+    sel = window.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      range = sel.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode( document.createTextNode(text) );
+    }
+  }
+  else if (document.selection && document.selection.createRange) {
+    document.selection.createRange().text = text;
+  }
 }
 
 window.onkeydown = function(e) {
-	if (!e) e=event;
-	var k = e.which;
+  if (!e) e=event;
+  var k = e.which;
     switch (k) {
-		case 9: // tab
-			e.preventDefault();
-			insertTextAtCursor('\t');
-			break;
-		case 13: // enter                   
-			if (alt_down) clr();
-			if (alt_down||ctrl_down) go();
-			break;
-		case 16: // shift
-			shift_down = true;
-			break;
-		case 17: // ctrl
-			ctrl_down = true;
-			break;
-		case 18: // alt
-			alt_down = true;
-			break;
-//		default: print('key down: '+k);
-	}
+    case 9: // tab
+      e.preventDefault();
+      insertTextAtCursor('\t');
+      break;
+    case 13: // enter
+      if (alt_down) clr();
+      if (alt_down||ctrl_down) go();
+      break;
+    case 16: // shift
+      shift_down = true;
+      break;
+    case 17: // ctrl
+      ctrl_down = true;
+      break;
+    case 18: // alt
+      alt_down = true;
+      break;
+//    default: print('key down: '+k);
+  }
 }
 
 window.onkeyup = function(e) {
-	//clr(); go();
-	var k = (e?e:event).which;
+  //clr(); go();
+  var k = (e?e:event).which;
     switch (k) {
-		case 16: // shift
-			shift_down = false;
-			break;
-		case 17: // ctrl
-			ctrl_down = false;
-			break;
-		case 18: // alt
-			alt_down = false;
-			break;
-	}
+    case 16: // shift
+      shift_down = false;
+      break;
+    case 17: // ctrl
+      ctrl_down = false;
+      break;
+    case 18: // alt
+      alt_down = false;
+      break;
+  }
 }
 
 function dumpStack() {
-	try {fake+=0;}
-	catch(e) {console.log(e.stack);}
+  try {fake+=0;}
+  catch(e) {console.log(e.stack);}
 }
 
 </script>
@@ -113,22 +115,91 @@ function dumpStack() {
 
 <textarea id="input" style="width:99%;padding:3px 10px;" rows="24">
 
-var r = bigrat.fromRandom(bigrat.create());
 
-print(bigrat.dump(r));
+print();
 
-print(bigrat.dump(bigrat.fromDecimal(bigrat.toDecimal(r))));
+
+print('Random:');
+print();
+var r = rat.fromRandom(rat.create());
+print(rat.dump(r));
+
+
+
+print();
+
+print('e:');
+print();
+
+
+print(rat.dump(rat.fromDecimal(Math.E)));
+
+
+
+
+
+print();
+print('φ:');
+print();
+
+
+var PHI = ( 1 + Math.sqrt(5) ) / 2;
+
+
+print(rat.dump(rat.fromDecimal(PHI)));
+
+
+print();
+
+
+print('1/φ:');
+print();
+
+print(rat.dump(rat.fromDecimal(PHI - 1)));
+
+
+
 
 print();
 
 
 
+print('π:');
+print();
+
+
+print(rat.dump(rat.PI));
+
+
+print();
+
+exit(); /* remove this to test the rest */
+
+print();
+print('π (bigrat):');
+print();
+
+
+print(bigrat.dump(bigrat.PI));
+
+
+print();
+print();
+
+
+
+print('Other Tests:');
+print();
+
+
+
+
 var a = polyrat.fromValues(
-	[0, 0, 7, 1, 2, 3, 81, 4, 23]
+  [0, 0, 7, 1, 2, 3, 81, 4, 23]
 );
 
 var b = polyrat.fromValues(
-	[1, 2, 1, 0, 0, 3, 69]
+  [1, 2, 1, 0, 0, 3, 69]
 );
 
 var result = polyrat.create();
@@ -156,10 +227,6 @@ print('@'+r[0]+' => '+bigrat.str(polyrat.evaluate(bigrat.create(), result, [r[0]
 
 
 
-exit(); /* remove this to test the rest */
-
-
-
 print();
 
 var x2 = polyrat.fromValues([0, 0, 1]);
@@ -173,9 +240,9 @@ print('@[x=6] => '+bigrat.str(polyrat.evaluate(bigrat.create(), x2, [6])));
 print();
 
 var x2_y2 = polyrat.fromValues([
-	[0, 0, 1],
-	[0, 0, 0],
-	[1, 0, 0]
+  [0, 0, 1],
+  [0, 0, 0],
+  [1, 0, 0]
 ]);
 
 print(polyrat.toJSON(x2_y2));
@@ -196,39 +263,39 @@ print();
 
 var x4_y4_z4 = polyrat.fromValues([
 [
-	[0, 0, 0, 0, 1],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[1, 0, 0, 0, 0]
+  [0, 0, 0, 0, 1],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0]
 ],
 [
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0]
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
 ],
 [
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0]
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
 ],
 [
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0]
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
 ],
 [
-	[1, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0]
+  [1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
 ]
 ]);
 
@@ -261,39 +328,39 @@ print();
 
 var crazy_polynomial = polyrat.fromValues([
 [
-	[7, 6, 3, 0, 1],
-	[0, 0, 4, 0, 0],
-	[0, 0, 1, 0, 0],
-	[0, 0, 0, 0, 0],
-	[1, 0, 0, 0, 0]
+  [7, 6, 3, 0, 1],
+  [0, 0, 4, 0, 0],
+  [0, 0, 1, 0, 0],
+  [0, 0, 0, 0, 0],
+  [1, 0, 0, 0, 0]
 ],
 [
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 6, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0]
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 6, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
 ],
 [
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 5, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 4, 0, 0]
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 5, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 4, 0, 0]
 ],
 [
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0]
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0]
 ],
 [
-	[1, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0],
-	[0, 0, 4, 0, 0],
-	[1, 0, 0, 5, 99]
+  [1, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 4, 0, 0],
+  [1, 0, 0, 5, 99]
 ]
 ]);
 
@@ -312,11 +379,11 @@ print(new rational(420, 69).times(new rational(123, 456)).pow(4).divide(new rati
 
 
 print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
-	[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 )));
 
 print(bigrat.dump(bigrat.fromContinuedFraction(bigrat.create(),
-	[2,1,2,1,1,4,1,1,6,1,1,8,1,1,1,10,1,1,1,12,1,1,1,14,1,1,1,16,1,1,1,18,1,1,1,20,1,1,1,22,1,1,1,24]
+  [2,1,2,1,1,4,1,1,6,1,1,8,1,1,1,10,1,1,1,12,1,1,1,14,1,1,1,16,1,1,1,18,1,1,1,20,1,1,1,22,1,1,1,24]
 )));
 
 print(rational.fromDecimal(0.697774657964008).dump());
@@ -329,33 +396,6 @@ for (var n=1; n<30; n++) {
   bigrat.nthRoot(root, bigrat.fromInteger(n), nth);
   print(bigrat.dump(root));
 }
-
-var PHI = ( 1 + Math.sqrt(5) ) / 2;
-print(bigrat.dump(bigrat.fromDecimal(PHI)));
-print(bigrat.dump(bigrat.fromDecimal(PHI - 1)));
-
-bigrat.PHI = bigrat.fromInteger(5);
-bigrat.sqrt(bigrat.PHI, bigrat.clone(bigrat.PHI));
-bigrat.add(bigrat.PHI, bigrat.clone(bigrat.PHI), bigrat.ONE);
-bigrat.scalar_divide(bigrat.PHI, bigrat.clone(bigrat.PHI), 2);
-print(bigrat.dump(bigrat.PHI));
-
-print(bigrat.dump(bigrat.fromDecimal(Math.PI)));
-print(rat.dump(rat.PI));
-print(bigrat.dump(bigrat.PI));
-
-print(bigrat.dump(physics.a));
-print(bigrat.dump(bigrat.invert(bigrat.create(), physics.a)));
-
-print(bigrat.dump(physics.h));
-print(bigrat.dump(physics.hBAR));
-
-print(bigrat.dump(bigrat.fromDecimal(Math.E)));
-
-print(bigrat.dump(bigrat.fromDecimal(Math.LN2)));
-print(bigrat.dump(bigrat.fromDecimal(Math.LOG2E)));
-print(bigrat.dump(bigrat.fromDecimal(Math.LN10)));
-print(bigrat.dump(bigrat.fromDecimal(Math.LOG10E)));
 
 </textarea>
 
