@@ -272,7 +272,7 @@ bigrat.mul = bigrat.multiply;
  * @param {bigrat} out the receiving number
  * @param {bigrat} a the first operand
  * @param {bigrat} b the second operand
- * @returns {bigrat} out the sum of the numebigrators divided by the sum of the denominators
+ * @returns {bigrat} out the sum of the numerators divided by the sum of the denominators
  */
 bigrat.mediant = function(out, a, b) {
 	out[0] = a[0].add(b[0]);
@@ -403,7 +403,7 @@ bigrat.max = function(out, a, b) {
 };
 
 /**
- * Multiplies a bigrat's numebigrator by an integer
+ * Multiplies a bigrat's numerator by an integer
  *
  * @param {bigrat} out the receiving number
  * @param {bigrat} a the number to multiply
@@ -834,7 +834,7 @@ bigrat.tan = function(out, a) {
  * The returned string can be evaluated in "calc - arbitrary precision calculator"
  *
  * @param {bigrat} a number to represent as an Egyptian fraction
- * @returns {String} string representing the most simple sum of fractions having a numebigrator of one, in "calc" format
+ * @returns {String} string representing the most simple sum of fractions having a numerator of one, in "calc" format
  */
 bigrat.toEgyptian = function (a) {
 	var t = bigrat.clone(a);
