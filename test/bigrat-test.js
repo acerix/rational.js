@@ -96,6 +96,12 @@ vows.describe('convert decimal numbers to bigrat{}').addBatch({
             assert.strictEqual (v, 420.00000069);
         }
     },
+    'bigrat.toDecimal(bigrat.fromDecimal(511.99999999999994))': {
+        topic: function () { return bigrat.toDecimal(bigrat.fromDecimal(511.99999999999994)) },
+        'strictEquals 511.99999999999994': function (v) {
+            assert.strictEqual (v, 511.99999999999994);
+        }
+	},
 }).export(module);
 
 vows.describe('bigrat.PI gives the correct approximation').addBatch({

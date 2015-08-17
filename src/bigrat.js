@@ -754,6 +754,7 @@ bigrat.fromDecimal_copy = function (out, a) {
 		integer_part = Math.floor(test);
 		out[0] = BigInteger(integer_part * m[0] + m[2]);
 		out[1] = BigInteger(integer_part * m[1] + m[3]);
+		if (test === integer_part) break;
 		test = 1 / (test - integer_part);
 		m[2] = m[0];
 		m[3] = m[1];
