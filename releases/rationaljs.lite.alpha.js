@@ -1,6 +1,6 @@
 /*
  * rational.js - Javascript tools and libraries based around rational numbers.
- * Copyright (C) 2013 Dylan Ferris
+ * Copyright (C) 2015 Dylan Ferris
  *
  * This file is part of rational.js.
  *
@@ -63,3 +63,4 @@ rational.prototype.dump=function(){return rat.dump(this.a)};rational.prototype.t
 rational.fromContinuedFraction=function(a){return rational.fromRat(rat.fromContinuedFraction(rat.create(),a))};"undefined"!==typeof exports&&(exports.rational=rational);
 	})(shim.exports);
 })(this);
+

@@ -1,6 +1,6 @@
 /*
  * rational.js - Javascript tools and libraries based around rational numbers.
- * Copyright (C) 2013 Dylan Ferris
+ * Copyright (C) 2015 Dylan Ferris
  *
  * This file is part of rational.js.
  *
@@ -123,3 +123,4 @@ d);for(g=d;g--;)a[1][g]=b[1][g];return a};polyrat.add=function(a,b,c){return pol
 polyrat.countDimensions=function(a){return"object"===typeof a[0]?polyrat._countDimensions(a[0],1):0};polyrat._countDimensions=function(a,b){return"object"===typeof a[0]?polyrat._countDimensions(a[0],++b):b};polyrat.ZERO=polyrat.fromValues([0]);polyrat.IDENTITY=polyrat.fromValues([1]);polyrat.ONE=polyrat.IDENTITY;"undefined"!==typeof exports&&(exports.polyrat=polyrat);var RAT_ZERO=rat.ZERO,RAT_ONE=rat.ONE,RAT_INFINITY=rat.INFINITY,RAT_INFINULL=rat.INFINULL,RAT_INFINITESIMAL=rat.INFINITESIMAL;
 	})(shim.exports);
 })(this);
+
