@@ -1,6 +1,6 @@
 /*
  * rational.js - Javascript tools and libraries based around rational numbers.
- * Copyright (C) 2013 Dylan Ferris
+ * Copyright (C) 2015 Dylan Ferris
  *
  * This file is part of rational.js.
  *
@@ -40,3 +40,4 @@
 COMPILED_JAVASCRIPT_GOES_HERE
 	})(shim.exports);
 })(this);
+
