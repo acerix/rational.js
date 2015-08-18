@@ -32,7 +32,6 @@ if (typeof bigint !== 'object') {
  * The inverse of the allowable difference in approximations
  *
  * @property RAT_INFINITESIMAL_PRECISION
- * @type Integer
  * @static
  * @final
  */
@@ -44,7 +43,6 @@ if(!BIGRAT_INFINITESIMAL_PRECISION) {
  * Exit (possibly infinite) loops after this many iterations
  *
  * @property BIGRAT_MAX_LOOPS
- * @type Integer
  * @static
  * @final
  */
@@ -63,7 +61,6 @@ var bigrat = {};
  * Machine Epsilon, floats within this distance of each other are considered equal
  *
  * @property EPSILON
- * @type rat
  * @static
  * @final
  */
@@ -73,7 +70,6 @@ bigrat.EPSILON = 2e-16;
  * Exit (possibly infinite) loops after this many iterations
  *
  * @property MAX_LOOPS
- * @type bigrat
  * @static
  * @final
  */
@@ -1144,7 +1140,6 @@ bigrat.dump = function(r) {
  * Zero, the additive identity
  *
  * @property ZERO
- * @type bigrat
  * @static
  * @final
  */
@@ -1154,7 +1149,6 @@ bigrat.ZERO = bigrat.fromInteger(0);
  * One, the multiplicative identity
  *
  * @property ONE
- * @type bigrat
  * @static
  * @final
  */
@@ -1164,7 +1158,6 @@ bigrat.ONE = bigrat.fromInteger(1);
  * Negative One, Zero minus One
  *
  * @property NEGONE
- * @type bigrat
  * @static
  * @final
  */
@@ -1174,7 +1167,7 @@ bigrat.NEGONE = bigrat.fromInteger(-1);
  * Infinity, a non-Zero number divided by Zero
  *
  * @property INFINITY
- * @type bigrat
+
  * @static
  * @final
  */
@@ -1184,7 +1177,7 @@ bigrat.INFINITY = bigrat.fromValues(1, 0);
  * Infinull, Zero divided by Zero
  *
  * @property INFINULL
- * @type bigrat
+
  * @static
  * @final
  */
@@ -1194,7 +1187,7 @@ bigrat.INFINULL = bigrat.fromValues(0, 0);
  * Infinitesimal, the limit for approximations
  *
  * @property INFINITESIMAL
- * @type bigrat
+
  * @static
  * @final
  */
@@ -1204,7 +1197,7 @@ bigrat.INFINITESIMAL = bigrat.clone([new BigInteger(1), BIGRAT_INFINITESIMAL_PRE
  * Pi, an approximation of the ratio between a circle's circumference and it's diameter
  *
  * @property PI
- * @type bigrat
+
  * @static
  * @final
  */

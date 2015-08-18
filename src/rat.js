@@ -29,7 +29,6 @@ if (typeof integer !== 'object') {
  * The type of array to store the numerator and denominator in
  *
  * @property RAT_ARRAY_TYPE
- * @type ArrayObject
  * @static
  * @final
  */
@@ -50,7 +49,6 @@ if(!RAT_ARRAY_TYPE) {
  * The inverse of the allowable difference in approximations
  *
  * @property RAT_INFINITESIMAL_PRECISION
- * @type Integer
  * @static
  * @final
  */
@@ -62,7 +60,6 @@ if(!RAT_INFINITESIMAL_PRECISION) {
  * Exit (possibly infinite) loops after this many iterations
  *
  * @property RAT_MAX_LOOPS
- * @type Integer
  * @static
  * @final
  */
@@ -81,7 +78,6 @@ var rat = {};
  * Machine Epsilon, floats within this distance of eachother are considered equal (to avoid rounding errors)
  *
  * @property EPSILON
- * @type rat
  * @static
  * @final
  */
@@ -91,7 +87,6 @@ rat.EPSILON = 2e-16;
  * Exit (possibly infinite) loops after this many iterations
  *
  * @property MAX_LOOPS
- * @type rat
  * @static
  * @final
  */
@@ -751,7 +746,7 @@ rat.fromDecimal_copy = function (out, a) {
         integer_part = Math.floor(test);
         out[0] = integer_part * m[0] + m[2];
         out[1] = integer_part * m[1] + m[3];
-		if (test === integer_part) break;
+        if (test === integer_part) break;
         test = 1 / (test - integer_part);
         m[2] = m[0];
         m[3] = m[1];

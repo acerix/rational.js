@@ -41,14 +41,14 @@ var bigint = {};
  * @returns {BigInteger} greatest common divisor
  */
 bigint.greatest_common_divisor = function(a, b) {
-	if (b.isUnit() || a.isUnit()) return BigInteger.ONE;
-	var t;
-	while (!b.isZero()) {
-		t = b;
-		b = a.remainder(b);
-		a = t;
-	}
-	return a;
+    if (b.isUnit() || a.isUnit()) return BigInteger.ONE;
+    var t;
+    while (!b.isZero()) {
+        t = b;
+        b = a.remainder(b);
+        a = t;
+    }
+    return a;
 }
 
 /**
@@ -57,7 +57,7 @@ bigint.greatest_common_divisor = function(a, b) {
  * @returns {bigint} a new bigint
  */
 bigint.create = function() {
-	return [0];
+    return [0];
 };
 
 /**
@@ -67,10 +67,10 @@ bigint.create = function() {
  * @returns {bigint} a new bigintional number
  */
 bigint.clone = function(a) {
-	var out = [];
-	for (var i=0, l=a.length; i<l; i++)
-		out[i] = a[i];
-	return out;
+    var out = [];
+    for (var i=0, l=a.length; i<l; i++)
+        out[i] = a[i];
+    return out;
 };
 
 /**
@@ -81,10 +81,10 @@ bigint.clone = function(a) {
  * @returns {bigint} out
  */
 bigint.copy = function(out, a) {
-	out = [];
-	for (var i=0, l=a.length; i<l; i++)
-		out[i] = a[i];
-	return out;
+    out = [];
+    for (var i=0, l=a.length; i<l; i++)
+        out[i] = a[i];
+    return out;
 };
 
 /**
@@ -95,8 +95,8 @@ bigint.copy = function(out, a) {
  * @returns {bigint} out
  */
 bigint.abs = function(out, a) {
-	out[0] = Math.abs(a[0]);
-	return out;
+    out[0] = Math.abs(a[0]);
+    return out;
 };
 
 /**
@@ -106,7 +106,7 @@ bigint.abs = function(out, a) {
  * @returns {String} string representation of the number
  */
 bigint.str = function (a) {
-	return a[0].toString();
+    return a[0].toString();
 };
 
 /**
@@ -116,7 +116,7 @@ bigint.str = function (a) {
  * @returns {Integer} an integer or Infinity when the max size is exceeded
  */
 bigint.toInteger = function (a) {
-	return out[0];
+    return out[0];
 };
 
 /**
@@ -127,14 +127,13 @@ bigint.toInteger = function (a) {
  * @returns {bigint} out
  */
 bigint.fromInteger = function (a) {
-	return [parseInt(a)];
+    return [parseInt(a)];
 };
 
 /**
  * Zero, the additive identity
  *
  * @property ZERO
- * @type bigint
  * @static
  * @final
  */
@@ -144,12 +143,11 @@ bigint.ZERO = bigint.fromInteger(0);
  * One, the multiplicative identity
  *
  * @property ONE
- * @type bigint
  * @static
  * @final
  */
 bigint.ONE = bigint.fromInteger(1);
 
 if(typeof(exports) !== 'undefined') {
-	exports.bigint = bigint;
+    exports.bigint = bigint;
 }
