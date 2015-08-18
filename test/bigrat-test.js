@@ -101,7 +101,7 @@ vows.describe('convert decimal numbers to bigrat{}').addBatch({
         'strictEquals 511.99999999999994': function (v) {
             assert.strictEqual (v, 511.99999999999994);
         }
-	},
+    },
 }).export(module);
 
 vows.describe('bigrat.PI gives the correct approximation').addBatch({

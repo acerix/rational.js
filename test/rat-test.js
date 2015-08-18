@@ -111,6 +111,12 @@ vows.describe('convert decimal numbers to rat{}').addBatch({
             assert.strictEqual (v, 420.00000000069);
         }
     },
+    'rat.toDecimal(rat.fromDecimal(511.99999999999994))': {
+        topic: function () { return rat.toDecimal(rat.fromDecimal(511.99999999999994)) },
+        'strictEquals 512': function (v) {
+            assert.strictEqual (v, 512);
+        }
+    },  
     'rat.fromDecimal(2147483647/7)': {
         topic: function () { return rat.str(rat.fromDecimal(2147483647/7)) },
         'strictEquals "2147483647/7"': function (v) {
