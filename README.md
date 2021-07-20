@@ -1,10 +1,15 @@
+Depreciated!
+============
+
+As of 2021, this project is depreciated in favour of [cnum](https://github.com/acerix/cnum/), revamped for the JavaScript BigInt primitive.
+
+
 rational.js
 ===========
 
 javascript tools and libraries based around rational numbers.
 
 heavily inspired by glMatrix (http://glmatrix.net/), a high performance matrix and vector library.
-
 
 Example usage in Node.js:
 
